@@ -1,0 +1,57 @@
+<!-- <p>showu-home-page works!</p>
+<h1>{{data | localDate}}</h1>
+<button (click)="data='2008-08-15'; onClick()">2008-08-15 {{i}}</button> -->
+
+<app-sallers-slider
+  [auto]="true"
+  [timeout]="5000"
+  [slides]="slider.promotions.data"
+></app-sallers-slider>
+
+<show-u-title
+  [title]="'main.wellcome' | translate"
+  [subtitle]="'main.openUkraine' | translate"
+></show-u-title>
+
+<app-welcome-statistic style="margin-bottom: 2rem;"></app-welcome-statistic>
+
+<show-u-title [title]="'main.newCollection' | translate"></show-u-title>
+
+<section class="collections">
+  <app-collection-item
+    *ngFor="let item of collection.list"
+    [item]="item"
+    [buttonText]="'collection.details' | translate"
+    [routerLinks]="['/', 'collections','view']"
+  ></app-collection-item>
+  <app-collection-item
+    [routerLinks]="['/', 'collections']"
+    [buttonText]="'main.viewMoreCollection' | translate"
+    [host]="null"
+    [item]="{
+      title: 'main.moreCollections' | translate,
+      cover: 'assets/collections.png',
+      subtitle: null,
+      id: 0
+    }"
+  ></app-collection-item>
+</section>
+
+<show-u-title [title]="'main.bestSellers' | translate"></show-u-title>
+<app-product-slider [products]="product.sallers"></app-product-slider>
+
+<show-u-title [title]="'main.lastReviews' | translate"></show-u-title>
+<app-rewiew-block [reviews]="review.data"></app-rewiew-block>
+
+<show-u-title
+  [title]="'main.popularProducts' | translate"
+  [subtitle]="'main.comeClearUsNow' | translate"
+></show-u-title>
+<app-product-slider [products]="product.popular"></app-product-slider>
+
+<show-u-title [title]="'main.ourManufacturers' | translate"></show-u-title>
+<app-manufacturers-slider [list]="manufacturer.list"></app-manufacturers-slider>
+
+<br />
+<br />
+<br />

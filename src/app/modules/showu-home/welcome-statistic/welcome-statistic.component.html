@@ -1,0 +1,7 @@
+<div class="item" *ngFor="let item of list">
+  <rap-svg-ico [src]="item.icon"></rap-svg-ico>
+  <div class="info">
+    <h6>{{item.title | translate}}</h6>
+    <div>{{item.description | translate}}</div>
+  </div>
+</div>

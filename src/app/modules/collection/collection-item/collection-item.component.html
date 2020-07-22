@@ -1,0 +1,28 @@
+<div class="title">
+  <h2 *ngIf="item?.title">{{ item?.title }}</h2>
+  <h6 *ngIf="item?.subtitle">{{ item?.subtitle }}</h6>
+  <div class="flex" *ngIf="routerLinks.length > 0">
+    <a
+      *ngIf="item?.id"
+      [routerLink]="routerLinksWithId"
+      class="more"
+    >{{buttonText}}</a>
+    <a
+      *ngIf="!item?.id"
+      [routerLink]="routerLinks"
+      class="more"
+    >{{buttonText}}</a>
+  </div>
+</div>
+
+<div class="ratio collection-item">
+  <div class="square">
+    <img
+      src="{{ host!=null ? host + item?.image?.src_mini : item?.cover }}"
+      alt="{{ item?.title }}"
+      class="contain"
+    />
+  </div>
+</div>
+
+<!-- <pre>{{host}}{{ item?.image | json }}</pre> -->

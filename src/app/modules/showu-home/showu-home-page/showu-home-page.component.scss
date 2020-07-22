@@ -1,0 +1,36 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: block;
+  position: relative;
+}
+
+.collections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  app-collection-item {
+    width: calc(50% - #{$space});
+    margin: $space/2;
+  }
+}
+
+@include screen-w(1024px) {
+  .collections {
+    app-collection-item {
+      width: calc(50% - #{$space});
+      margin: $space/2;
+    }
+  }
+}
+
+@include screen-w(640px) {
+  .collections {
+    app-collection-item {
+      width: 100%;
+      margin: $space/2;
+    }
+  }
+}

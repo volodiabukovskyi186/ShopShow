@@ -1,0 +1,48 @@
+<rap-container>
+  <div class="row wrap">
+    <div class="col col-25 col100m">
+      <a [routerLink]="['/']" routerLinkActive="router-link-active">
+        <rap-svg-ico class="logo" [src]="'assets/showu.svg'"></rap-svg-ico
+      ></a>
+      <p class="gray text-left">
+        {{ "footer.description" | translate }}
+      </p>
+    </div>
+    <div class="col col-25 col50m">
+      <h5>{{ "footer.shop" | translate }}</h5>
+      <ul class="col-nav">
+        <li *ngFor="let link of clientMenu.listShop">
+          <a class="gray" href="{{ link.link }}">{{
+            link.description.title
+          }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col col-25 col50m">
+      <h5>{{ "footer.help" | translate }}</h5>
+      <ul class="col-nav">
+        <li *ngFor="let link of clientMenu.listHelp">
+          <a class="gray" href="{{ link.link }}">{{
+            link.description.title
+          }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col col-25 col100m">
+      <h5>{{ "footer.newsletter" | translate }}</h5>
+      <input
+        style="margin-bottom: 24px;"
+        class="radius"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <p class="gray text-left">
+        {{ "footer.wantNews" | translate }}
+      </p>
+    </div>
+  </div>
+  <hr />
+  <div class="row wrap v_center">
+    <span class="copy">&copy; {{ "footer.copyright" | translate }}</span>
+  </div>
+</rap-container>

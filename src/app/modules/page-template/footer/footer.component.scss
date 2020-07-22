@@ -1,0 +1,88 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: block;
+  position: relative;
+  background-color: $gray800;
+  color: $white;
+  padding-bottom: $space/4;
+  margin-top: auto;
+}
+
+ul.nav {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+
+  li {
+    a {
+      display: block;
+      padding: $space/4;
+      margin-right: $space/4;
+    }
+  }
+}
+
+.copy {
+  display: block;
+  padding: $space/4;
+  margin-right: $space/4;
+}
+
+.logo {
+  display: block;
+  fill: $primary;
+  opacity: 0.9;
+  margin-right: $space;
+  margin-top: $space;
+  margin-bottom: $space*3;
+  width: 72%;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@include screen-w(1080px) {
+  .logo {
+    max-width: 256px;
+    margin-bottom: $space*2;
+  }
+}
+@include screen-w(768px) {
+  .logo {
+    max-width: 192px;
+    margin-top: $space/2;
+    margin-bottom: $space;
+  }
+}
+
+.gray {
+  color: $gray300;
+}
+
+h5 {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-left: $space/4;
+  padding-right: $space/4;
+}
+
+ul.col-nav {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+
+  li {
+    a {
+      display: block;
+      padding: $space/2;
+    }
+  }
+}

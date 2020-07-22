@@ -1,0 +1,21 @@
+<div class="ratio radius">
+  <div class="square radius">
+    <img class="cover radius" src="{{ host+ value.product.image.src_mini }}" alt="" />
+  </div>
+</div>
+
+<div class="info">
+  <h4>{{ value.product.description?.name  }}</h4>
+
+  <span
+    >{{ value.product.price }} x
+    <rap-count-input [min]="1" [(value)]="value.count"></rap-count-input>
+    | <span [@changeValueHighlight]="value.count">
+      {{currency.current.simbol_left}}
+      {{ value.product.price * currency.current.value * value.count | number }}
+      {{currency.current.simbol_right}}
+    </span></span
+  >
+</div>
+
+<button class="button transparent" (click)="onDelete()">X</button>

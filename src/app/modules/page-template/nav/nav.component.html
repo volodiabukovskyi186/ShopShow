@@ -1,0 +1,17 @@
+<rap-container>
+  <div>
+    <!-- <app-nav-item *ngFor="let link of categories" [value]="link"></app-nav-item> -->
+    <showu-menu-item
+      class="root"
+      *ngFor="let link of categories"
+      [value]="link"
+      #categoryItem
+      (clickOutside)="categoryItem.active = false"
+    ></showu-menu-item>
+    <app-nav-item
+      *ngFor="let link of links2"
+      [value]="link"
+      style="flex: 1;"
+    ></app-nav-item>
+  </div>
+</rap-container>

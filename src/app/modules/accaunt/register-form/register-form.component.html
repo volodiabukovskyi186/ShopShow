@@ -1,0 +1,111 @@
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="description">
+      <label for="ShowUFirstName">{{ labelFirstName }} </label>
+    </div>
+    <div class="original">
+      <input
+        formControlName="first_name"
+        placeholder="{{ placeholderFirstName }}"
+        required
+        class="radius"
+        id="ShowUFirstName"
+        name="first_name"
+        type="text"
+      />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="ShowULastName">{{ labelLastName }} </label>
+    </div>
+    <div class="original">
+      <input
+        formControlName="last_name"
+        placeholder="{{ placeholderLastName }}"
+        required
+        class="radius"
+        id="ShowULastName"
+        name="last_name"
+        type="text"
+      />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="ShowUEmail">{{ labelEmail }} </label>
+    </div>
+    <div class="original">
+      <input
+        autocomplete="username"
+        formControlName="email"
+        placeholder="{{ placeholderEmail }}"
+        required
+        class="radius"
+        id="ShowUEmail"
+        name="email"
+        type="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="ShowUPhone">{{ labelPhone }} </label>
+    </div>
+    <div class="original">
+      <input
+        formControlName="phone"
+        placeholder="{{ placeholderPhone }}"
+        required
+        class="radius"
+        id="ShowUPhone"
+        name="phone"
+        type="tel"
+      />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="ShowUPassword">{{ labelPassword }}</label>
+    </div>
+    <div class="original">
+      <input
+        autocomplete="current-password"
+        placeholder="{{ placeholderPassword }}"
+        formControlName="password"
+        class="radius"
+        id="ShowUPassword"
+        required
+        name="password"
+        type="password"
+      />
+    </div>
+  </div>
+
+  <div class="flex center padding">
+    <button
+      [disabled]="!authForm.valid || isSubmit"
+      class="button delete radius large"
+      type="submit"
+    >
+      {{ labelSubmit }}
+    </button>
+  </div>
+</form>
+
+<div class="form-row">
+  <div class="description"></div>
+  <div class="original">
+    <a [routerLink]="['/', 'accaunt', 'restore']"
+      ><small>{{ labelForgotPassword }}</small></a
+    >
+    <a [routerLink]="['/', 'accaunt', 'login']"
+      ><small>{{ labelLogin }}</small></a
+    >
+  </div>
+</div>

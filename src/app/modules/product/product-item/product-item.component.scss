@@ -1,0 +1,118 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  // border: 1px solid;
+  background-color: $white;
+
+  @include material-shadow(1, 1, $gray400);
+  @include transition();
+  transform-origin: bottom center;
+  border-radius: $radius;
+  &:hover {
+    @include material-shadow(2, 1, $gray500);
+    transform: scale(1.01);
+  }
+  .ratio,
+  .cinema,
+  img {
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+  }
+  .raisins-show-rating {
+    margin: $space/4 0;
+  }
+}
+
+img.soldout {
+  filter: grayscale(.9);
+}
+
+.title {
+  margin: 0 0 $space/4;
+  font-size: $fontSizeH6;
+}
+
+.padding {
+  padding: $space/4 $space $space;
+}
+
+.stickers {
+  z-index: 1000;
+  position: absolute;
+  top: $space/2;
+  left: $space/4;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  .sticker {
+    padding: $space/4 $space/2;
+    color: $white;
+    font-size: $fontSizeSmall;
+    font-weight: bold;
+    border-radius: 2px;
+    margin: $space/4;
+    backdrop-filter: blur(2px);
+    &.sale {
+      background-color: rgba($orange, .8);
+    }
+    &.new {
+      margin-left: auto;
+      background-color: rgba($green, .8);
+    }
+    &.soldout {
+      margin-left: auto;
+      background-color: rgba($gray500, .8);
+    }
+  }
+}
+
+.product-buttons {
+  z-index: 1000;
+  opacity: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  bottom: $space/4;
+  left: 0;
+  right: 0;
+  @include transition();
+  .button {
+    min-width: unset;
+    padding: $space/8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0 $space/4;
+    align-items: center;
+    background-color: rgba($gray800, 0.8);
+    background-color: rgba(lighten(mix($gray800, darken($blue, 30%)), 5%), 0.8);
+    &:hover {
+      transform: scale(1.05);
+      background-color: rgba($primary, 1);
+    }
+    rap-svg-ico {
+      width: 16px;
+      height: 16px;
+      display: block;
+      fill: white;
+    }
+  }
+}
+
+:host {
+  &:hover {
+    .product-buttons {
+      opacity: 1;
+    }
+  }
+}
+
+@media (hover: none) {
+  .product-buttons {
+    opacity: 1;
+  }
+}

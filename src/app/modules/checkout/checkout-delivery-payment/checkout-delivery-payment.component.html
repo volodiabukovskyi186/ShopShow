@@ -1,0 +1,249 @@
+<app-checkout-step
+  [ngClass]="{ done: check.steps[1].done }"
+  [step]="2"
+  [title]="'cart.chooseDeliveryPayment' | translate"
+></app-checkout-step>
+
+<div class="card padding" *ngIf="check.currentStepIndex > 0">
+  <div
+    @fadeHeight
+    *ngIf="check.currentStepIndex > 0 && check.steps[1].done"
+    class="flex"
+  >
+    <div style="flex: 1;">
+      <h4>{{ check.checkoutDelivery }} {{ check.checkoutDeliveryAddress }}</h4>
+      <span>{{ check.checkoutPayment }}, {{ check.checkoutRecipient }}</span>
+      <span
+        >{{ check.checkoutContact.country }},
+        {{ check.checkoutContact.city }}</span
+      >
+    </div>
+    <div>
+      <div class="flex">
+        <button (click)="edit()" class="button radius small transparent">
+          {{ "cart.edit" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <hr
+    *ngIf="check.currentStepIndex > 0 && check.steps[1].done"
+    class="dashed"
+  />
+
+  <div *ngIf="check.currentStepIndex == 1" @fadeHeight>
+    <app-checkout-product-item
+      *ngFor="let value of cart.list"
+      @fadeHeight
+      [value]="value"
+    >
+    </app-checkout-product-item>
+    <form
+      @fadeHeight
+      *ngIf="!check.steps[1].done"
+      #deliveryPaymentForm="ngForm"
+      (submit)="nextStep()"
+    >
+      <hr class="dashed" />
+
+      <div class="form-row">
+        <div class="description">
+          <h6>{{ "cart.delivery" | translate }}</h6>
+        </div>
+        <div class="original">
+          <input
+            class="raisins-radio label"
+            type="radio"
+            [(ngModel)]="check.checkoutDelivery"
+            name="delivery"
+            value="courier"
+            id="del_courier"
+          />
+          <label for="del_courier">Courier</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            [(ngModel)]="check.checkoutDelivery"
+            name="delivery"
+            value="mail_company"
+            id="mail_company"
+          />
+          <label for="mail_company">Mail company</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="delivery"
+            [(ngModel)]="check.checkoutDelivery"
+            value="meest"
+            id="meest"
+          />
+          <label for="meest">Meest</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="delivery"
+            [(ngModel)]="check.checkoutDelivery"
+            value="other_mail"
+            id="other_mail"
+          />
+          <label for="other_mail">Other mail conpany</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            [(ngModel)]="check.checkoutDelivery"
+            name="delivery"
+            value="delivery"
+            id="delivery"
+          />
+          <label for="delivery">Delivery</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="description">
+          <label for="checkoutDeliveryAddress"
+            ><h6>{{ "cart.address" | translate }}</h6></label
+          >
+        </div>
+        <div class="original">
+          <textarea
+            #checkoutDeliveryAddress="ngModel"
+            required
+            [(ngModel)]="check.checkoutDeliveryAddress"
+            class="radius"
+            name="checkoutDeliveryAddress"
+            id="checkoutDeliveryAddress"
+            rows="3"
+          ></textarea>
+          <div
+            *ngIf="
+              !(
+                checkoutDeliveryAddress.valid ||
+                checkoutDeliveryAddress.pristine
+              )
+            "
+            @fadeHeight
+            class="validation-msg red"
+          >
+            {{ "cart.addressRequired" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <hr class="dashed" />
+
+      <div class="form-row">
+        <div class="description">
+          <h6>{{ "cart.payment" | translate }}</h6>
+        </div>
+        <div class="original">
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="cash"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_cash"
+          />
+          <label for="payment_cash">{{ "cart.cash" | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="cashless"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_cashless"
+          />
+          <label for="payment_cashless">{{
+            "cart.cashless" | translate
+          }}</label>
+
+          <!-- <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="ligpay"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_ligpay"
+          />
+          <label for="payment_ligpay">Ligpay</label>
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="paypal"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_paypal"
+          />
+          <label for="payment_paypal">PayPal</label>
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="przelewy24pl"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_przelewy24pl"
+          />
+          <label for="payment_przelewy24pl">Przelewy24.pl</label> -->
+        </div>
+      </div>
+
+      <hr class="dashed" />
+
+      <div class="form-row">
+        <div class="description">
+          <h6>{{ "cart.recipient" | translate }}</h6>
+        </div>
+        <div class="original">
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="recipient"
+            value="me"
+            [(ngModel)]="check.checkoutRecipient"
+            id="me"
+          />
+          <label for="me">{{ "cart.me" | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="recipient"
+            value="different"
+            [(ngModel)]="check.checkoutRecipient"
+            id="different"
+          />
+          <label for="different">{{ "cart.shipDiffPeople" | translate }}</label>
+        </div>
+      </div>
+
+      <app-checkout-recipient-contact-form
+        @fadeHeight
+        *ngIf="check.checkoutRecipient == 'different'"
+        [(model)]="check.checkoutRecipientContact"
+        (valid)="onValid($event)"
+      ></app-checkout-recipient-contact-form>
+
+      <div class="form-row">
+        <div class="description"></div>
+        <div class="original">
+          <div class="flex">
+            <button
+              [disabled]="!deliveryPaymentForm.valid || !valid"
+              type="submit"
+              class="button radius delete"
+            >
+              {{ "cart.next" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="ratio">
+  <div class="square" >
+    <a [routerLink]="['/products/view/' + product.id]">
+      <img
+        [ngClass]="{ soldout: product.soldout }"
+        src="{{ hoststatic + product.image?.src_mini }}"
+        [alt]="product.name"
+        class="cover"
+      />
+    </a>
+
+    <div class="stickers">
+      <div *ngIf="product.oldPrice" class="sticker sale">Sale</div>
+      <div *ngIf="product.isNew" class="sticker new">New</div>
+      <div *ngIf="product.soldout" class="sticker soldout">Sold Out</div>
+    </div>
+
+    <div class="product-buttons">
+      <a
+        class="button"
+        [routerLink]="['/products/view/' + product.id]"
+        routerLinkActive="router-link-active"
+      >
+        <rap-svg-ico [src]="'assets/icons/eye.svg'"></rap-svg-ico>
+      </a>
+
+      <a class="button" (click)="save($event, product.id)">
+        <rap-svg-ico [src]="'assets/icons/heart.svg'"></rap-svg-ico>
+      </a>
+
+      <a
+        class="button"
+        *ngIf="!product.soldout"
+        (click)="toCart($event, product)"
+      >
+        <rap-svg-ico [src]="'assets/icons/cart-add.svg'"></rap-svg-ico>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="padding">
+  <rap-rating [rating]="Math.round(product.review)"></rap-rating>
+  <a
+    [routerLink]="['/products/view/' + product.id]"
+    routerLinkActive="router-link-active"
+    ><h4 class="title" style="margin-top: 0;">
+      {{ product.description?.name }}
+    </h4></a
+  >
+
+  <div class="flex space">
+    <span *ngIf="product.oldPrice">
+      <del
+        >{{ currency.current.simbol_left }}
+        {{ product.oldPrice * currency.current.value | number }}
+        {{ currency.current.simbol_right }}</del
+      >
+    </span>
+    <span
+      >{{ currency.current.simbol_left }}
+      {{ product.price * currency.current.value | number }}
+      {{ currency.current.simbol_right }}</span
+    >
+  </div>
+</div>

@@ -1,0 +1,39 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+.golden {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  .long {
+    @include col-width(#{$gr_longer + "%"});
+  }
+  .short {
+    @include col-width(#{$gr_shorter + "%"});
+  }
+}
+
+.col-side {
+  @include col-width(196px);
+}
+
+.ratio {
+
+    .date {
+        position: absolute;
+        top: $space*2; left: 0;
+        color: $white;
+        background-color: mix($gray900, $gray200, 20%);
+        padding: $space;
+        z-index: 100;
+        border-top-right-radius: $radius;
+        border-bottom-right-radius: $radius;
+    }
+}
+
+.grid {
+  display: grid;
+  grid-gap: $space;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}

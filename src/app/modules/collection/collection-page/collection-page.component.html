@@ -1,0 +1,15 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+
+<section class="collections">
+  <app-collection-item
+    class="medium"
+    *ngFor="let item of collection.list"
+    [item]="item"
+    [buttonText]="'Shop now'"
+    [routerLinks]="['/', 'collections', 'view']"
+  ></app-collection-item>
+</section>
+
+<br>
+<br>
+<br>

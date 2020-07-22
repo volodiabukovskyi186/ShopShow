@@ -1,0 +1,21 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+
+<div class="card-form radius" @fadeHeight @slideLeft>
+  <show-u-title [title]="'accaunt.register' | translate"></show-u-title>
+
+  <app-register-form
+    [labelEmail]="'accaunt.email' | translate"
+    [labelPhone]="'accaunt.phone' | translate"
+    [labelSubmit]="'accaunt.register' | translate"
+    [labelForgotPassword]="'accaunt.forgotPass' | translate"
+    [labelFirstName]="'accaunt.firstname' | translate"
+    [labelLastName]="'accaunt.lastname' | translate"
+    [labelPassword]="'accaunt.password' | translate"
+    [placeholderEmail]="'accaunt.enterEmail' | translate"
+    [placeholderFirstName]="'accaunt.enterFname' | translate"
+    [placeholderLastName]="'accaunt.enterLname' | translate"
+    [placeholderPassword]="'accaunt.enterPass' | translate"
+    [placeholderPhone]="'accaunt.enterPhone' | translate"
+    [labelLogin]="'accaunt.login' | translate"
+  ></app-register-form>
+</div>

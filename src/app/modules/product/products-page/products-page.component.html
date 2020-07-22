@@ -1,0 +1,70 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+<br />
+<div class="row wrap">
+  <div class="col col-side">
+    <!-- <i>Filters will be here</i>
+    min: {{filter.price?.min * currency.current.value}} <br>
+    max: {{filter.price?.max * currency.current.value}} <br> -->
+
+    <div class="padding">
+      <small>Ціна: </small>
+      <div class="slidecontainer">
+        <input
+          class="slider"
+          type="range"
+          [min]="filter.price.min"
+          [max]="filter.priceModel.max"
+          [(ngModel)]="filter.priceModel.min"
+        />
+      </div>
+      <div class="slidecontainer">
+        <input
+          class="slider"
+          type="range"
+          [min]="filter.priceModel.min"
+          [max]="filter.price.max"
+          [(ngModel)]="filter.priceModel.max"
+        />
+      </div>
+  
+      <div class="text-center">
+        <span>
+          {{ currency.current.simbol_left }}
+          {{ filter.priceModel.min * currency.current.value |number }} -
+          {{ filter.priceModel.max * currency.current.value |number }}
+          {{ currency.current.simbol_right }}
+        </span>
+      </div>
+    </div>
+
+  </div>
+  <div class="col">
+    <h1 style="margin-top: 0;">{{ product.item.name }}</h1>
+
+    <br />
+
+    <!-- <pre>{{this.product.products | json}}</pre> -->
+
+    <app-product-list
+      [products]="product.products.data.products"
+    ></app-product-list>
+
+    <app-pagination
+      class="radius"
+      [page]="product.page"
+      [total]="Math.ceil(product.products.count / product.products.take)"
+      [pagesToShow]="5"
+      (goNext)="pageNextHandler()"
+      (goPrev)="pagePrevHandler()"
+      (goPage)="pageToHandler($event)"
+      (pageChanged)="pageChangedHandler()"
+    ></app-pagination>
+  </div>
+  <div class="col col-side col-review">
+    <!-- <app-review-card
+      class="radius"
+      [title]="'Last reviews'"
+      [reviewsList]="review.review"
+    ></app-review-card> -->
+  </div>
+</div>

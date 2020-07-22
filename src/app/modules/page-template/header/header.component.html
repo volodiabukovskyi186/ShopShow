@@ -1,0 +1,90 @@
+<rap-container>
+  <div class="row">
+    <div class="col col-50">
+      <div class="golden">
+        <div class="short">
+          <a [routerLink]="['/']" routerLinkActive="router-link-active">
+            <div class="ratio" style="margin-right: 16px;">
+              <div class="r4x1">
+                <rap-svg-ico
+                  class="logo contain"
+                  [src]="'assets/showu.svg'"
+                ></rap-svg-ico>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="long">
+          <app-search></app-search>
+        </div>
+      </div>
+    </div>
+    <div class="col col-50">
+      <div class="golden">
+        <div class="short">
+          <div style="padding: 8px 16px;">
+            <b
+              ><small><a href="tel:+3343342">(093) 939 36 66 </a></small></b
+            >
+            <b
+              ><small><a href="tel:+3343342">(093) 939 36 67 </a></small></b
+            >
+            <b
+              ><small><a class="primary" href="#">{{"main.call_back" | translate}}</a></small></b
+            >
+          </div>
+        </div>
+        <div class="long" style="height: 64%;">
+          <div class="row" style="flex: 1;">
+            <div
+              class="col col-50"
+              style="align-items: flex-end; justify-content: center;"
+            >
+              <app-accaunt-button
+                [title]="
+                  auth.authenticated
+                    ? 'Hi, ' + accaunt.current?.user.first_name
+                    : ('accaunt.accaunt' | translate)
+                "
+              >
+                <ul class="user-nav" *ngIf="auth.authenticated">
+                  <li>
+                    <a [routerLink]="['/', 'accaunt', 'profile']">{{"accaunt.profile" | translate}}</a>
+                  </li>
+                  <li>
+                    <a (click)="auth.logout(); auth.onAuth()">{{
+                      "accaunt.logout" | translate
+                    }}</a>
+                  </li>
+                </ul>
+                <ul class="user-nav" *ngIf="!auth.authenticated">
+                  <li>
+                    <a [routerLink]="['/', 'accaunt', 'login']">{{
+                      "accaunt.signin" | translate
+                    }}</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['/', 'accaunt', 'register']">{{
+                      "accaunt.register" | translate
+                    }}</a>
+                  </li>
+                </ul>
+              </app-accaunt-button>
+            </div>
+            <div class="line-left col col-50" style="justify-content: center;">
+              <div class="flex">
+                <app-cart-favorite-button
+                  (click)="cart.openFavoriteView()"
+                ></app-cart-favorite-button>
+                <app-cart-button
+                  title="Cart [Q+C]"
+                  (click)="cart.openCartView()"
+                ></app-cart-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</rap-container>

@@ -1,0 +1,63 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: block;
+  background-color: white;
+}
+
+.golden {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  .long {
+    @include col-width(#{$gr_longer + "%"});
+  }
+  .short {
+    @include col-width(#{$gr_shorter + "%"});
+  }
+}
+
+.logo {
+  display: block;
+  fill: $primary;
+  opacity: 0.9;
+  margin-right: $space;
+  margin-top: 0;
+  margin-bottom: 0;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.primary {
+  color: $primary;
+}
+
+.line-left {
+  border-left: 1px solid $gray400;
+}
+app-accaunt-button {
+  z-index: 10000;
+}
+$fn: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.user-nav {
+  list-style: none;
+  background-color: $gray200;
+  
+  margin: unset;
+
+  li {
+    a {
+      display: block;
+      padding: $space/2;
+      @include transition();
+      // transition: all .3s $fn;
+      &:hover {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+}

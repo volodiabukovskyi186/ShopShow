@@ -1,0 +1,8 @@
+<app-product-item
+  *ngFor="let item of products"
+  [product]="item"
+></app-product-item>
+
+<div class="d4 text-cente" *ngIf="products.length <= 0">
+  not nound
+</div>

@@ -1,0 +1,20 @@
+<a
+  *ngIf="!value.link"
+  [routerLink]="['/', 'products', value.id]"
+  routerLinkActive="router-link-active"
+  >{{ value.name }}</a
+>
+
+<a
+  *ngIf="value.link"
+  [routerLink]="[value.link]"
+  routerLinkActive="router-link-active"
+  >{{ value.name }}</a
+>
+
+<div @fade *ngIf="value.sub?.length > 0 && active" class="submenu">
+  <showu-menu-sub-item
+    *ngFor="let item of value.sub"
+    [value]="item"
+  ></showu-menu-sub-item>
+</div>

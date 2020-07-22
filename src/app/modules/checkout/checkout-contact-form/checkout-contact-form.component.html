@@ -1,0 +1,166 @@
+<form #heroForm="ngForm" (submit)="onSubmit()">
+  <div class="form-row">
+    <div class="description">
+      <label for="firstName">{{ "cart.firstName" | translate }}</label>
+    </div>
+    <div class="original">
+      <input
+        #firstName="ngModel"
+        class="radius"
+        type="text"
+        id="firstName"
+        placeholder="{{ 'cart.enterFname' | translate }}"
+        required
+        name="firstName"
+        [(ngModel)]="model.firstName"
+      />
+      <div
+        *ngIf="!(firstName.valid || firstName.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+        {{ "cart.firstNameRequired" | translate }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="lastName">{{ "cart.lastName" | translate }}</label>
+    </div>
+    <div class="original">
+      <input
+        #lastName="ngModel"
+        class="radius"
+        type="text"
+        id="lastName"
+        placeholder="{{ 'cart.enterLname' | translate }}"
+        required
+        name="lastName"
+        [(ngModel)]="model.lastName"
+      />
+      <div
+        *ngIf="!(lastName.valid || lastName.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+        {{ "cart.lastNameRequired" | translate }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="country">{{ "cart.country" | translate }}</label>
+    </div>
+    <div class="original">
+      <input
+        #country="ngModel"
+        class="radius"
+        type="text"
+        id="country"
+        placeholder="{{ 'cart.enterCountry' | translate }}"
+        required
+        name="country"
+        [(ngModel)]="model.country"
+      />
+      <div
+        *ngIf="!(country.valid || country.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+        {{ "cart.countryRequired" | translate }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="city">{{ "cart.city" | translate }}</label>
+    </div>
+    <div class="original">
+      <input
+        #city="ngModel"
+        class="radius"
+        type="text"
+        id="city"
+        placeholder="{{ 'cart.enterCity' | translate }}"
+        required
+        name="city"
+        [(ngModel)]="model.city"
+      />
+      <div
+        *ngIf="!(city.valid || city.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+        {{ "cart.cityRequired" | translate }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="phone">{{ "cart.phone" | translate }}</label>
+    </div>
+    <div class="original">
+      <input
+        #phone="ngModel"
+        class="radius"
+        type="tel"
+        id="phone"
+        placeholder="{{ 'cart.enterPhone' | translate }}"
+        required
+        name="tel"
+        pattern="\+?[0-9\s\-\(\)]+"
+        [(ngModel)]="model.phone"
+      />
+      <div
+        *ngIf="!(phone.valid || phone.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+        {{ "cart.phoneRequired" | translate }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="email">{{ "cart.email" | translate }}</label>
+    </div>
+    <div class="original">
+      <input
+        #email="ngModel"
+        class="radius"
+        type="email"
+        id="email"
+        placeholder="{{ 'cart.enterEmail' | translate }}"
+        required
+        name="email"
+        [(ngModel)]="model.email"
+      />
+      <div
+        *ngIf="!(email.valid || email.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+        {{ "cart.emailRequired" | translate }}
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="description"></div>
+    <div class="original">
+      <div class="flex">
+        <button
+          [disabled]="!heroForm.valid"
+          type="submit"
+          class="button radius delete"
+        >
+          {{ "cart.next" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

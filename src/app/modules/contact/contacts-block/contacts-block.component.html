@@ -1,0 +1,72 @@
+<div class="contacts-block">
+  <app-contact-card
+    [title]="'Phone number'"
+    [src]="'assets/icons/phone.svg'"
+    [links]="[
+      {
+        link: contact.contacts?.phone,
+        title: contact.contacts?.phone,
+        type: 'tel'
+      }
+    ]"
+  ></app-contact-card>
+
+  <app-contact-card
+    [title]="'Address'"
+    [src]="'assets/icons/map.svg'"
+    [links]="[
+      {
+        title: contact.contacts?.address.address
+      }
+    ]"
+  ></app-contact-card>
+
+  <app-contact-card
+    [title]="'Email'"
+    [src]="'assets/icons/mail.svg'"
+    [links]="[
+      {
+        link: contact.contacts?.email,
+        title: contact.contacts?.email,
+        type: 'mailto'
+      }
+    ]"
+  ></app-contact-card>
+</div>
+
+<br />
+<br />
+<div class="radius map-shadow" style="overflow: hidden;">
+  <div class="ratio">
+    <div class="cinema">
+      <!-- <agm-map
+        [styles]="darkStyle"
+        [zoom]="zoom"
+        class="cover"
+        [scrollwheel]="false"
+        [latitude]="contact.contacts?.address.lat"
+        [longitude]="contact.contacts?.address.lng"
+      >
+        <agm-marker
+          [latitude]="contact.contacts?.address.lat"
+          [longitude]="contact.contacts?.address.lng"
+        ></agm-marker>
+      </agm-map> -->
+    </div>
+  </div>
+</div>
+<div class="card-form radius" style="max-width: unset;">
+  <div style="width: 100%;" class="d4 text-center flex row center v_center">
+    <h1 style="margin-top: 0;">Leave your message</h1>
+    <span style="color: #9b9b9b;"
+      >Feel freeto contact width us by using the form below</span
+    >
+  </div>
+
+  <!-- <div class="flex center"> -->
+    <app-contact-us-form
+      (formSubmit)="onSubmit($event)"
+      [model]="contact.contactUs"
+    ></app-contact-us-form>
+  <!-- </div> -->
+</div>

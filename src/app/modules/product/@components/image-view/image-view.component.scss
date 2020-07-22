@@ -1,0 +1,63 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: block;
+}
+
+
+.image-list {
+  // overflow-y: auto;
+  // height: 100%;
+
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // bottom: 0;
+  // right: 0;
+  // .ratio {
+  //   margin: 0 0 $space;
+  // }
+  &.hor{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: $space/2 0;
+    // height: 80px;
+    margin: $space/2 0 $space/2;
+    .image-mini {
+      width: 80px;
+      margin-right: $space/2;
+    }
+  }
+}
+
+.image-mini {
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: $white;
+  transform-origin: bottom center;
+  @include material-shadow(1, 1, $gray400);
+  @include transition();
+
+  &:hover, &.active {
+    @include material-shadow(2, 1, $gray400);
+    transform: scale(1.05);
+  }
+
+  // &:hover {
+  //   cursor: pointer;
+  //   border-color: $gray200;
+  // }
+  // &.active {
+  //   border-color: $primary;
+  // }
+}
+
+.image-full {
+  border: 1px solid $gray200;
+  background-color: $white;
+  @include material-shadow(1, 1, $gray400);
+}

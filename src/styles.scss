@@ -1,0 +1,188 @@
+/*
+ * import Raisins
+ */
+ @import "styles/raisins/raisins";
+ 
+
+// regular style toast
+// @import "~ngx-toastr/toastr";
+
+// toast override
+.toast-container .ngx-toastr {
+  display: block;
+  padding: 16px 16px 16px 52px;
+  @include transition();
+  @include material-shadow(4);
+  &:hover {
+    @include material-shadow(5);
+    transform: scale(1.01);
+  }
+  &.toast-error {
+    background-color: $red;
+    &:hover {
+      background-color: lighten($red, 2%);
+    }
+  }
+  &.toast-info {
+    background-color: $blue;
+    &:hover {
+      background-color: lighten($blue, 2%);
+    }
+  }
+}
+
+.ngx-foreground-spinner *,
+.ngx-background-spinner * {
+  display: block;
+}
+
+.validation-msg {
+  font-size: $fontSizeSmall;
+  font-weight: bold;
+  padding: $space/2;
+  margin: $space/8 0;
+  border-radius: $radius;
+  &.red {
+    background-color: rgba($red, 0.1);
+    color: $red;
+  }
+}
+
+[data-tooltip-left],
+[data-tooltip-right],
+[data-tooltip-top] {
+  &::before {
+    display: none;
+    content: attr(data-tooltip-left);
+    position: absolute;
+    background: rgba($gray900, 0.8);
+    // min-width: 128px;
+    max-width: 256px;
+    color: white;
+    padding: 8px;
+    border-radius: 3px;
+    font-size: 13px;
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999999999999999;
+    @include material-shadow(3);
+    backdrop-filter: blur(2px);
+  }
+  &:hover {
+    &::before {
+      display: block;
+    }
+  }
+}
+
+[data-tooltip-right] {
+  &::before {
+    content: attr(data-tooltip-right);
+    right: unset;
+    left: calc(100% + 8px);
+  }
+}
+
+[data-tooltip-top] {
+  &::before {
+    content: attr(data-tooltip-top);
+    right: unset;
+    left: 50%;
+    top: unset;
+    transform: translateY(0) translateX(-50%);
+    bottom: calc(100% + 8px);
+  }
+}
+
+app-manufacturers-slider,
+app-sallers-slider,
+app-product-slider,
+app-rewiew-block {
+  drag-scroll {
+    .drag-scroll-content {
+      overflow: hidden !important;
+    }
+  }
+}
+
+body {
+  &.lock {
+    overflow: hidden;
+  }
+}
+
+[disabled] {
+  pointer-events: none;
+  filter: grayscale(1);
+  cursor: not-allowed !important;
+}
+
+// fix
+drag-scroll app-product-item a {
+  overflow: hidden;
+}
+
+
+
+.card-form {
+  overflow: hidden;
+  max-width: 480px;
+  margin: $space * 2 auto;
+  padding: $space * 4 $space $space * 2;
+  background-color: $white;
+  @include material-shadow(1);
+}
+
+.read-text {
+  display: block;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// 
+// top panel
+
+app-top-panel {
+  display: block;
+  position: relative;
+  // background-color: $gray800;
+  background-color: lighten(mix($gray800, darken($blue, 30%)), 5%);
+  color: $white;
+}
+
+ul.top-panel-nav {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0;
+
+  li {
+    a {
+      display: block;
+      padding: $space/4;
+      margin-right: $space/4;
+      // margin-top: $space/8;
+
+      &:hover, &.active {
+        text-decoration: none;
+        background-color: rgba($primary, .4);
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        text-decoration: none;
+        opacity: 0.6;
+        background-color: unset;
+      }
+      
+    }
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+html {
+  font-family: "Poppins", $fontFamilySansSerif;
+}

@@ -1,0 +1,56 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+<div style="width: 100%;" class="d4 text-center flex row center v_center">
+  <h1 style="margin-top: 0;">Our Manufacturers</h1>
+</div>
+
+<section class="manufacturers">
+  <div class="manufacturer" *ngFor="let item of manufacturer.list">
+    <a
+      [routerLink]="['/manufacturers/' + item.id]"
+      routerLinkActive="router-link-active"
+      ><div class="ratio">
+        <div class="r3x1">
+          <img
+            src="{{ hoststatic + item.image?.src }}"
+            [alt]="item.name"
+            class="contain"
+          />
+        </div></div
+    ></a>
+    <div class="padding">
+      <div class="raisins-show-rating medium rating-{{ item.rating }}">
+        <div class="rating"></div>
+        <div class="rating"></div>
+        <div class="rating"></div>
+        <div class="rating"></div>
+        <div class="rating"></div>
+      </div>
+      <a
+        [routerLink]="['/manufacturers/' + item.id]"
+        routerLinkActive="router-link-active"
+        ><h4 style="margin-top: 0;">{{ item.name }}</h4></a
+      >
+
+      <div class="flex center">
+        <a
+          class="button more"
+          [routerLink]="['/manufacturers/' + item.id]"
+          routerLinkActive="router-link-active"
+          >View product</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<app-pagination
+  class="radius"
+  [page]="manufacturer.page"
+  [total]="Math.ceil(manufacturer.count / manufacturer.take)"
+  [pagesToShow]="5"
+  (goNext)="pageNextHandler()"
+  (goPrev)="pagePrevHandler()"
+  (goPage)="pageToHandler($event)"
+  (pageChanged)="pageChangedHandler()"
+></app-pagination>

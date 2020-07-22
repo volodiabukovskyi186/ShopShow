@@ -1,0 +1,27 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+    display: flex;
+    flex-direction: column;
+ 
+  @include material-shadow(1, 1, $gray400);
+  background-color: $white;
+
+  header {
+    padding: $space/2 $space/2 $space;
+    border-bottom: 1px dashed $gray500;
+    h5 {
+      margin: $space 0 $space;
+    }
+    div {
+      span {
+        color: $primary;
+      }
+    }
+  }
+
+  app-review-list {
+    padding: $space;
+  }
+}

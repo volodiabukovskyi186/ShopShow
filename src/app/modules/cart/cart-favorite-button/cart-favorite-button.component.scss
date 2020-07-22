@@ -1,0 +1,28 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  min-width: unset;
+  padding: $space/8;
+  width: 32px;
+  height: 32px;
+  // border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  margin: 0 $space/2;
+  align-items: center;
+  @include transition();
+  rap-svg-ico {
+    width: 24px;
+    height: 24px;
+    display: block;
+    fill: rgba(lighten(mix($gray800, darken($blue, 30%)), 5%), 0.8);
+  }
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    rap-svg-ico {
+      fill: $primary;
+    }
+  }
+}

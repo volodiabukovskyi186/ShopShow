@@ -1,0 +1,31 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+<br />
+<div class="row">
+  <!-- <div class="col col-side">
+    <div class="filters">
+      <i>Filters will be here</i>
+    </div>
+  </div> -->
+
+  <div class="col">
+    <div class="grid">
+      <app-collection-item
+        class="medium"
+        [item]="{
+          image: collection.item?.image,
+          title: collection.item?.description?.title,
+          subtitle: collection.item?.description?.subtitle
+        }"
+      ></app-collection-item>
+
+      <app-product-item
+        *ngFor="let item of collection.item.products"
+        [product]="item.product"
+      ></app-product-item>
+    </div>
+
+  </div>
+</div>
+<br />
+<br />
+<br />

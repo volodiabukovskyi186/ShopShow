@@ -1,0 +1,13 @@
+<div class="wrapper button transparent" (click)="toggle()">
+  <rap-svg-ico [src]="'assets/icons/user.svg'"></rap-svg-ico>
+  <b>{{ title }}</b>
+  <rap-svg-ico
+    [ngClass]="{ active: active }"
+    class="arrow"
+    [src]="'assets/icons/arrow-down.svg'"
+  ></rap-svg-ico>
+</div>
+
+<section *ngIf="active">
+  <ng-content></ng-content>
+</section>

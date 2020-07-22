@@ -1,0 +1,42 @@
+<rap-container>
+  <div class="flex">
+    <ul class="top-panel-nav">
+      <li *ngFor="let link of clientMenu.listMain">
+        <a
+          [ngClass]="{ disabled: link.link == null }"
+          [routerLink]="['/'].concat(link.link.split('/'))"
+          routerLinkActive="active"
+          >{{ link.description.title }}</a
+        >
+      </li>
+    </ul>
+
+    <!-- <div class="currency" style="margin-left: auto;">
+        <span>$ USD</span>
+        <rap-svg-ico [src]="'assets/icons/arrow-down.svg'"></rap-svg-ico>
+      </div> -->
+    <ul class="top-panel-nav" style="margin-left: auto;">
+      <li *ngFor="let c of currency.data">
+        <a
+          [ngClass]="{ active: currency.current.id == c.id }"
+          (click)="onClickCurrency($event, c)"
+          >{{ c.currency_title }}</a
+        >
+      </li>
+    </ul>
+    <!-- <div class="currency">
+        <span>🇬🇧ENG</span>
+        <rap-svg-ico [src]="'assets/icons/arrow-down.svg'"></rap-svg-ico>
+        
+      </div> -->
+    <ul class="top-panel-nav">
+      <li *ngFor="let item of appLang.langs">
+        <a
+          [ngClass]="{ active: appLang.current == item.locale }"
+          [routerLink]="['/', item.locale]"
+          >{{ item.flag }} {{ item.name }}</a
+        >
+      </li>
+    </ul>
+  </div>
+</rap-container>

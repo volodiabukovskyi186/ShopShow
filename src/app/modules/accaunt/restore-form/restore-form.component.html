@@ -1,0 +1,41 @@
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="description">
+      <label for="ShowUEmail">{{ labelEmail }} </label>
+    </div>
+    <div class="original">
+      <input
+        formControlName="email"
+        placeholder="{{ placeholderEmail }}"
+        required
+        class="radius"
+        id="ShowUEmail"
+        name="email"
+        type="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      />
+    </div>
+  </div>
+
+  <div class="flex center padding">
+    <button
+      [disabled]="!authForm.valid"
+      class="button delete radius large"
+      type="submit"
+    >
+      {{ labelSubmit }}
+    </button>
+  </div>
+</form>
+
+<div class="form-row">
+  <div class="description"></div>
+  <div class="original">
+    <a [routerLink]="['/', 'accaunt', 'register']"
+      ><small>{{ labelReg }}</small></a
+    >
+    <a [routerLink]="['/', 'accaunt', 'login']"
+      ><small>{{ labelLogin }}</small></a
+    >
+  </div>
+</div>

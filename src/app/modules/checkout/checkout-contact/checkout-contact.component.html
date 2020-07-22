@@ -1,0 +1,58 @@
+<app-checkout-step
+  [ngClass]="{ done: check.steps[0].done }"
+  [step]="1"
+  [title]="'cart.enterСontacts' | translate"
+></app-checkout-step>
+
+<div class="card padding flex" *ngIf="check.currentStepIndex != 0">
+  <div style="flex: 1;" *ngIf="check.steps[0].done">
+    <h4>
+      {{ check.checkoutContact.firstName }} {{ check.checkoutContact.lastName }}
+    </h4>
+    <span
+      >{{ check.checkoutContact.phone }},
+      {{ check.checkoutContact.email }}</span
+    >
+    <span
+      >{{ check.checkoutContact.country }},
+      {{ check.checkoutContact.city }}</span
+    >
+  </div>
+  <div @fadeHeight>
+    <div class="flex">
+      <button (click)="edit()" class="button radius small transparent">
+        {{ "cart.edit" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="check.currentStepIndex == 0" @fadeHeight class="card padding">
+  <div class="flex" style="margin-bottom: 16px;" *ngIf="!auth.authenticated">
+    <rap-step-tabs>
+      <rap-step-tab [title]="'New Customer'">
+        <app-checkout-contact-form
+          [(model)]="check.checkoutContact"
+          (formSubmit)="nextStep()"
+        ></app-checkout-contact-form>
+      </rap-step-tab>
+      <rap-step-tab [title]="'Login'">
+        <app-login-form
+          [labelLogin]="'accaunt.login' | translate"
+          [labelReg]="'accaunt.register' | translate"
+          [labelSubmit]="'accaunt.signin' | translate"
+          [labelPassword]="'accaunt.password' | translate"
+          [placeholderLogin]="'accaunt.enterLogin' | translate"
+          [placeholderPassword]="'accaunt.enterPass' | translate"
+          [labelForgotPassword]="'accaunt.forgotPass' | translate"
+        ></app-login-form>
+      </rap-step-tab>
+    </rap-step-tabs>
+  </div>
+
+  <app-checkout-contact-form
+    *ngIf="auth.authenticated"
+    [(model)]="check.checkoutContact"
+    (formSubmit)="nextStep()"
+  ></app-checkout-contact-form>
+</div>

@@ -1,0 +1,18 @@
+<a
+  [routerLink]="
+    !langLink
+      ? ['/', nav.link]
+      : nav.link
+      ? ['/', langLink, nav.link]
+      : ['/', langLink]
+  "
+  routerLinkActive="router-link-active"
+>
+  <div class="icon" *ngIf="nav.isIcon">
+    <rap-svg-ico
+      src="{{ nav.icon }}"
+      alt="{{ nav.title | titlecase | slice: 0:1 }}"
+    ></rap-svg-ico>
+  </div>
+  <div class="title">{{ nav.title }}</div>
+</a>

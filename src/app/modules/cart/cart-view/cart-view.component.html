@@ -1,0 +1,79 @@
+<div
+  @fade
+  *ngIf="cart.isCartView"
+  class="close-wrap"
+  (click)="cart.closeCartView()"
+>
+  <div class="msg">{{ "Back to store" }}</div>
+  <!-- <div class="hotkey-hint">esc</div> -->
+</div>
+
+<section [ngSwitch]="cart.mode" *ngIf="cart.isCartView" @slideRight>
+  <header>
+    <div *ngSwitchCase="'cart'" class="title">
+      <h6>{{ "cart.cart" | translate }}</h6>
+      <div [@changeValueScale]="cart.count" class="count">{{ cart.count }}</div>
+    </div>
+
+    <div *ngSwitchCase="'favorite'" class="title">
+      <h6>Favorite</h6>
+      <div class="count">{{ cart.favorite.length }}</div>
+    </div>
+
+    <div class="cloce button transparent" (click)="cart.closeCartView()">X</div>
+  </header>
+
+  <div class="cart-list" *ngSwitchCase="'cart'">
+    <app-product-cart-item
+      @fadeHeight
+      *ngFor="let item of cart.list"
+      [value]="item"
+      (delete)="ondelete($event)"
+    ></app-product-cart-item>
+  </div>
+
+  <div
+    *ngIf="cart.list.length > 0; else empty"
+    style="position: sticky; bottom: 0; margin-top: auto;"
+  >
+    <footer *ngSwitchCase="'cart'">
+      <div class="total flex space">
+        <span>{{ "cart.total" | translate }}: </span>
+        <span [@changeValueHighlight]="cart.total">{{
+          currency.current.value * cart.total | number
+        }}</span>
+      </div>
+      <div class="flex">
+        <button
+          (click)="cart.isCartView = false"
+          class="button large radius transparent"
+        >
+          {{ "cart.backToStore" | translate }}
+        </button>
+        <div style="margin: 0 1rem;"></div>
+        <a
+          [routerLink]="['/checkout']"
+          (click)="cart.isCartView = false"
+          class="button large radius delete"
+          >{{ "cart.checkout" | translate }}</a
+        >
+      </div>
+    </footer>
+  </div>
+
+  <ng-template #empty>
+    <div @fade *ngSwitchCase="'cart'" class="d4 text-center gray">
+      {{ "cart.cartEmpty" | translate }}
+    </div>
+    <div class="flex center">
+      <button
+        (click)="cart.isCartView = false"
+        class="button large radius transparent"
+      >
+        {{ "cart.backToStore" | translate }}
+      </button>
+    </div>
+  </ng-template>
+
+  <div *ngSwitchCase="'favorite'">favorite: {{ cart.favorite | json }}</div>
+</section>

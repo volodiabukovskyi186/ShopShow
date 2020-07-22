@@ -1,0 +1,26 @@
+<a
+  *ngIf="!value.link"
+  [routerLink]="['/', 'products', value.id]"
+  routerLinkActive="router-link-active"
+  >{{ value.name }}</a
+>
+
+<a
+  *ngIf="value.link"
+  [routerLink]="[value.link]"
+  routerLinkActive="router-link-active"
+  >{{ value.name }}</a
+>
+
+<button
+  [ngClass]="{ active: active }"
+  *ngIf="value.sub?.length > 0"
+  class="button transparent"
+  (click)="active = !active"
+>
+  <rap-svg-ico [src]="'/assets/icons/arrow-down.svg'"></rap-svg-ico>
+</button>
+
+<div @fade *ngIf="value.sub?.length > 0 && active" class="sub">
+  <app-nav-item *ngFor="let item of value.sub" [value]="item"></app-nav-item>
+</div>

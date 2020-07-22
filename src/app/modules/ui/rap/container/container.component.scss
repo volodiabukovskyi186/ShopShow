@@ -1,0 +1,26 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: block;
+  position: relative;
+  margin: 0 0.75rem;
+}
+
+@media (min-width: 576px) {
+  :host {
+    margin: 0 2rem;
+  }
+}
+@media (min-width: 1080px) {
+  :host {
+    margin: 0 6rem;
+  }
+}
+@media (min-width: 1720px) {
+  :host {
+    min-width: 1680px;
+    max-width: 1680px;
+    margin: 0 auto;
+  }
+}

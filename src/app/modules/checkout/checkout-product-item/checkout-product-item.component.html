@@ -1,0 +1,14 @@
+<div class="ratio radius">
+  <div class="square radius">
+    <img class="cover radius" src="{{ host+ value.product.image.src_mini }}" alt="" />
+  </div>
+</div>
+
+<div class="info">
+  <h4>{{ value.product.description.name }}</h4>
+
+  <div class="price">
+    <span [@changeValueHighlight]="value.count">{{ value.count }} pcs.</span>
+    <span [@changeValueHighlight]="value.count">{{currency.current.simbol_left}}{{ value.product.price * currency.current.value * value.count  | number }}{{currency.current.simbol_right}}</span>
+  </div>
+</div>

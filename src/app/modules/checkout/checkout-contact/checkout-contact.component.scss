@@ -1,0 +1,26 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+$size: 48px;
+.card {
+  @include material-shadow(1, 1, $gray400);
+  @include transition();
+  border-radius: $radius;
+  margin-left: $size;
+  background-color: $white;
+  max-width: 720px;
+}
+
+.hint {
+  color: $gray500;
+  padding: 2px 0;
+}
+
+.form-row {
+  .description {
+    justify-content: flex-start
+  }
+}
+
+h4 {
+  margin: $space/2 0 ;
+}

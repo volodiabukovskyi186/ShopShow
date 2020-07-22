@@ -1,0 +1,110 @@
+<form #heroForm="ngForm" (submit)="onSubmit()">
+  <div class="form-row">
+    <div class="description">
+      <label for="fullName">Full name</label>
+    </div>
+    <div class="original">
+      <input
+        #fullName="ngModel"
+        class="radius"
+        type="text"
+        id="fullName"
+        placeholder="Enter ur first name"
+        required
+        name="name"
+        [(ngModel)]="model.name"
+      />
+      <div
+        *ngIf="!(fullName.valid || fullName.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+        First name is required
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="email">Email</label>
+    </div>
+    <div class="original">
+      <input
+        #email="ngModel"
+        class="radius"
+        type="email"
+        id="email"
+        placeholder="Enter ur Email"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        name="email"
+        [(ngModel)]="model.email"
+      />
+      <div
+        *ngIf="!(email.valid || email.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+        Email is required
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="subject">Subject</label>
+    </div>
+    <div class="original">
+      <input
+        #subject="ngModel"
+        class="radius"
+        type="text"
+        id="subject"
+        placeholder="Enter subject"
+        name="subject"
+        [(ngModel)]="model.subject"
+      />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="message">Message</label>
+    </div>
+    <div class="original">
+      <textarea
+        #message="ngModel"
+        class="radius"
+        type="text"
+        required
+        id="message"
+        placeholder="Enter message"
+        name="message"
+        [(ngModel)]="model.message"
+        rows="5"
+      ></textarea>
+      <div
+        *ngIf="!(message.valid || message.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+        Message is required
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description"></div>
+    <div class="original">
+      <div class="flex">
+        <button
+          [disabled]="!heroForm.valid"
+          type="submit"
+          class="button radius delete"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

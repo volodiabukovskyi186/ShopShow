@@ -1,0 +1,4 @@
+<rap-svg-ico [src]="'assets/icons/cart-add.svg'"></rap-svg-ico>
+<div [@changeValueScale]="cart.count" *ngIf="cart.count > 0" class="count">
+  {{ cart.count }}
+</div>

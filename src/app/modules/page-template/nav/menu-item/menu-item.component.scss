@@ -1,0 +1,95 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  z-index: 1000;
+  color: inherit;
+  &.active {
+      color: $primary;
+  }
+}
+
+.button.transparent {
+  min-width: unset;
+  padding: 10px 8px;
+  border-radius: 50%;
+  margin-right: $space/2;
+  color: inherit;
+  &.active {
+    rap-svg-ico {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+rap-svg-ico {
+  width: 14px;
+  height: auto;
+  display: block;
+  color: inherit;
+  fill: currentColor;
+  @include transition();
+}
+a {
+  display: block;
+  padding: $space/1.25 $space/2;
+  margin-top: $space/4;
+  text-transform: uppercase;
+  text-align: center;
+
+  &.disabled {
+    cursor: not-allowed;
+    text-decoration: none;
+    opacity: 0.6;
+  }
+}
+:host {
+  &.root {
+    div.submenu {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      min-height: 200px;
+      color: $gray900;
+      background-color: rgba($white, 0.8);
+      backdrop-filter: blur(4px) brightness(140%);
+      @include material-shadow(3, 1, rgba($gray500, 0.6));
+      border-bottom-left-radius: $radius;
+      border-bottom-right-radius: $radius;
+    }
+  }
+}
+
+.grid {
+  min-height: 100%;
+  display: grid;
+  grid-gap: $space/2;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+.grid {
+    padding: 2rem 0;
+}
+showu-menu-sub-item {
+  text-transform: uppercase;
+  color: $primary;
+}
+
+//
+//
+//
+.golden {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  .long {
+    @include col-width(#{$gr_longer + "%"});
+  }
+  .short {
+    @include col-width(#{$gr_shorter + "%"});
+  }
+}

@@ -1,0 +1,110 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+.golden {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  //   align-items: center;
+  .long {
+    @include col-width(#{$gr_longer + "%"});
+  }
+  .short {
+    @include col-width(#{$gr_shorter + "%"});
+  }
+}
+
+//
+//
+//
+
+.manufacturer {
+  background-color: $white;
+  @include material-shadow(1, 1, $gray400);
+}
+
+.card {
+  padding: $space;
+  background-color: $white;
+  @include material-shadow(1, 1, $gray400);
+  border-radius: $radius;
+}
+//
+rap-breadcrumbs {
+  margin: $space 0;
+}
+product-image-view {
+  margin-right: $space;
+}
+
+//
+//
+//
+.title {
+  margin: 0 0 $space;
+}
+// .price {
+//   border-top: 1px solid $gray300;
+//   border-bottom: 1px solid $gray300;
+//   margin: $space/2 0 $space;
+//   padding: $space/2 0;
+// }
+hr {
+  border-color: $gray200;
+}
+
+.stock-status {
+  padding: 4px;
+  border-radius: $radius/2;
+  background-color: #a7a2a2;
+  color: $gray600;
+  text-transform: capitalize;
+  &.in-stock {
+    background-color: #42996f;
+    color: $white;
+  }
+}
+
+.sticky {
+  position: sticky;
+  top: $space;
+  z-index: 100;
+}
+
+.read-text {
+  margin: 0;
+}
+
+.add-to-catt-btn {
+  display: flex;
+  flex-direction: row;
+  rap-svg-ico {
+    fill: currentColor;
+  }
+}
+
+.dotted-caption {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  &:after {
+    content: '';
+    display: block;
+    margin-left: 8px;
+    width: 100%;
+    flex: 1;
+    border-bottom: 1px dotted;
+    color: $gray300;
+  }
+}
+
+.table {
+  width: 100%;
+  border: 0;
+  border-collapse: collapse;
+  tr{
+    td {
+      padding: 4px;
+    }
+  }
+}

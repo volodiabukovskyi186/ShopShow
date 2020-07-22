@@ -1,0 +1,29 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: $space;
+
+  .ratio {
+    width: 80px;
+    margin-right: $space/2;
+    border-radius: 3px;
+  }
+
+  .info {
+    flex: 1;
+
+    .price {
+      margin-top: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  h4 {
+    margin: $space/8 0;
+  }
+}

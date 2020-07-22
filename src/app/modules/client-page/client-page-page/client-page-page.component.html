@@ -1,0 +1,10 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+
+<!-- <pre>{{ clientPage.page | json }}</pre> -->
+
+<div class="card">
+  <div style="width: 100%;" class="d4 text-center flex row center v_center">
+    <h1 style="margin-top: 0;">{{ clientPage.page?.description.title }}</h1>
+  </div>
+  <div [innerHTML]="clientPage.page?.description.text"></div>
+</div>

@@ -1,0 +1,57 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+$size: 48px;
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: $space;
+
+  background-color: $white;
+
+  transform-origin: bottom center;
+  @include material-shadow(1, 1, $gray400);
+  @include transition();
+  border-radius: $radius;
+  &:hover {
+    @include material-shadow(2, 1, $gray500);
+    transform: scale(1.005);
+  }
+
+  rap-svg-ico {
+    width: $size;
+    height: $size;
+    margin-right: $space;
+    fill: $primary;
+  }
+
+  .info {
+    flex: 1;
+
+    h6 {
+      margin: $space/4 0;
+    }
+
+    span,
+    a {
+      font-weight: 200;
+      font-size: $fontSizeH3;
+    }
+  }
+}
+
+@include screen-w(1080px) {
+  :host {
+    padding: $space/2 $space;
+    rap-svg-ico {
+      width: $size/2;
+      height: $size/2;
+    }
+    .info {
+      span,
+      a {
+        font-size: $fontSizeH5;
+      }
+    }
+  }
+}

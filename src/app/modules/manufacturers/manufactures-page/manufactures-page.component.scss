@@ -1,0 +1,53 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: block;
+  position: relative;
+}
+
+.manufacturers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .manufacturer {
+        // border: 1px solid;
+        transform-origin: center bottom;
+        background-color: $white;
+        width: calc(25% - #{$space*2});
+        margin: $space;
+        @include material-shadow(1, 1, $gray400);
+        @include transition();
+        border-radius: $radius;
+        &:hover {
+            @include material-shadow(2, 1, $gray500);
+            transform: scale(1.005);
+        }
+        .ratio, .cinema, img  {
+            border-top-left-radius: $radius;
+            border-top-right-radius: $radius;
+        }
+         .raisins-show-rating {
+             margin: $space/4 0;
+         }
+    }
+}
+
+.more {
+    font-weight: normal;
+    padding: $space/4 0;
+    border-bottom: 2px solid transparent;
+    color: $primary;
+    text-decoration: none;
+    background-color: unset;
+    @include transition();
+  
+    &:hover {
+      border-color: $primary;
+      background-color: unset;
+    }
+    &:active {
+      background-color: unset;
+    }
+  }

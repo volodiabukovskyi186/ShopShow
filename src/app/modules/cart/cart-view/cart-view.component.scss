@@ -1,0 +1,136 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.close-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($black, 0.4);
+  //   backdrop-filter: blur(2px);
+}
+
+.msg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  user-select: none;
+  left: 480px;
+  color: rgba(white, 0.5);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.hotkey-hint {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  // border: 1px solid;
+  border-radius: 3px;
+  padding: 4px 16px;
+  line-height: 1;
+  user-select: none;
+  color: rgba($black, 0.5);
+  background-color: rgba(white, 0.5);
+  font-size: $fontSizeSmall;
+}
+
+section {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 480px;
+  overflow-y: auto;
+  background-color: rgba($white, 1);
+  //   backdrop-filter: blur(4px);
+
+  header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    min-height: 40px;
+    border-bottom: solid 1px $gray500;
+    display: flex;
+    flex-direction: row;
+    .title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      h6 {
+        margin: $space $space/2;
+        font-weight: bold;
+      }
+      .count {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: $primary;
+        color: $white;
+        font-size: $fontSizeSmall;
+      }
+    }
+
+    .cloce {
+      width: 32px;
+      margin-left: auto;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
+
+.cart-list {
+  padding: $space/2;
+}
+
+footer {
+  border-top: 1px dashed $gray400;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  .total {
+    font-size: $fontSizeH3;
+    color: $gray850;
+    margin: $space 0;
+  }
+}
+
+app-product-cart-item {
+  margin-bottom: $space/4;
+  padding-bottom: $space/4;
+}
+
+@include screen-w(768px) {
+  :host,
+  section,
+  .close-wrap {
+    top: 48px;
+  }
+}

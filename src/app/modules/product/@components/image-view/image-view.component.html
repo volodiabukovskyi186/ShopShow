@@ -1,0 +1,49 @@
+<!-- <div class="row">
+  <div class="col col-20" style="position: relative;">
+    <div class="image-list">
+      <div
+        class="ratio radius image-mini"
+        *ngFor="let img of images"
+        [ngClass]="{ active: img == current }"
+      >
+        <div class="square radius">
+          <img class="contain radius" [src]="'//'+host+img.image.src_mini" (click)="setCurrent(img.image)" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="image-view">
+      <div class="ratio radius image-full">
+        <div class="square radius">
+          <img class="contain radius" [src]="'//'+host+current.src_mini" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="">
+  
+    <div class="image-view">
+      <div class="ratio radius image-full">
+        <div class="square radius">
+          <!-- <img class="contain radius" [src]="'//'+host+current?.src_mini" /> -->
+          <img class="contain radius" src="{{ hoststatic + current?.src_mini }}" />
+        </div>
+      </div>
+    </div>
+    <!-- {{ hoststatic + current?.src_mini }} -->
+    <div class="image-list hor">
+      <div
+        class="ratio radius image-mini"
+        *ngFor="let img of images"
+        [ngClass]="{ active: img.image?.id == current.id }"
+      >
+        <div class="square radius">
+          <img class="contain radius" [src]="hoststatic+img.image?.src_mini" (click)="setCurrent(img.image)" />
+        </div>
+      </div>
+    </div>
+</div>

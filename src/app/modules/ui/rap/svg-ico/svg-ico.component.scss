@@ -1,0 +1,22 @@
+:host {
+  img,
+  svg {
+    width: inherit;
+    height: inherit;
+    display: block;
+  }
+
+  svg, ::ng-deep svg {
+    width: inherit;
+    height: inherit;
+    display: block;
+    transition: inherit;
+    fill: inherit;
+  }
+
+  &:hover {
+    svg {
+      fill: inherit;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+.col-side {
+  @include col-width(196px);
+}
+
+.filters {
+    position: sticky;
+    top: $space*2;
+}
+
+.grid {
+  display: grid;
+  grid-gap: $space;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+app-collection-item {
+  grid-column: 1 / 3;
+  // width: calc(50% - #{$space * 2});
+  // margin: $space/2;
+}
+
+// app-product-item {
+//   width: calc(25% - #{$space * 2});
+//   margin: $space/2;
+// }
+
+// @include screen-w(800px) {
+//   app-product-item {
+//     width: calc(33% - #{$space});
+//     margin: $space/2;
+//   }
+// }
+
+// @include screen-w(480px) {
+//   app-product-item {
+//     width: calc(50% - #{$space });
+//     margin: $space/2;
+//   }
+// }

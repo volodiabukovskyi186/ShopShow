@@ -1,0 +1,55 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  user-select: none;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    min-width: unset;
+    padding: 2px;
+    margin: unset;
+    align-items: center;
+  }
+
+  rap-svg-ico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    $s: 24px;
+    width: $s;
+    height: $s;
+    margin: $space/4;
+    fill: currentColor;
+
+    @include transition();
+
+    &.arrow {
+      width: $s/1.5;
+      height: $s/1.5;
+
+      &.active {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+section {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 100%;
+  z-index: 1000;
+  overflow: hidden;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  @include material-shadow(4);
+}

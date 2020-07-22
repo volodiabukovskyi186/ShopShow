@@ -1,0 +1,6 @@
+<div class="reviews-item" *ngFor="let item of reviews">
+  <h6>{{ item.author }}</h6>
+  <rap-rating [rating]="item.rating"></rap-rating>
+  
+  <small class="comment" (click)="active($event)">{{ item.text }}</small>
+</div>

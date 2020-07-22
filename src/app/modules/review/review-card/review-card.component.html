@@ -1,0 +1,8 @@
+<header class="text-center">
+  <h5>{{ title }}</h5>
+  <div class="block" *ngIf="reviews?.percent">
+    <span>{{ reviews?.percent }}</span> good response from
+    <span>{{ reviews?.count }}</span> reviews.
+  </div>
+</header>
+<app-review-list [reviews]="reviews.reviews"></app-review-list>

@@ -1,0 +1,31 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  .reviews-item {
+    border-bottom: 1px dashed $gray500;
+    margin: 0 0 $space/2;
+    padding: 0 0 $space/2;
+    .raisins-show-rating {
+      margin: 0 0 $space/4;
+    }
+    h6 {
+      margin: 0 0 $space/4;
+    }
+    .comment {
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -moz-box;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      &.active {
+        cursor: default;
+        -webkit-line-clamp: unset;
+      }
+    }
+  }
+}

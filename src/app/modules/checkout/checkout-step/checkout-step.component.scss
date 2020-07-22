@@ -1,0 +1,36 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+$size: 32px;
+
+
+:host {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: $space;
+  .step-number {
+    color: $primary;
+    background-color: $white;
+    margin-right: $space;
+    width: $size;
+    height: $size;
+    border: 1px solid $primary;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .step-title {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &.done {
+    .step-number {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+}

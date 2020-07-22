@@ -1,0 +1,46 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+
+<div class="row">
+  <div class="col col-side">
+    <i>Filters will be here</i>
+  </div>
+  <div class="col">
+    <div class="card radius">
+      <div class="golden">
+        <div class="short">
+          <div class="ratio" style="background-color: white;">
+            <div class="r3x1">
+              <img
+                [src]="host + manufacturer.item?.image?.src_mini"
+                [alt]="manufacturer.item?.name"
+                class="contain"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="long padding">
+          <h1 style="margin-top: 0;">{{ manufacturer.item.name }}</h1>
+
+          <p>{{ manufacturer.item?.description }}</p>
+        </div>
+      </div>
+    </div>
+    <app-product-list style="margin: 16px;"
+      [products]="product.products.data.products"
+    ></app-product-list>
+
+    <!-- <app-pagination
+      class="radius"
+      [page]="2"
+      [total]="10"
+      [pagesToShow]="5"
+    ></app-pagination> -->
+  </div>
+  <div class="col col-side">
+    <!-- <app-review-card
+      class="radius"
+      [title]="'Response ' + manufacturer.item?.name"
+      [reviews]="reviews"
+    ></app-review-card> -->
+  </div>
+</div>

@@ -1,0 +1,30 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: inline-block;
+  position: relative;
+}
+
+rap-svg-ico {
+  width: 16px;
+  height: auto;
+  display: block;
+  fill: $gray500;
+}
+
+:host {
+  &:hover {
+    rap-svg-ico {
+      fill: $blue;
+    }
+  }
+}
+
+button {
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 0;
+    user-select: none;
+    cursor: pointer;
+}

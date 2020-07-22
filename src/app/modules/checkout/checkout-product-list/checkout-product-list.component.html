@@ -1,0 +1,68 @@
+<div class="flex v_center">
+  <div style="flex: 1;">
+    <h4>{{ "cart.order" | translate }} ♥ U</h4>
+  </div>
+  <div>
+    <div class="flex">
+      <button
+        (click)="cart.openCartView()"
+        class="button small radius transparent"
+      >
+        {{ "cart.edit" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  class="d4 gray text-center block"
+  @fadeHeight
+  *ngIf="cart.list.length == 0"
+>
+  {{ "cart.cartEmpty" | translate }}
+</div>
+
+<div @fadeHeight *ngIf="check.currentStepIndex < 1">
+  <app-checkout-product-item
+    *ngFor="let value of cart.list"
+    @fadeHeight
+    [value]="value"
+  >
+  </app-checkout-product-item>
+</div>
+
+<div @fadeHeight *ngIf="check.currentStepIndex >= 1">
+  <div class="total flex space">
+    <span>{{ cart.count }} items</span>
+    <span>{{ cart.total | number }}</span>
+  </div>
+  <div class="total flex space">
+    <span>Delivery</span>
+    <span>mail company plan</span>
+  </div>
+</div>
+
+<footer>
+  <div class="total flex space">
+    <span>{{ "cart.total" | translate }}</span>
+    <span
+      ><b>{{currency.current.simbol_left}}{{ cart.total * currency.current.value | number }}{{currency.current.simbol_right}}</b></span
+    >
+  </div>
+  <br />
+  <p>
+    {{ "cart.dataMsg" | translate }}
+  </p>
+
+  <div class="flex center">
+    <button
+      [disabled]="!check.steps[0].done || !check.steps[1].done"
+      (click)="order()"
+      class="button large radius green"
+    >
+      {{ "cart.placeOrder" | translate }}
+    </button>
+  </div>
+</footer>
+
+<!-- <pre style="overflow: auto;">{{ orderResult | json }}</pre> -->

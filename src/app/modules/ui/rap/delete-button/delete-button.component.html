@@ -1,0 +1,11 @@
+<button
+  @fade
+  role="button"
+  *ngIf="isShowConfirm"
+  (click)="onConfirmed()"
+  class="button delete small radius"
+>
+  Delete!
+</button>
+
+<rap-svg-ico [src]="src"></rap-svg-ico>

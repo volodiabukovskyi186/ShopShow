@@ -1,0 +1,59 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+<br />
+<div class="row">
+  <!-- <div class="col col-side">
+    <i>Filters will be here</i>
+  </div> -->
+  <div class="col">
+    <div style="width: 100%;" class="d4 text-center flex row center v_center">
+      <h1 style="margin-top: 0;">Promotions</h1>
+    </div>
+
+    <div class="flex wrap">
+      <div class="promotion" *ngFor="let item of prom.promotions.data">
+        <a [routerLink]="['/promotions/view/' + item.id]" class="ratio">
+          <div class="square">
+            <img
+              *ngIf="item.descriptions.length > 0"
+              [src]="hoststatic + item.descriptions[0].image?.src_mini"
+              [alt]="item.name"
+              class="cover"
+            />
+          </div>
+        </a>
+        <div class="info">
+          <div class="days-left">
+            <div>left</div>
+            <div class="number" *ngIf="item.descriptions.length > 0">
+              {{ countDays(item.descriptions[0].data_end) }}
+            </div>
+            <div>days</div>
+          </div>
+          <div class="detal">
+            <small *ngIf="item.descriptions.length > 0"
+              >{{ item.descriptions[0].data_start }} -
+              {{ item.descriptions[0].data_end }}</small
+            >
+            <h4>{{ item.name }}</h4>
+            <a
+              [routerLink]="['/promotions/view/' + item.id]"
+              class="button small more"
+              >Shop now</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-pagination
+      class="radius"
+      [page]="prom.page"
+      [total]="Math.ceil(prom.promotions.count / prom.promotions.take)"
+      [pagesToShow]="5"
+      (goNext)="pageNextHandler()"
+      (goPrev)="pagePrevHandler()"
+      (goPage)="pageToHandler($event)"
+      (pageChanged)="pageChangedHandler()"
+    ></app-pagination>
+  </div>
+</div>

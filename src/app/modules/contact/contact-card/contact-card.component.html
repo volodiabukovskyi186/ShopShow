@@ -1,0 +1,12 @@
+<rap-svg-ico [src]="src"></rap-svg-ico>
+<div class="info">
+  <h6 [innerText]="title"></h6>
+  <ng-container *ngFor="let item of links">
+    <a
+      *ngIf="item.link"
+      [href]="item.type ? item.type + ':' + item.link : item.link"
+      >{{ item.title }}</a
+    >
+    <span *ngIf="!item.link">{{ item.title }}</span>
+  </ng-container>
+</div>

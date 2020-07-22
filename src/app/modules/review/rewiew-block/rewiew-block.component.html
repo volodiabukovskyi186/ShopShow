@@ -1,0 +1,40 @@
+<header>
+  <h6>
+    {{ 'review.sliderDesc' | translate }}
+  </h6>
+</header>
+
+<!-- <div (mouseenter)="stopAuto()" (mouseleave)="startAuto()">
+  <drag-scroll #carusel> -->
+<div style="display: flex; flex-direction: row; overflow: hidden;">
+  <div class="review" drag-scroll-item *ngFor="let item of reviews">
+    <div class="flex center">
+      <div class="ratio" style="width: 40px;">
+        <div class="square">
+          <img src="assets/icons/user.svg" class="contain" />
+        </div>
+      </div>
+    </div>
+    <h6>{{ item.author }}</h6>
+    <rap-rating [rating]="item.rating"></rap-rating>
+
+    <div class="comment">{{ item.text }}</div>
+  </div>
+</div>
+<!-- </drag-scroll> -->
+
+<button
+  *ngIf="reviews.length > 0"
+  class="button transparent prev"
+  (click)="moveLeft()"
+>
+  <rap-svg-ico [src]="'/assets/icons/arrow-left.svg'"></rap-svg-ico>
+</button>
+<button
+  *ngIf="reviews.length > 0"
+  class="button transparent next"
+  (click)="moveRight()"
+>
+  <rap-svg-ico [src]="'/assets/icons/arrow-right.svg'"></rap-svg-ico>
+</button>
+<!-- </div> -->

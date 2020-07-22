@@ -1,0 +1,80 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+.col-side {
+  @include col-width(196px);
+}
+
+.more {
+  font-weight: normal;
+  padding: $space/4 0;
+  border-bottom: 2px solid transparent;
+  color: $primary;
+  text-decoration: none;
+  background-color: unset;
+  @include transition();
+
+  &:hover {
+    border-color: $primary;
+    background-color: unset;
+  }
+  &:active {
+    background-color: unset;
+  }
+}
+
+.promotion {
+  width: calc(25% - #{$space * 2});
+  margin: $space;
+  background-color: $white;
+  @include material-shadow(1, 1, $gray400);
+  @include transition();
+  border-radius: $radius;
+  &:hover {
+    @include material-shadow(2, 1, $gray500);
+    transform: scale(1.005);
+  }
+  .ratio {
+      img {
+          border-top-left-radius: $radius;
+          border-top-right-radius: $radius;
+      }
+  }
+  .info {
+      display: flex;
+      flex-direction: row;
+      padding: $space/2;
+      .days-left {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: $space/4;
+          border: 1px solid $gray400;
+          width: 48px;
+          text-align: center;
+          .number {
+              font-size: 1.6rem;
+          }
+      }
+      .detal {
+          padding: $space/4 $space/4 $space/4 $space;
+          h4 {
+              margin: $space/4 0 $space/2;
+          }
+      }
+  }
+}
+
+@include screen-w(800px) {
+  .promotion {
+    width: calc(33% - #{$space});
+    margin: $space/2;
+  }
+}
+
+@include screen-w(480px) {
+  .promotion {
+    width: calc(50% - #{$space});
+    margin: $space/2;
+  }
+}

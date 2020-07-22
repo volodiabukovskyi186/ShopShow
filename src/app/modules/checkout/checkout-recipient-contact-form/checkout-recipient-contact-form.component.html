@@ -1,0 +1,77 @@
+<form #form="ngForm">
+  <div class="form-row">
+    <div class="description">
+      <label for="firstName">{{'cart.firstName' | translate}}</label>
+    </div>
+    <div class="original">
+      <input
+        #firstName="ngModel"
+        class="radius"
+        type="text"
+        id="firstName"
+        placeholder="{{'cart.enterFname' | translate}}"
+        required
+        name="firstName"
+        [(ngModel)]="model.firstName"
+      />
+      <div
+        *ngIf="!(firstName.valid || firstName.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+      {{'cart.firstNameRequired' | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="lastName">{{'cart.lastName' | translate}}</label>
+    </div>
+    <div class="original">
+      <input
+        #lastName="ngModel"
+        class="radius"
+        type="text"
+        id="lastName"
+        placeholder="{{'cart.enterLname' | translate}}"
+        required
+        name="lastName"
+        [(ngModel)]="model.lastName"
+      />
+      <div
+        *ngIf="!(lastName.valid || lastName.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+      {{'cart.lastNameRequired' | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="description">
+      <label for="phone">{{'cart.phone' | translate}}</label>
+    </div>
+    <div class="original">
+      <input
+        #phone="ngModel"
+        class="radius"
+        type="tel"
+        id="phone"
+        placeholder="{{'cart.enterPhone' | translate}}"
+        required
+        name="tel"
+        pattern="\+?[0-9\s\-\(\)]+"
+        [(ngModel)]="model.phone"
+      />
+      <div
+        *ngIf="!(phone.valid || phone.pristine)"
+        @fadeHeight
+        class="validation-msg red"
+      >
+      {{'cart.phoneRequired' | translate}}
+      </div>
+    </div>
+  </div>
+</form>

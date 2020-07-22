@@ -1,0 +1,138 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+
+<div class="golden">
+  <div class="short">
+    <product-image-view
+      class="sticky"
+      [host]="'//showuapi.rodzyk.com/'"
+      [images]="product.item.images"
+    ></product-image-view>
+  </div>
+  <div class="long">
+    <div class="card">
+      <h4 class="title">
+        {{ product.item?.description?.name }} {{ product.item.model }}
+        <p>sdasd</p>
+      </h4>
+      <div class="flex">
+        <rap-rating [rating]="product.item.rating"></rap-rating>
+      </div>
+      <hr />
+      <p>
+        {{ product.item.description?.meta_discription }}
+      </p>
+      <hr />
+      <div class="price flex v_center space">
+        <b
+          >{{ currency.current.simbol_left
+          }}{{ product.item.price * currency.current.value
+          }}{{ currency.current.simbol_right }}</b
+        >
+        <span
+          class="stock-status"
+          [ngClass]="{ 'in-stock': product.item.stock_status_id }"
+          >{{ product.item.stock_status_id ? "in stock" : "sold out" }}</span
+        >
+      </div>
+      <hr />
+      <div class="flex">
+        <rap-count-input
+          style="width: 128px; margin-right: 8px;"
+          [min]="1"
+          [max]="20"
+          [(value)]="count"
+        ></rap-count-input>
+        <button
+          class="button radius large delete add-to-catt-btn"
+          (click)="add(product.item)"
+        >
+          <rap-svg-ico [src]="'assets/icons/cart-add.svg'"></rap-svg-ico>
+          {{ "product.addToCart" | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="manufacturer radius" style="margin: 1rem 0;">
+      <div class="golden">
+        <div class="long padding">
+          <a [routerLink]="['/manufacturer', product.item.manufactured?.id]"
+            ><h6 style="margin: 4px 0;">
+              {{ product.item.manufactured?.description?.name }}
+            </h6></a
+          >
+          <div class="flex">
+            <rap-rating
+              [rating]="product.item.manufactured?.rating"
+            ></rap-rating>
+          </div>
+          <br />
+          <p>{{ product.item.manufactured?.description?.description }}</p>
+        </div>
+        <div class="short" style="align-items: center;">
+          <div class="ratio" style="width: 100%; margin: auto;">
+            <div class="r3x1">
+              <img
+                src="{{
+                  '//showuapi.rodzyk.com/' +
+                    product.item.manufactured?.image.src_mini
+                }}"
+                alt="{{ product.item.manufactured?.description?.name }}"
+                class="contain radius"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="card">
+      <rap-step-tabs>
+        <rap-step-tab [title]="'product.description' | translate">
+          <div
+            class="read-text"
+            [innerHTML]="product.item.description?.discription"
+          ></div>
+        </rap-step-tab>
+        <rap-step-tab [title]="'product.additionalInfo' | translate">
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let item of product.attributes.attrybutes">
+                <td width="35%">
+                  <div class="dotted-caption">
+                    <span>{{ item.attribyte.description?.name }}</span>
+                  </div>
+                </td>
+                <td>{{ item.text }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </rap-step-tab>
+        <rap-step-tab [title]="'review.reviews' | translate">
+          <app-review-list
+            *ngIf="product.reviews.data.length > 0; else noReviews"
+            [reviews]="product.reviews.data"
+          ></app-review-list>
+          <app-pagination
+            class="radius"
+            [page]="product.reviewPage"
+            [total]="Math.ceil(product.reviews.count / product.reviews.take)"
+            [pagesToShow]="5"
+            (goNext)="pageNextHandler()"
+            (goPrev)="pagePrevHandler()"
+            (goPage)="pageToHandler($event)"
+            (pageChanged)="pageChangedHandler()"
+          ></app-pagination>
+          <ng-template #noReviews>
+            <div class="d4">{{ "review.no_reviews" | translate }}</div>
+          </ng-template>
+        </rap-step-tab>
+      </rap-step-tabs>
+    </section>
+  </div>
+</div>
+
+<div style="width: 100%;" class="d4 text-center flex row center v_center">
+  <h1 style="margin-bottom: 0;">{{ "product.related" | translate }}</h1>
+</div>
+
+<app-product-slider [products]="product.popular"></app-product-slider>

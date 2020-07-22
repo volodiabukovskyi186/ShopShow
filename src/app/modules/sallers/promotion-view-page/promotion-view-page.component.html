@@ -1,0 +1,40 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+
+<!-- <pre>{{sallers.item| json}}</pre> -->
+
+<div class="row">
+  <!-- <div class="col col-side">
+    <i>Filters will be here</i>
+  </div> -->
+  <div class="col">
+    <div class="ratio radius">
+      <div class="date">
+        {{ sallers.item?.description?.data_start | localDate: "mediumDate" }} -
+        {{ sallers.item?.description?.data_end | localDate: "mediumDate" }}
+      </div>
+      <div class="cinema radius">
+        <img
+          [src]="host + sallers.item?.description.image?.src"
+          [alt]="sallers.item?.description.title"
+          class="cover radius"
+        />
+      </div>
+    </div>
+
+    <show-u-title
+      [subtitle]="sallers.item?.description.subtitle"
+      [title]="sallers.item?.description.title"
+    ></show-u-title>
+
+    <div class="grid">
+      <app-product-item
+        *ngFor="let item of sallers.item?.products"
+        [product]="item.product"
+      ></app-product-item>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+<br />

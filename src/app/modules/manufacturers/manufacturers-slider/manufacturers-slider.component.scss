@@ -1,0 +1,58 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  display: block;
+  position: relative;
+  cursor: grab;
+}
+
+[drag-scroll-item] {
+  width: 100%;
+  @include material-shadow(1, 1, $gray400);
+  border-radius: $radius;
+  img {
+    border-radius:  $radius;
+  }
+}
+
+[drag-scroll-item] {
+  user-select: none;
+  flex-shrink: 0;
+  width: calc(20% - #{$space * 2});
+  background-color: $white;
+  margin: $space;
+  @include material-shadow(1, 1, $gray400);
+  @include transition();
+  border-radius: $radius;
+  &:hover {
+    @include material-shadow(2, 1, $gray500);
+    transform: scale(1.005);
+  }
+}
+
+@include screen-w(800px) {
+  [drag-scroll-item] {
+    width: calc(33% - #{$space});
+    margin: $space/2;
+  }
+}
+
+@include screen-w(480px) {
+  [drag-scroll-item] {
+    width: calc(50% - #{$space});
+    margin: $space/2;
+  }
+}
+
+// .next, .prev {
+//     position: absolute;
+//     top: 50%;
+//     left: 0;
+//     transform: translateY(-50%);
+// }
+
+// .next {
+//     left: unset;
+//     right: 0;
+// }

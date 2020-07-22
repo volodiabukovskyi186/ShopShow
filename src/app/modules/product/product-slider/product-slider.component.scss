@@ -1,0 +1,26 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+//
+//
+//
+
+app-product-item {
+  width: calc(25% - #{$space});
+  margin: $space/2;
+  flex-shrink: 0;
+}
+
+@include screen-w(800px) {
+  app-product-item {
+    width: calc(33% - #{$space/2});
+    margin: $space/4;
+  }
+}
+
+@include screen-w(480px) {
+  app-product-item {
+    width: calc(50% - #{$space});
+    margin: $space/4;
+  }
+}
