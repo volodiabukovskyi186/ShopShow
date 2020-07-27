@@ -10,6 +10,7 @@ import { ProductModule } from "../product/product.module";
 import { PromotionPageComponent } from "./promotion-page/promotion-page.component";
 import { CoreModule } from '../core/core.module';
 import { TranslateModule } from '@ngx-translate/core';
+import {DragScrollModule} from "ngx-drag-scroll";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
     SallersRoutingModule,
     ProductModule,
+    DragScrollModule
   ],
   exports: [SallersSliderComponent],
 })

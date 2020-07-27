@@ -16,6 +16,7 @@ import { HeaderComponent } from "./header/header.component";
 import { AccauntModule } from "../accaunt/accaunt.module";
 import { CartModule } from '../cart/cart.module';
 import { SearchModule } from '../search/search.module';
+import { NavListComponent } from './nav/nav-list/nav-list.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SearchModule } from '../search/search.module';
     MenuSubItemComponent,
     MenuItemComponent,
     HeaderComponent,
+    NavListComponent,
   ],
   imports: [
     CommonModule,

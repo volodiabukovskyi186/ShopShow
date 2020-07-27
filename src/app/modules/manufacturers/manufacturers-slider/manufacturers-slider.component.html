@@ -3,8 +3,9 @@
   <button class="button transparent next" (click)="moveRight()">></button>
 </div>
 
-<!-- <drag-scroll #carusel> -->
+
 <div style="overflow: hidden; flex-direction: row;">
+  <drag-scroll #slider style="width: 100%"> 
   <a
   drag-scroll-item
   [routerLink]="['/manufacturers/' + m.id]"
@@ -15,5 +16,6 @@
     <img [src]="hoststatic + m.image?.src" [alt]="m.name" class="contain" />
   </div>
 </a>
+</drag-scroll>
 </div>
-<!-- </drag-scroll> -->
+
