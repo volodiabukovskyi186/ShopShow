@@ -23,6 +23,9 @@ export class ImageViewComponent implements OnInit {
   @Input()
   host: string;
 
+  @Input()
+  main: string;
+
   current: any;
 
   constructor() {}
