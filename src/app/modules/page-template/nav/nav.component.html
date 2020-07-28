@@ -6,7 +6,6 @@
       *ngFor="let link of categories"
       [value]="link"
       #categoryItem
-      (clickOutside)="categoryItem.active = false"
     ></showu-menu-item>
     <app-nav-item
       *ngFor="let link of links2"

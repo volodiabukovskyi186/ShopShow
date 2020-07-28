@@ -14,13 +14,14 @@ import { ProductViewPageComponent } from "./product-view-page/product-view-page.
 import { ReviewModule } from "../review/review.module";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { TranslateModule } from "@ngx-translate/core";
+import {ClickOutsideModule} from "ng-click-outside";
 
 const c = [
   ProductListComponent,
   ProductItemComponent,
   ProductSliderComponent,
   ProductListItemComponent,
-  ImageViewComponent,
+  ImageViewComponent
 ];
 
 @NgModule({

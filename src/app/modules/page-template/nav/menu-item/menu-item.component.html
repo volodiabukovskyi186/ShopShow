@@ -17,6 +17,7 @@
   *ngIf="value.sub?.length > 0"
   class="button transparent"
   (click)="active = !active"
+
 >
   <rap-svg-ico [src]="'/assets/icons/arrow-down.svg'"></rap-svg-ico>
  
@@ -34,7 +35,7 @@
     <div class="short padding">
       <div class="ratio" *ngIf="value.image">
         <div class="imax">
-          <img [alt]="value.name" [src]="host + value.image?.src_mini"  class="contain menu-img" />
+          <img [alt]="value.name" [src]="host + currentImg"  class="contain menu-img" />
         </div>
       </div>
     </div>
