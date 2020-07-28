@@ -53,7 +53,6 @@ $fn: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: block;
       padding: $space/2;
       @include transition();
-      // transition: all .3s $fn;
       &:hover {
         background-color: $primary;
         color: $white;

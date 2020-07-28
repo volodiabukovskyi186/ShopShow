@@ -10,11 +10,12 @@
   <span
     >{{ value.product.price }} x
     <rap-count-input [min]="1" [(value)]="value.count"></rap-count-input>
-    | <span [@changeValueHighlight]="value.count">
+    | <span style="text-align: center" [@changeValueHighlight]="value.count">
       {{currency.current.simbol_left}}
       {{ value.product.price * currency.current.value * value.count | number }}
       {{currency.current.simbol_right}}
-    </span></span
+    </span>
+  </span
   >
 </div>
 

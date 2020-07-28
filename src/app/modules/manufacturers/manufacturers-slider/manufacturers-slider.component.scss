@@ -44,6 +44,13 @@
     margin: $space/2;
   }
 }
+@media screen and(max-width: 768px){
+  [drag-scroll-item] {
+   box-shadow: none;
+   background-color: rgb(250,250,250);
+  }
+}
+
 
 // .next, .prev {
 //     position: absolute;

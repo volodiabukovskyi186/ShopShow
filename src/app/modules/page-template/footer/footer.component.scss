@@ -46,6 +46,7 @@ ul.nav {
   }
 }
 
+
 @include screen-w(1080px) {
   .logo {
     max-width: 256px;
@@ -54,11 +55,62 @@ ul.nav {
 }
 @include screen-w(768px) {
   .logo {
-    max-width: 192px;
+    max-width: 190px;
     margin-top: $space/2;
     margin-bottom: $space;
   }
+  .small-footer{
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+   text-align: center;
+  }
+  .small-footer-logo{
+    display: flex;
+    align-items: center;
+
+    p{
+      text-align: center;
+      font-weight: 100;
+      display: block;
+      width: 80%;
+      font-size: 12px;
+
+    }
+    a{
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+      //margin-left: 15%;
+
+    }
+  }
+  .small-footer-input{
+    h5{
+      text-align: start;
+    }
+    p{
+      font-size: 12px;
+      text-align: center;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input{width: 75%  ;}
+
+
+  }
+  .small-footer-bottom{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+  }
+
+
 }
+
 
 .gray {
   color: $gray300;

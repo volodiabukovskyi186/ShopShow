@@ -3,12 +3,13 @@ import {DragScrollComponent} from "ngx-drag-scroll";
 @Component({
   selector: 'app-product-slider',
   templateUrl: './product-slider.component.html',
-  styleUrls: ['./product-slider.component.scss']
+  styleUrls: ['./product-slider.component.scss'],
+
 })
 export class ProductSliderComponent implements OnInit {
   @Input() products: Array<any> = [];
-  @ViewChild('slider', {read: DragScrollComponent}) ds: DragScrollComponent;
 
+  @ViewChild('slider', {read: DragScrollComponent}) ds: DragScrollComponent;
 
   constructor() { }
 
@@ -19,13 +20,15 @@ export class ProductSliderComponent implements OnInit {
       this.moveTo(0);
     } else {
       this.ds.moveRight();
+
     }
   }
-  moveLeft(){
+  moveLeft() {
     this.ds.moveLeft();
   }
   moveTo(index) {
     this.ds.moveTo(index);
+
   }
 
 }
