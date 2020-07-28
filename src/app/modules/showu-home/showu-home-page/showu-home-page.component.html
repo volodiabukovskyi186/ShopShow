@@ -13,7 +13,7 @@
   [subtitle]="'main.openUkraine' | translate"
 ></show-u-title>
 
-<app-welcome-statistic style="margin-bottom: 2rem;"></app-welcome-statistic>
+<app-welcome-statistic  id="small-welcome-static"></app-welcome-statistic>
 
 <show-u-title [title]="'main.newCollection' | translate"></show-u-title>
 
@@ -37,13 +37,19 @@
   ></app-collection-item>
 </section>
 
-<show-u-title [title]="'main.bestSellers' | translate"></show-u-title>
-<app-product-slider [products]="product.sallers"></app-product-slider>
 
-<show-u-title [title]="'main.lastReviews' | translate"></show-u-title>
+
+  <show-u-title  [title]="'main.bestSellers' | translate"></show-u-title>
+  <app-product-slider [products]="product.sallers"></app-product-slider>
+
+
+
+
+<div >
+<show-u-title class="title-u" [title]="'main.lastReviews' | translate"></show-u-title>
 <app-rewiew-block [reviews]="review.data"></app-rewiew-block>
-
-<show-u-title
+</div>
+<show-u-title style="text-align: start" id="small-best-sellers"
   [title]="'main.popularProducts' | translate"
   [subtitle]="'main.comeClearUsNow' | translate"
 ></show-u-title>

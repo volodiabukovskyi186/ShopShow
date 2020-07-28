@@ -1,0 +1,43 @@
+.show-you-title {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px){
+
+  .show-you-title{
+
+    span{
+      font-size: 18px;
+      text-transform: uppercase;
+      color: #9b9b9b;
+    }
+    h1{
+      color: #333333;
+      font-weight: 600;
+      font-size: 30px;
+      margin-top: 0px;
+      margin-bottom: 0;
+    }
+
+  }
+}
+@media screen and (max-width: 480px){
+  .show-you-title{
+    width: 50%;
+    height: 30px;
+
+    span{
+      font-size: 10px;
+      text-transform: uppercase;
+      color: #9b9b9b;
+    }
+    h1{
+      color: #333333;
+      font-weight: 400;
+      font-size: 18px;
+      margin-top: 0px;
+      margin-bottom: 0;
+    }
+
+  }
+}

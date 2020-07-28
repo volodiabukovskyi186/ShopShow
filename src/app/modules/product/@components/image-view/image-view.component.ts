@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { environment } from 'src/environments/environment';
+import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: "product-image-view",
@@ -30,5 +31,6 @@ export class ImageViewComponent implements OnInit {
 
   setCurrent(img: string) {
     this.current = img;
+
   }
 }
