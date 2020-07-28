@@ -10,7 +10,8 @@
   "nav": {
     "promotion": "Promotion",
     "manufacturer": "Manufacturer",
-    "sales": "Sales"
+    "sales": "Sales",
+    "wishes":"Wiches"
   },
   "main": {
     "wellcome": "Wellcome to ShowU",

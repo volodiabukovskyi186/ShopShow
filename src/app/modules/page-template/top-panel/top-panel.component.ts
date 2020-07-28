@@ -9,15 +9,31 @@ import { CurrencyService, ICurrency } from '../../currency/currency.service';
   styleUrls: ["./top-panel.component.scss"],
 })
 export class TopPanelComponent implements OnInit {
+
+  langStatus:boolean=false;
+  currentlyStatus:boolean=false;
+
+  one:string
   constructor(
     public clientMenu: ClientMenuService,
     public currency: CurrencyService,
-    public appLang: AppLangService
+    public appLang: AppLangService,
   ) {
     this.getCurrency();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
+  currencyStatus():void{
+    if(this.currentlyStatus==false){
+      this.currentlyStatus=true
+    }
+    else{
+      this.currentlyStatus=false;
+    }
+    console.log(this.currentlyStatus)
+  }
 
   getCurrency() {
     this.currency.get().subscribe(this.getCurrencyHandler)
@@ -32,5 +48,7 @@ export class TopPanelComponent implements OnInit {
     e.preventDefault();
     this.currency.current = c;
   }
+
+
 
 }

@@ -3,11 +3,13 @@
   <button class="button transparent next" (click)="moveRight()">></button>
 </div>
 
-<!-- <drag-scroll #carusel > -->
+
 <div style="overflow: hidden; flex-direction: row;">
-  <app-product-item
+  <drag-scroll #slider style="width: 100%" >
+  <app-product-item drag-scroll-item
     *ngFor="let item of products"
     [product]="item"
   ></app-product-item>
+</drag-scroll>
 </div>
-<!-- </drag-scroll> -->
+

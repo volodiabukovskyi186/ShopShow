@@ -7,6 +7,7 @@ import { ManufacturesPageComponent } from "./manufactures-page/manufactures-page
 import { ManufacturerPageComponent } from "./manufacturer-page/manufacturer-page.component";
 import { ManufacturersRoutingModule } from './manufacturers-routing.module';
 import { ProductModule } from '../product/product.module';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { ProductModule } from '../product/product.module';
     ManufacturesPageComponent,
     ManufacturerPageComponent,
   ],
-  imports: [CommonModule, ManufacturersRoutingModule, RouterModule, UiModule, ProductModule],
+  imports: [CommonModule, ManufacturersRoutingModule, RouterModule, UiModule, ProductModule,DragScrollModule],
   exports: [ManufacturersSliderComponent]
 })
 export class ManufacturersModule {}

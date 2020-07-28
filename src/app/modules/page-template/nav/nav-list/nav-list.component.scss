@@ -1,0 +1,49 @@
+ul{
+  list-style: none;
+}
+.category-item{
+  margin-left: 2%;
+  cursor: pointer;
+  width: 172px;
+  flex-direction: row;
+  font-size: 18px;
+
+
+  span{
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    padding-top: 3%;
+
+
+
+  }
+
+  img {
+    width: 20px;
+  }
+}
+.category-children {
+  margin-left: 10%;
+  width: 172px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+
+
+
+}
+#sub-category{
+  span{
+    font-size: 13px;
+  }
+
+
+}
+.active-sub{
+  color: #9F1941;
+}
+
+
+

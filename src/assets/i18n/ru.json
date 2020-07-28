@@ -10,7 +10,8 @@
     "nav": {
       "promotion": "Акції",
       "manufacturer": "Виробники",
-      "sales": "Знижки"
+      "sales": "Знижки",
+      "wishes":"Любимые"
     },
     "main": {
       "wellcome": "Ласкаво просимо до ShowU",
@@ -64,4 +65,3 @@
       "backToStore": "Повернутися до покупок"
     }
   }
-  

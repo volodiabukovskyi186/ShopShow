@@ -1,5 +1,6 @@
 import { Injectable, Output, EventEmitter } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
+import { Subject } from 'rxjs';
 
 export interface ILangItem {
   flag: string;
@@ -11,6 +12,7 @@ export interface ILangItem {
   providedIn: "root",
 })
 export class AppLangService {
+  
 
   @Output() updated: EventEmitter<any> = new EventEmitter<any>()
 
@@ -36,6 +38,7 @@ export class AppLangService {
 
     // set lang
     this.translate.use(lang.match(/en|pl|ua|ru/) ? lang : this.translate.defaultLang);
+   
   }
 
   public get routeLang(): string {

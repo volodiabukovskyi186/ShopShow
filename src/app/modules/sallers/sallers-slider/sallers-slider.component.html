@@ -44,34 +44,34 @@
     </div>
   </div>
 </div>
+<drag-scroll #slider style="width: 100% ; height:100%;">
+  <div class="ratio slider" drag-scroll-item *ngFor="let slide of slides">
+    <div class="date" *ngIf="slide.descriptions.length > 0">
+      {{ slide.descriptions[0]?.data_start | localDate: "mediumDate" }} -
+      {{ slide.descriptions[0]?.data_end | localDate: "mediumDate" }}
+    </div>
+    <div class="cinema">
+      <img
+        *ngIf="slide.descriptions.length > 0"
+        [src]="hoststatic + slide.descriptions[0].image?.src"
+        [alt]="slide.name"
+        class="cover"
+      />
 
-<div class="ratio slider" *ngFor="let slide of slides">
-  <div class="date" *ngIf="slide.descriptions.length > 0">
-    {{ slide.descriptions[0]?.data_start | localDate: "mediumDate" }} -
-    {{ slide.descriptions[0]?.data_end | localDate: "mediumDate" }}
-  </div>
-  <div class="cinema">
-    <img
-      *ngIf="slide.descriptions.length > 0"
-      [src]="hoststatic + slide.descriptions[0].image?.src"
-      [alt]="slide.name"
-      class="cover"
-    />
-
-    <div class="details">
-      <h4 *ngIf="slide.descriptions.length > 0">{{ slide.descriptions[0].title }}</h4>
-      <p *ngIf="slide.descriptions.length > 0">{{ slide.descriptions[0]?.description }}</p>
-      <footer class="flex center">
-        <a
-          [routerLink]="['/', 'promotions', 'view', slide.id]"
-          class="button radius large upper delete"
+      <div class="details">
+        <h4 *ngIf="slide.descriptions.length > 0">{{ slide.descriptions[0].title }}</h4>
+        <p *ngIf="slide.descriptions.length > 0">{{ slide.descriptions[0]?.description }}</p>
+        <footer class="flex center">
+          <a
+            [routerLink]="['/', 'promotions', 'view', slide.id]"
+            class="button radius large upper delete"
           >{{ "promotion.details" | translate }}</a
-        >
-      </footer>
+          >
+        </footer>
+      </div>
     </div>
   </div>
-</div>
-
+</drag-scroll>
 <button
   *ngIf="slides.length > 0"
   class="button transparent prev"

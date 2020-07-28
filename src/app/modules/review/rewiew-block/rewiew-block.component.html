@@ -4,9 +4,10 @@
   </h6>
 </header>
 
-<!-- <div (mouseenter)="stopAuto()" (mouseleave)="startAuto()">
-  <drag-scroll #carusel> -->
+<div (mouseenter)="stopAuto()" (mouseleave)="startAuto()">
+ 
 <div style="display: flex; flex-direction: row; overflow: hidden;">
+  <drag-scroll #slider>
   <div class="review" drag-scroll-item *ngFor="let item of reviews">
     <div class="flex center">
       <div class="ratio" style="width: 40px;">
@@ -20,8 +21,9 @@
 
     <div class="comment">{{ item.text }}</div>
   </div>
+</drag-scroll>
 </div>
-<!-- </drag-scroll> -->
+
 
 <button
   *ngIf="reviews.length > 0"
@@ -37,4 +39,4 @@
 >
   <rap-svg-ico [src]="'/assets/icons/arrow-right.svg'"></rap-svg-ico>
 </button>
-<!-- </div> -->
+</div>
