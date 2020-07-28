@@ -5,7 +5,7 @@ import { RouterModule } from "@angular/router";
 import { UiModule } from "../ui/ui.module";
 import { ProductItemComponent } from "./product-item/product-item.component";
 import { ProductSliderComponent } from "./product-slider/product-slider.component";
-// import { DragScrollModule } from "ngx-drag-scroll";
+import { DragScrollModule } from "ngx-drag-scroll";
 import { ProductListItemComponent } from "./product-list-item/product-list-item.component";
 import { ImageViewComponent } from "./@components/image-view/image-view.component";
 import { ProductRoutingModule } from "./product-routing.module";
@@ -33,6 +33,7 @@ const c = [
     FormsModule,
     ReviewModule,
     TranslateModule,
+    DragScrollModule
   ],
   exports: [...c],
 })

@@ -1,42 +1,61 @@
-<rap-container>
-  <div class="flex">
-    <ul class="top-panel-nav">
+<rap-container id="small-bar">
+  <div  class="flex nav-panel" >
+    <ul class="top-panel-nav nav-desktop">
       <li *ngFor="let link of clientMenu.listMain">
-        <a
-          [ngClass]="{ disabled: link.link == null }"
-          [routerLink]="['/'].concat(link.link.split('/'))"
-          routerLinkActive="active"
-          >{{ link.description.title }}</a
-        >
+        <a [ngClass]="{ disabled: link.link == null }" [routerLink]="['/'].concat(link.link.split('/'))"
+          routerLinkActive="active">{{ link.description.title }}</a>
       </li>
     </ul>
 
-    <!-- <div class="currency" style="margin-left: auto;">
-        <span>$ USD</span>
-        <rap-svg-ico [src]="'assets/icons/arrow-down.svg'"></rap-svg-ico>
-      </div> -->
-    <ul class="top-panel-nav" style="margin-left: auto;">
-      <li *ngFor="let c of currency.data">
-        <a
-          [ngClass]="{ active: currency.current.id == c.id }"
-          (click)="onClickCurrency($event, c)"
-          >{{ c.currency_title }}</a
-        >
-      </li>
-    </ul>
-    <!-- <div class="currency">
-        <span>🇬🇧ENG</span>
-        <rap-svg-ico [src]="'assets/icons/arrow-down.svg'"></rap-svg-ico>
-        
-      </div> -->
-    <ul class="top-panel-nav">
-      <li *ngFor="let item of appLang.langs">
-        <a
-          [ngClass]="{ active: appLang.current == item.locale }"
-          [routerLink]="['/', item.locale]"
-          >{{ item.flag }} {{ item.name }}</a
-        >
-      </li>
-    </ul>
+    <div class="block-currency-language ">
+      <div class="currency-conteiner ">
+        <ul class="top-panel-nav currencyActive">
+          <li (mouseout)="currentlyStatus=false" (mouseover)="currentlyStatus=true">
+            <div *ngFor="let c of currency.data">
+              <div class="active-currancy" *ngIf=" currency.current.id == c.id">
+              <span  >
+                {{c.currency_title}}
+                <img src="assets/icons/drop-down.svg"  /> 
+              </span>
+              </div>
+            </div>
+            <ul class=" currencyBar" [ngClass]="{inline: currentlyStatus==true}">
+              <li *ngFor="let c of currency.data">
+                <a [ngClass]="{ active: currency.current.id == c.id }"
+                  (click)="onClickCurrency($event, c)">{{ c.currency_title }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="lang-conteiner">
+        <ul class="top-panel-nav langActive ">
+          <li (mouseout)="langStatus=false" (mouseover)="langStatus=true">
+            <div *ngFor="let item of appLang.langs">
+              <div class="active-language" *ngIf="appLang.current == item.locale">
+                  <span class="active-lang-flag">{{item.flag}}</span>
+                  <span class="active-lang-locale">{{item.locale}}</span>
+                  <img src="assets/icons/drop-down.svg" /> 
+              </div>
+            </div>
+            <ul class="langBar" [ngClass]="{inline: langStatus==true}">
+              <li   class="lang-item" *ngFor="let item of appLang.langs">
+                <a [ngClass]="{ active: appLang.current == item.locale }"
+                   [routerLink]="['/', item.locale]" >
+                  <div class="flag-block">
+                    <span class="lang-item-flag">{{ item.flag }}</span>
+                    <span class="lang-item-name"> {{ item.name }} </span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
+
+  <div ></div>
+
+
 </rap-container>

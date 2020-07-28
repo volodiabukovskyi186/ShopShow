@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { IReview } from '../review';
-// import { DragScrollComponent } from 'ngx-drag-scroll';
+import { DragScrollComponent } from 'ngx-drag-scroll';
 
 @Component({
   selector: 'app-rewiew-block',
@@ -12,27 +12,41 @@ export class RewiewBlockComponent implements OnInit {
   @Input() auto: boolean = false;
   @Input() timeout: number = 10000;
 
-  // @ViewChild("carusel") public carusel: DragScrollComponent;
+  @ViewChild('slider', {read: DragScrollComponent}) ds: DragScrollComponent;
+  interval: any;
 
   constructor() { }
   ngOnInit(): void {
    
   }
-  moveLeft(){}
-  moveRight(){}
+  moveLeft(){
+    // debugger;
+    console.log(this.reviews)
+    this.ds.moveLeft();
+  }
+
+  moveRight(){
+    if (this.ds.currIndex == this.ds._children.length - 1) {
+      this.moveTo(0);
+    } else {
+      this.ds.moveRight();
+    }
+  }
+  moveTo(index) {
+    this.ds.moveTo(index);
+  }
 
 
-  interval: any;
-
+ 
   startAuto() {
-    // if (this.auto)
-    //   this.interval = setInterval(() => {
-    //     if (this.carusel.currIndex == this.carusel._children.length - 1) {
-    //       this.carusel.moveTo(0);
-    //     } else {
-    //       this.carusel.moveRight();
-    //     }
-    //   }, this.timeout);
+    if (this.auto)
+      this.interval = setInterval(() => {
+        if (this.ds.currIndex == this.ds._children.length - 1) {
+          this.ds.moveTo(0);
+        } else {
+          this.ds.moveRight();
+        }
+      }, this.timeout);
   }
 
   stopAuto() {

@@ -7,7 +7,7 @@
   margin: 0 0.75rem;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   :host {
     margin: 0 2rem;
   }
@@ -22,5 +22,10 @@
     min-width: 1680px;
     max-width: 1680px;
     margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+  :host {
+    margin: 0 0rem;
   }
 }

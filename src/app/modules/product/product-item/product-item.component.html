@@ -1,4 +1,7 @@
-<div class="ratio">
+<div class="product-item-block" >
+
+  <div  class="product-item-wrap">
+ <div class="ratio" >
   <div class="square" >
     <a [routerLink]="['/products/view/' + product.id]">
       <img
@@ -62,5 +65,7 @@
       {{ product.price * currency.current.value | number }}
       {{ currency.current.simbol_right }}</span
     >
+  </div>
+</div>
   </div>
 </div>

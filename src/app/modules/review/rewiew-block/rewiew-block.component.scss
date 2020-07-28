@@ -53,8 +53,22 @@ header {
     }
   }
 }
+header{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  h6{
+    width: 70%;
+  }
+}
 
 .next {
   left: unset;
   right: $space;
+}
+@media screen  and (max-width: 768px){
+  .small-last-rewievs{
+    justify-content: center;
+  }
+
 }

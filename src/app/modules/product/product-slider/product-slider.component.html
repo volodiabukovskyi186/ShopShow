@@ -1,13 +1,21 @@
-<div class="flex right">
+<!--<div class="button-slider-block"  >-->
+<!--  <show-u-title style="width: 30% height:30px" [title]="'main.bestSellers' | translate"></show-u-title>-->
+<div class="flex right" >
   <button class="button transparent prev" (click)="moveLeft()"><</button>
   <button class="button transparent next" (click)="moveRight()">></button>
 </div>
+<!--</div>-->
 
-<!-- <drag-scroll #carusel > -->
-<div style="overflow: hidden; flex-direction: row;">
-  <app-product-item
-    *ngFor="let item of products"
-    [product]="item"
-  ></app-product-item>
-</div>
-<!-- </drag-scroll> -->
+
+
+  <div style="overflow: hidden; flex-direction: row;" id="small-product-slider">
+    <drag-scroll #slider   id="slider-product" >
+      <app-product-item  drag-scroll-item
+                         *ngFor="let item of products"
+                         [product]="item"
+      ></app-product-item>
+    </drag-scroll>
+  </div>
+
+
+

@@ -59,3 +59,152 @@ div {
     }
   }
 }
+.mobile-menu{
+  width: 100%;
+  height: 43px;
+  background-color:#242626;
+  display: none;
+
+
+}
+.mobile-inside-block{
+  width: 95%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  //background-color: #9F1941;
+
+}
+.mobile-search{
+  width: 70%;
+  //height: 20px;
+}
+.small-menu{
+  left:-3%;
+  top:100%;
+  position: absolute;
+  z-index: 10000;
+  width:80vw;
+  min-height: 80vh;
+  background-color:#242626;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+ flex-direction: column;
+  //padding-bottom: 2%;
+  ul{
+    list-style: none;
+  }
+  div{
+    font-size: 16px;
+  }
+
+
+}
+.small-categories{
+  div{
+    margin-left: 5%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    font-size: 20px;
+    img{
+      width: 20px;
+    }
+    ul{
+      margin-left: 5%;
+    }
+
+  }
+}
+.small-nav-item{
+  display: flex;
+  flex-direction: column;
+  margin-top:10%;
+}
+.small-whish-list{
+  //margin-bottom: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  p{
+    font-size: 16px;
+    margin-top: 7px;
+  }
+
+}
+
+.user-nav {
+  position: relative;
+  list-style: none;
+  background-color:#242626;
+  margin: unset;
+
+  li {
+    a {
+      display: block;
+      padding: $space/2;
+      @include transition();
+      // transition: all .3s $fn;
+      &:hover {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+}
+.small-menu-item{
+div{
+  padding-left: 2%;
+}
+}
+
+
+
+
+
+
+@media screen and(max-width:768px)  {
+  .mobile-menu{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+
+  }
+  .mobile-burger{
+
+    position: relative;
+    z-index: 1000;
+    img{
+      background-color: white;
+      width: 25px;
+    }
+  }
+  .mobile-bag{
+    img{
+      background-color: white;
+      width: 25px;
+    }
+  }
+  .desktop-menu{
+    display: none;
+  }
+  .small-nav-item{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+
+
+
+
+
+}

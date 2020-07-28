@@ -1,6 +1,6 @@
 <rap-container>
-  <div class="row wrap">
-    <div class="col col-25 col100m">
+  <div class="row wrap small-footer">
+    <div class="col col-25 col100m small-footer-logo ">
       <a [routerLink]="['/']" routerLinkActive="router-link-active">
         <rap-svg-ico class="logo" [src]="'assets/showu.svg'"></rap-svg-ico
       ></a>
@@ -28,7 +28,7 @@
         </li>
       </ul>
     </div>
-    <div class="col col-25 col100m">
+    <div class="col col-25 col100m small-footer-input">
       <h5>{{ "footer.newsletter" | translate }}</h5>
       <input
         style="margin-bottom: 24px;"
@@ -36,13 +36,13 @@
         type="email"
         placeholder="Enter your email"
       />
-      <p class="gray text-left">
+      <p class="gray ">
         {{ "footer.wantNews" | translate }}
       </p>
     </div>
   </div>
   <hr />
-  <div class="row wrap v_center">
+  <div class="row wrap v_center small-footer-bottom">
     <span class="copy">&copy; {{ "footer.copyright" | translate }}</span>
   </div>
 </rap-container>

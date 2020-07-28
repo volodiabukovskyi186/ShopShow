@@ -18,6 +18,7 @@
     display: block;
     fill: rgba(lighten(mix($gray800, darken($blue, 30%)), 5%), 0.8);
   }
+
   &:hover {
     cursor: pointer;
     transform: scale(1.05);
@@ -26,3 +27,24 @@
     }
   }
 }
+
+
+@media screen and(max-width:768px)  {
+  #small-color{
+    fill:white;
+  }
+  .small-bar{
+
+    display: inline-block;
+  }
+  rap-svg-ico {
+    color: white;
+    svg{
+      fill: white;
+    }
+
+
+  }
+
+}
+

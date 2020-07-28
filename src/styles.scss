@@ -181,6 +181,13 @@ ul.top-panel-nav {
     }
   }
 }
+@media screen and(max-width:768px) {
+  app-top-panel {
+    background-color: white;
+    color: lighten(mix($gray800, darken($blue, 30%)), 5%) ;
+  }
+}
+
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 html {
