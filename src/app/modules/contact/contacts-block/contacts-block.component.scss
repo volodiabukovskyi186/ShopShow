@@ -7,6 +7,10 @@ $size: 48px;
   cursor: grab;
 }
 
+.card-form {
+  padding: 2px 16px 32px;
+}
+
 .map-shadow {
   @include material-shadow(2, 1, $gray400);
 }
@@ -20,6 +24,8 @@ $size: 48px;
 @include screen-w(768px) {
   .contacts-block {
     grid-template-columns: 1fr 1fr;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 @include screen-w(480px) {

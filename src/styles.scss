@@ -193,3 +193,6 @@ ul.top-panel-nav {
 html {
   font-family: "Poppins", $fontFamilySansSerif;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

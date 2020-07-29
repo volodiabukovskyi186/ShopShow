@@ -1,31 +1,31 @@
-import { Component, OnInit } from "@angular/core";
-import { NavLink } from "src/app/modules/ui/rap/nav-item/nav-link";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { NavLink } from 'src/app/modules/ui/rap/nav-item/nav-link';
+import { ActivatedRoute } from '@angular/router';
 // import { NgxUiLoaderService } from "ngx-ui-loader";
-import { ProductService } from "src/app/modules/product/product.service";
+import { ProductService } from 'src/app/modules/product/product.service';
 // import { CartService } from "src/app/modules/cart/cart.service";
-import { Title, Meta } from "@angular/platform-browser";
+import { Title, Meta } from '@angular/platform-browser';
 import { PaginationPage } from 'src/app/modules/ui/rap/pagination/pagination-page';
 import { CartService } from '../../cart/cart.service';
 import { CurrencyService } from '../../currency/currency.service';
 
 @Component({
-  selector: "app-product-view-page",
-  templateUrl: "./product-view-page.component.html",
-  styleUrls: ["./product-view-page.component.scss"],
+  selector: 'app-product-view-page',
+  templateUrl: './product-view-page.component.html',
+  styleUrls: ['./product-view-page.component.scss'],
 })
 export class ProductViewPageComponent implements OnInit, PaginationPage {
   id: number = 0;
 
   breadcrumbs: Array<NavLink> 
   constructor(
-    private route: ActivatedRoute,
-    // private ngxService: NgxUiLoaderService,
-    public currency: CurrencyService,
-    public product: ProductService,
-    public cart: CartService,
-    private title: Title,
-    private meta: Meta
+      private route: ActivatedRoute,
+      // private ngxService: NgxUiLoaderService,
+      public currency: CurrencyService,
+      public product: ProductService,
+      public cart: CartService,
+      private title: Title,
+      private meta: Meta
   ) {}
   
 
