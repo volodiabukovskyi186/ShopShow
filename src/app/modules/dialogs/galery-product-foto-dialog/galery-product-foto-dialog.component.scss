@@ -1,0 +1,44 @@
+.product-dialog {}
+
+.dialog-wrapper {
+  position: relative;
+}
+
+.back-arr,
+.next-arr {
+  width: 33px;
+  position: absolute;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  top: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  padding-top: 4px;
+}
+
+.back-arr {
+  left: 0;
+  z-index: 9999999;
+  padding-left: 9px;
+}
+
+.next-arr {
+  right: 0;
+}
+
+.dialog-header {
+  position: relative;
+}
+
+.close-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  z-index: 999999;
+}
+
+.product-img {
+  max-height: 77vh;
+  min-height: 350px;
+}

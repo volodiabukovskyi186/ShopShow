@@ -8,7 +8,7 @@ import { serverErrorInterceptorProviders, authInterceptorProviders } from "./mod
 
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
-
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -46,6 +46,7 @@ import { UiModule } from './modules/ui/ui.module';
         deps: [HttpClient],
       },
     }),
+    MatDialogModule,
   ],
   providers: [serverErrorInterceptorProviders, authInterceptorProviders],
   bootstrap: [AppComponent],

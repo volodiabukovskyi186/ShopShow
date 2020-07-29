@@ -1,6 +1,8 @@
 import {Component, OnInit, Input, OnChanges} from "@angular/core";
+import { MatDialog } from '@angular/material/dialog';
 import {environment} from 'src/environments/environment';
 import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
+import { GaleryProductFotoDialogComponent } from '../../../dialogs/galery-product-foto-dialog/galery-product-foto-dialog.component';
 
 @Component({
     selector: "product-image-view",
@@ -10,6 +12,7 @@ import {connectableObservableDescriptor} from 'rxjs/internal/observable/Connecta
 export class ImageViewComponent implements OnInit, OnChanges {
     _images: Array<any> = [];
     hoststatic = environment.hoststatic;
+    public getCurrentProduct;
 
     @Input()
     public set images(v: Array<any>) {
@@ -33,13 +36,41 @@ export class ImageViewComponent implements OnInit, OnChanges {
 
     current: any;
 
-    constructor() {
-    }
+    constructor(
+        public dialog: MatDialog
+    ) {}
 
-    ngOnInit() {
-    }
+    public ngOnInit(): void {}
 
     setCurrent(img: string) {
         this.current = img;
+    }
+
+    public openProductModal(productData, current): void {
+        productData.forEach((product) => {
+            if (product.image.src === current) {
+                this.getCurrentProduct = product;
+            }
+        })
+
+        const dialogRef = this.dialog.open(GaleryProductFotoDialogComponent, {
+            data: {
+                title: 'Select unit prices to add',
+                actions: [
+                    {
+                        param: 'closeIcon',
+                        label: 'Cancel',
+                    },
+                    {
+                        param: 'add',
+                        label: 'Add',
+                    },
+                ],
+                product: productData,
+                currentImg: current,
+                currentProduct: this.getCurrentProduct,
+            },
+        });
+        dialogRef.afterClosed().subscribe(res => {});
     }
 }

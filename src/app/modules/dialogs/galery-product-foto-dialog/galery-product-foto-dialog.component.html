@@ -1,0 +1,16 @@
+<div class="product-dialog">
+  <div class="dialog-header">
+      <span class="material-icons close-icon" (click)="onNoClick()">close</span>
+  </div>
+  <div class="dialog-wrapper">
+    <button (click)="slidePrev()" class="back-arr">
+      <span class="material-icons">arrow_back_ios</span>
+    </button>
+    <div>
+      <img src="{{ host + productImagesSrc[index].image.src }}" class="product-img">
+    </div>
+    <button (click)="slideNext()" class="next-arr">
+      <span class="material-icons">arrow_forward_ios</span>
+    </button>
+  </div>
+</div>

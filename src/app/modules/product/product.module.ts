@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { MatIconModule } from '@angular/material/icon';
 import { ProductListComponent } from "./product-list/product-list.component";
 import { RouterModule } from "@angular/router";
 import { UiModule } from "../ui/ui.module";
@@ -14,7 +15,8 @@ import { ProductViewPageComponent } from "./product-view-page/product-view-page.
 import { ReviewModule } from "../review/review.module";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { TranslateModule } from "@ngx-translate/core";
-import {ClickOutsideModule} from "ng-click-outside";
+import { ClickOutsideModule } from "ng-click-outside";
+import { GaleryProductFotoDialogComponent } from '../dialogs/galery-product-foto-dialog/galery-product-foto-dialog.component';
 
 const c = [
   ProductListComponent,
@@ -25,7 +27,7 @@ const c = [
 ];
 
 @NgModule({
-  declarations: [...c, ProductsPageComponent, ProductViewPageComponent],
+  declarations: [...c, ProductsPageComponent, ProductViewPageComponent, GaleryProductFotoDialogComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -34,7 +36,8 @@ const c = [
     FormsModule,
     ReviewModule,
     TranslateModule,
-    DragScrollModule
+    DragScrollModule,
+    MatIconModule
   ],
   exports: [...c],
 })
