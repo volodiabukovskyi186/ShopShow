@@ -60,13 +60,7 @@ export class NavComponent implements OnInit {
       });
   }
   burgerMenu(): void {
-    if (this.burgerStatus == false) {
-      this.burgerStatus = true;
-    } else {
-      this.burgerStatus = false ;
-    }
-    console.log(this.categories);
-
-
+    this.burgerStatus = !this.burgerStatus;
   }
+
 }

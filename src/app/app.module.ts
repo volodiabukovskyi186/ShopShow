@@ -39,7 +39,6 @@ import { UiModule } from './modules/ui/ui.module';
     AppRoutingModule,
     HttpClientModule,
     UiModule,
-
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
