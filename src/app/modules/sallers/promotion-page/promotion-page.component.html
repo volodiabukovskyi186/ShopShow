@@ -6,10 +6,10 @@
   </div> -->
   <div class="col">
     <div style="width: 100%;" class="d4 text-center flex row center v_center">
-      <h1 style="margin-top: 0;">Promotions</h1>
+      <h1 style="margin-top: 0;" class="promotion-header">Promotions</h1>
     </div>
 
-    <div class="flex wrap">
+    <div class="flex wrap promotion-container">
       <div class="promotion" *ngFor="let item of prom.promotions.data">
         <a [routerLink]="['/promotions/view/' + item.id]" class="ratio">
           <div class="square">

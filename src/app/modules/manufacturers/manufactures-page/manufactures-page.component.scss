@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 
     .manufacturer {
         // border: 1px solid;
@@ -51,3 +52,41 @@
       background-color: unset;
     }
   }
+
+@include screen-w(932px) {
+  .manufacturers-header {
+    margin-bottom: 5px;
+  }
+
+  .manufacturers {
+    .manufacturer {
+      width: 40%;
+    }
+  }
+}
+
+@include screen-w(528px) {
+  .manufacturers-header {
+    font-size: 32px;
+    margin-bottom: 0px;
+  }
+
+  .manufacturers {
+    .manufacturer {
+      width: 70%;
+    }
+  }
+}
+
+@include screen-w(400px) {
+  .manufacturers-header {
+    font-size: 30px;
+    margin-bottom: -7px;
+  }
+
+  .manufacturers {
+    .manufacturer {
+      width: 80%;
+    }
+  }
+}

@@ -23,6 +23,11 @@
   }
 }
 
+.promotion-container {
+  display: flex;
+  justify-content: center;
+}
+
 .promotion {
   width: calc(25% - #{$space * 2});
   margin: $space;
@@ -43,7 +48,7 @@
   .info {
       display: flex;
       flex-direction: row;
-      padding: $space/2;
+      //padding: $space/2;
       .days-left {
           display: flex;
           align-items: center;
@@ -57,24 +62,64 @@
           }
       }
       .detal {
-          padding: $space/4 $space/4 $space/4 $space;
+          //padding: $space/4 $space/4 $space/4 $space;
+           display: flex;
+           justify-content: center;
+           margin-left: auto;
+           margin-right: auto;
+
           h4 {
               margin: $space/4 0 $space/2;
+
           }
       }
   }
 }
 
-@include screen-w(800px) {
+@include screen-w(1250px) {
   .promotion {
-    width: calc(33% - #{$space});
-    margin: $space/2;
+    width: 30%;
   }
 }
 
-@include screen-w(480px) {
+@include screen-w(1170px) {
   .promotion {
-    width: calc(50% - #{$space});
-    margin: $space/2;
+    width: 40%;
   }
 }
+
+@include screen-w(800px) {
+  .d4 {
+    margin: 5px;
+  }
+}
+
+@include screen-w(548px) {
+  .promotion {
+    width: 70%;
+  }
+}
+
+@include screen-w(400px) {
+  .promotion-header {
+    margin-bottom: 5px;
+  }
+
+  .promotion {
+    width: 80%;
+  }
+}
+
+//@include screen-w(800px) {
+//  .promotion {
+//    width: calc(33% - #{$space});
+//    margin: $space/2;
+//  }
+//}
+
+//@include screen-w(480px) {
+//  .promotion {
+//    width: calc(50% - #{$space});
+//    margin: $space/2;
+//  }
+//}
