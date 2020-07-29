@@ -30,7 +30,7 @@
       <div class="ratio radius image-full">
         <div class="square radius">
           <!-- <img class="contain radius" [src]="'//'+host+current?.src_mini" /> -->
-          <img class="contain radius" src="{{ hoststatic + main }}" />
+          <img class="contain radius" src="{{ hoststatic + current }}" />
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
         [ngClass]="{ active: img.image?.id == current.id }"
       >
         <div class="square radius">
-          <img class="contain radius" [src]="hoststatic+img.image?.src_mini" (click)="setCurrent(img.image)" />
+          <img class="contain radius" [src]="hoststatic+img.image?.src_mini" (click)="setCurrent(img.image.src)" />
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ClientMenuService } from "../../client-menu/client-menu.service";
 import { AppLangService } from "../../core/app-lang.service";
 import { CurrencyService, ICurrency } from '../../currency/currency.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: "app-top-panel",
@@ -18,6 +19,8 @@ export class TopPanelComponent implements OnInit {
     public clientMenu: ClientMenuService,
     public currency: CurrencyService,
     public appLang: AppLangService,
+    public router: Router,
+    public route: ActivatedRoute
   ) {
     this.getCurrency();
   }
@@ -47,6 +50,11 @@ export class TopPanelComponent implements OnInit {
   onClickCurrency(e: Event, c: ICurrency) {
     e.preventDefault();
     this.currency.current = c;
+  }
+
+  changeLang(lang){
+    this.appLang.use(lang);
+    window.location.reload();
   }
 
 

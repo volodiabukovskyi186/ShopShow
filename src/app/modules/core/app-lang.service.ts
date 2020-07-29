@@ -38,7 +38,7 @@ export class AppLangService {
 
     // set lang
     this.translate.use(lang.match(/en|pl|ua|ru/) ? lang : this.translate.defaultLang);
-   
+    localStorage.setItem('current_lang', lang);
   }
 
   public get routeLang(): string {
@@ -68,11 +68,11 @@ export class AppLangService {
     const ru: ILangItem = { flag: "🇷🇺", name: "ru", locale: "ru" };
     const ua: ILangItem = { flag: "🇺🇦", name: "ua", locale: "ua" };
 
-    let defaultLang = ua;
+    let defaultLang = localStorage.getItem('current_lang') || ua.name;
 
     this.langs = [pl, en, ua, ru];
-    this.translate.addLangs([defaultLang.name, en.name]);
-    this.translate.defaultLang = defaultLang.name;
-    this.use(defaultLang.name);
+    this.translate.addLangs([defaultLang, en.name]);
+    this.translate.defaultLang = defaultLang;
+    this.use(defaultLang);
   }
 }

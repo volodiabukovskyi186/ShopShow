@@ -1,39 +1,45 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { environment } from 'src/environments/environment';
+import {Component, OnInit, Input, OnChanges} from "@angular/core";
+import {environment} from 'src/environments/environment';
 import {connectableObservableDescriptor} from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
-  selector: "product-image-view",
-  templateUrl: "./image-view.component.html",
-  styleUrls: ["./image-view.component.scss"],
+    selector: "product-image-view",
+    templateUrl: "./image-view.component.html",
+    styleUrls: ["./image-view.component.scss"],
 })
-export class ImageViewComponent implements OnInit {
-  _images: Array<any> = [];
-  hoststatic = environment.hoststatic;
-  @Input()
-  public set images(v: Array<any>) {
-    this._images = v;
-    if (this.images && this.images.length > 0) this.current = this.images[0].image;
-  }
+export class ImageViewComponent implements OnInit, OnChanges {
+    _images: Array<any> = [];
+    hoststatic = environment.hoststatic;
 
-  public get images(): Array<any> {
-    return this._images;
-  }
+    @Input()
+    public set images(v: Array<any>) {
+        this._images = v;
+        if (this.images && this.images.length > 0) this.current = this.main;
+    }
 
-  @Input()
-  host: string;
+    public get images(): Array<any> {
+        return this._images;
+    }
 
-  @Input()
-  main: string;
+    ngOnChanges(res) {
+        this.current = res?.main?.currentValue ? res?.main?.currentValue : null;
+    }
 
-  current: any;
+    @Input()
+    host: string;
 
-  constructor() {}
+    @Input()
+    main: string;
 
-  ngOnInit() {}
+    current: any;
 
-  setCurrent(img: string) {
-    this.current = img;
+    constructor() {
+    }
 
-  }
+    ngOnInit() {
+    }
+
+    setCurrent(img: string) {
+        this.current = img;
+    }
 }

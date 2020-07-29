@@ -60,7 +60,9 @@ export class NavComponent implements OnInit {
         ];
       });
   }
+
   public burgerMenu(status: boolean = false): void {
     this.burgerStatus = status;
   }
+
 }

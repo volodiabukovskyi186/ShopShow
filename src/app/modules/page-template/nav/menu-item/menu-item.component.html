@@ -22,7 +22,7 @@
  
 </button>
 
-<div @fade *ngIf="value.sub?.length > 0 && active" class="submenu" >
+<div @fade *ngIf="value.sub?.length > 0 && active" class="submenu" (clickOutside)="onClickedOutside($event)">
   <div class="golden">
     <div class="long grid">
       <showu-menu-sub-item
@@ -34,7 +34,7 @@
     <div class="short padding">
       <div class="ratio" *ngIf="value.image">
         <div class="imax">
-          <img [alt]="value.name" [src]="host + value.image?.src_mini"  class="contain menu-img" />
+          <img [alt]="value.name" [src]="host + currentImg"  class="contain menu-img" />
         </div>
       </div>
     </div>

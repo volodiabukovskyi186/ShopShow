@@ -41,7 +41,7 @@
             <ul class="langBar" [ngClass]="{inline: langStatus==true}">
               <li   class="lang-item" *ngFor="let item of appLang.langs">
                 <a [ngClass]="{ active: appLang.current == item.locale }"
-                   [routerLink]="['/', item.locale]" >
+                   (click)="changeLang(item.locale)">
                   <div class="flag-block">
                     <span class="lang-item-flag">{{ item.flag }}</span>
                     <span class="lang-item-name"> {{ item.name }} </span>

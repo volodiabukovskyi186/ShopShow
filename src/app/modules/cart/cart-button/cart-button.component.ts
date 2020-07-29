@@ -15,7 +15,6 @@ export class CartButtonComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  
   onResize(event) {
       if (event.currentTarget.innerWidth >= 768) {
         this.sreenwidth = false;

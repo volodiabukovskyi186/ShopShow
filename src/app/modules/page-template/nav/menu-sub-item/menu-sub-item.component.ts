@@ -1,19 +1,27 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { INavItem } from "../nav-item/nav-item.component";
-import { fade } from 'src/app/modules/ui/animations';
+import {Component, OnInit, Input, Output, EventEmitter, OnDestroy, HostListener, ElementRef} from "@angular/core";
+import {INavItem} from "../nav-item/nav-item.component";
+import {fade} from 'src/app/modules/ui/animations';
+import {HelperService} from "../../../core/helper.service";
+import {Subject} from "rxjs/internal/Subject";
 
 @Component({
-  animations: [fade],
-  selector: "showu-menu-sub-item",
-  templateUrl: "./menu-sub-item.component.html",
-  styleUrls: ["./menu-sub-item.component.scss"],
+    animations: [fade],
+    selector: "showu-menu-sub-item",
+    templateUrl: "./menu-sub-item.component.html",
+    styleUrls: ["./menu-sub-item.component.scss"],
 })
 export class MenuSubItemComponent implements OnInit {
-  active: boolean = true;
+    active: boolean = true;
 
-  @Input() value: INavItem;
+    @Input() value: INavItem;
 
-  constructor() {}
+    constructor(private helperService: HelperService, private eRef: ElementRef) {
+    }
 
-  ngOnInit(): void {}
+    ngOnInit(): void {
+    }
+
+    over(item) {
+        this.helperService.updatedMenuImg(item.image.src);
+    }
 }
