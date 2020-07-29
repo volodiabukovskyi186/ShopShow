@@ -17,13 +17,12 @@
   *ngIf="value.sub?.length > 0"
   class="button transparent"
   (click)="active = !active"
-
 >
   <rap-svg-ico [src]="'/assets/icons/arrow-down.svg'"></rap-svg-ico>
  
 </button>
 
-<div @fade *ngIf="value.sub?.length > 0 && active" class="submenu" >
+<div @fade *ngIf="value.sub?.length > 0 && active" class="submenu" (clickOutside)="onClickedOutside($event)">
   <div class="golden">
     <div class="long grid">
       <showu-menu-sub-item

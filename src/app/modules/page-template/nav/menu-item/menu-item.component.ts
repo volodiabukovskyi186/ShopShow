@@ -58,4 +58,10 @@ export class MenuItemComponent implements OnInit, OnDestroy {
         this.onDestroyed.next();
         this.onDestroyed.complete();
     }
+
+    onClickedOutside(e: any) {
+        // if(e.target?.id === 'arrow' || e.target?.id === 'menu-deep') return;
+        // this._active = false;
+        // console.log('Clicked outside:', e);
+    }
 }

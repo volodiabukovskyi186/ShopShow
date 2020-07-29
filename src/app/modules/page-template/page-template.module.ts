@@ -17,6 +17,7 @@ import { AccauntModule } from "../accaunt/accaunt.module";
 import { CartModule } from '../cart/cart.module';
 import { SearchModule } from '../search/search.module';
 import { NavListComponent } from './nav/nav-list/nav-list.component';
+import {ClickOutsideModule} from "ng-click-outside";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NavListComponent } from './nav/nav-list/nav-list.component';
     TranslateModule,
     AccauntModule,
     SearchModule,
-    CartModule
+    CartModule,
+      ClickOutsideModule
   ],
 })
 export class PageTemplateModule {}
