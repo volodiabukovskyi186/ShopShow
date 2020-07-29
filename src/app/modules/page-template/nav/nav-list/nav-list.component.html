@@ -2,15 +2,15 @@
 <ul>
     <li *ngFor="let link of categories">
         <div >
-            <div [ngClass]="{'active-sub': selectedCategorySet.has(link.id)}" class="category-item" (click)="onClick.emit(link.id)">
+            <div [ngClass]="{'active-sub': selectedCategorySet.has(link.id)}" class="category-item" (click)="showMore.emit(link.id)">
                 <span>
-                    <span [routerLink]="['/', 'products', link.id]" >{{link.name}}</span>
-                    <img *ngIf=" !selectedCategorySet.has(link.id)&&link.sub.length>0 " src='../../../../../assets/icons/plus.svg'>
+                    <span (click)="goToRoute(link.id)" >{{link.name}}</span>
+                    <img class="small-menu-plus-btn"  *ngIf=" !selectedCategorySet.has(link.id)&&link.sub.length>0 " src='../../../../../assets/icons/plus.svg'>
                      <img *ngIf=" selectedCategorySet.has(link.id)&&link.sub.length>0 " src='../../../../../assets/icons/minus.svg'>
                 </span>
             </div>
             <div   *ngIf="selectedCategorySet.has(link.id)" class="category-children">
-                <app-nav-list   id="sub-category"  [selectedCategorySet]="selectedCategorySet" (onClick)="onClick.emit($event)" [categories]="link.sub"></app-nav-list>
+                <app-nav-list (goTo)="goTo.emit()"  id="sub-category"  [selectedCategorySet]="selectedCategorySet" (showMore)="showMore.emit($event)" [categories]="link.sub"></app-nav-list>
             </div>
         </div>
     </li>

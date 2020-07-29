@@ -16,29 +16,40 @@
   </div>
   <div class="mobile-menu">
     <div class="mobile-inside-block">
-        <div class="mobile-burger" (click)="burgerMenu()">
-          <img *ngIf="!burgerStatus" src="../../../../assets/icons/burger.svg">
-            <img *ngIf="burgerStatus" src="../../../../assets/icons/cancel.svg">
+        <div class="mobile-burger" (click)="burgerMenu(!burgerStatus)">
+<!--          <img *ngIf="!burgerStatus" src="../../../../assets/icons/burger.svg">-->
 
+            <div *ngIf="!burgerStatus" class="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <img  class="burger-btn-close" *ngIf="burgerStatus" src="../../../../assets/icons/cancel.svg">
         </div>
         <div class="mobile-search">
             <app-search></app-search>
         </div>
         <div class="mobile-bag">
-            <img src="../../../../assets/icons/cart.svg">
+            <app-cart-button
+                    title="Cart [Q+C]"
+                    (click)="cart.openCartView()"
+            ></app-cart-button>
+<!--            <img style="width: 25px; height: 25px;background-color:#242626" src="../../../../assets/icons/bag1.svg"/>-->
+<!--            <img src="../../../../assets/icons/bag1.svg">-->
+
         </div>
       <div class="small-menu" *ngIf="burgerStatus">
-          <div>
-              <app-nav-list [categories]="categories" (onClick)="toggle($event)" [selectedCategorySet]="categorySet"></app-nav-list>
+          <div class="small-menu-inside">
+              <app-nav-list   [categories]="categories" (goTo)="burgerMenu()" (showMore)="toggle($event)" [selectedCategorySet]="categorySet"></app-nav-list>
               <app-nav-item
                       *ngFor="let link of links2"
                       [value]="link"
                       style="flex: 1;"
               ></app-nav-item>
           </div>
-          <div class="small-menu-item">
-              <div>
 
+          <div class="small-menu-item">
+              <div class="small-accaunt-item"  >
                                 <app-accaunt-button
                                         [title]="
                   auth.authenticated
