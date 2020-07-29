@@ -29,7 +29,8 @@ export class NavComponent implements OnInit {
   }
 
 
-  constructor(public appLang: AppLangService, private route: ActivatedRoute,
+  constructor(public appLang: AppLangService,
+              private route: ActivatedRoute,
               public cart: CartService,
               public auth: AuthService,
               public accaunt: AccauntService) {}
@@ -59,14 +60,7 @@ export class NavComponent implements OnInit {
         ];
       });
   }
-  burgerMenu(): void {
-    if (this.burgerStatus == false) {
-      this.burgerStatus = true;
-    } else {
-      this.burgerStatus = false ;
-    }
-    console.log(this.categories);
-
-
+  public burgerMenu(status: boolean = false): void {
+    this.burgerStatus = status;
   }
 }

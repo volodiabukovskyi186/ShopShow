@@ -1,8 +1,14 @@
 ul{
+
+  li{
+
+  }
+  margin-top: 20px;
   list-style: none;
+  margin-bottom: 0;
 }
 .category-item{
-  margin-left: 2%;
+  //margin-left: 17px;
   cursor: pointer;
   width: 172px;
   flex-direction: row;
@@ -10,12 +16,14 @@ ul{
 
 
   span{
-    margin-top: 2%;
+    //margin-top: 25px;
     display: flex;
     justify-content: space-between;
     width:100%;
-    padding-top: 3%;
+    //padding-top: 3%;
     span{
+      padding-bottom: 5px;
+      //margin-bottom: 25px;
       font-size: 16px;
 
     }
@@ -26,14 +34,21 @@ ul{
   }
 }
 .category-children {
-  margin-left: 10%;
+  margin-left: 25px;
   width: 172px;
   font-size: 16px;
   display: flex;
-  align-items: center;
-
-
-
+  align-items: start;
+  span {
+    display: flex;
+    justify-content: space-between;
+    span {
+      //margin-bottom: 16px;
+    }
+  }
+}
+.small-menu-plus-btn{
+  padding-bottom: 25px
 }
 #sub-category{
   span{

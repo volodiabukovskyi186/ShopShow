@@ -1,4 +1,5 @@
-<rap-svg-ico [src]="'assets/icons/cart-add.svg'"></rap-svg-ico>
+<rap-svg-ico *ngIf="!sreenwidth"  (window:resize)="onResize($event)" [src]="'assets/icons/cart-add.svg'"></rap-svg-ico>
+<rap-svg-ico  class="phone-menu"  (window:resize)="onResize($event)"  *ngIf="sreenwidth" class="phone-menu" [src]="'assets/icons/bag1.svg'"></rap-svg-ico>
 <div [@changeValueScale]="cart.count" *ngIf="cart.count > 0" class="count">
   {{ cart.count }}
 </div>
