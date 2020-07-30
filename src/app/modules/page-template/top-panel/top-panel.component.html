@@ -33,7 +33,7 @@
           <li (mouseout)="langStatus=false" (mouseover)="langStatus=true">
             <div *ngFor="let item of appLang.langs">
               <div class="active-language" *ngIf="appLang.current == item.locale">
-                  <span class="active-lang-flag">{{item.flag}}</span>
+                  <img class="lang-item-flag" src="{{ countryFlagsImgs[item.name] }}">
                   <span class="active-lang-locale">{{item.locale}}</span>
                   <img src="assets/icons/drop-down.svg" /> 
               </div>
@@ -41,9 +41,9 @@
             <ul class="langBar" [ngClass]="{inline: langStatus==true}">
               <li   class="lang-item" *ngFor="let item of appLang.langs">
                 <a [ngClass]="{ active: appLang.current == item.locale }"
-                   (click)="changeLang(item.locale)">
+                   (click)="changeLang(item.locale, item.flag)">
                   <div class="flag-block">
-                    <span class="lang-item-flag">{{ item.flag }}</span>
+                    <img class="lang-item-flag" src="{{ countryFlagsImgs[item.name] }}">
                     <span class="lang-item-name"> {{ item.name }} </span>
                   </div>
                 </a>
