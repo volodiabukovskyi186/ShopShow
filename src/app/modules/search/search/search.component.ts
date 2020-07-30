@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchService} from '../search.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-search',
@@ -8,8 +9,10 @@ import {SearchService} from '../search.service';
 })
 export class SearchComponent implements OnInit {
     isActiveResults: boolean = false;
+    public isPressEnter: boolean;
+    private searchText: string;
 
-    constructor(public search: SearchService) {
+    constructor(public search: SearchService, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -25,7 +28,8 @@ export class SearchComponent implements OnInit {
 
             if (v.length < 3) return this.isActiveResults = false
 
-            this.search.search(v).subscribe(this.searchHandler)
+            this.searchText = v;
+            this.search.search(v).subscribe(this.searchHandler);
 
         }, this.time)
     }
@@ -37,4 +41,10 @@ export class SearchComponent implements OnInit {
 
     }
 
+    public pressEnter(event) {
+        console.log(event);
+        if (event.key === 'Enter') {
+            this.router.navigate(['/products/list'], { queryParams: { search: this.searchText } });
+        }
+    }
 }

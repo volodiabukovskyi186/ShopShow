@@ -17,6 +17,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { TranslateModule } from "@ngx-translate/core";
 import { ClickOutsideModule } from "ng-click-outside";
 import { GaleryProductFotoDialogComponent } from '../dialogs/galery-product-foto-dialog/galery-product-foto-dialog.component';
+import { ProductListViewComponent } from './product-list-view/product-list-view.component';
 
 const c = [
   ProductListComponent,
@@ -27,7 +28,7 @@ const c = [
 ];
 
 @NgModule({
-  declarations: [...c, ProductsPageComponent, ProductViewPageComponent, GaleryProductFotoDialogComponent],
+  declarations: [...c, ProductsPageComponent, ProductViewPageComponent, GaleryProductFotoDialogComponent, ProductListViewComponent],
   imports: [
     CommonModule,
     RouterModule,

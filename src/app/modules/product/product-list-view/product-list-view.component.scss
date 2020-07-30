@@ -1,0 +1,63 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+.col-side {
+  @include col-width(196px);
+}
+
+@include screen-w(1080px) {
+  .col-review {
+    @include col-width(100%);
+  }
+}
+
+@include screen-w(768px) {
+  .col-side {
+    @include col-width(100%);
+  }
+}
+
+//
+//
+//
+
+$size: 16px;
+
+.slidecontainer {
+  width: 100%;
+}
+
+/* The slider itself */
+.slider {
+  border: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  width: auto;
+  max-width: 100%;
+  height: $size;
+  background: $gray200;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: $size;
+  height: $size;
+  background: $primary;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: $size;
+  height: $size;
+  background: $primary;
+  cursor: pointer;
+}
