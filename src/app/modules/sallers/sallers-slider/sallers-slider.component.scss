@@ -121,7 +121,7 @@
     }
   }
   .date {
-    padding: $space/2;
+    padding: 6px;
   }
   .details {
     h4 {
@@ -132,13 +132,14 @@
 @include screen-w(480px) {
   .date {
     top: $space/2;
-    padding: $space/4;
+    padding: 5px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
+    font-size: 13px;
   }
   .details {
     h4 {
-      font-size: 2rem;
+      font-size: 14px;
     }
   }
 }

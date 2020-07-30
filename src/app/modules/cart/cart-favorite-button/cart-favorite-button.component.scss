@@ -31,20 +31,19 @@
 
 @media screen and(max-width:768px)  {
   #small-color{
-    fill:white;
+    fill: white;
   }
   .small-bar{
-
     display: inline-block;
   }
+
   rap-svg-ico {
     color: white;
-    svg{
+    margin-left: -12px;
+    width: 19px !important;
+
+    svg {
       fill: white;
     }
-
-
   }
-
 }
-

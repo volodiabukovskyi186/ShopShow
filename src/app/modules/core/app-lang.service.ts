@@ -33,7 +33,7 @@ export class AppLangService {
     // if data["lang"] is null set browserLang
     let lang = language ?? browserLang;
 
-    this.updated.emit();
+    this.updated.emit(lang);
     console.log("set lang:", lang);
 
     // set lang

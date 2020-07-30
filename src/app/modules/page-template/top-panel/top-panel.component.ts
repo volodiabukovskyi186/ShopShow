@@ -2,61 +2,79 @@ import { Component, OnInit } from "@angular/core";
 import { ClientMenuService } from "../../client-menu/client-menu.service";
 import { AppLangService } from "../../core/app-lang.service";
 import { CurrencyService, ICurrency } from '../../currency/currency.service';
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: "app-top-panel",
-  templateUrl: "./top-panel.component.html",
-  styleUrls: ["./top-panel.component.scss"],
+    selector: "app-top-panel",
+    templateUrl: "./top-panel.component.html",
+    styleUrls: ["./top-panel.component.scss"],
 })
 export class TopPanelComponent implements OnInit {
 
-  langStatus:boolean=false;
-  currentlyStatus:boolean=false;
+    langStatus: boolean = false;
+    currentlyStatus: boolean = false;
+    public countryFlagsImgs;
+    public langs;
+    public flag;
 
-  one:string
-  constructor(
-    public clientMenu: ClientMenuService,
-    public currency: CurrencyService,
-    public appLang: AppLangService,
-    public router: Router,
-    public route: ActivatedRoute
-  ) {
-    this.getCurrency();
-  }
+    one: string;
 
-  ngOnInit(): void {
-
-  }
-  currencyStatus():void{
-    if(this.currentlyStatus==false){
-      this.currentlyStatus=true
+    constructor(
+        public clientMenu: ClientMenuService,
+        public currency: CurrencyService,
+        public appLang: AppLangService,
+        public router: Router,
+        public route: ActivatedRoute
+    ) {
+        this.getCurrency();
     }
-    else{
-      this.currentlyStatus=false;
+
+    ngOnInit(): void {
+        this.countryFlagsImgs = {
+            en: '../../../../assets/icons/en.svg',
+            ua: '../../../../assets/icons/ua.svg',
+            pl: '../../../../assets/icons/pl.svg',
+            ru: '../../../../assets/icons/ru.svg',
+        }
+
+        console.log(this.countryFlagsImgs);
+
     }
-    console.log(this.currentlyStatus)
-  }
 
-  getCurrency() {
-    this.currency.get().subscribe(this.getCurrencyHandler)
-  }
+    x(item) {
+        console.log(item);
+    }
 
-  getCurrencyHandler = data => {
-    this.currency.data = data.data;
-    this.currency.setDefault();
-  }
+    currencyStatus(): void {
+        if (this.currentlyStatus == false) {
+            this.currentlyStatus = true
+        } else {
+            this.currentlyStatus = false;
+        }
+        console.log(this.currentlyStatus);
+    }
 
-  onClickCurrency(e: Event, c: ICurrency) {
-    e.preventDefault();
-    this.currency.current = c;
-  }
+    getCurrency() {
+        this.currency.get().subscribe(this.getCurrencyHandler)
+    }
 
-  changeLang(lang){
-    this.appLang.use(lang);
-    window.location.reload();
-  }
+    getCurrencyHandler = data => {
+        this.currency.data = data.data;
+        this.currency.setDefault();
+    }
 
+    onClickCurrency(e: Event, c: ICurrency) {
+        e.preventDefault();
+        this.currency.current = c;
+    }
 
+    changeLang(lang, item) {
+        console.log(lang);
+        console.log('item', item);
 
+        this.langs = item;
+
+        this.appLang.use(lang);
+        window.location.reload();
+    }
 }
