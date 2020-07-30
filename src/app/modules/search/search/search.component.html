@@ -5,6 +5,7 @@
             type="search"
             (input)="onInput($event)"
             (focus)="isActiveResults = true;"
+            (keyup)="pressEnter($event)"
     />
     <div class="search-results" *ngIf="search?.list?.length && isActiveResults">
         <p *ngFor="let item of search.list"

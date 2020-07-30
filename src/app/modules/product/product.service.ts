@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Observable } from 'rxjs';
 import { environment } from "src/environments/environment";
 import { AppLangService } from '../core/app-lang.service';
 // import { IResponse } from "src/app/core/response";
@@ -129,5 +130,14 @@ export class ProductService {
     let lang = this.appLang.current;
     let params = `?lang=${lang}&skip=0&take=${take}&sort_by=rating`;
     return this.http.get<any>(environment.products + params);
+  }
+
+  search(q: string): Observable<any> {
+    let skip = this.page * this.products.take - this.products.take;
+    let lang = this.appLang.current;
+    let params = `?skip=${skip}&take=${this.products.take}&q=${q}`;
+    return this.http.get<any>(
+        environment.host + `product/searchProduct` + params
+    );
   }
 }
