@@ -108,3 +108,26 @@ hr {
     }
   }
 }
+
+@include screen-w(752px) {
+  .sticky {
+    margin-left: 16px;
+  }
+
+  .golden {
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 100%;
+    max-width: 100%;
+
+    .short {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+
+    .long {
+      flex-basis: 90%;
+      max-width: 90%;
+    }
+  }
+}
