@@ -4,6 +4,7 @@
 :host {
   display: block;
   position: relative;
+  z-index: 1;
   // background-color: $gray800;
   background-color: lighten(mix($gray800, darken($blue, 30%)), 5%);
 

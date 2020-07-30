@@ -1,6 +1,13 @@
-<input
-  placeholder="{{ 'main.search' | translate }}"
-  class="radius medium"
-  type="search"
-  (input)="onInput($event)"
-/>
+<div class="search-container" (clickOutside)="isActiveResults = false;">
+    <input
+            placeholder="{{ 'main.search' | translate }}"
+            class="radius medium"
+            type="search"
+            (input)="onInput($event)"
+            (focus)="isActiveResults = true;"
+    />
+    <div class="search-results" *ngIf="search?.list?.length && isActiveResults">
+        <p *ngFor="let item of search.list"
+           [routerLink]="['/products/view/' + item.id]">{{item.name}}</p>
+    </div>
+</div>
