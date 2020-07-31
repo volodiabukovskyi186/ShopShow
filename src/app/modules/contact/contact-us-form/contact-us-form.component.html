@@ -1,4 +1,4 @@
-<form #heroForm="ngForm" (submit)="onSubmit()" class="form-container">
+<form #heroForm="ngForm" (submit)="onSubmit(heroForm)" class="form-container">
   <div class="form-row">
     <div class="description">
       <label for="fullName">Full name</label>
@@ -52,17 +52,17 @@
 
   <div class="form-row">
     <div class="description">
-      <label for="subject">Subject</label>
+      <label for="phone">Phone</label>
     </div>
     <div class="original">
       <input
-        #subject="ngModel"
+        #phone="ngModel"
         class="radius"
         type="text"
-        id="subject"
-        placeholder="Enter subject"
-        name="subject"
-        [(ngModel)]="model.subject"
+        id="phone"
+        placeholder="Enter phone"
+        name="phone"
+        [(ngModel)]="model.phone"
       />
     </div>
   </div>

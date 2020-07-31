@@ -11,7 +11,8 @@ export class ContactsBlockComponent implements OnInit {
   constructor(public contact: ContactService) {}
  
   onSubmit(event) {
-    alert("will be...")
+    this.contact.sendContactFormData(event);
+    alert("Mail send");
   }
 
   ngOnInit(): void {}

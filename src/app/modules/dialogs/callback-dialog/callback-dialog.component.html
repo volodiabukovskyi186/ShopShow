@@ -1,0 +1,44 @@
+<form [formGroup]="callbackForm" (submit)="onSubmit()" class="callback-dialog-container">
+  <div class="dialog-header">
+    <span class="callback-dialog-header">Замовити дзвінок</span>
+    <span class="material-icons close-icon" (click)="onNoClick()">close</span>
+  </div>
+  <div class="form-row">
+    <div class="original">
+      <input
+        class="callback-input"
+        type="text"
+        id="name"
+        placeholder="Ваше ім'я"
+        required
+        formControlName="name"
+      />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="original">
+      <input
+        class="callback-input"
+        type="text"
+        id="phone"
+        placeholder="Ваш номер телефону"
+        formControlName="phone"
+      />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="original">
+      <div class="flex">
+        <button
+          [disabled]="!callbackForm.valid"
+          type="submit"
+          class="button callback-submit-button"
+        >
+          Надіслати заявку
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
