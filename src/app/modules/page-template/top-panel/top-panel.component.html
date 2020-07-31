@@ -13,9 +13,9 @@
           <li (mouseout)="currentlyStatus=false" (mouseover)="currentlyStatus=true">
             <div *ngFor="let c of currency.data">
               <div class="active-currancy" *ngIf=" currency.current.id == c.id">
-              <span  >
+              <span>
                 {{c.currency_title}}
-                <img src="assets/icons/drop-down.svg"  /> 
+                <img class="fill-svg" src="assets/icons/drop-down.svg"  /> 
               </span>
               </div>
             </div>
@@ -35,7 +35,7 @@
               <div class="active-language" *ngIf="appLang.current == item.locale">
                   <img class="lang-item-flag" src="{{ countryFlagsImgs[item.name] }}">
                   <span class="active-lang-locale">{{item.locale}}</span>
-                  <img src="assets/icons/drop-down.svg" /> 
+                  <img class="fill-svg" src="assets/icons/drop-down.svg" /> 
               </div>
             </div>
             <ul class="langBar" [ngClass]="{inline: langStatus==true}">

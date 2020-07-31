@@ -15,13 +15,11 @@ export class SallersSliderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('slider', {read: DragScrollComponent}) ds: DragScrollComponent;
 
-  constructor() {
-  }
+  constructor() {}
 
   hoststatic = environment.hoststatic;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   interval: any;
 
@@ -34,6 +32,7 @@ export class SallersSliderComponent implements OnInit, AfterViewInit {
           this.moveRight();
         }
       }, this.timeout);
+    this.stopAuto();
   }
 
   stopAuto() {
