@@ -105,6 +105,10 @@
     span{
         display: flex;
         justify-content: space-between;
+
+        .fill-svg {
+            margin-left: 7px;
+        }
     }
 }
 .lang-item{
@@ -169,13 +173,21 @@
     }
     .active-currancy{
         color:#242626;
-        span img{
-            //background-color:black;
+        .fill-svg {
+            background-color: black;
+            filter: invert(1);
         }
     }
+
+    .active-language {
+        .fill-svg {
+            filter: invert(1);
+        }
+    }
+
     .active-lang-locale{
          img{
-             background-color:#242626;
+             background-color: #242626;
          }
 
     }
