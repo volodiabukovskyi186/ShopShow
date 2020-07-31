@@ -16,7 +16,7 @@
   background-color: rgba(#f5f5f3, 0.64);
   backdrop-filter: blur(4px) brightness(200%);
   padding: $space;
-  z-index: 100;
+  z-index: 0;
   border-top-right-radius: $radius;
   border-bottom-right-radius: $radius;
 }
@@ -60,14 +60,14 @@
 }
 
 .details-btn {
-  z-index: 100;
+  z-index: 0;
   position: absolute;
   left: 26%;
   bottom: 15%;
 }
 
 .details {
-  z-index: 100;
+  z-index: 0;
   position: absolute;
   top: 0;
   bottom: 0;
