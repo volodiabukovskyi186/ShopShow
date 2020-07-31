@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { NgForm } from '@angular/forms';
 import { ContactUs } from "../contact";
 import { fadeHeight } from "../../ui/animations";
 
@@ -27,7 +28,16 @@ export class ContactUsFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
-    this.formSubmit.emit();
+  onSubmit(heroForm: NgForm) {
+    if (heroForm.valid) {
+      const data = {
+        name: heroForm.value.name,
+        email : heroForm.value.email,
+        phone : heroForm.value.phone,
+        message : heroForm.value.message
+      };
+
+      this.formSubmit.emit(data);
+    }
   }
 }

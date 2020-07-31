@@ -1,8 +1,13 @@
 export interface ContactUs {
   name: string;
   email: string;
-  subject: string;
+  phone: string;
   message: string;
+}
+
+export interface Callback {
+  name: string;
+  phone: string;
 }
 
 export interface Arrdess {

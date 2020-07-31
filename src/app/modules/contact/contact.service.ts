@@ -9,11 +9,17 @@ import { Observable } from "rxjs";
 })
 export class ContactService {
   contacts: Contact;
-  contactUs: ContactUs = { email: "", message: "", name: "", subject: "" };
+  contactUs: ContactUs = { email: "", message: "", name: "", phone: "" };
 
   constructor(private http: HttpClient) {}
 
   get(): Observable<any> {
     return this.http.get<any>(environment.data + `/contact.json`);
+  }
+
+  public sendContactFormData(data) {
+    this.http.post(environment.host + 'mail/ContactForm', data).subscribe((response) => {
+      return response;
+    });
   }
 }

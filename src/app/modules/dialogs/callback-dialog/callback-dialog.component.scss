@@ -1,0 +1,49 @@
+.callback-dialog-container {
+  width: 35vw;
+  border-radius: 0 !important;
+
+  .dialog-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 35px;
+
+    .callback-dialog-header {
+      color: #000;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .close-icon {
+      font-size: 37px;
+      margin-top: -16px;
+      cursor: pointer;
+    }
+  }
+
+  .form-row {
+    .callback-input {
+      margin-bottom: 10px;
+
+      &:focus {
+        color: #000 !important;
+      }
+
+      &::placeholder {
+        color: #000;
+        font-size: 13px;
+      }
+    }
+
+    .callback-submit-button {
+      background-color: #000;
+      color: #fff;
+      width: 100%;
+      font-size: 15px;
+    }
+  }
+}
+
+.mat-dialog-container {
+  padding: 11px !important;
+}
