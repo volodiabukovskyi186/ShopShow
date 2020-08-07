@@ -1,6 +1,7 @@
 <app-product-item
   *ngFor="let item of products"
   [product]="item"
+  style="margin: 10px;"
 ></app-product-item>
 
 <div class="d4 text-cente product-iten-text" *ngIf="!products || products.length <= 0">
