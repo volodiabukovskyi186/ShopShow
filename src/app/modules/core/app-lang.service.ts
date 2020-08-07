@@ -63,10 +63,10 @@ export class AppLangService {
 
   init() {
     // init langs
-    const pl: ILangItem = { flag: "🇵🇱", name: "pl", locale: "pl" };
-    const en: ILangItem = { flag: "🇺🇸", name: "en", locale: "en" };
-    const ru: ILangItem = { flag: "🇷🇺", name: "ru", locale: "ru" };
-    const ua: ILangItem = { flag: "🇺🇦", name: "ua", locale: "ua" };
+    const pl: ILangItem = { flag: "🇵🇱", name: "Polish", locale: "pl" };
+    const en: ILangItem = { flag: "🇺🇸", name: "English", locale: "en" };
+    const ru: ILangItem = { flag: "🇷🇺", name: "Russian", locale: "ru" };
+    const ua: ILangItem = { flag: "🇺🇦", name: "Ukraine", locale: "ua" };
 
     let defaultLang = localStorage.getItem('current_lang') || ua.name;
 
