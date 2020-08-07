@@ -3,30 +3,6 @@
     <div class="category" *ngFor="let category of categories">
       <app-filter-item [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-filter-item>
     </div>
-    <!-- <div class="category">
-      <div>{{ categoriesManName }}</div>
-      <span class="material-icons" (click)="openCategoriesMan($event)" *ngIf="!isOpenCategoriesMan">add</span>
-      <span class="material-icons" *ngIf="isOpenCategoriesMan" (click)="openCategoriesMan($event)">remove</span>
-    </div>
-    <div *ngIf="isOpenCategoriesMan" class="flex">
-      <div>
-        {{ categoriesMan }}
-      </div>
-      <span class="material-icons" (click)="openFirstSubCategoryMan($event)" *ngIf="!isOpenFirstSubCategoryMan">add</span>
-      <span class="material-icons" *ngIf="isOpenFirstSubCategoryMan" (click)="openFirstSubCategoryMan($event)">remove</span>
-    </div>
-    <div class="category">
-      <div>{{ categoriesWomanName }}</div>
-      <span class="material-icons" (click)="openCategoriesWoman($event)" *ngIf="!isOpenCategoriesWoman">add</span>
-      <span class="material-icons" *ngIf="isOpenCategoriesWoman" (click)="openCategoriesWoman($event)">remove</span>
-    </div>
-    <div *ngIf="isOpenCategoriesWoman" class="flex">
-      <div>
-        {{ categoriesWoman }}
-      </div>
-      <span class="material-icons" (click)="openFirstSubCategoryWoman($event)" *ngIf="!isOpenFirstSubCategoryWoman">add</span>
-      <span class="material-icons" *ngIf="isOpenFirstSubCategoryWoman" (click)="openFirstSubCategoryWoman($event)">remove</span>
-    </div> -->
   </div>
   <div class="manufactures">
     <div class="manufactures-list">
@@ -36,10 +12,6 @@
     </div>
     <div *ngIf="isOpenManufactures" class="manufactures-list-content">
       <app-filter-item *ngFor="let manufacturer of manufacturers" [filter]="manufacturer" (filterSelected)="onManufacturerFilterSelected($event)" (filterDeselected)="onManufacturerFilterDeselected($event)"></app-filter-item>
-      <!-- <div class="manufactures-list-item" >
-        <mat-checkbox (ngModelChange)="onCheckboxChange($event)" class="checkbox"></mat-checkbox>
-        <div>{{ manufacture.name }}</div>
-      </div> -->
     </div>
   </div>
   <div class="price-range">
@@ -54,7 +26,6 @@
           <button class="price-range-btn" (click)="value = options.ceil">Max</button>
         </div>
         <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
-        <!-- <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider> -->
         <button class="price-range-ok" (click)="onPriceFilterApplied()">Ok</button>
       </div>
   </div>
