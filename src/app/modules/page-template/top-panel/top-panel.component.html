@@ -19,10 +19,13 @@
               </span>
               </div>
             </div>
-            <ul class=" currencyBar" [ngClass]="{inline: currentlyStatus==true}">
+            <ul class="currencyBar" [ngClass]="{inline: currentlyStatus==true}">
               <li *ngFor="let c of currency.data">
-                <a [ngClass]="{ active: currency.current.id == c.id }"
-                  (click)="onClickCurrency($event, c)">{{ c.currency_title }}</a>
+                <a [ngClass]="{ active: currency.current.id == c.id }" class="currency-content"
+                  (click)="onClickCurrency($event, c)">
+                    <img class="currency-img" src="{{ currencyImgs[c.currency_title] }}" />
+                    - <span class="currency-text">{{ c.currency_title }}</span>
+                </a>
               </li>
             </ul>
           </li>
@@ -34,7 +37,7 @@
             <div *ngFor="let item of appLang.langs">
               <div class="active-language" *ngIf="appLang.current == item.locale">
                   <img class="lang-item-flag" src="{{ countryFlagsImgs[item.name] }}">
-                  <span class="active-lang-locale">{{item.locale}}</span>
+                  <span class="active-lang-locale">{{item.name}}</span>
                   <img class="fill-svg" src="assets/icons/drop-down.svg" /> 
               </div>
             </div>
@@ -43,7 +46,7 @@
                 <a [ngClass]="{ active: appLang.current == item.locale }"
                    (click)="changeLang(item.locale, item.flag)">
                   <div class="flag-block">
-                    <img class="lang-item-flag" src="{{ countryFlagsImgs[item.name] }}">
+                    <img class="lang-item-flag all-langs-flags" src="{{ countryFlagsImgs[item.name] }}">
                     <span class="lang-item-name"> {{ item.name }} </span>
                   </div>
                 </a>

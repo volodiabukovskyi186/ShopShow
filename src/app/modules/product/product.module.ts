@@ -20,8 +20,6 @@ import { GaleryProductFotoDialogComponent } from '../dialogs/galery-product-foto
 import { ProductListViewComponent } from './product-list-view/product-list-view.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-// import { FilterComponent } from '../filter/filter.component';
-// import { FilterItemComponent } from '../filter/filter-item/filter-item.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { Ng5SliderModule } from 'ng5-slider';

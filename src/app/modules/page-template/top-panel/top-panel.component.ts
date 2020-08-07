@@ -14,6 +14,7 @@ export class TopPanelComponent implements OnInit {
     langStatus: boolean = false;
     currentlyStatus: boolean = false;
     public countryFlagsImgs;
+    public currencyImgs;
     public langs;
     public flag;
 
@@ -31,14 +32,16 @@ export class TopPanelComponent implements OnInit {
 
     ngOnInit(): void {
         this.countryFlagsImgs = {
-            en: '../../../../assets/icons/en.svg',
-            ua: '../../../../assets/icons/ua.svg',
-            pl: '../../../../assets/icons/pl.svg',
-            ru: '../../../../assets/icons/ru.svg',
+            English: '../../../../assets/icons/en.svg',
+            Ukraine: '../../../../assets/icons/ua.svg',
+            Polish: '../../../../assets/icons/pl.svg',
+            Russian: '../../../../assets/icons/ru.svg',
         }
 
-        console.log(this.countryFlagsImgs);
-
+        this.currencyImgs = {
+            UAH: '../../../../assets/icons/dollar.svg',
+            USD : '../../../../assets/icons/hryvnia.svg'
+        }
     }
 
     x(item) {
@@ -66,6 +69,7 @@ export class TopPanelComponent implements OnInit {
     onClickCurrency(e: Event, c: ICurrency) {
         e.preventDefault();
         this.currency.current = c;
+        console.log(c);
     }
 
     changeLang(lang, item) {
