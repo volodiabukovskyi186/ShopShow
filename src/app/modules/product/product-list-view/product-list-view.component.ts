@@ -6,25 +6,32 @@ import { PaginationPage } from "src/app/modules/ui/rap/pagination/pagination-pag
 import { ReviewService } from 'src/app/modules/review/review.service';
 import { FilterService } from '../../filter/filter.service';
 import { CurrencyService } from '../../currency/currency.service';
+import { environment } from '../../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { MatSelectChange } from '@angular/material/select';
+import { IFilters } from '../../filter/filter.component';
 
 @Component({
   selector: 'app-product-list-view',
   templateUrl: './product-list-view.component.html',
   styleUrls: ['./product-list-view.component.scss']
 })
-export class ProductListViewComponent implements OnInit, PaginationPage {
+export class ProductListViewComponent implements OnInit {
   breadcrumbs: Array<NavLink> = [];
   search: string;
   Math = Math;
+  public sortProductsData: any;
+  public sortedProducts: any;
 
   constructor(
       private route: ActivatedRoute,
       public product: ProductService,
       public filter: FilterService,
       public currency: CurrencyService,
-      public review: ReviewService
+      public review: ReviewService,
+      private http: HttpClient,
   ) {
-    this.getPriceFilter();
+    // this.getPriceFilter();
   }
 
   public ngOnInit(): void {
@@ -41,22 +48,30 @@ export class ProductListViewComponent implements OnInit, PaginationPage {
           this.get();
           this.getLastReviews();
         });
+
+    this.sortProducts();
+
+    console.log(this.product);
   }
 
-  public getPriceFilter() {
-    this.filter.getPriceFilter().subscribe(this.getPriceFilterHandler);
+  public sortProducts(): void {
+    this.sortProductsData = ['price', 'rating'];
   }
 
-  public getPriceFilterHandler = data => {
-    this.filter.price = data.data;
-    this.filter.priceModel.max = data.data.max;
-    this.filter.priceModel.min = data.data.min;
-  }
+  // public getPriceFilter() {
+  //   this.filter.getPriceFilter().subscribe(this.getPriceFilterHandler);
+  // }
+
+  // public getPriceFilterHandler = data => {
+  //   this.filter.price = data.data;
+  //   this.filter.priceModel.max = data.data.max;
+  //   this.filter.priceModel.min = data.data.min;
+  // }
 
   id: number = 0;
 
   public searchHandler = (data) => {
-    this.product.products = data;
+    this.product.products.data.products = data.data;
     this.breadcrumbs[1] = {
       link: '/#',
       title: 'SearchResult',
@@ -74,19 +89,28 @@ export class ProductListViewComponent implements OnInit, PaginationPage {
     this.review.review = data.data;
   }
 
-  public pageToHandler(page: number): void {
+  public pageChangedHandler(page: number): void {
     this.product.page = page;
-  }
-
-  public pagePrevHandler(): void {
-    this.product.page--;
-  }
-
-  public pageNextHandler(): void {
-    this.product.page++;
-  }
-
-  public pageChangedHandler(): void {
     this.get();
+  }
+
+  public changeMaterialCategory(event: MatSelectChange) {
+    console.log(event);
+    console.log(this.product.products);
+
+    this.product.sortBy(event.value).subscribe((res) => {
+      this.product.products.data.products = res.data.products;
+    });
+  }
+
+  public sort(sorted): void {
+    console.log(sorted);
+  }
+
+  public onFilterChanged(filters: IFilters): void {
+    this.product.getByFilters(filters).subscribe((data) => {
+      this.product.products.data.products = data.data.products;
+    });
+
   }
 }

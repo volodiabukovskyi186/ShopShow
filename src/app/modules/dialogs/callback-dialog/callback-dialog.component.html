@@ -1,6 +1,6 @@
-<form [formGroup]="callbackForm" (submit)="onSubmit()" class="callback-dialog-container">
+<form [formGroup]="callbackForm" (submit)="onSubmit()" class="callback-dialog-container" *ngIf="isCallbackForm">
   <div class="dialog-header">
-    <span class="callback-dialog-header">Замовити дзвінок</span>
+    <span class="callback-dialog-header">{{ "callback.orderCall" | translate }}</span>
     <span class="material-icons close-icon" (click)="onNoClick()">close</span>
   </div>
   <div class="form-row">
@@ -9,7 +9,7 @@
         class="callback-input"
         type="text"
         id="name"
-        placeholder="Ваше ім'я"
+        placeholder="{{ 'callback.yourName' | translate }}"
         required
         formControlName="name"
       />
@@ -22,7 +22,7 @@
         class="callback-input"
         type="text"
         id="phone"
-        placeholder="Ваш номер телефону"
+        placeholder="{{ 'callback.yourPhone' | translate }}"
         formControlName="phone"
       />
     </div>
@@ -36,9 +36,18 @@
           type="submit"
           class="button callback-submit-button"
         >
-          Надіслати заявку
+          {{ "callback.submitApplication" | translate }}
         </button>
       </div>
     </div>
   </div>
 </form>
+<div *ngIf="!isCallbackForm" class="callback-successfull-container">
+  <div class="dialog-header">
+    <span class="material-icons close-icon" (click)="onNoClick()">close</span>
+  </div>
+  <div class="callback-successfull-message">
+    <span class="callback-successfull-header">{{ "callback.thankForRequest" | translate }}</span>
+    <span>{{ "callback.managerContact" | translate }}</span>
+  </div>
+</div>

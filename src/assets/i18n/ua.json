@@ -31,6 +31,14 @@
     "call_back": "Передзвоніть",
     "search": "Пошук"
   },
+  "callback": {
+    "orderCall": "Замовити дзвінок",
+    "yourName": "Ваше ім'я",
+    "yourPhone": "Ваш номер телефону",
+    "submitApplication": "Надіслати заявку",
+    "thankForRequest" : "Дякуємо за Вашу заявку",
+    "managerContact" : "Наш менеджер зв'яжеться з вами протягом декількох годин!"
+  },
   "accaunt": {
     "accaunt": "Акаунт",
     "signin": "Увійти",
@@ -109,5 +117,10 @@
     "description": "Опис",
     "additionalInfo": "Додаткова інформація",
     "related": "Пов'язані товари"
+  },
+  "sortBy": {
+    "sort": "Сортувати За:",
+    "price": "ціна",
+    "rating": "рейтинг"
   }
 }

@@ -1,4 +1,4 @@
-<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
 
 <div class="golden">
   <div class="short">
@@ -118,10 +118,7 @@
             [page]="product.reviewPage"
             [total]="Math.ceil(product.reviews.count / product.reviews.take)"
             [pagesToShow]="5"
-            (goNext)="pageNextHandler()"
-            (goPrev)="pagePrevHandler()"
-            (goPage)="pageToHandler($event)"
-            (pageChanged)="pageChangedHandler()"
+            (pageChanged)="pageChangedHandler($event)"
           ></app-pagination>
           <ng-template #noReviews>
             <div class="d4">{{ "review.no_reviews" | translate }}</div>

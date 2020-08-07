@@ -4,13 +4,14 @@ import { ManufacturersService } from "src/app/modules/manufacturers/manufacturer
 // import { NgxUiLoaderService } from "ngx-ui-loader";
 import { environment } from "src/environments/environment";
 import { PaginationPage } from 'src/app/modules/ui/rap/pagination/pagination-page';
+import { ProductService } from '../../../modules/product/product.service'
 
 @Component({
   selector: "app-manufactures-page",
   templateUrl: "./manufactures-page.component.html",
   styleUrls: ["./manufactures-page.component.scss"]
 })
-export class ManufacturesPageComponent implements OnInit, PaginationPage {
+export class ManufacturesPageComponent implements OnInit {
   hoststatic = environment.hoststatic;
   Math = Math;
   breadcrumbs: Array<NavLink> = [
@@ -19,26 +20,21 @@ export class ManufacturesPageComponent implements OnInit, PaginationPage {
       title: "Homepage"
     },
     {
-      link: "manufacturers",
+      link: "/manufacturers",
       title: "Manufacturers"
     }
   ];
 
   constructor(
     // private ngxService: NgxUiLoaderService,
+    public product: ProductService,
     public manufacturer: ManufacturersService
   ) {}
-  pageToHandler(page: number): void {
-    this.manufacturer.page = page;
-  }
-  pagePrevHandler(): void {
-    this.manufacturer.page--;
-  }
-  pageNextHandler(): void {
-    this.manufacturer.page++;
-  }
-  pageChangedHandler(): void {
+
+  pageChangedHandler(page: number): void {
+    this.product.page = page;
     this.get();
+
   }
 
   ngOnInit(): void {

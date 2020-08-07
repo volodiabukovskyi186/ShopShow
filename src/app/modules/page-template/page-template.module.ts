@@ -17,7 +17,7 @@ import { AccauntModule } from "../accaunt/accaunt.module";
 import { CartModule } from '../cart/cart.module';
 import { SearchModule } from '../search/search.module';
 import { NavListComponent } from './nav/nav-list/nav-list.component';
-import {ClickOutsideModule} from "ng-click-outside";
+import { ClickOutsideModule } from "ng-click-outside";
 import { CallbackDialogComponent } from '../dialogs/callback-dialog/callback-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 

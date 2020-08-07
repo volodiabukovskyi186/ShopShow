@@ -23,6 +23,14 @@
       "ourManufacturers": "Наші виробники",
       "comeClearUsNow": "Come clear us now"
     },
+    "callback": {
+      "orderCall": "Замовити дзвінок",
+      "yourName": "Ваше ім'я",
+      "yourPhone": "Ваш номер телефону",
+      "submitApplication": "Надіслати заявку",
+      "thankForRequest" : "Дякуємо за Вашу заявку",
+      "managerContact" : "Наш менеджер зв'яжеться з вами протягом декількох годин!"
+    },
     "cart": {
       "checkout": "Оформити замовлення",
       "cart": "Кошик",
@@ -63,5 +71,10 @@
       "cartEmpty": "Кошик порожній",
       "order": "Замовлення",
       "backToStore": "Повернутися до покупок"
+    },
+    "sortBy": {
+      "sort": "Сортировать По:",
+      "price": "цена",
+      "rating": "рейтинг"
     }
   }

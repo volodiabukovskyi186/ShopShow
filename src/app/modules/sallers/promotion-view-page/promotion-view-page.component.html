@@ -1,11 +1,12 @@
-<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
 
 <!-- <pre>{{sallers.item| json}}</pre> -->
 
 <div class="row">
-  <!-- <div class="col col-side">
-    <i>Filters will be here</i>
-  </div> -->
+  <div class="col col-side">
+    <!-- <i>Filters will be here</i> -->
+    <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page>
+  </div>
   <div class="col">
     <div class="ratio radius">
       <div class="date">

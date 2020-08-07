@@ -18,6 +18,13 @@ import { TranslateModule } from "@ngx-translate/core";
 import { ClickOutsideModule } from "ng-click-outside";
 import { GaleryProductFotoDialogComponent } from '../dialogs/galery-product-foto-dialog/galery-product-foto-dialog.component';
 import { ProductListViewComponent } from './product-list-view/product-list-view.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+// import { FilterComponent } from '../filter/filter.component';
+// import { FilterItemComponent } from '../filter/filter-item/filter-item.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSliderModule } from '@angular/material/slider';
+import { Ng5SliderModule } from 'ng5-slider';
 
 const c = [
   ProductListComponent,
@@ -38,7 +45,13 @@ const c = [
     ReviewModule,
     TranslateModule,
     DragScrollModule,
-    MatIconModule
+    MatIconModule,
+    ClickOutsideModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatSliderModule,
+    Ng5SliderModule,
   ],
   exports: [...c],
 })

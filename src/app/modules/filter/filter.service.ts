@@ -8,16 +8,34 @@ export interface IPriceFilter {
   max: number;
 }
 
+export interface ICategoryFilterResponse {
+  data: ICategoryFilter[];
+}
+
+export interface ICategoryFilter {
+  id: number;
+  name: string;
+  sub: ICategoryFilter[];
+}
+
 @Injectable({
   providedIn: "root",
 })
 export class FilterService {
-  price: IPriceFilter = { min: 1, max: 100 };
-  priceModel: IPriceFilter = { min: 1, max: 100 };
+  // price: IPriceFilter = { min: 1, max: 100 };
+  // priceModel: IPriceFilter = { min: 1, max: 100 };
 
   constructor(private http: HttpClient) {}
 
-  getPriceFilter(): Observable<any> {
+  public getPriceFilter(): Observable<any> {
     return this.http.get<any>(environment.host + `client/getMinMaxPrice`);
+  }
+
+  public getManufactures(): Observable<any> {
+    return this.http.get(environment.host + `client/manufacturers`);
+  }
+
+  public getCategory() : Observable<ICategoryFilterResponse> {
+    return this.http.get<any>(environment.host + `client/category?take=100&lang=ua`);
   }
 }

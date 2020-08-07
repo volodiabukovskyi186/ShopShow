@@ -14,7 +14,7 @@ import { CurrencyService } from '../../currency/currency.service';
   templateUrl: './product-view-page.component.html',
   styleUrls: ['./product-view-page.component.scss'],
 })
-export class ProductViewPageComponent implements OnInit, PaginationPage {
+export class ProductViewPageComponent implements OnInit {
   id: number = 0;
 
   breadcrumbs: Array<NavLink> 
@@ -38,13 +38,13 @@ export class ProductViewPageComponent implements OnInit, PaginationPage {
    
     if(this.product.item?.category?.category?.descriptions.name){
       this.breadcrumbs.push({
-        link: `products/${this.product.item?.category?.category_id}`,
+        link: `/products/${this.product.item?.category?.category_id}`,
         title: this.product.item?.category?.category?.descriptions.name,
       });
     }
    
     this.breadcrumbs.push({
-      link: `product/${this.id}`,
+      link: `/products/view/${this.id}`,
       title: this.product.item?.description.name,
     });
   };
@@ -103,16 +103,9 @@ export class ProductViewPageComponent implements OnInit, PaginationPage {
     this.cart.addToCart(item, this.count);
   }
   Math = Math;
-  pageToHandler(page: number): void {
-    this.product.reviewPage = page;
-  }
-  pagePrevHandler(): void {
-    this.product.reviewPage--;
-  }
-  pageNextHandler(): void {
-    this.product.reviewPage++;
-  }
-  pageChangedHandler(): void {
+
+  pageChangedHandler(page: number): void {
+    this.product.page = page;
     this.getProdReview(this.id);
   }
 }

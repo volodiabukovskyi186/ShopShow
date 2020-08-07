@@ -1,0 +1,108 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.material-icons {
+  filter: invert(0.5);
+  font-size: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.filter-container {
+  margin-right: 60px;
+
+  .manufactures {  
+    margin-left: -65px;
+
+    .manufactures-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 40px;
+      border-bottom: 1px solid #EEF1F5;
+      line-height: 2;
+      
+      .material-icons {
+        cursor: pointer;
+        filter: invert(0.5);
+        font-size: 15px;
+        margin-top: 10px;
+      }
+    }
+
+    .manufactures-list-content {
+      margin-left: 65px;
+    }
+
+    .manufactures-list-content {
+      .manufactures-list-item {
+        display: flex;
+        flex-direction: row;
+        margin-top: 7px;
+        margin-bottom: 15px;
+
+        .checkbox {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .price-range {
+    margin-left: -65px;
+
+    .price-range-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 40px;
+      border-bottom: 1px solid #EEF1F5;
+      line-height: 2;
+
+      .material-icons {
+        cursor: pointer;
+        filter: invert(0.5);
+        font-size: 15px;
+        margin-top: 10px;
+      }
+    }
+    .price-range-content {
+      display: flex;
+      flex-direction: column;
+      padding-top: 10px;
+
+      .min-max-btns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .price-range-btn {
+          cursor: pointer;
+          background-color: #fff;
+          outline: none;
+          border-radius: 5px;
+          border: 1px solid #000;
+          padding: 3px 12px;
+        }
+      }
+
+      .price-range-ok {
+        padding: 3px 0;
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid #000;
+        width: 63px;
+        background: #fff;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+    }
+  }
+}

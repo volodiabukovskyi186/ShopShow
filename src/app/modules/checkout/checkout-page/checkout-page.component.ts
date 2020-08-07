@@ -13,7 +13,7 @@ export class CheckoutPageComponent implements OnInit {
       title: "Homepage"
     },
     {
-      link: "checkout",
+      link: "/checkout",
       title: "Checkout"
     }
   ];

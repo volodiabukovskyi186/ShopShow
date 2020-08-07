@@ -15,7 +15,7 @@ export class CollectionPageComponent implements OnInit {
       title: "Homepage",
     },
     {
-      link: "collection",
+      link: "/collections",
       title: "Collection",
     },
   ];

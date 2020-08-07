@@ -200,10 +200,11 @@ div{
   .mobile-burger {
     position: relative;
     z-index: 1000;
-    img{
-      background-color: white;
-      width: 25px;
-      margin-top: 3px;
+    img {
+      background-color: unset;
+      filter: invert(1);
+      width: 23px;
+      margin-top: 5px;
       border-radius: 3px;
       cursor: pointer;
     }
@@ -232,7 +233,7 @@ div{
 @media screen and(max-width:600px) {
   .mobile-burger {
     img {
-      margin-top: 2%;
+      margin-top: 5%;
     }
   }
 

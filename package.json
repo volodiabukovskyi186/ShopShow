@@ -32,6 +32,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "express": "^4.15.2",
     "ng-click-outside": "^6.0.0",
+    "ng5-slider": "^1.2.4",
     "ngx-drag-scroll": "^9.0.0-beta.2",
     "ngx-slider": "0.0.5",
     "preboot": "^7.0.0",

@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
 // import { IManufacturerReviews } from 'src/app/modules/review/review';
 // import { ProductService } from 'src/app/modules/product/product.service';
 
+import { IFilters } from '../../filter/filter.component';
+
 @Component({
   selector: "app-manufacturer-page",
   templateUrl: "./manufacturer-page.component.html",
@@ -20,7 +22,7 @@ export class ManufacturerPageComponent implements OnInit {
       title: "Homepage",
     },
     {
-      link: "manufacturers",
+      link: "/manufacturers",
       title: "Manufacturers",
     },
   ];
@@ -42,7 +44,7 @@ export class ManufacturerPageComponent implements OnInit {
     // link: "manufacturer" + "/" + this.id,
 
     this.breadcrumbs.push({
-      link: `manufacturer/${this.id}`,
+      link: `/manufacturers/${this.id}`,
       title: this.manufacturer.item.name,
     });
   };
@@ -69,5 +71,12 @@ export class ManufacturerPageComponent implements OnInit {
     //   item.image.src_mini = src.src_mini;
     //   item.image.src = src.src;
     // })
+  }
+
+  public onFilterChanged(filters: IFilters): void {
+    this.product.getByFilters(filters).subscribe((data) => {
+      this.product.products.data.products = data.data.products;
+      console.log(this.product.products.data.products);
+    });
   }
 }

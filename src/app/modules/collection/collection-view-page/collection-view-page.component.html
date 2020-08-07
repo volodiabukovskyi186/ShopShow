@@ -1,11 +1,12 @@
-<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
 <br />
 <div class="row">
-  <!-- <div class="col col-side">
+  <div class="col col-side">
     <div class="filters">
-      <i>Filters will be here</i>
+      <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page>
+      <!-- <i>Filters will be here</i> -->
     </div>
-  </div> -->
+  </div>
 
   <div class="col">
     <div class="grid">
@@ -19,8 +20,8 @@
       ></app-collection-item>
 
       <app-product-item
-        *ngFor="let item of collection.item.products"
-        [product]="item.product"
+        *ngFor="let item of products"
+        [product]="item"
       ></app-product-item>
     </div>
 
