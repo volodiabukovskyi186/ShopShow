@@ -1,0 +1,29 @@
+.category {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    //margin-right: 40px;
+    //width: 207px;
+    margin-left: -65px;
+    width: 202px;
+    border-bottom: 1px solid #EEF1F5;
+    line-height: 2;
+    margin-top: 5px;
+}
+
+.filter-name {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.material-icons {
+    filter: invert(0.5);
+    font-size: 15px;
+    margin-top: 6px;
+    cursor: pointer;
+    width: 17px;
+}
+
+.checkbox {
+    margin-top: -3px;
+}

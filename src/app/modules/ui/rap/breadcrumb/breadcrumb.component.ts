@@ -12,15 +12,7 @@ export class BreadcrumbComponent implements OnInit {
   @Input() breadcrumb: NavLink;
   @Input() langLink: string;
 
-  constructor() {
-    
-   
-  }
+  constructor() {}
 
-
-  ngOnInit(): void {
-  
-  }
- 
-
+  ngOnInit(): void {}
 }

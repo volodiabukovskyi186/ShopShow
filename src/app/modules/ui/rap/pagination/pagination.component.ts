@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: "app-pagination",
@@ -24,25 +25,50 @@ export class PaginationComponent implements OnInit {
   goPage = new EventEmitter<number>();
 
   @Output()
-  pageChanged = new EventEmitter<any>();
+  pageChanged = new EventEmitter<number>();
 
-  constructor() {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.total);
 
-  onPage(n: number): void {
-    this.goPage.emit(n);
-    this.pageChanged.emit();
+    this.route.queryParams.subscribe(params => {
+      this.page = +params['page'] || 1;
+
+      this.pageChanged.emit(this.page);
+      console.log(params);
+      console.log(this.page);
+    })
+  }
+
+  onPage(n: number): void {  
+    this.page = n;
+    this.changePage();
   }
 
   onPrev(): void {
+    this.page--;
     this.goPrev.emit(true);
-    this.pageChanged.emit();
+    this.changePage();
   }
 
   onNext(): void {
+    this.page++;
     this.goNext.emit(true);
-    this.pageChanged.emit();
+    this.changePage();
+  }
+
+  private changePage(): void {
+    const queryParams: Params = { page: this.page };
+
+    this.router.navigate(
+        [], 
+        {
+          relativeTo: this.route,
+          queryParams: queryParams, 
+          queryParamsHandling: 'merge', // remove to replace all query params by provided
+        });
+    this.pageChanged.emit(this.page);
   }
 
   pageList(): Array<number> {

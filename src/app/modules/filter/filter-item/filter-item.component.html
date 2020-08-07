@@ -1,0 +1,17 @@
+<div class="category">
+    <div class="filter-name">{{ filter.name }}</div>
+
+    <div *ngIf="hasSubFilters(filter)">
+        <span class="material-icons" (click)="isExpanded = true;" *ngIf="!isExpanded">add</span>
+        <span class="material-icons" *ngIf="isExpanded" (click)="isExpanded = false;">remove</span>
+
+        <div *ngIf="isExpanded && hasSubFilters(filter)">
+            <app-filter-item *ngFor="let subFilter of filter.sub" [filter]="subFilter"
+             (filterSelected)="onChildFilterSelected($event)" (filterDeselected)="onChildFilterDeselected($event)"></app-filter-item>
+        </div>
+    </div>
+
+    <div *ngIf="!hasSubFilters(filter)">
+        <mat-checkbox (change)="onCheckboxChange($event)" class="checkbox"></mat-checkbox>
+    </div>
+</div>

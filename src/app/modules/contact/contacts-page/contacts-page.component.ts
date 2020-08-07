@@ -16,7 +16,7 @@ export class ContactsPageComponent implements OnInit {
       title: "Homepage",
     },
     {
-      link: "contacts",
+      link: "/contacts",
       title: "Contacts",
     },
   ];

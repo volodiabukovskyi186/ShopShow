@@ -3,6 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { environment } from "src/environments/environment";
 import { AppLangService } from '../core/app-lang.service';
+import { IFilters } from '../filter/filter.component';
+import { filter } from 'rxjs/operators';
 // import { IResponse } from "src/app/core/response";
 
 interface IData {
@@ -115,6 +117,23 @@ export class ProductService {
     return this.http.get<any>(environment.products + params);
   }
 
+  getByFilters(filters: IFilters){
+    let skip = this.page * this.products.take - this.products.take;
+    let lang = this.appLang.current;
+   
+    let params = `?lang=${lang}&skip=${skip}&take=${this.products.take}&sort_by=id&min=${filters.minPrice}&max=${filters.maxPrice}`;
+
+    if (filters.manufacturers.length > 0){
+      params += `&manufacturer_id=${JSON.stringify(filters.manufacturers)}`;
+    }
+
+    if (filters.categories.length > 0){
+      params += `&category_id=${JSON.stringify(filters.categories)}`;
+    }  
+
+    return this.http.get<any>(environment.host + "client/getProductsByFilterClient" + params);
+  }
+
   getProductBy(id: number) {
     return this.http.get<any>(environment.products + `/${id}`);
   }
@@ -138,6 +157,17 @@ export class ProductService {
     let params = `?skip=${skip}&take=${this.products.take}&q=${q}`;
     return this.http.get<any>(
         environment.host + `product/searchProduct` + params
+    );
+  }
+
+  sortBy(value: string) {
+    const take = 20;
+    const lang = this.appLang.current;
+    const params = `?lang=${lang}&skip=0&take=${take}&sort_by=${value}&desc=DESC`;
+    console.log(environment.products + params);
+
+    return this.http.get<any>(
+      environment.products + params
     );
   }
 }

@@ -63,5 +63,10 @@
     "cartEmpty":"Cart empty",
     "order":"Order",
     "backToStore":"Back to store"
+  },
+  "sortBy": {
+    "sort": "Sortuj według:",
+    "price": "сena",
+    "rating": "ocena"
   }
 }

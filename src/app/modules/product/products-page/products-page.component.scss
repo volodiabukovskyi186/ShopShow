@@ -61,3 +61,32 @@ $size: 16px;
   background: $primary;
   cursor: pointer;
 }
+
+.sort-products {
+  width: 21%;
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding-left: 10px;
+  height: 33px !important;
+  margin-left: 30px;
+
+  .sort-products-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: 250px;
+    margin-top: -15px;
+
+    .sort-products-label {
+      // width: 76px;
+      width: 285px;
+      margin-right: 10px;
+    }
+  }
+}
+
+::ng-deep .mat-select-content{
+  width:2000px !important;
+  background-color: red !important;
+  font-size: 10px !important;
+}

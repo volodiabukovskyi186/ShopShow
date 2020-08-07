@@ -1,9 +1,10 @@
-<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
 <br />
 <div class="row">
-  <!-- <div class="col col-side">
-    <i>Filters will be here</i>
-  </div> -->
+  <div class="col col-side" style="margin-top: 5%;">
+    <!-- <i>Filters will be here</i> -->
+    <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page>
+  </div>
   <div class="col">
     <div style="width: 100%;" class="d4 text-center flex row center v_center">
       <h1 style="margin-top: 0;" class="promotion-header">Promotions</h1>
@@ -50,10 +51,7 @@
       [page]="prom.page"
       [total]="Math.ceil(prom.promotions.count / prom.promotions.take)"
       [pagesToShow]="5"
-      (goNext)="pageNextHandler()"
-      (goPrev)="pagePrevHandler()"
-      (goPage)="pageToHandler($event)"
-      (pageChanged)="pageChangedHandler()"
+      (pageChanged)="pageChangedHandler($event)"
     ></app-pagination>
   </div>
 </div>

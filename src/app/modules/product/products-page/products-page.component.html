@@ -1,4 +1,4 @@
-<rap-breadcrumbs [breadcrumbs]="breadcrumbs"></rap-breadcrumbs>
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
 <br />
 <div class="row wrap">
   <div class="col col-side">
@@ -6,7 +6,9 @@
     min: {{filter.price?.min * currency.current.value}} <br>
     max: {{filter.price?.max * currency.current.value}} <br> -->
 
-    <div class="padding">
+    <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page>
+
+    <!-- <div class="padding">
       <small>Ціна: </small>
       <div class="slidecontainer">
         <input
@@ -35,10 +37,26 @@
           {{ currency.current.simbol_right }}
         </span>
       </div>
-    </div>
+    </div> -->
 
   </div>
   <div class="col">
+    <mat-form-field appearance="standart" class="sort-products">
+      <div class="sort-products-wrapper">
+        <mat-label class="sort-products-label">{{ 'sortBy.sort' | translate }}</mat-label>
+        <mat-select (selectionChange)="changeMaterialCategory($event)">
+          <!-- <mat-option *ngFor="let productData of sortProductsData" [value]="productData">
+            {{ productData }}
+          </mat-option> -->
+          <mat-option [value]="'price'">
+            {{ 'sortBy.price' | translate}}
+          </mat-option>
+          <mat-option [value]="'rating'">
+            {{ 'sortBy.rating' | translate}}
+          </mat-option>
+        </mat-select>
+      </div>
+    </mat-form-field>
     <h1 style="margin-top: 0;">{{ product.item.name }}</h1>
 
     <br />
@@ -54,10 +72,7 @@
       [page]="product.page"
       [total]="Math.ceil(product.products.count / product.products.take)"
       [pagesToShow]="5"
-      (goNext)="pageNextHandler()"
-      (goPrev)="pagePrevHandler()"
-      (goPage)="pageToHandler($event)"
-      (pageChanged)="pageChangedHandler()"
+      (pageChanged)="pageChangedHandler($event)"
     ></app-pagination>
   </div>
   <div class="col col-side col-review">

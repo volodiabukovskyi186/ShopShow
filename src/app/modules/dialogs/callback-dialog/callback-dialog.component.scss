@@ -47,3 +47,32 @@
 .mat-dialog-container {
   padding: 11px !important;
 }
+
+.callback-successfull-container {
+  width: 30vw;
+
+  .dialog-header {
+    display: flex;
+    align-items: flex-end;
+    
+    .close-icon {
+      font-size: 37px;
+      margin-top: -16px;
+      cursor: pointer;
+    }
+  }
+
+  .callback-successfull-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 23px;
+  
+    .callback-successfull-header {
+      font-weight: 700;
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+  }
+}

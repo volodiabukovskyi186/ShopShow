@@ -31,6 +31,14 @@
     "call_back": "Call back",
     "search": "Search"
   },
+  "callback": {
+    "orderCall": "Order a call",
+    "yourName": "Your name",
+    "yourPhone": "Your phone number",
+    "submitApplication": "Submit an application",
+    "thankForRequest" : "Thank you for your request",
+    "managerContact" : "Our manager will contact you in a few hours!"
+  },
   "accaunt": {
     "accaunt": "Accaunt",
     "signin": "Sign in",
@@ -109,5 +117,10 @@
     "description": "Description",
     "additionalInfo": "Additional information",
     "related": "Related products"
+  },
+  "sortBy": {
+    "sort": "Sort By:",
+    "price": "price",
+    "rating": "rating"
   }
 }

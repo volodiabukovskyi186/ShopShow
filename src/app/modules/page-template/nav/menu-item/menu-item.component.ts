@@ -5,7 +5,9 @@ import {
     HostBinding,
     Output,
     EventEmitter,
-    HostListener, OnDestroy,
+    HostListener, 
+    OnDestroy,
+    ElementRef
 } from "@angular/core";
 import {fade} from "src/app/modules/ui/animations";
 import {INavItem} from "../nav-item/nav-item.component";
@@ -22,6 +24,8 @@ import {takeUntil} from "rxjs/operators";
 })
 export class MenuItemComponent implements OnInit, OnDestroy {
     private onDestroyed: Subject<void> = new Subject<void>();
+    public isOpened: boolean = true;
+
     @HostBinding("class.active")
     private _active: boolean = false;
     @Output() activeChange = new EventEmitter();
@@ -40,7 +44,24 @@ export class MenuItemComponent implements OnInit, OnDestroy {
 
     currentImg: string;
 
-    constructor(private helperService: HelperService) {
+    constructor(
+        private helperService: HelperService,
+        private elementRef: ElementRef,
+    ) {}
+
+    @HostListener('document:mousedown', ['$event'])
+        onGlobalClick(event): void {
+            if (!this.elementRef.nativeElement.contains(event.target)) {
+                this.active = false;
+            }
+        }
+
+    @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+        const ESCAPE_KEYCODE = 27;
+
+        if (event.keyCode === ESCAPE_KEYCODE) {
+            this.active = false;
+        }
     }
 
     ngOnInit(): void {
@@ -59,7 +80,9 @@ export class MenuItemComponent implements OnInit, OnDestroy {
         this.onDestroyed.complete();
     }
 
-    onClickedOutside(e: any) {
+    onClickedOutside(event: any) {
+        this.active = true;
+        
         // if(e.target?.id === 'arrow' || e.target?.id === 'menu-deep') return;
         // this._active = false;
         // console.log('Clicked outside:', e);

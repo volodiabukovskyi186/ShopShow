@@ -14,7 +14,7 @@ export class SigninPageComponent implements OnInit {
       title: "Homepage",
     },
     {
-      link: "login",
+      link: "/login",
       title: "Login",
     },
   ];

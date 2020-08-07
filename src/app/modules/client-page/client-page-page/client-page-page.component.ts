@@ -57,7 +57,7 @@ export class ClientPagePageComponent implements OnInit {
   updateBreadcrumbs() {
     this.initBreadcrumbs();
     this.breadcrumbs.push({
-      link: `page/${this.clientPage.page.alias}`,
+      link: `/page/${this.clientPage.page.alias}`,
       title: this.clientPage.page?.description?.title,
     });
   }

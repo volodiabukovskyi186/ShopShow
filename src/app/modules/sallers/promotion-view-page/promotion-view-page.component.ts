@@ -4,6 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 // import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SallersService } from 'src/app/modules/sallers/sallers.service';
 import { environment } from 'src/environments/environment';
+import { ProductService } from '../../../modules/product/product.service';
+
+import { IFilters } from '../../filter/filter.component';
 
 @Component({
   selector: "app-promotion-view-page",
@@ -17,7 +20,7 @@ export class PromotionViewPageComponent implements OnInit {
       title: "Homepage",
     },
     {
-      link: "promotions",
+      link: "/promotions",
       title: "Promotions",
     },
   ];
@@ -25,7 +28,8 @@ export class PromotionViewPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     // private ngxService: NgxUiLoaderService,
-    public sallers: SallersService
+    public sallers: SallersService,
+    public product: ProductService,
   ) {}
 
   id: number = 0;
@@ -52,4 +56,11 @@ export class PromotionViewPageComponent implements OnInit {
       title: this.sallers.item.name,
     });
   };
+
+  public onFilterChanged(filters: IFilters): void {
+    this.product.getByFilters(filters).subscribe((data) => {
+      this.product.products.data.products = data.data.products;
+      console.log(this.product.products.data.products);
+    });
+  }
 }

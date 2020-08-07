@@ -11,7 +11,6 @@ import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 
-
 import { registerLocaleData } from "@angular/common";
 import localePl from "@angular/common/locales/pl";
 import localeEn from "@angular/common/locales/en";

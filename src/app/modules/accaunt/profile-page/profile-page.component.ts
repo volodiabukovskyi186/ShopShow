@@ -14,7 +14,7 @@ export class ProfilePageComponent implements OnInit {
       title: "Homepage",
     },
     {
-      link: "profile",
+      link: "/profile",
       title: "Profile",
     },
   ];

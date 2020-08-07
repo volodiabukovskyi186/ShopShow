@@ -3,6 +3,6 @@
   [product]="item"
 ></app-product-item>
 
-<div class="d4 text-cente product-iten-text" *ngIf="products.length <= 0">
+<div class="d4 text-cente product-iten-text" *ngIf="!products || products.length <= 0">
   not found
 </div>

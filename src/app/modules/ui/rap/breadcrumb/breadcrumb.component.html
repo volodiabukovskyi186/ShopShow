@@ -1,11 +1,5 @@
 <a 
-  [routerLink]="
-    !langLink
-      ? ['/'].concat(breadcrumb.link.split('/'))
-      : breadcrumb.link
-      ? ['/', langLink, breadcrumb.link]
-      : ['/'].concat(breadcrumb.link.split('/'))
-  "
+  [routerLink]="breadcrumb.link"
   [routerLinkActiveOptions]="{ exact: true }"
   routerLinkActive="active"
   >{{ breadcrumb.title }}</a

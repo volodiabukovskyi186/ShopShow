@@ -13,7 +13,7 @@ export class RestorePageComponent implements OnInit {
       title: "Homepage",
     },
     {
-      link: "restore",
+      link: "/restore",
       title: "Restore password",
     },
   ];

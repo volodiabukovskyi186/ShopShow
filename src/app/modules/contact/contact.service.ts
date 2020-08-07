@@ -22,4 +22,10 @@ export class ContactService {
       return response;
     });
   }
+
+  public sendCallbackData(data) {
+    this.http.post(environment.host + 'mail/CallBack', data).subscribe((response) => {
+      return response;
+    });
+  }
 }

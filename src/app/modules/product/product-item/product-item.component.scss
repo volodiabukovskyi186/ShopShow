@@ -24,7 +24,7 @@
   }
 }
 .product-item-block{
-  padding: 10px;  background-color: rgb(250,250,250)
+  //padding: 10px;  background-color: rgb(250,250,250)
 
 }
 .product-item-wrap{
@@ -44,6 +44,12 @@ img.soldout {
 
 .padding {
   padding: $space/4 $space $space;
+
+  .product-item-name {
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-size: 19px;
+  }
 }
 
 .stickers {
