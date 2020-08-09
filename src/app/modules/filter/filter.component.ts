@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from "@angular/router";
 import { FilterService, ICategoryFilterResponse, ICategoryFilter } from './filter.service';
 import { Options } from 'ng5-slider';
+import { ClientMenuService } from "../client-menu/client-menu.service";
+import { AppLangService } from 'src/app/modules/core/app-lang.service';
 
 export interface IFilters {
   categories: number[];
@@ -25,6 +27,7 @@ export class FilterComponent implements OnInit {
   public isOpenFirstSubCategoryMan: boolean = false;
   public isOpenFirstSubCategoryWoman: boolean = false;
   public manufacturers: any;
+  public manufacturersTitle;
 
   value: number;
   highValue: number;
@@ -53,6 +56,8 @@ export class FilterComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private filterService: FilterService,
+    public clientMenu: ClientMenuService,
+    public appLang: AppLangService,
   ) {}
 
   public ngOnInit(): void {
@@ -62,8 +67,16 @@ export class FilterComponent implements OnInit {
 
     this.filterService.getCategory().subscribe((res: ICategoryFilterResponse) => {
       this.categories = res.data;
+      console.log(res.data);
     })
     this.getPriceFilter();
+    this.getClientMenus();
+  }
+
+  public getClientMenus(l: string = this.appLang.current) {
+    this.clientMenu.getShop(l).subscribe((res) => {
+      this.manufacturersTitle = res.data[0];
+    });
   }
 
   getPriceFilter() {

@@ -1,6 +1,31 @@
 @import "~src/styles/raisins/variables";
 @import "~src/styles/raisins/mixins";
 
+::ng-deep {
+  .ng5-slider {
+    .ng5-slider-selection {
+      background: #9F1941 !important;
+    }
+
+    .ng5-slider-pointer-min,
+    .ng5-slider-pointer-max {
+      background: #dddddd !important;
+      outline: none;
+      width: 25px !important;
+      height: 25px !important;
+      top: -10px !important;
+
+      &::before {
+        background: #dddddd !important;
+      }
+
+      &::after {
+        background: #dddddd !important;
+      }
+    }
+  }
+}
+
 .flex {
   display: flex;
   flex-direction: row;
@@ -81,7 +106,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-bottom: 10px;
+        margin-bottom: 7px;
 
         .price-range-btn {
           cursor: pointer;
@@ -102,6 +127,7 @@
         background: #fff;
         cursor: pointer;
         margin-top: 15px;
+        margin-bottom: 15px;
       }
     }
   }

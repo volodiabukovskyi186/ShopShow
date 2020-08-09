@@ -68,5 +68,8 @@
     "sort": "Sortuj według:",
     "price": "сena",
     "rating": "ocena"
+  },
+  "filter": {
+    "priceRange": "Przedział cenowy"
   }
 }

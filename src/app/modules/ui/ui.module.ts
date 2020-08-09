@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { ShowUModule } from "./show-u/show-u.module";
 import { RapModule } from './rap/rap.module';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
+import { TranslateModule } from "@ngx-translate/core";
 
 import { FilterComponent } from '../filter/filter.component';
 import { FilterItemComponent } from '../filter/filter-item/filter-item.component';
@@ -17,6 +18,7 @@ const COMPONENTS = [ FilterComponent, FilterItemComponent ];
   imports: [
     CommonModule, 
     DynamicFormModule,
+    TranslateModule,
     MatCheckboxModule,
     MatSliderModule,
     Ng5SliderModule,
