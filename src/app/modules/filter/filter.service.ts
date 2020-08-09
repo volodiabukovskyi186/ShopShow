@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
+import { AppLangService } from 'src/app/modules/core/app-lang.service';
 
 export interface IPriceFilter {
   min: number;
@@ -25,7 +26,10 @@ export class FilterService {
   // price: IPriceFilter = { min: 1, max: 100 };
   // priceModel: IPriceFilter = { min: 1, max: 100 };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient, 
+    private appLang: AppLangService
+  ) {}
 
   public getPriceFilter(): Observable<any> {
     return this.http.get<any>(environment.host + `client/getMinMaxPrice`);
@@ -36,6 +40,8 @@ export class FilterService {
   }
 
   public getCategory() : Observable<ICategoryFilterResponse> {
-    return this.http.get<any>(environment.host + `client/category?take=100&lang=ua`);
+    let lang = this.appLang.current;
+    let take = 100;
+    return this.http.get<any>(environment.host + `client/category?take=${take}&lang=${lang}`);
   }
 }

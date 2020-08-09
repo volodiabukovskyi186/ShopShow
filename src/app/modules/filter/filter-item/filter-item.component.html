@@ -1,5 +1,5 @@
 <div class="category">
-    <div class="filter-name">{{ filter.name }}</div>
+    <div class="filter-name">{{ filter.name | titlecase }}</div>
 
     <div *ngIf="hasSubFilters(filter)">
         <span class="material-icons" (click)="isExpanded = true;" *ngIf="!isExpanded">add</span>

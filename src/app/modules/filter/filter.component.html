@@ -6,7 +6,9 @@
   </div>
   <div class="manufactures">
     <div class="manufactures-list">
-      <div>Виробники</div>
+      <div *ngIf="manufacturersTitle">
+        <div>{{ manufacturersTitle.description.title }}</div>
+      </div>
       <span class="material-icons" (click)="openManufactures($event)" *ngIf="!isOpenManufactures">add</span>
       <span class="material-icons" *ngIf="isOpenManufactures" (click)="openManufactures($event)">remove</span>
     </div>
@@ -16,7 +18,7 @@
   </div>
   <div class="price-range">
       <div class="price-range-item">
-        <div>Діапазон цін</div>
+        <div> {{ "filter.priceRange" | translate }} </div>
         <span class="material-icons" (click)="openPrices($event)" *ngIf="!isOpenPrices">add</span>
         <span class="material-icons" *ngIf="isOpenPrices" (click)="openPrices($event)">remove</span>
       </div>

@@ -122,5 +122,8 @@
     "sort": "Sort By:",
     "price": "price",
     "rating": "rating"
+  },
+  "filter": {
+    "priceRange": "Price range"
   }
 }
