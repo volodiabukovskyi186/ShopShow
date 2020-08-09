@@ -72,6 +72,7 @@ export class ProductListViewComponent implements OnInit {
 
   public searchHandler = (data) => {
     this.product.products.data.products = data.data;
+    this.product.products.count = data.count;
     this.breadcrumbs[1] = {
       link: '/#',
       title: 'SearchResult',
@@ -110,6 +111,7 @@ export class ProductListViewComponent implements OnInit {
   public onFilterChanged(filters: IFilters): void {
     this.product.getByFilters(filters).subscribe((data) => {
       this.product.products.data.products = data.data.products;
+      this.product.products.count = data.count;
     });
 
   }

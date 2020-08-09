@@ -74,6 +74,7 @@ export class ProductsPageComponent implements OnInit {
   public onFilterChanged(filters: IFilters): void {
     this.product.getByFilters(filters).subscribe((data) => {
       this.product.products = data;
+      console.log(this.product.products.count);
     });
 
   }
@@ -96,7 +97,7 @@ export class ProductsPageComponent implements OnInit {
   pageChangedHandler(page: number): void {
     this.product.page = page;
     this.get();
-  }
+  } 
 
   public changeMaterialCategory(event) {
     this.product.sortBy(event.value).subscribe((res) => {

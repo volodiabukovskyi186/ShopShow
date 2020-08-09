@@ -30,14 +30,10 @@ export class PaginationComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    console.log(this.total);
-
     this.route.queryParams.subscribe(params => {
       this.page = +params['page'] || 1;
 
       this.pageChanged.emit(this.page);
-      console.log(params);
-      console.log(this.page);
     })
   }
 

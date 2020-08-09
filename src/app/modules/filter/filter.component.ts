@@ -67,7 +67,6 @@ export class FilterComponent implements OnInit {
 
     this.filterService.getCategory().subscribe((res: ICategoryFilterResponse) => {
       this.categories = res.data;
-      console.log(res.data);
     })
     this.getPriceFilter();
     this.getClientMenus();
