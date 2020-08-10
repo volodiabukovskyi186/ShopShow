@@ -15,6 +15,7 @@ import {environment} from "src/environments/environment";
 import {HelperService} from "../../../core/helper.service";
 import {Subject} from "rxjs/internal/Subject";
 import {takeUntil} from "rxjs/operators";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     animations: [fade],
@@ -25,6 +26,8 @@ import {takeUntil} from "rxjs/operators";
 export class MenuItemComponent implements OnInit, OnDestroy {
     private onDestroyed: Subject<void> = new Subject<void>();
     public isOpened: boolean = true;
+    public subMenuOpened: boolean;
+    public hideMenu: any;
 
     @HostBinding("class.active")
     private _active: boolean = false;
@@ -47,6 +50,7 @@ export class MenuItemComponent implements OnInit, OnDestroy {
     constructor(
         private helperService: HelperService,
         private elementRef: ElementRef,
+        private route: ActivatedRoute,
     ) {}
 
     @HostListener('document:mousedown', ['$event'])
@@ -64,6 +68,9 @@ export class MenuItemComponent implements OnInit, OnDestroy {
         }
     }
 
+    close(): void{
+        this.active = false;
+    }
     ngOnInit(): void {
         this.currentImg = this.value.image.src;
         this.helperService.getMenuImg().pipe( takeUntil(this.onDestroyed)).subscribe(res => {

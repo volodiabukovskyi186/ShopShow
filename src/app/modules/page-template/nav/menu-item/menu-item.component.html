@@ -2,6 +2,7 @@
   *ngIf="!value.link"
   [routerLink]="['/', 'products', value.id]"
   routerLinkActive="router-link-active"
+  (click)="active = false"
   >{{ value.name }}</a
 >
 
@@ -9,6 +10,7 @@
   *ngIf="value.link"
   [routerLink]="[value.link]"
   routerLinkActive="router-link-active"
+  (click)="active = false"
   >{{ value.name }}</a
 >
 
@@ -28,6 +30,7 @@
       <showu-menu-sub-item
         *ngFor="let item of value.sub"
         [value]="item"
+        (onItemClick)="close()"
       ></showu-menu-sub-item>
     </div>
 

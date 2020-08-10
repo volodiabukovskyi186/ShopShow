@@ -12,8 +12,10 @@ import {Subject} from "rxjs/internal/Subject";
 })
 export class MenuSubItemComponent implements OnInit {
     active: boolean = true;
+    hideMenu: any;
 
     @Input() value: INavItem;
+    @Output() onItemClick = new EventEmitter();
 
     constructor(private helperService: HelperService, private eRef: ElementRef) {
     }
@@ -23,5 +25,9 @@ export class MenuSubItemComponent implements OnInit {
 
     over(item) {
         this.helperService.updatedMenuImg(item.image.src);
+    }
+
+    onItemClicked(): void {       
+        this.onItemClick.emit();
     }
 }

@@ -55,7 +55,7 @@ export class ProductsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((data) => {  
-     
+    
       this.id = data["id"];
 
       this.breadcrumbs = [
@@ -64,7 +64,7 @@ export class ProductsPageComponent implements OnInit {
           title: "Homepage",
         },
       ];     
-      // this.get();
+      this.get();
       this.getLastReviews();
     });
 
