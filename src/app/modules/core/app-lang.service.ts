@@ -68,10 +68,10 @@ export class AppLangService {
     const ru: ILangItem = { flag: "🇷🇺", name: "Russian", locale: "ru" };
     const ua: ILangItem = { flag: "🇺🇦", name: "Ukraine", locale: "ua" };
 
-    let defaultLang = localStorage.getItem('current_lang') || ua.name;
+    let defaultLang = localStorage.getItem('current_lang') || ua.locale;
 
     this.langs = [pl, en, ua, ru];
-    this.translate.addLangs([defaultLang, en.name]);
+    this.translate.addLangs([defaultLang, en.locale]);
     this.translate.defaultLang = defaultLang;
     this.use(defaultLang);
   }
