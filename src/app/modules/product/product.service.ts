@@ -135,7 +135,8 @@ export class ProductService {
   }
 
   getProductBy(id: number) {
-    return this.http.get<any>(environment.products + `/${id}`);
+    let lang = this.appLang.current;
+    return this.http.get<any>(environment.products + `/${id}?lang=${lang}`);
   }
   //
   getPopular() {
@@ -154,7 +155,7 @@ export class ProductService {
   search(q: string): Observable<any> {
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;
-    let params = `?skip=${skip}&take=${this.products.take}&q=${q}`;
+    let params = `?skip=${skip}&take=${this.products.take}&q=${q}&lang=${lang}`;
     return this.http.get<any>(
         environment.host + `product/searchProduct` + params
     );

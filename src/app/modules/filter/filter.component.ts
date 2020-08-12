@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from "@angular/core";
 import { NavLink } from "src/app/modules/ui/rap/nav-item/nav-link";
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from "@angular/router";
@@ -22,30 +22,17 @@ export interface IFilters {
 export class FilterComponent implements OnInit {
   @Output() filterChanged = new EventEmitter<IFilters>();
 
-  public isOpenManufactures: boolean = false;
-  public isOpenPrices: boolean = false;
+  public isOpenManufactures: boolean = true;
+  public isOpenPrices: boolean = true;
   public isOpenFirstSubCategoryMan: boolean = false;
   public isOpenFirstSubCategoryWoman: boolean = false;
   public manufacturers: any;
   public manufacturersTitle;
 
-  value: number;
-  highValue: number;
-  options: Options = {
-    floor: 0,
-    ceil: 200
-  };
-
-  // breadcrumbs: Array<NavLink> = [
-  //   {
-  //     link: "/",
-  //     title: "Homepage",
-  //   },
-  //   {
-  //     link: "/manufacturers",
-  //     title: "Manufacturers",
-  //   },
-  // ];
+  public value: number;
+  public highValue: number;
+  public minMaxValues: any;
+  public options: Options;
 
   host = environment.hoststatic;
 
@@ -58,18 +45,36 @@ export class FilterComponent implements OnInit {
     private filterService: FilterService,
     public clientMenu: ClientMenuService,
     public appLang: AppLangService,
+    private ref: ChangeDetectorRef
   ) {}
 
   public ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      console.log(params);
-    });
-
     this.filterService.getCategory().subscribe((res: ICategoryFilterResponse) => {
       this.categories = res.data;
     })
+    
     this.getPriceFilter();
     this.getClientMenus();
+    this.getAllManufactures();
+    this.options = {
+      floor: 0,
+      ceil: 0,
+    };
+    this.filterService.getMinMaxPrice().subscribe((res) => {
+      this.minMaxValues = res.data;
+
+      if (this.minMaxValues) {
+        this.options = {
+          floor: this.minMaxValues.min,
+          ceil: this.minMaxValues.max
+        }
+  
+        this.value = this.options.floor;
+        this.highValue = this.options.ceil;
+  
+        this.ref.detectChanges();
+      }
+    })
   }
 
   public getClientMenus(l: string = this.appLang.current) {
@@ -82,8 +87,11 @@ export class FilterComponent implements OnInit {
     this.filterService.getPriceFilter().subscribe(this.getPriceFilterHandler)
   }
   getPriceFilterHandler = data => {
-    this.options.floor = +data.data.min;
-    this.options.ceil = +data.data.max;
+    this.options = {
+      floor: +data.data.min,
+      ceil: +data.data.max
+    }
+
     this.value = +data.data.min;
     this.highValue = +data.data.max;
   }
@@ -130,8 +138,6 @@ export class FilterComponent implements OnInit {
     } else {
       this.isOpenManufactures = false;
     }
-
-    this.getAllManufactures();
   }
 
   public openPrices(event): void {
@@ -145,7 +151,6 @@ export class FilterComponent implements OnInit {
   public getAllManufactures(): void {
     this.filterService.getManufactures().subscribe((res) => {
       this.manufacturers = res.data;
-      console.log(res);
     })
   }
 

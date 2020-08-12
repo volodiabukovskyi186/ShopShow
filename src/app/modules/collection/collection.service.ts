@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
+import { AppLangService } from '../core/app-lang.service';
 
 export interface IResponseCollectionDesc {
   collection_id: number;
@@ -68,16 +69,18 @@ export class CollectionService {
     updated_at: null,
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private appLang: AppLangService) {}
 
   get(): Observable<any> {
+    let lang = this.appLang.current;
     return this.http.get<any>(
-      environment.host + `client/collection?lang=en&skip=0`
+      environment.host + `client/collection?lang=${lang}&skip=0`
     );
   }
   getLastThree(): Observable<any> {
+    let lang = this.appLang.current;
     return this.http.get<any>(
-      environment.host + `client/collection?lang=en&skip=0&take=3`
+      environment.host + `client/collection?lang=${lang}&skip=0&take=3`
     );
   }
 

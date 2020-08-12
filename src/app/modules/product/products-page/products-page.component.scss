@@ -63,7 +63,8 @@ $size: 16px;
 }
 
 .sort-products {
-  width: 35%;
+  // width: 35%;
+  width: 266px;
   border: 1px solid #000;
   border-radius: 6px;
   padding-left: 10px;
@@ -74,12 +75,14 @@ $size: 16px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    width: 250px;
+    width: 252px;
+    //width: 250px;
     margin-top: -15px;
 
     .sort-products-label {
       // width: 76px;
-      width: 285px;
+      //width: 250px;
+      width: 272px;
       margin-right: 10px;
     }
   }

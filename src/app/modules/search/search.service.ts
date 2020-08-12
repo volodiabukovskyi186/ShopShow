@@ -16,7 +16,7 @@ export class SearchService {
     let skip = 0,
         take = 20;
     let lang = this.appLang.current;
-    let params = `?skip=${skip}&take=${take}&q=${q}`;
+    let params = `?skip=${skip}&take=${take}&q=${q}&lang=${lang}`;
     return this.http.get<any>(
       environment.host + `product/searchProduct` + params
     );

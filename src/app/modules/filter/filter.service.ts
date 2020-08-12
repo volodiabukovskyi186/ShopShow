@@ -44,4 +44,8 @@ export class FilterService {
     let take = 100;
     return this.http.get<any>(environment.host + `client/category?take=${take}&lang=${lang}`);
   }
+
+  public getMinMaxPrice(): Observable<any> {
+    return this.http.get(`${environment.host}client/getMinMaxPrice`);
+  }
 }

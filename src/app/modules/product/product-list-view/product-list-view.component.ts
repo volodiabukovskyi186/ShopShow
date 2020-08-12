@@ -50,8 +50,6 @@ export class ProductListViewComponent implements OnInit {
         });
 
     this.sortProducts();
-
-    console.log(this.product);
   }
 
   public sortProducts(): void {

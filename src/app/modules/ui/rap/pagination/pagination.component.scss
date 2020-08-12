@@ -6,12 +6,14 @@ $scale: 1.05;
 :host {
   margin-top: $space * 3;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 12px;
 }
 
 .pagination {
   display: flex;
   flex-direction: row;
+  
   button {
     margin: $space / 4;
     min-width: 32px;
@@ -64,7 +66,7 @@ $scale: 1.05;
   &.radius {
     .pagination {
       button {
-        border-radius: 2px;
+        border-radius: 4px;
       }
     }
   }
