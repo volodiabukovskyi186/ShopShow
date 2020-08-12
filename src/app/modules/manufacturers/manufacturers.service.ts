@@ -58,6 +58,7 @@ export class ManufacturersService {
   }
 
   getBy(id: number): Observable<IManufacturer> {
-    return this.http.get<any>(environment.manufacturers + `/${id}`);
+    let lang = this.appLang.current;
+    return this.http.get<any>(environment.manufacturers + `/${id}?lang=${lang}`);
   }
 }

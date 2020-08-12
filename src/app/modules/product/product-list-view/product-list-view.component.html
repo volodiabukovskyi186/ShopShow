@@ -1,7 +1,7 @@
 <rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
 <br />
 <div class="row wrap">
-  <div class="col col-side">
+  <div class="col col-side filter-margin-left">
     <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page>
     <!-- <i>Filters will be here</i>
     min: {{filter.price?.min * currency.current.value}} <br>
@@ -71,11 +71,11 @@
       (pageChanged)="pageChangedHandler($event)"
     ></app-pagination>
   </div>
-  <div class="col col-side col-review">
+  <!-- <div class="col col-side col-review"> -->
     <!-- <app-review-card
       class="radius"
       [title]="'Last reviews'"
       [reviewsList]="review.review"
     ></app-review-card> -->
-  </div>
+  <!-- </div> -->
 </div>

@@ -25,7 +25,7 @@
       <div *ngIf="isOpenPrices" class="price-range-content">
         <div class="min-max-btns">
           <button class="price-range-btn" (click)="value = options.floor">Min.</button>
-          <button class="price-range-btn" (click)="value = options.ceil">Max</button>
+          <button class="price-range-btn" (click)="highValue = options.ceil">Max</button>
         </div>
         <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
         <button class="price-range-ok" (click)="onPriceFilterApplied()">Ok</button>

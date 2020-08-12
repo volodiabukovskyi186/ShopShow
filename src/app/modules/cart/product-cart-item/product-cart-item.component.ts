@@ -10,7 +10,7 @@ import { CurrencyService } from "../../currency/currency.service";
   styleUrls: ["./product-cart-item.component.scss"],
 })
 export class ProductCartItemComponent implements OnInit {
-  host: string = "//showuapi.rodzyk.com";
+  host: string = "//api.showu.com.ua/";
   @Output() delete = new EventEmitter<any>();
 
   private _value: any;

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ViewChild, AfterViewInit} from "@angular/core";
+import {Component, OnInit, Input, ViewChild, AfterViewInit, OnDestroy} from "@angular/core";
 // import { DragScrollComponent } from "ngx-drag-scroll";
 import {environment} from "src/environments/environment";
 import {DragScrollComponent} from "ngx-drag-scroll";
@@ -8,10 +8,10 @@ import {DragScrollComponent} from "ngx-drag-scroll";
   templateUrl: "./sallers-slider.component.html",
   styleUrls: ["./sallers-slider.component.scss"],
 })
-export class SallersSliderComponent implements OnInit, AfterViewInit {
+export class SallersSliderComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() slides: Array<any> = [];
   @Input() auto: boolean = true;
-  @Input() timeout: number = 10000;
+  @Input() timeout: number = 8000;
 
   @ViewChild('slider', {read: DragScrollComponent}) ds: DragScrollComponent;
 
@@ -24,7 +24,7 @@ export class SallersSliderComponent implements OnInit, AfterViewInit {
   interval: any;
 
   startAuto() {
-    if (this.auto)
+    if (this.auto) {
       this.interval = setInterval(() => {
         if (this.ds.currIndex == this.ds._children.length - 1) {
           this.moveTo(0);
@@ -32,6 +32,11 @@ export class SallersSliderComponent implements OnInit, AfterViewInit {
           this.moveRight();
         }
       }, this.timeout);
+    }
+    //this.stopAuto();
+  }
+
+  ngOnDestroy(): void {
     this.stopAuto();
   }
 
@@ -45,6 +50,9 @@ export class SallersSliderComponent implements OnInit, AfterViewInit {
 
   moveLeft() {
     this.ds.moveLeft();
+
+    this.stopAuto();
+    this.startAuto()
   }
 
   moveRight() {
@@ -53,6 +61,9 @@ export class SallersSliderComponent implements OnInit, AfterViewInit {
     } else {
       this.ds.moveRight();
     }
+
+    this.stopAuto();
+    this.startAuto()
   }
 
   moveTo(index) {
