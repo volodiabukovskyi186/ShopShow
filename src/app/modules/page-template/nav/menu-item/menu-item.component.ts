@@ -13,9 +13,9 @@ import {fade} from "src/app/modules/ui/animations";
 import {INavItem} from "../nav-item/nav-item.component";
 import {environment} from "src/environments/environment";
 import {HelperService} from "../../../core/helper.service";
-import {Subject} from "rxjs/internal/Subject";
 import {takeUntil} from "rxjs/operators";
 import { ActivatedRoute } from "@angular/router";
+import { Subject } from 'rxjs';
 
 @Component({
     animations: [fade],
@@ -24,7 +24,7 @@ import { ActivatedRoute } from "@angular/router";
     styleUrls: ["./menu-item.component.scss"],
 })
 export class MenuItemComponent implements OnInit, OnDestroy {
-    private onDestroyed: Subject<void> = new Subject<void>();
+    private onDestroyed$: Subject<void> = new Subject<void>();
     public isOpened: boolean = true;
     public subMenuOpened: boolean;
     public hideMenu: any;
@@ -73,8 +73,10 @@ export class MenuItemComponent implements OnInit, OnDestroy {
     }
     ngOnInit(): void {
         this.currentImg = this.value.image.src;
-        this.helperService.getMenuImg().pipe( takeUntil(this.onDestroyed)).subscribe(res => {
-            if(res) this.currentImg = res;
+        this.helperService.getMenuImg().pipe(takeUntil(this.onDestroyed$)).subscribe(res => {
+            if (res) {
+              this.currentImg = res;
+            }
         });
     }
 
@@ -83,8 +85,8 @@ export class MenuItemComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.onDestroyed.next();
-        this.onDestroyed.complete();
+        this.onDestroyed$.next();
+        this.onDestroyed$.complete();
     }
 
     onClickedOutside(event: any) {

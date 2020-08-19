@@ -1,7 +1,7 @@
 // const host = "http://api.show-u.loc/";
 // const host = "http://showu.zzz.com.ua/";
-const host = "//api.showu.com.ua/";
-const hoststatic = "//api.showu.com.ua/";
+const host = "https://api.showu.com.ua/";
+const hoststatic = "https://api.showu.com.ua/";
 
 export const environment = {
   production: false,

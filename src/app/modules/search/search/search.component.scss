@@ -32,3 +32,30 @@
     }
   }
 }
+
+.search-content {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  align-items: center;
+  outline: none;
+}
+
+.search-img {
+  min-width: 40px;
+  max-width: 45px;
+}
+
+.search-name-price {
+  margin-left: 31px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-name {
+  margin-bottom: 6px;
+}
+
+.search-price {
+  margin-top: 6px;
+}

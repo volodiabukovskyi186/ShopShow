@@ -27,6 +27,10 @@ export class MenuSubItemComponent implements OnInit {
         this.helperService.updatedMenuImg(item.image.src);
     }
 
+    out(item) {
+        console.log(item);
+    }
+
     onItemClicked(): void {       
         this.onItemClick.emit();
     }
