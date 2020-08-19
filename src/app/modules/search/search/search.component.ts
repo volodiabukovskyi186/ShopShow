@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchService} from '../search.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { CurrencyService } from "../../currency/currency.service";
 
 @Component({
     selector: 'app-search',
@@ -11,9 +13,13 @@ export class SearchComponent implements OnInit {
     isActiveResults: boolean = false;
     public isPressEnter: boolean;
     private searchText: string;
+    host = environment.hoststatic;
 
-    constructor(public search: SearchService, private router: Router) {
-    }
+    constructor(
+        public search: SearchService, 
+        private router: Router,
+        public currency: CurrencyService
+    ) {}
 
     ngOnInit(): void {
     }

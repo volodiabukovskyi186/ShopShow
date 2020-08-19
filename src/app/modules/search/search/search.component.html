@@ -8,7 +8,21 @@
             (keyup)="pressEnter($event)"
     />
     <div class="search-results" *ngIf="search?.list?.length && isActiveResults">
-        <p *ngFor="let item of search.list"
-           [routerLink]="['/products/view/' + item.id]">{{item.name}}</p>
+        <div *ngFor="let item of search.list"
+           [routerLink]="['/products/view/' + item.id]">
+           <div class="search-content">
+               <div>
+                    <img src="{{ host + item.image.src }}" class="search-img"/>
+               </div>
+               <div class="search-name-price">
+                    <div class="search-name">{{ item.name }}</div>
+                    <div class="search-price">
+                        {{ currency.current.simbol_left }}
+                        {{ item.price * currency.current.value | number }}
+                        {{ currency.current.simbol_right }}
+                    </div>
+               </div>
+           </div>
+        </div>
     </div>
 </div>

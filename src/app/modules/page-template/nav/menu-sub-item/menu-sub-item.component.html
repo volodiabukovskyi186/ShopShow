@@ -3,6 +3,7 @@
   [routerLink]="['/', 'products', value.id]"
   routerLinkActive="router-link-active"
   (mouseover)="over(value)"
+  (mouseout)="out(value)"
   (click)="onItemClicked()"
   >{{ value.name }}</a
 >
@@ -12,6 +13,7 @@
   [routerLink]="[value.link]"
   routerLinkActive="router-link-active"
   (mouseover)="over(value)"
+  (mouseout)="out(value)"
   (click)="onItemClicked()"
   >{{ value.name }}</a
 >
