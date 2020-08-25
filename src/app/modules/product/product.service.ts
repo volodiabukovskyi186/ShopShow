@@ -164,7 +164,21 @@ export class ProductService {
   sortBy(value: string) {
     const take = 20;
     const lang = this.appLang.current;
-    const params = `?lang=${lang}&skip=0&take=${take}&sort_by=${value}&desc=DESC`;
+    let params = `?lang=${lang}&skip=0&take=${take}`;
+
+    if (value === 'rating') {
+      params = `${params}&sort_by=rating`;
+    }
+
+    if (value === 'minPrice') {
+      params = `${params}&sort_by=price&desc=ASC`;
+    }
+
+    if (value === 'maxPrice') {
+      params = `${params}&sort_by=price&desc=DESC`;
+    }
+    
+    console.log(value);
     console.log(environment.products + params);
 
     return this.http.get<any>(

@@ -66,8 +66,10 @@
   },
   "sortBy": {
     "sort": "Sortuj według:",
-    "price": "сena",
-    "rating": "ocena"
+    "minPrice": "Cena minimalna",
+    "maxPrice": "Cena maksymalna",
+    "rating": "ocena",
+    "view": "Widok"
   },
   "filter": {
     "priceRange": "Przedział cenowy"

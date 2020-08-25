@@ -1,11 +1,9 @@
-<header>
-  <h6>
-    {{ 'review.sliderDesc' | translate }}
-  </h6>
-</header>
-
 <div (mouseenter)="stopAuto()" (mouseleave)="startAuto()">
- 
+  <header>
+    <h6>
+      {{ 'review.sliderDesc' | translate }}
+    </h6>
+  </header>
 <div class="small-last-rewievs" style="display: flex; overflow: hidden;">
   <drag-scroll #slider>
   <div class="review" drag-scroll-item *ngFor="let item of reviews">

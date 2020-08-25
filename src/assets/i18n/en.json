@@ -120,8 +120,10 @@
   },
   "sortBy": {
     "sort": "Sort By:",
-    "price": "price",
-    "rating": "rating"
+    "minPrice": "Min Price",
+    "maxPrice": "Max Price",
+    "rating": "rating",
+    "view": "View"
   },
   "filter": {
     "priceRange": "Price range"

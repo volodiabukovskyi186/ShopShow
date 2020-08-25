@@ -4,7 +4,7 @@
   <div class="short">
     <product-image-view
       class="sticky"
-      [host]="'//showuapi.rodzyk.com/'"
+      [host]="'https://api.showu.com.ua/'"
       [images]="product.item.images"
       [main]="product?.item?.image?.src"
     ></product-image-view>
@@ -13,8 +13,10 @@
     <div class="card">
       <h4 class="title">
         {{ product.item?.description?.name }} {{ product.item.model }}
-        <p>sdasd</p>
       </h4>
+      <!-- <h4 class="title">
+        {{ product.item.model }}
+      </h4> -->
       <div class="flex">
         <rap-rating [rating]="product.item.rating"></rap-rating>
       </div>
@@ -74,7 +76,7 @@
             <div class="r3x1">
               <img
                 src="{{
-                  '//showuapi.rodzyk.com/' +
+                  'https://api.showu.com.ua/' +
                     product.item.manufactured?.image.src_mini
                 }}"
                 alt="{{ product.item.manufactured?.description?.name }}"

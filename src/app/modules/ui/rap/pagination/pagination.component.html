@@ -1,5 +1,21 @@
 <div class="pagination" *ngIf="total > 0">
   <button
+    class="button small next go-to-first-page"
+    (click)="goToFirstPage()"
+    [disabled]="page === 1 || loading"
+  >
+    <svg class="first-page-svg" style="transform: rotate(180deg);" viewBox="0 0 306 306" xmlns="http://www.w3.org/2000/svg">
+      <polygon
+        points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153"
+      ></polygon>
+    </svg>
+    <svg class="last-page-svg" style="transform: rotate(180deg);" viewBox="0 0 306 306" xmlns="http://www.w3.org/2000/svg">
+      <polygon
+        points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153"
+      ></polygon>
+    </svg>
+  </button>
+  <button
     class="button small previous"
     (click)="onPrev()"
     [disabled]="page === 1 || loading"
@@ -11,7 +27,7 @@
     </svg>
   </button>
   <button
-    class="button small"
+    class="button small btn-count"
     *ngFor="let pageNum of pageList()"
     [disabled]="page === pageNum || loading"
     (click)="onPage(pageNum)"
@@ -19,11 +35,27 @@
     {{ pageNum }}
   </button>
   <button
-    class="button small"
+    class="button small next"
     (click)="onNext()"
     [disabled]="page === total || loading"
   >
     <svg viewBox="0 0 306 306" xmlns="http://www.w3.org/2000/svg">
+      <polygon
+        points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153"
+      ></polygon>
+    </svg>
+  </button>
+  <button
+    class="button small next go-to-last-page"
+    (click)="goToLastPage()"
+    [disabled]="page === total || loading"
+  >
+    <svg class="first-page-svg-back" viewBox="0 0 306 306" xmlns="http://www.w3.org/2000/svg">
+      <polygon
+        points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153"
+      ></polygon>
+    </svg>
+    <svg class="last-page-svg" viewBox="0 0 306 306" xmlns="http://www.w3.org/2000/svg">
       <polygon
         points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153"
       ></polygon>

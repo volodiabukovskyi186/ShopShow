@@ -100,6 +100,7 @@ export class ProductsPageComponent implements OnInit {
   } 
 
   public changeMaterialCategory(event) {
+    console.log(event);
     this.product.sortBy(event.value).subscribe((res) => {
       this.product.products.data.products = res.data.products;
     });

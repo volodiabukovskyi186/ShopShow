@@ -23,12 +23,13 @@ export class ProductSliderComponent implements OnInit {
 
     }
   }
+
   moveLeft() {
     this.ds.moveLeft();
   }
+
   moveTo(index) {
     this.ds.moveTo(index);
-
   }
 
 }
