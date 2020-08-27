@@ -98,7 +98,7 @@ $size: 16px;
   }
 }
 
-::ng-deep {
+.sort-content ::ng-deep {
   .mat-form-field {
     .mat-form-field-wrapper {
       .mat-form-field-flex {
@@ -131,7 +131,9 @@ $size: 16px;
       }
     }
   }
+}
 
+::ng-deep {
   .mat-option {
     height: 2.3em !important;
     .mat-option-text {

@@ -73,5 +73,13 @@
   },
   "filter": {
     "priceRange": "Przedział cenowy"
+  },
+  "product": {
+    "productCode": "Kod produktu",
+    "productColor": "Kolor:",
+    "productSize": "Rozmiar:"
+  },
+  "wishlist": {
+    "addToWishlist": "Dodaj Do Listy życzeń"
   }
 }
