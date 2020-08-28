@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavLink } from 'src/app/modules/ui/rap/nav-item/nav-link';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { NgxUiLoaderService } from "ngx-ui-loader";
 import { ProductService } from 'src/app/modules/product/product.service';
 // import { CartService } from "src/app/modules/cart/cart.service";
@@ -8,6 +8,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { PaginationPage } from 'src/app/modules/ui/rap/pagination/pagination-page';
 import { CartService } from '../../cart/cart.service';
 import { CurrencyService } from '../../currency/currency.service';
+import { FormGroup, FormControlName, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-product-view-page',
@@ -16,6 +17,12 @@ import { CurrencyService } from '../../currency/currency.service';
 })
 export class ProductViewPageComponent implements OnInit {
   id: number = 0;
+  attrMapArr;
+  attrColor = [];
+  attrSize = [];
+  productViewForm: FormGroup;
+  isAttrColor: boolean = false;
+  isAttrSize: boolean = false;
 
   breadcrumbs: Array<NavLink> 
   constructor(
@@ -25,14 +32,16 @@ export class ProductViewPageComponent implements OnInit {
       public product: ProductService,
       public cart: CartService,
       private title: Title,
-      private meta: Meta
+      private meta: Meta,
+      private router: Router
   ) {}
   
 
   getByIdHandler = (data) => {
     this.product.item = data.data;
 
-    this.updateTitle(this.product.item.description.name + ` | ShowU ` + this.product.item.description.tag);
+  //this.updateTitle(this.product.item.description.name + ` | ShowU ` + this.product.item.description.tag);
+    this.updateTitle(this.product.item.description.name + ` | ShowU `);
     this.updateDescription(this.product.item.description.meta_discription );
     // link: "manufacturer" + "/" + this.id,
    
@@ -77,6 +86,7 @@ export class ProductViewPageComponent implements OnInit {
       });
 
     });
+    this.generateProductViewForm();
   }
 
   getProdAttr(id) {
@@ -88,7 +98,42 @@ export class ProductViewPageComponent implements OnInit {
 
   getProdAttrHandler = data => {
     this.product.attributes = data.data;
-    // this.ngxService.stopAll();
+
+    const attrMap = {};
+    data.data.attrybutes.forEach(element => {
+      if (!attrMap[element.attribyte.description.name]) {
+        attrMap[element.attribyte.description.name] = [];
+      }
+      attrMap[element.attribyte.description.name].push(element);
+    });
+
+    const attrArr = Object.keys(attrMap);
+    const attrArrValues = Object.values(attrMap);
+
+    attrArrValues.forEach((attr) => {
+      if (attr[0].attribyte_id === 1) {
+        this.isAttrColor = true;
+        this.attrColor.push(attr[0]);
+        this.productViewForm.get('color').setValue(attr[0].text);
+      }
+
+      if (attr[0].attribyte_id === 5) {
+        this.isAttrSize = true;
+        this.attrSize.push(attr[0]);
+        this.productViewForm.get('size').setValue(attr[0].text);
+      }
+    })
+
+    this.attrMapArr = attrArr;
+
+  }
+
+  generateProductViewForm(): void {
+    this.productViewForm = new FormGroup({
+      color: new FormControl('', []),
+      size: new FormControl('', [])
+    });
+    console.log(this.productViewForm.value);
   }
 
   getProdReviewHandler = data => {

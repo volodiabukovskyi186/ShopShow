@@ -92,4 +92,14 @@ export class PaginationComponent implements OnInit {
     pages.sort((a, b) => a - b);
     return pages;
   }
+
+  goToFirstPage() {
+    this.page = 1;
+    this.changePage();
+  }
+
+  goToLastPage() {
+    this.page = this.total;
+    this.changePage();
+  }
 }

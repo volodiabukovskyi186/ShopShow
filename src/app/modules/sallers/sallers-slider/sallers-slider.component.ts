@@ -52,7 +52,7 @@ export class SallersSliderComponent implements OnInit, AfterViewInit, OnDestroy 
     this.ds.moveLeft();
 
     this.stopAuto();
-    this.startAuto()
+    this.startAuto();
   }
 
   moveRight() {

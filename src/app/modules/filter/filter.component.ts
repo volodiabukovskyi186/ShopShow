@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef, Input } from "@angular/core";
 import { NavLink } from "src/app/modules/ui/rap/nav-item/nav-link";
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from "@angular/router";
@@ -21,6 +21,7 @@ export interface IFilters {
 })
 export class FilterComponent implements OnInit {
   @Output() filterChanged = new EventEmitter<IFilters>();
+  @Input() isManufacturerPage: boolean = true;
 
   public isOpenManufactures: boolean = true;
   public isOpenPrices: boolean = true;

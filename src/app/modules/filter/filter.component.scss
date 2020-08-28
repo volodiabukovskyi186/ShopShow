@@ -3,6 +3,8 @@
 
 ::ng-deep {
   .ng5-slider {
+    z-index: 0;
+    
     .ng5-slider-selection {
       background: #9F1941 !important;
     }

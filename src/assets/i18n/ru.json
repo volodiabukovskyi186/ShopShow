@@ -118,14 +118,22 @@
       "addToCart": "Добавить в корзину",
       "description": "Описание",
       "additionalInfo": "Дополнительная информация",
-      "related": "Связанные товары"
+      "related": "Связанные товары",
+      "productCode": "Kод товара",
+      "productColor": "Цвет:",
+      "productSize": "Размер:"
     },
     "sortBy": {
-      "sort": "Сортировать По:",
-      "price": "цена",
-      "rating": "рейтинг"
+      "sort": "Сортировать:",
+      "minPrice": "От дешевых к дорогим",
+      "maxPrice": "От дорогих к дешевым",
+      "rating": "рейтинг",
+      "view": "Вид"
     },
     "filter": {
       "priceRange": "Диапазон цен"
+    },
+    "wishlist": {
+      "addToWishlist": "Добавить В Список Желаний"
     }
   }

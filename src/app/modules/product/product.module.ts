@@ -39,6 +39,7 @@ const c = [
     RouterModule,
     UiModule,
     ProductRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     ReviewModule,
     TranslateModule,

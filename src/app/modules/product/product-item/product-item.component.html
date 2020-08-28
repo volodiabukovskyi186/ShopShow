@@ -3,7 +3,7 @@
   <div  class="product-item-wrap">
  <div class="ratio" >
   <div class="square" >
-    <a [routerLink]="['/products/view/' + product.id]">
+    <a [routerLink]="['/products/view/' + product.id]" class="product-img-padding">
       <img
         [ngClass]="{ soldout: product.soldout }"
         src="{{ hoststatic + product.image?.src_mini }}"

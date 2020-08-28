@@ -66,10 +66,20 @@
   },
   "sortBy": {
     "sort": "Sortuj według:",
-    "price": "сena",
-    "rating": "ocena"
+    "minPrice": "Od tanich do drogich",
+    "maxPrice": "Od drogich do tanich",
+    "rating": "ocena",
+    "view": "Widok"
   },
   "filter": {
     "priceRange": "Przedział cenowy"
+  },
+  "product": {
+    "productCode": "Kod produktu",
+    "productColor": "Kolor:",
+    "productSize": "Rozmiar:"
+  },
+  "wishlist": {
+    "addToWishlist": "Dodaj Do Listy życzeń"
   }
 }

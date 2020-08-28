@@ -37,6 +37,7 @@ export class ManufacturerPageComponent implements OnInit {
   ) {}
 
   id: number = 0;
+  isManufacturerPage: boolean = false;
 
   getByIdHandler = (data) => {
     // this.ngxService.stopAll();

@@ -116,14 +116,22 @@
     "addToCart": "Add to cart",
     "description": "Description",
     "additionalInfo": "Additional information",
-    "related": "Related products"
+    "related": "Related products",
+    "productCode": "Product code",
+    "productColor": "Color:",
+    "productSize": "Size:"
   },
   "sortBy": {
     "sort": "Sort By:",
-    "price": "price",
-    "rating": "rating"
+    "minPrice": "From cheap to expensive",
+    "maxPrice": "From expensive to cheap",
+    "rating": "rating",
+    "view": "View"
   },
   "filter": {
     "priceRange": "Price range"
+  },
+  "wishlist": {
+    "addToWishlist": "Add To Wishlist"
   }
 }

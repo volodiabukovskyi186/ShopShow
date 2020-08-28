@@ -118,14 +118,22 @@
     "addToCart": "Додати в кошик",
     "description": "Опис",
     "additionalInfo": "Додаткова інформація",
-    "related": "Пов'язані товари"
+    "related": "Пов'язані товари",
+    "productCode": "Kод товару",
+    "productColor": "Колір:",
+    "productSize": "Розмір:"
   },
   "sortBy": {
-    "sort": "Сортувати За:",
-    "price": "ціна",
-    "rating": "рейтинг"
+    "sort": "Сортувати:",
+    "minPrice": "Від дешевих до дорогих",
+    "maxPrice": "Від дорогих до дешевих",
+    "rating": "рейтинг",
+    "view": "Вигляд"
   },
   "filter": {
     "priceRange": "Діапазон цін"
+  },
+  "wishlist": {
+    "addToWishlist": "Додати До Списку Бажань"
   }
 }

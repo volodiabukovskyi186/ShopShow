@@ -36,10 +36,11 @@
 
 .image-mini {
   cursor: pointer;
-  border: 1px solid transparent;
-  background-color: $white;
+  //border: 1px solid transparent;
+  //background-color: $white;
+  background-color: #fafafa;
   transform-origin: bottom center;
-  @include material-shadow(1, 1, $gray400);
+  //@include material-shadow(1, 1, $gray400);
   @include transition();
 
   &:hover, &.active {
@@ -57,9 +58,10 @@
 }
 
 .image-full {
-  border: 1px solid $gray200;
-  background-color: $white;
-  @include material-shadow(1, 1, $gray400);
+  // border: 1px solid $gray200;
+  background-color: #fafafa;
+  // background-color: $white;
+  // @include material-shadow(1, 1, $gray400);
 }
 
 @include screen-w(700px) {

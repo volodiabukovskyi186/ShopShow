@@ -4,24 +4,26 @@
   <div class="short">
     <product-image-view
       class="sticky"
-      [host]="'//showuapi.rodzyk.com/'"
+      [host]="'https://api.showu.com.ua/'"
       [images]="product.item.images"
       [main]="product?.item?.image?.src"
     ></product-image-view>
   </div>
   <div class="long">
     <div class="card">
-      <h4 class="title">
-        {{ product.item?.description?.name }} {{ product.item.model }}
-        <p>sdasd</p>
+      <h4 class="title product-name">
+        {{ product.item?.description?.name }}
+      </h4>
+      <h4 class="title model-title">
+        {{ "product.productCode" | translate }}: {{ product.item.model }}
       </h4>
       <div class="flex">
         <rap-rating [rating]="product.item.rating"></rap-rating>
       </div>
-      <hr />
+      <!-- <hr />
       <p>
         {{ product.item.description?.meta_discription }}
-      </p>
+      </p> -->
       <hr />
       <div class="price flex v_center space">
         <b
@@ -36,9 +38,21 @@
         >
       </div>
       <hr />
+      <div>
+        <div class="product-description-title">
+          {{ 'product.description' | translate }}
+        </div>
+        <div class="read-text">
+          {{ product.item.description?.discription }}
+        </div>
+        <div>
+          {{ product.item.description?.meta_discription }}
+        </div>
+      </div>
+      <hr />
       <div class="flex">
         <rap-count-input
-          style="width: 128px; margin-right: 8px;"
+          class="add-to-card-content-input"
           [min]="1"
           [max]="20"
           [(value)]="count"
@@ -47,14 +61,45 @@
           class="button radius large delete add-to-catt-btn"
           (click)="add(product.item)"
         >
-          <rap-svg-ico [src]="'assets/icons/cart-add.svg'"></rap-svg-ico>
-          {{ "product.addToCart" | translate }}
+          <rap-svg-ico class="basket-icon" [src]="'assets/icons/basket_1.svg'"></rap-svg-ico>
+          <span class="add-to-card-text">{{ "product.addToCart" | translate }}</span>
         </button>
+      </div>
+      <div class="add-to-wishlist">
+        <img class="heart-icon" src="assets/icons/heart_1.svg"/>
+        <span>
+          {{ 'wishlist.addToWishlist' | translate }}
+        </span>
+      </div>
+      <hr />
+      <div class="product-attributes-content" [formGroup]="productViewForm">
+        <div class="product-label">
+          <div *ngFor="let attrb of attrMapArr">
+            <mat-label class="product-label-text">{{ attrb }}</mat-label>
+          </div>
+        </div>
+        <mat-form-field appearance="standart" class="product-attributes-field" *ngIf="isAttrColor">
+          <mat-select formControlName="color">
+            <mat-option *ngFor="let item of attrColor" [value]="item.text">
+              <div>{{ item.text }}</div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="product-attributes-content" [formGroup]="productViewForm">
+        <div></div>
+        <mat-form-field appearance="standart" class="product-attributes-field" *ngIf="isAttrSize">
+          <mat-select formControlName="size">
+            <mat-option *ngFor="let item of attrSize" [value]="item.text">
+              <div>{{ item.text }}</div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
 
-    <div class="manufacturer radius" style="margin: 1rem 0;">
-      <div class="golden">
+    <div class="manufacturer" style="margin: 1rem 0;">
+      <div class="golden manufacturer-shadow">
         <div class="long padding">
           <a [routerLink]="['/manufacturer', product.item.manufactured?.id]"
             ><h6 style="margin: 4px 0;">
@@ -74,7 +119,7 @@
             <div class="r3x1">
               <img
                 src="{{
-                  '//showuapi.rodzyk.com/' +
+                  'https://api.showu.com.ua/' +
                     product.item.manufactured?.image.src_mini
                 }}"
                 alt="{{ product.item.manufactured?.description?.name }}"
@@ -88,12 +133,12 @@
 
     <section class="card">
       <rap-step-tabs>
-        <rap-step-tab [title]="'product.description' | translate">
+        <!-- <rap-step-tab [title]="'product.description' | translate">
           <div
             class="read-text"
           >{{ product.item.description?.discription }}</div>
-        </rap-step-tab>
-        <rap-step-tab [title]="'product.additionalInfo' | translate">
+        </rap-step-tab> -->
+        <!-- <rap-step-tab [title]="'product.additionalInfo' | translate">
           <table class="table">
             <tbody>
               <tr *ngFor="let item of product.attributes.attrybutes">
@@ -106,8 +151,8 @@
               </tr>
             </tbody>
           </table>
-        </rap-step-tab>
-        <rap-step-tab [title]="'review.reviews' | translate">
+        </rap-step-tab> -->
+        <!-- <rap-step-tab [title]="'review.reviews' | translate">
           <app-review-list
             *ngIf="product.reviews.data.length > 0; else noReviews"
             [reviews]="product.reviews.data"
@@ -122,7 +167,7 @@
           <ng-template #noReviews>
             <div class="d4">{{ "review.no_reviews" | translate }}</div>
           </ng-template>
-        </rap-step-tab>
+        </rap-step-tab> -->
       </rap-step-tabs>
     </section>
   </div>

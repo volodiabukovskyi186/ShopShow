@@ -20,13 +20,14 @@ $scale: 1.05;
     text-align: center;
 
     background-color: $white;
-    border: 1px solid $primary;
+    border: 1px solid #242424;
     color: $gray850;
     svg {
       display: block;
-      width: 14px;
-      height: 14px;
+      // width: 8px;
+      height: 8px;
       fill: $gray850;
+      margin-left: 3px;
     }
     transform-origin: bottom center;
 
@@ -53,10 +54,12 @@ $scale: 1.05;
       filter: unset;
       background-color: $primary;
       color: $white;
+      border: 1px solid $primary;
 
       transform: scale($scale);
       svg {
-        fill: rgba($white, .64);
+        // fill: rgba($white, .64);
+        fill: rgba(36, 36, 36, 1);
       }
     }
   }
@@ -66,8 +69,53 @@ $scale: 1.05;
   &.radius {
     .pagination {
       button {
-        border-radius: 4px;
+        border-radius: 5px;
       }
     }
   }
+}
+
+.previous {
+  &:disabled {
+    background-color: $white !important;
+    color: #242424 !important;
+    border-color: rgba(#242424, 1) !important;
+  }
+}
+
+.next {
+  &:disabled {
+    background-color: $white !important;
+    color: #242424 !important;
+    border-color: rgba(#242424, 1) !important;
+  }
+}
+
+.pagination {
+  button {
+    // width: unset;
+
+    // &:disabled {
+    //   border: 1px solid $primary !important;
+    // }
+  }
+}
+
+.go-to-first-page,
+.go-to-last-page {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+
+.first-page-svg {
+  margin-left: 0px !important;
+}
+
+.last-page-svg {
+  margin-left: -3px !important;
+}
+
+.first-page-svg-back {
+  margin-left: 1px !important;
 }
