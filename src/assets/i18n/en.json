@@ -123,8 +123,8 @@
   },
   "sortBy": {
     "sort": "Sort By:",
-    "minPrice": "Min Price",
-    "maxPrice": "Max Price",
+    "minPrice": "From cheap to expensive",
+    "maxPrice": "From expensive to cheap",
     "rating": "rating",
     "view": "View"
   },

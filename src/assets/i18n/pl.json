@@ -66,8 +66,8 @@
   },
   "sortBy": {
     "sort": "Sortuj według:",
-    "minPrice": "Cena minimalna",
-    "maxPrice": "Cena maksymalna",
+    "minPrice": "Od tanich do drogich",
+    "maxPrice": "Od drogich do tanich",
     "rating": "ocena",
     "view": "Widok"
   },

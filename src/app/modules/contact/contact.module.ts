@@ -9,6 +9,8 @@ import { FormsModule } from "@angular/forms";
 import { ContactCardComponent } from "./contact-card/contact-card.component";
 import { ContactsPageComponent } from "./contacts-page/contacts-page.component";
 import { ContactsRoutingModule } from "./contact-routing.module";
+import { TranslateModule } from "@ngx-translate/core";
+import { CallbackSuccessDialogComponent } from '../dialogs/callback-success-dialog/callback-success-dialog.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { ContactsRoutingModule } from "./contact-routing.module";
     ContactUsFormComponent,
     ContactCardComponent,
     ContactsPageComponent,
+    CallbackSuccessDialogComponent,
   ],
   exports: [ContactsBlockComponent],
   imports: [
@@ -23,6 +26,7 @@ import { ContactsRoutingModule } from "./contact-routing.module";
     FormsModule,
     UiModule,
     ContactsRoutingModule,
+    TranslateModule,
     // AgmCoreModule.forRoot({
     //   apiKey: "AIzaSyBvi88oOOInhDNFct0hsMpWv7ytTTrXThg",
     // }),

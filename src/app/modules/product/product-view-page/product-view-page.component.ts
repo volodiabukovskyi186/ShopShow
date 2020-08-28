@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavLink } from 'src/app/modules/ui/rap/nav-item/nav-link';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { NgxUiLoaderService } from "ngx-ui-loader";
 import { ProductService } from 'src/app/modules/product/product.service';
 // import { CartService } from "src/app/modules/cart/cart.service";
@@ -32,14 +32,16 @@ export class ProductViewPageComponent implements OnInit {
       public product: ProductService,
       public cart: CartService,
       private title: Title,
-      private meta: Meta
+      private meta: Meta,
+      private router: Router
   ) {}
   
 
   getByIdHandler = (data) => {
     this.product.item = data.data;
 
-    this.updateTitle(this.product.item.description.name + ` | ShowU ` + this.product.item.description.tag);
+  //this.updateTitle(this.product.item.description.name + ` | ShowU ` + this.product.item.description.tag);
+    this.updateTitle(this.product.item.description.name + ` | ShowU `);
     this.updateDescription(this.product.item.description.meta_discription );
     // link: "manufacturer" + "/" + this.id,
    

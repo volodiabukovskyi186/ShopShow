@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ContactService } from "../contact.service";
 import { IContactLink } from '../contact-card/contact-card.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CallbackSuccessDialogComponent } from '../../dialogs/callback-success-dialog/callback-success-dialog.component';
 
 @Component({
   selector: "app-contacts-block",
@@ -8,14 +10,38 @@ import { IContactLink } from '../contact-card/contact-card.component';
   styleUrls: ["./contacts-block.component.scss"],
 })
 export class ContactsBlockComponent implements OnInit {
-  constructor(public contact: ContactService) {}
+  constructor(
+    public contact: ContactService,
+    public dialog: MatDialog
+  ) {}
+
+  ngOnInit(): void {}
  
   onSubmit(event) {
     this.contact.sendContactFormData(event);
-    alert("Mail send");
-  }
 
-  ngOnInit(): void {}
+    const dialogRef = this.dialog.open(CallbackSuccessDialogComponent, {
+      data: {
+          title: 'Select unit prices to add',
+          actions: [
+              {
+                  param: 'closeIcon',
+                  label: 'Cancel',
+              },
+              {
+                  param: 'add',
+                  label: 'Add',
+              },
+          ],
+          contactData: event,
+          // currentImg: current,
+          // currentProduct: this.getCurrentProduct,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(res => {});
+    // alert("Mail send");
+  }
 
   zoom: number = 15;
 

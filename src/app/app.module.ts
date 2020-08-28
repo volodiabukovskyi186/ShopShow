@@ -28,6 +28,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 }
 import { PrebootModule } from "preboot";
 import { UiModule } from './modules/ui/ui.module';
+//import { CallbackSuccessDialogComponent } from './modules/dialogs/callback-success-dialog/callback-success-dialog.component';
 // import { OnEnterSearchComponent } from './modules/on-enter-search/on-enter-search.component';
 
 @NgModule({
