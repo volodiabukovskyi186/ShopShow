@@ -175,38 +175,38 @@
         <div class="d4">{{ "review.no_reviews" | translate }}</div>
       </ng-template>
       <div class="add-review-container">
-        <form class="add-review-container__form">
+        <form class="add-review-container__form" [formGroup]="testGroup" (ngSubmit)="addReview()">
         <div class="add-review-container__header">
-          <p class="text-bold">Add a review<sup class="su-required">*</sup></p>
-          <p>Your email address will not be published. Required fields are marked </p>
+          <p class="text-bold">{{'add-review.add-review' | translate}}<sup class="su-required">*</sup></p>
+<!--          <p>Your email address will not be published. Required fields are marked </p>-->
         </div>
         <div class="add-review-container__rating">
-          <p class="text-bold">Your rating <sup class="su-required">*</sup></p>
+          <p class="text-bold">{{'add-review.rating' | translate}} <sup class="su-required">*</sup></p>
           <div class="add-review-container__rating__stars">
-            <img src="assets/icons/star.svg">
-            <img src="assets/icons/star.svg">
-            <img src="assets/icons/star.svg">
-            <img src="assets/icons/star.svg">
-            <img src="assets/icons/star.svg">
-
+            <ng-container *ngFor="let star of stars">
+              <label [for]="star.id">
+                <img [src]="star.src">
+                <input [id]="star.id" type="radio" formControlName="star" [value]="star.value">
+              </label>
+            </ng-container>
           </div>
         </div>
         <div class="add-review-container__review">
-          <p>Your review <sup class="su-required">*</sup> </p>
-          <textarea rows="11" class="add-review-container__review__area"></textarea>
+          <p>{{'add-review.your-review' | translate}} <sup class="su-required">*</sup> </p>
+          <textarea formControlName="text" rows="11" class="add-review-container__review__area"></textarea>
         </div>
         <div class="add-review-container__user-inf">
           <div class="add-review-container__user-inf__input-block">
-            <p>Name <sup class="su-required">*</sup></p>
-            <input type="text">
+            <p>{{'add-review.name' | translate}} <sup class="su-required">*</sup></p>
+            <input formControlName="name" type="text">
           </div>
           <div class="add-review-container__user-inf__input-block">
-            <p>Email <sup class="su-required">*</sup></p>
-            <input type="text">
+            <p>{{'add-review.email' | translate}} <sup class="su-required">*</sup></p>
+            <input formControlName="email" type="text" >
           </div>
         </div>
           <div class="add-review-container__submit">
-            <input type="submit" value="Submit">
+            <button type="submit"   [disabled]="!testGroup.valid">Submit</button>
           </div>
         </form>
       </div>

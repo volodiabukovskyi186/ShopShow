@@ -133,5 +133,12 @@
   },
   "wishlist": {
     "addToWishlist": "Add To Wishlist"
+  },
+  "add-review": {
+    "add-review": "Add a review",
+    "rating": "Your rating",
+    "your-review":"Your review",
+    "name":"Name",
+    "email": "E-mail"
   }
 }

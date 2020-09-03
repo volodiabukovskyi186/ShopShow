@@ -135,5 +135,12 @@
     },
     "wishlist": {
       "addToWishlist": "Добавить В Список Желаний"
-    }
+    },
+  "add-review": {
+    "add-review": "Добавить отзыв",
+    "rating": "Ваш рейтинг",
+    "your-review":"Ваш отзыв",
+    "name":"Имя",
+    "email": "E-mail"
+  }
   }
