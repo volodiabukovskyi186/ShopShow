@@ -73,28 +73,28 @@
       </div>
       <hr />
       <div class="product-attributes-content" [formGroup]="productViewForm">
-        <div class="product-label">
-          <div *ngFor="let attrb of attrMapArr">
-            <mat-label class="product-label-text">{{ attrb }}</mat-label>
-          </div>
-        </div>
-        <mat-form-field appearance="standart" class="product-attributes-field" *ngIf="isAttrColor">
-          <mat-select formControlName="color">
-            <mat-option *ngFor="let item of attrColor" [value]="item.text">
-              <div>{{ item.text }}</div>
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+<!--        <div class="product-label">-->
+<!--          <div *ngFor="let attrb of attrMapArr">-->
+<!--            <mat-label class="product-label-text">{{ attrb }}</mat-label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <mat-form-field appearance="standart" class="product-attributes-field" *ngIf="isAttrColor">-->
+<!--          <mat-select formControlName="color">-->
+<!--            <mat-option *ngFor="let item of attrColor" [value]="item.text">-->
+<!--              <div>{{ item.text }}</div>-->
+<!--            </mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
       </div>
       <div class="product-attributes-content" [formGroup]="productViewForm">
-        <div></div>
-        <mat-form-field appearance="standart" class="product-attributes-field" *ngIf="isAttrSize">
-          <mat-select formControlName="size">
-            <mat-option *ngFor="let item of attrSize" [value]="item.text">
-              <div>{{ item.text }}</div>
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+<!--        <div></div>-->
+<!--        <mat-form-field appearance="standart" class="product-attributes-field" *ngIf="isAttrSize">-->
+<!--          <mat-select formControlName="size">-->
+<!--            <mat-option *ngFor="let item of attrSize" [value]="item.text">-->
+<!--              <div>{{ item.text }}</div>-->
+<!--            </mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
       </div>
     </div>
 
@@ -131,50 +131,92 @@
       </div>
     </div>
 
-    <section class="card">
-      <rap-step-tabs>
-        <!-- <rap-step-tab [title]="'product.description' | translate">
-          <div
-            class="read-text"
-          >{{ product.item.description?.discription }}</div>
-        </rap-step-tab> -->
-        <!-- <rap-step-tab [title]="'product.additionalInfo' | translate">
-          <table class="table">
-            <tbody>
-              <tr *ngFor="let item of product.attributes.attrybutes">
-                <td width="35%">
-                  <div class="dotted-caption">
-                    <span>{{ item.attribyte.description?.name }}</span>
-                  </div>
-                </td>
-                <td>{{ item.text }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </rap-step-tab> -->
-        <!-- <rap-step-tab [title]="'review.reviews' | translate">
-          <app-review-list
-            *ngIf="product.reviews.data.length > 0; else noReviews"
-            [reviews]="product.reviews.data"
-          ></app-review-list>
-          <app-pagination
-            class="radius"
-            [page]="product.reviewPage"
-            [total]="Math.ceil(product.reviews.count / product.reviews.take)"
-            [pagesToShow]="5"
-            (pageChanged)="pageChangedHandler($event)"
-          ></app-pagination>
-          <ng-template #noReviews>
-            <div class="d4">{{ "review.no_reviews" | translate }}</div>
-          </ng-template>
-        </rap-step-tab> -->
-      </rap-step-tabs>
-    </section>
-  </div>
-</div>
 
-<div style="width: 100%;" class="d4 text-center flex row center v_center">
+  </div>
+
+</div>
+<div class="white-group">
+<section class="  card-description">
+  <div class="card-description__container">
+
+  <rap-step-tabs  >
+    <rap-step-tab [title]="'product.description' | translate">
+      <div
+              class="read-text"
+      >{{ product.item.description?.discription }}</div>
+    </rap-step-tab>
+    <rap-step-tab [title]="'product.additionalInfo' | translate">
+      <table class="table">
+        <tbody>
+        <tr *ngFor="let item of product.attributes.attrybutes">
+          <td width="35%">
+            <div class="dotted-caption">
+              <span>{{ item.attribyte.description?.name }}</span>
+            </div>
+          </td>
+          <td>{{ item.text }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </rap-step-tab>
+    <rap-step-tab [title]="'review.reviews' | translate">
+      <app-review-list
+              *ngIf="product.reviews.data.length > 0; else noReviews"
+              [reviews]="product.reviews.data"
+      ></app-review-list>
+      <app-pagination
+              class="radius"
+              [page]="product.reviewPage"
+              [total]="Math.ceil(product.reviews.count / product.reviews.take)"
+              [pagesToShow]="5"
+              (pageChanged)="pageChangedHandler($event)"
+      ></app-pagination>
+      <ng-template #noReviews>
+        <div class="d4">{{ "review.no_reviews" | translate }}</div>
+      </ng-template>
+      <div class="add-review-container">
+        <form class="add-review-container__form">
+        <div class="add-review-container__header">
+          <p class="text-bold">Add a review<sup class="su-required">*</sup></p>
+          <p>Your email address will not be published. Required fields are marked </p>
+        </div>
+        <div class="add-review-container__rating">
+          <p class="text-bold">Your rating <sup class="su-required">*</sup></p>
+          <div class="add-review-container__rating__stars">
+            <img src="assets/icons/star.svg">
+            <img src="assets/icons/star.svg">
+            <img src="assets/icons/star.svg">
+            <img src="assets/icons/star.svg">
+            <img src="assets/icons/star.svg">
+
+          </div>
+        </div>
+        <div class="add-review-container__review">
+          <p>Your review <sup class="su-required">*</sup> </p>
+          <textarea rows="11" class="add-review-container__review__area"></textarea>
+        </div>
+        <div class="add-review-container__user-inf">
+          <div class="add-review-container__user-inf__input-block">
+            <p>Name <sup class="su-required">*</sup></p>
+            <input type="text">
+          </div>
+          <div class="add-review-container__user-inf__input-block">
+            <p>Email <sup class="su-required">*</sup></p>
+            <input type="text">
+          </div>
+        </div>
+          <div class="add-review-container__submit">
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
+    </rap-step-tab>
+  </rap-step-tabs>
+  </div>
+</section>
+<div style="width: 100%;" class="d4 text-center flex row center v_center raleted-container">
   <h1 style="margin-bottom: 0;">{{ "product.related" | translate }}</h1>
 </div>
 
 <app-product-slider [products]="product.popular"></app-product-slider>
+</div>
