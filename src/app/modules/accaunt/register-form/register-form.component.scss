@@ -1,0 +1,35 @@
+.login {
+  border-top:1px solid silver ;
+  .login__input-container {
+
+    .description {
+
+      padding: 36px 0 10px;
+    }
+    .original{
+      input{
+        height: 50px;
+      }
+    }
+  }
+}
+.singing-container{
+  padding-top: 48px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  .form-row{
+
+    .original{
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+
+      a{
+        text-align: end;
+        padding: 0 5px;
+      }
+    }
+  }
+}

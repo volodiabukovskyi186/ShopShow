@@ -14,6 +14,12 @@ import { RestoreFormComponent } from "./restore-form/restore-form.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { TranslateModule } from "@ngx-translate/core";
 import { RouterModule } from '@angular/router';
+import { PersonalDataComponent } from './personal-data/personal-data.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { MyReviewComponent } from './my-review/my-review.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 const components = [
   AccauntButtonComponent,
@@ -29,8 +35,12 @@ const components = [
     SignupPageComponent,
     RestorePageComponent,
     ProfilePageComponent,
+    PersonalDataComponent,
+    MyOrdersComponent,
+    MyReviewComponent,
+    WishlistComponent,
   ],
-  exports: [...components],
+  exports: [...components, PersonalDataComponent],
   imports: [
     CommonModule,
     CoreModule,
@@ -39,6 +49,8 @@ const components = [
     TranslateModule,
     RouterModule,
     AccauntRoutingModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
 })
 export class AccauntModule {}

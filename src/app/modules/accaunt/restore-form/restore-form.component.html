@@ -1,5 +1,5 @@
-<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
-  <div class="form-row">
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="login">
+  <div class="login__input-container">
     <div class="description">
       <label for="ShowUEmail">{{ labelEmail }} </label>
     </div>
@@ -8,7 +8,7 @@
         formControlName="email"
         placeholder="{{ placeholderEmail }}"
         required
-        class="radius"
+        class=""
         id="ShowUEmail"
         name="email"
         type="email"
@@ -16,26 +16,31 @@
       />
     </div>
   </div>
-
-  <div class="flex center padding">
+<div class="singing-container">
+  <div class="flex space-between singing-container__sing-in-btn">
     <button
       [disabled]="!authForm.valid"
-      class="button delete radius large"
+      class="button delete  large"
       type="submit"
     >
       {{ labelSubmit }}
     </button>
   </div>
-</form>
-
-<div class="form-row">
-  <div class="description"></div>
-  <div class="original">
-    <a [routerLink]="['/', 'accaunt', 'register']"
+  <div class="form-row register-container">
+    <div class="description"></div>
+    <div class="original">
+      <a [routerLink]="['/', 'accaunt', 'register']"
       ><small>{{ labelReg }}</small></a
-    >
-    <a [routerLink]="['/', 'accaunt', 'login']"
+      >
+      <a [routerLink]="['/', 'accaunt', 'login']"
       ><small>{{ labelLogin }}</small></a
-    >
+      >
+    </div>
   </div>
 </div>
+
+
+</form>
+
+
+

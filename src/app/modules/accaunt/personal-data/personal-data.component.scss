@@ -1,0 +1,24 @@
+.personal-data-container{
+  .title{
+    font-size: 18px;
+    font-weight: normal;
+  }
+  max-width: 570px;
+  .personal-data-container__table{
+    max-width: 480px;
+    width: 100%;
+    td{
+      padding-bottom: 20px;
+    }
+  }
+  .personal-data-container__change-password{
+    padding-top: 80px;
+    button{
+      border: none;
+      color: white;
+      background-color: #000000;
+      width: 155px;
+      height: 39px;
+    }
+  }
+}

@@ -1,5 +1,5 @@
-<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
-  <div class="form-row">
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="login">
+  <div class="login__input-container">
     <div class="description">
       <label for="ShowULogin">{{ labelLogin }} </label>
     </div>
@@ -9,7 +9,7 @@
         formControlName="login"
         placeholder="{{ placeholderLogin }}"
         required
-        class="radius"
+        class=""
         id="ShowULogin"
         name="login"
         type="text"
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class="form-row">
+  <div class="login__input-container">
     <div class="description">
       <label for="ShowUPassword">{{ labelPassword }}</label>
     </div>
@@ -26,7 +26,7 @@
         autocomplete="current-password"
         placeholder="{{ placeholderPassword }}"
         formControlName="password"
-        class="radius"
+        class=""
         id="ShowUPassword"
         required
         name="login"
@@ -35,24 +35,32 @@
     </div>
   </div>
 
-  <div class="flex center padding">
-    <button
-      [disabled]="!authForm.valid"
-      class="button delete radius large"
-      type="submit"
-    >
-      {{ labelSubmit }}
-    </button>
+  <div class="singing-container">
+    <div class="flex space-between singing-container__sing-in-btn">
+      <button
+              [disabled]="!authForm.valid"
+              class="button delete  large"
+              type="submit"
+      >
+        {{ labelSubmit }}
+      </button>
+<!--      <div class="singing-container__sing-in-btn__remember">-->
+<!--        <input type="checkbox">-->
+<!--        <p>Remember me</p>-->
+<!--      </div>-->
+    </div>
+    <div class="form-row register-container ">
+      <div class="description"></div>
+      <div class="original">
+        <a [routerLink]="['/', 'accaunt', 'restore']"
+        ><small>{{ labelForgotPassword }}</small></a
+        >
+        <a [routerLink]="['/', 'accaunt', 'register']"
+        ><small>{{ labelReg }}</small></a
+        >
+      </div>
+    </div>
   </div>
+
 </form>
-<div class="form-row">
-  <div class="description"></div>
-  <div class="original">
-    <a [routerLink]="['/', 'accaunt', 'restore']"
-      ><small>{{ labelForgotPassword }}</small></a
-    >
-    <a [routerLink]="['/', 'accaunt', 'register']"
-      ><small>{{ labelReg }}</small></a
-    >
-  </div>
-</div>
+
