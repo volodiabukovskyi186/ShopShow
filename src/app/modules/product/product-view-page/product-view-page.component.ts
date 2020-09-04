@@ -27,7 +27,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
   isAttrSize: boolean = false;
 
   testGroup: FormGroup = new FormGroup({
-    text: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]{2,10}')]),
+    text: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]{2,100}')]),
     name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]{2,10}')]),
     email: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9_]+@[a-z]{2,6}.[a-z]{2,4}')]),
       star: new FormControl(5, [Validators.required]),
@@ -167,8 +167,10 @@ console.log('good')
     this.product.getProdReview(id).subscribe(this.getProdReviewHandler)
   }
 
-  getProdAttrHandler(data: any): void {
+  getProdAttrHandler = data => {
+
     this.product.attributes = data.data;
+
     const attrMap = {};
     data.data.attrybutes.forEach(element => {
       if (!attrMap[element.attribyte.description.name]) {
@@ -193,9 +195,7 @@ console.log('good')
         this.productViewForm.get('size').setValue(attr[0].text);
       }
     })
-
     this.attrMapArr = attrArr;
-
   }
 
   generateProductViewForm(): void {
