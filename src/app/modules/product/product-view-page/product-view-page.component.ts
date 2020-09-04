@@ -71,27 +71,27 @@ console.log('good')
       {
           id: 'star1',
           value: 1,
-          src: 'assets/icons/cancel.svg',
+          src: 'assets/icons/stars-silver.png',
       },
       {
           id: 'star2',
           value: 2,
-          src: 'assets/icons/cancel.svg',
+          src: 'assets/icons/stars-silver.png',
       },
       {
           id: 'star3',
           value: 3,
-          src: 'assets/icons/cancel.svg',
+          src: 'assets/icons/stars-silver.png',
       },
       {
           id: 'star4',
           value: 4,
-          src: 'assets/icons/cancel.svg',
+          src: 'assets/icons/stars-silver.png',
       },
       {
           id: 'star5',
           value: 5,
-          src: 'assets/icons/cancel.svg',
+          src: 'assets/icons/stars-silver.png',
       }
   ]
   
@@ -133,7 +133,7 @@ console.log('good')
           this.stars = this.stars.map(star => {
               return {
                   ...star,
-                  src: star.value <= value ? 'assets/icons/star.svg' : 'assets/icons/cancel.svg',
+                  src: star.value <= value ? 'assets/icons/star.svg' : 'assets/icons/stars-silver.png',
               };
           });
       });

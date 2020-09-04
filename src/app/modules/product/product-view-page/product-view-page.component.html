@@ -185,7 +185,7 @@
           <div class="add-review-container__rating__stars">
             <ng-container *ngFor="let star of stars">
               <label [for]="star.id">
-                <img [src]="star.src">
+                <img class="add-review-container__rating__stars__star" [src]="star.src">
                 <input [id]="star.id" type="radio" formControlName="star" [value]="star.value">
               </label>
             </ng-container>
