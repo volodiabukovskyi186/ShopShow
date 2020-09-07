@@ -88,5 +88,12 @@
     "your-review":"Twoja ocena",
     "name":"Imię",
     "email": "E-mail"
+  },
+  "cabinet": {
+    "personal-data": "Lista życzeń",
+    "wishlist": "Dane osobiste",
+    "my-orders": "Moje zamówienia",
+    "my-review": "Moja recenzja",
+    "log-out": "Wejście"
   }
 }

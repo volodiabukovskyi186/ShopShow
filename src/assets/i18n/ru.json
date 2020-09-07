@@ -142,5 +142,12 @@
     "your-review":"Ваш отзыв",
     "name":"Имя",
     "email": "E-mail"
+  },
+  "cabinet": {
+    "personal-data": "Личные данные",
+    "wishlist": "Список желаний",
+    "my-orders": "Мои заказы",
+    "my-review": "Мой обзор",
+    "log-out": "выход"
   }
   }

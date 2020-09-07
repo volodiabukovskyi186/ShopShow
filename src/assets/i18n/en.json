@@ -140,5 +140,14 @@
     "your-review":"Your review",
     "name":"Name",
     "email": "E-mail"
+  },
+  "cabinet": {
+    "personal-data": "Personal data",
+    "wishlist": "Wishlist",
+    "my-orders": "My orders",
+    "my-review": "My review",
+    "log-out": "Log out"
+
+
   }
 }

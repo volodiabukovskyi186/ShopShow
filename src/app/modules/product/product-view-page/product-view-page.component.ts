@@ -45,7 +45,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
       author: 'User',
       ...this.testGroup.value
     };
-console.log('good')
+
     if( review.user_id! = '') {
 
         this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe();
@@ -129,7 +129,7 @@ console.log('good')
           .valueChanges
           .pipe(takeUntil(this.destroy$))
           .subscribe(value => {
-          console.log(value);
+
           this.stars = this.stars.map(star => {
               return {
                   ...star,
@@ -203,12 +203,12 @@ console.log('good')
       color: new FormControl('', []),
       size: new FormControl('', [])
     });
-    console.log(this.productViewForm.value);
+
   }
 
   getProdReviewHandler = data => {
     this.product.reviews = data;
-    console.log(this.product.reviews);
+
     // this.ngxService.stopAll();
   }
 
