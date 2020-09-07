@@ -121,7 +121,9 @@
     "related": "Пов'язані товари",
     "productCode": "Kод товару",
     "productColor": "Колір:",
-    "productSize": "Розмір:"
+    "productSize": "Розмір:",
+    "sale": "Розпродаж",
+    "new": "Новий"
   },
   "sortBy": {
     "sort": "Сортувати:",

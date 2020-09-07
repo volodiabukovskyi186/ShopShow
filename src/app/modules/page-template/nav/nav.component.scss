@@ -89,7 +89,7 @@ div {
   position: absolute;
   z-index: 10000;
   width:80vw;
-  min-height: 80vh;
+  min-height: 100vh;
   background-color:#242626;
   list-style: none;
   display: flex;
@@ -194,8 +194,6 @@ div{
     display: flex;
     justify-content: center;
     flex-direction: row;
-
-
   }
   .mobile-burger {
     position: relative;

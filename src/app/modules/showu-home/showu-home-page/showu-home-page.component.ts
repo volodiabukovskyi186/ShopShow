@@ -6,6 +6,8 @@ import { ReviewService } from '../../review/review.service';
 import { ManufacturersService } from '../../manufacturers/manufacturers.service';
 import { ProductService } from '../../product/product.service';
 import { AppLangService } from '../../core/app-lang.service';
+import {ClientPageService} from '../../client-page/client-page.service';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: "app-showu-home-page",
@@ -13,6 +15,7 @@ import { AppLangService } from '../../core/app-lang.service';
   styleUrls: ["./showu-home-page.component.scss"],
 })
 export class ShowuHomePageComponent implements OnInit {
+  data: string = "2020-07-13";
   constructor(
     @Inject(PLATFORM_ID) private platformId: string,
     public collection: CollectionService,
@@ -21,7 +24,10 @@ export class ShowuHomePageComponent implements OnInit {
     public slider: SallersService,
     public product: ProductService,
     public manufacturer: ManufacturersService,
-    public review: ReviewService
+    public review: ReviewService,
+    public clientPage: ClientPageService,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +35,7 @@ export class ShowuHomePageComponent implements OnInit {
     this.collection.getLastThree().subscribe(this.collectionHandler);
     this.review.get().subscribe(this.getLastReviewsHandler);
     this.manufacturer.get().subscribe(this.getHandler);
-
+    this.updateMeta();
     this.product.getPopular().subscribe((data) => {
       this.product.popular = data.data.products;
     });
@@ -65,5 +71,8 @@ export class ShowuHomePageComponent implements OnInit {
     }
   }
 
-  data: string = "2020-07-13";
+  updateMeta() {
+    const title = `Home | ShowU`;
+    this.title.setTitle(title);
+  }
 }

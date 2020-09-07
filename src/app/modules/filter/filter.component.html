@@ -1,4 +1,43 @@
-<div class="filter-container">
+<button (click)="openedFilter = !openedFilter" class="button radius large upper delete open-filter mobile">
+  Filters
+</button>
+
+<div class="filter-container desktop">
+  <div class="categories">
+    <div class="category" *ngFor="let category of categories">
+      <app-filter-item [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-filter-item>
+    </div>
+  </div>
+  <div class="manufactures" *ngIf="isManufacturerPage">
+    <div class="manufactures-list">
+      <div *ngIf="manufacturersTitle">
+        <div>{{ manufacturersTitle.description.title }}</div>
+      </div>
+      <span class="material-icons" (click)="openManufactures($event)" *ngIf="!isOpenManufactures">add</span>
+      <span class="material-icons" *ngIf="isOpenManufactures" (click)="openManufactures($event)">remove</span>
+    </div>
+    <div *ngIf="isOpenManufactures" class="manufactures-list-content">
+      <app-filter-item *ngFor="let manufacturer of manufacturers" [filter]="manufacturer" (filterSelected)="onManufacturerFilterSelected($event)" (filterDeselected)="onManufacturerFilterDeselected($event)"></app-filter-item>
+    </div>
+  </div>
+  <div class="price-range">
+      <div class="price-range-item">
+        <div> {{ "filter.priceRange" | translate }} </div>
+        <span class="material-icons" (click)="openPrices($event)" *ngIf="!isOpenPrices">add</span>
+        <span class="material-icons" *ngIf="isOpenPrices" (click)="openPrices($event)">remove</span>
+      </div>
+      <div *ngIf="isOpenPrices" class="price-range-content">
+        <div class="min-max-btns">
+          <button class="price-range-btn" (click)="value = options.floor">Min.</button>
+          <button class="price-range-btn" (click)="highValue = options.ceil">Max</button>
+        </div>
+        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+        <button class="price-range-ok" (click)="onPriceFilterApplied()">Ok</button>
+      </div>
+  </div>
+</div>
+
+<div class="filter-container mobile" *ngIf="openedFilter" @slideLeft>
   <div class="categories">
     <div class="category" *ngFor="let category of categories">
       <app-filter-item [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-filter-item>

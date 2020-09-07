@@ -121,7 +121,9 @@
       "related": "Связанные товары",
       "productCode": "Kод товара",
       "productColor": "Цвет:",
-      "productSize": "Размер:"
+      "productSize": "Размер:",
+      "sale": "Распродажа",
+      "new": "Новый"
     },
     "sortBy": {
       "sort": "Сортировать:",

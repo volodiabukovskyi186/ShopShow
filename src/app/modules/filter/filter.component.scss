@@ -134,3 +134,23 @@
     }
   }
 }
+.mobile {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+  .filter-container.mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    z-index: 9;
+    background: white;
+  }
+}

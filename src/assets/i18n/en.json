@@ -119,7 +119,9 @@
     "related": "Related products",
     "productCode": "Product code",
     "productColor": "Color:",
-    "productSize": "Size:"
+    "productSize": "Size:",
+    "sale": "Sale",
+    "new": "New"
   },
   "sortBy": {
     "sort": "Sort By:",
