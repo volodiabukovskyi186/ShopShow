@@ -2,26 +2,25 @@
   width: 100%;
 
   .review-container__items {
-    padding-top: 50px;
+
     overflow: auto;
     min-width: 800px;
+    padding: 50px 10px 0 10px;
 
     .review-container__items__item {
+      padding-top: 5px;
+      min-height: 45px;
       width: 100%;
       display: grid;
-      grid-template-columns: 110px 0.5fr 40px 0.7fr 0.5fr;
+      grid-template-columns: 120px 0.5fr 40px 0.7fr 0.5fr;
       grid-template-areas:
         "a b c d e "
         "q q q q e"
         "m m m m e";
-
-
       background-color: white;
       box-shadow: 0px 3px 6px #00000029;
       border-right: 4px;
       margin-bottom: 20px;
-
-
 
       .review-container__items__item__drop {
         margin: 12px 0 0 10px;
@@ -192,11 +191,13 @@ border-bottom:1px solid #707070;
 
 .status-block{
   width: 100%;
+  padding: 0 5px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
     .status-order{
+      color: black;
       padding-bottom: 60px;
        border-left: none;
     }
