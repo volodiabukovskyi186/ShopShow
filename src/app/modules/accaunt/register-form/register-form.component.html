@@ -1,5 +1,5 @@
-<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
-  <div class="form-row">
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="login">
+  <div class="login__input-container">
     <div class="description">
       <label for="ShowUFirstName">{{ labelFirstName }} </label>
     </div>
@@ -8,7 +8,7 @@
         formControlName="first_name"
         placeholder="{{ placeholderFirstName }}"
         required
-        class="radius"
+        class=""
         id="ShowUFirstName"
         name="first_name"
         type="text"
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="form-row">
+  <div class="login__input-container">
     <div class="description">
       <label for="ShowULastName">{{ labelLastName }} </label>
     </div>
@@ -25,7 +25,7 @@
         formControlName="last_name"
         placeholder="{{ placeholderLastName }}"
         required
-        class="radius"
+        class=""
         id="ShowULastName"
         name="last_name"
         type="text"
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class="form-row">
+  <div class="login__input-container">
     <div class="description">
       <label for="ShowUEmail">{{ labelEmail }} </label>
     </div>
@@ -43,7 +43,7 @@
         formControlName="email"
         placeholder="{{ placeholderEmail }}"
         required
-        class="radius"
+        class=""
         id="ShowUEmail"
         name="email"
         type="email"
@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <div class="form-row">
+  <div class="login__input-container">
     <div class="description">
       <label for="ShowUPhone">{{ labelPhone }} </label>
     </div>
@@ -61,7 +61,7 @@
         formControlName="phone"
         placeholder="{{ placeholderPhone }}"
         required
-        class="radius"
+        class=""
         id="ShowUPhone"
         name="phone"
         type="tel"
@@ -69,7 +69,7 @@
     </div>
   </div>
 
-  <div class="form-row">
+  <div class="login__input-container">
     <div class="description">
       <label for="ShowUPassword">{{ labelPassword }}</label>
     </div>
@@ -78,7 +78,7 @@
         autocomplete="current-password"
         placeholder="{{ placeholderPassword }}"
         formControlName="password"
-        class="radius"
+        class=""
         id="ShowUPassword"
         required
         name="password"
@@ -86,26 +86,30 @@
       />
     </div>
   </div>
-
-  <div class="flex center padding">
-    <button
-      [disabled]="!authForm.valid || isSubmit"
-      class="button delete radius large"
-      type="submit"
-    >
-      {{ labelSubmit }}
-    </button>
+  <div class="singing-container">
+    <div class="flex space-between">
+      <button
+              [disabled]="!authForm.valid || isSubmit"
+              class="button delete radius large"
+              type="submit"
+      >
+        {{ labelSubmit }}
+      </button>
+    </div>
+    <div class="form-row">
+      <div class="description"></div>
+      <div class="original">
+<!--        <a [routerLink]="['/', 'accaunt', 'restore']"-->
+<!--        ><small>{{ labelForgotPassword }}</small></a-->
+<!--        >-->
+        <a [routerLink]="['/', 'accaunt', 'login']"
+        ><small>{{ labelLogin }}</small></a
+        >
+      </div>
+    </div>
   </div>
+
+
 </form>
 
-<div class="form-row">
-  <div class="description"></div>
-  <div class="original">
-    <a [routerLink]="['/', 'accaunt', 'restore']"
-      ><small>{{ labelForgotPassword }}</small></a
-    >
-    <a [routerLink]="['/', 'accaunt', 'login']"
-      ><small>{{ labelLogin }}</small></a
-    >
-  </div>
-</div>
+

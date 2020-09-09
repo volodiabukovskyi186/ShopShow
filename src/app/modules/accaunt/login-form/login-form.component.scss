@@ -1,0 +1,60 @@
+.login {
+  border-top:1px solid silver ;
+  .login__input-container {
+
+    .description {
+      padding: 36px 0 10px;
+    }
+    .original{
+      input{
+        height: 50px;
+      }
+    }
+  }
+}
+.singing-container{
+  max-width: 94vw;
+  padding-top: 48px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  .form-row{
+    .original{
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+
+
+      a{
+
+      text-align: end;
+        padding: 0 5px;
+      }
+    }
+  }
+  .register-container{
+    align-items: center;
+    flex-direction: column;
+  }
+  .singing-container__sing-in-btn{
+    button{
+      width: 200px;
+    }
+    .singing-container__sing-in-btn__remember{
+      padding-left: 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
+      input{
+        width: 30px;
+        height: 30px;
+      }
+      p{
+        padding-top: 20px;
+      }
+    }
+  }
+}
+

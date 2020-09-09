@@ -1,0 +1,65 @@
+.category-wrapper{
+  width: 100%;
+
+}
+.category-phone {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: -65px;
+  //width: 202px;
+  line-height: 2;
+  margin-top: 5px;
+
+
+  .category__small{
+    width: 100%;
+    border-bottom: 1px solid #EEF1F5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .category__small__second{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 10%;
+    .category-check{
+
+      width: 70%;
+    }
+    .category-check-box{
+      border-bottom: 1px solid #EEF1F5;
+      margin-left: 0%;
+      width: 30%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.filter-name {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.material-icons {
+  filter: invert(0.5);
+  font-size: 15px;
+  margin-top: 6px;
+  cursor: pointer;
+  width: 17px;
+}
+
+.checkbox {
+  margin-top: -3px;
+}
+@media screen and(max-width: 768px){
+  .category-phone{
+    //max-width: 400px;
+    margin-left: 0;
+    width: 90%;
+  }
+}

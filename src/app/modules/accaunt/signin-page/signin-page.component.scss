@@ -1,2 +1,14 @@
 @import "~src/styles/raisins/variables";
 @import "~src/styles/raisins/mixins";
+.sing-container{
+  padding: 0 2rem;
+  min-height: 550px;
+  margin: 0 auto;
+  max-width: 670px;
+  width: 100%;
+  margin-bottom: 150px ;
+
+}
+.breadcrumbs-container{
+  padding-bottom: 50px;
+}

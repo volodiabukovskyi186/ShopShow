@@ -30,9 +30,9 @@ export class FilterItemComponent implements OnInit {
   }
 
   public onCheckboxChange(event: MatCheckboxChange) {
-     if (event.checked){
+     if (event.checked) {
        this.filterSelected.emit(this.filter.id);
-     }else{ 
+     } else {
        this.filterDeselected.emit(this.filter.id);
      }
   }

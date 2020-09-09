@@ -4,8 +4,10 @@ import {ActivatedRoute} from '@angular/router';
 import {CartService} from '../../cart/cart.service';
 import {AuthService} from '../../core/auth/auth.service';
 import {AccauntService} from '../../accaunt/accaunt.service';
+import {slideLeft} from '../../ui/animations';
 
 @Component({
+  animations: [slideLeft],
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss'],

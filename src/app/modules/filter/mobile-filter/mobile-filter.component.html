@@ -1,0 +1,29 @@
+<div class="category-wrapper">
+    <div class="category-phone">
+        <div class="category__small" [ngClass]="{'category-check':!hasSubFilters(filter)}">
+            <div class="filter-name">{{ filter.name | titlecase }}</div>
+            <div *ngIf="hasSubFilters(filter)">
+                <span class="material-icons" (click)="isExpanded = true;" *ngIf="!isExpanded">add</span>
+                <span class="material-icons" *ngIf="isExpanded" (click)="isExpanded = false;">remove</span>
+            </div>
+        </div>
+
+        <div class="category__small__second"  [ngClass]="{'category-check-box':!hasSubFilters(filter)}" >
+        <div  *ngIf="isExpanded && hasSubFilters(filter)">
+            <app-mobile-filter *ngFor="let subFilter of filter.sub" [filter]="subFilter" (filterSelected)="onChildFilterSelected($event)" (filterDeselected)="onChildFilterDeselected($event)"></app-mobile-filter>
+
+        </div>
+        <div   *ngIf="!hasSubFilters(filter)">
+            <mat-checkbox (change)="onCheckboxChange($event)" class="checkbox"></mat-checkbox>
+        </div>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+
+

@@ -121,7 +121,9 @@
     "related": "Пов'язані товари",
     "productCode": "Kод товару",
     "productColor": "Колір:",
-    "productSize": "Розмір:"
+    "productSize": "Розмір:",
+    "sale": "Розпродаж",
+    "new": "Новий"
   },
   "sortBy": {
     "sort": "Сортувати:",
@@ -135,5 +137,12 @@
   },
   "wishlist": {
     "addToWishlist": "Додати До Списку Бажань"
+  },
+  "add-review": {
+    "add-review": "Додати відгук",
+    "rating": "Ваш рейтинг",
+    "your-review":"Ваш відгук",
+    "name":"Ім'я",
+    "email": "E-mail"
   }
 }

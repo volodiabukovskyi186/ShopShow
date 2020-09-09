@@ -121,7 +121,9 @@
       "related": "Связанные товары",
       "productCode": "Kод товара",
       "productColor": "Цвет:",
-      "productSize": "Размер:"
+      "productSize": "Размер:",
+      "sale": "Распродажа",
+      "new": "Новый"
     },
     "sortBy": {
       "sort": "Сортировать:",
@@ -135,5 +137,12 @@
     },
     "wishlist": {
       "addToWishlist": "Добавить В Список Желаний"
-    }
+    },
+  "add-review": {
+    "add-review": "Добавить отзыв",
+    "rating": "Ваш рейтинг",
+    "your-review":"Ваш отзыв",
+    "name":"Имя",
+    "email": "E-mail"
+  }
   }

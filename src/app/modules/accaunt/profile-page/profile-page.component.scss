@@ -1,0 +1,47 @@
+.breadcrumbs-container{
+  padding-bottom: 30px;
+}
+.active{
+  color: #9F1941;
+}
+.profile-container{
+
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding-top: 35px;
+
+  .profile-container__nav-block{
+    max-width: 330px;
+    min-width: 300px;
+    width: 100%;
+    flex: 1;
+
+    min-height: 100vh;
+
+    .profile-container__nav-block__items{
+      list-style: none;
+
+      .profile-container__nav-block__items__item{
+        padding-top: 13px;
+        border-bottom: 1px solid silver;
+        padding-bottom: 4px;
+        a{
+          &:hover{
+            border: none;
+          }
+        }
+      }
+    }
+
+  }
+  .profile-container-page{
+    overflow: auto;
+    flex: 1;
+    padding: 10px 0 0 40px;
+    min-height: 100vh;
+
+  }
+
+
+}

@@ -1,14 +1,14 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { AuthResponse } from '../../core/auth/models';
 
 
 @Component({
-  selector: "app-login-form",
-  templateUrl: "./login-form.component.html",
-  styleUrls: ["./login-form.component.scss"]
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent {
   @Input() labelLogin: string;
@@ -30,15 +30,14 @@ export class LoginFormComponent {
   ) {}
 
   authForm = new FormGroup({
-    login: new FormControl(""),
-    password: new FormControl("")
+    login: new FormControl(''),
+    password: new FormControl('')
   });
 
   onSubmit() {
     // this.ngxService.start();
     // this.toastr.clear();
-    
-    let form = this.authForm.value;
+    const form = this.authForm.value;
     this.auth.login(form.login, form.password).subscribe(this.authHandler);
   }
 
@@ -47,6 +46,7 @@ export class LoginFormComponent {
     this.auth.saveToken(data.data.token);
     this.auth.onAuth();
     this.authForm.reset();
-    this.router.navigate(["/"]);
-  };
+    this.router.navigate(['/']);
+  }
+
 }

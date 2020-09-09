@@ -4,6 +4,11 @@
  <div class="ratio" >
   <div class="square" >
     <a [routerLink]="['/products/view/' + product.id]" class="product-img-padding">
+      <div class="sale-label-container">
+        <div *ngIf="product.promotion" class="sale-label sale">{{'product.sale' | translate}}</div>
+        <div *ngIf="isIn24Created(product.created_at)" class="sale-label new">{{'product.new' | translate}}</div>
+      </div>
+
       <img
         [ngClass]="{ soldout: product.soldout }"
         src="{{ hoststatic + product.image?.src_mini }}"

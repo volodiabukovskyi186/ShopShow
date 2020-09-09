@@ -77,9 +77,18 @@
   "product": {
     "productCode": "Kod produktu",
     "productColor": "Kolor:",
-    "productSize": "Rozmiar:"
+    "productSize": "Rozmiar:",
+    "sale": "Sprzedaż",
+    "new": "Nowy"
   },
   "wishlist": {
     "addToWishlist": "Dodaj Do Listy życzeń"
+  },
+  "add-review": {
+    "add-review": "Dodać recenzję",
+    "rating": "Your rating",
+    "your-review":"Twoja ocena",
+    "name":"Imię",
+    "email": "E-mail"
   }
 }

@@ -1,13 +1,26 @@
 <rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
 <!-- <app-title ></app-title> -->
-<show-u-title [title]="'Profile'"></show-u-title>
-
-<b>First name:</b> {{accaunt.current?.user?.first_name}} <br>
-<b>Last name: </b>{{accaunt.current?.user?.last_name}} <br>
-<b>Phone:</b> {{accaunt.current?.user?.tel}} <br>
-<b>Email:</b> {{accaunt.current?.user?.email}} <br>
-<b>Is email confirm:</b> {{accaunt.current?.user?.is_confirm_email}} <br>
-<b>Register on site:</b> {{accaunt.current?.user?.created_at | localDate}} <br>
-<b>Last update info:</b> {{accaunt.current?.user?.updated_at | localDate}} <br>
-
+<!--<show-u-title [title]="'Profile'"></show-u-title>-->
+<!--<b>First name:</b> {{accaunt.current?.user?.first_name}} <br>-->
+<!--<b>Last name: </b>{{accaunt.current?.user?.last_name}} <br>-->
+<!--<b>Phone:</b> {{accaunt.current?.user?.tel}} <br>-->
+<!--<b>Email:</b> {{accaunt.current?.user?.email}} <br>-->
+<!--<b>Is email confirm:</b> {{accaunt.current?.user?.is_confirm_email}} <br>-->
+<!--<b>Register on site:</b> {{accaunt.current?.user?.created_at | localDate}} <br>-->
+<!--<b>Last update info:</b> {{accaunt.current?.user?.updated_at | localDate}} <br>-->
 <!-- <pre>{{accaunt.current | json}}</pre> -->
+<div class="profile-container">
+    <div class="profile-container__nav-block">
+        <ul class="profile-container__nav-block__items">
+            <li  class="profile-container__nav-block__items__item"><a routerLinkActive="active" [routerLink]="['/accaunt/profile/personal-data']">{{ 'cabinet.personal-data' | translate }}</a></li>
+            <li class="profile-container__nav-block__items__item"><a routerLinkActive="active"[routerLink]="['/accaunt/profile/wishList']" >{{ 'cabinet.wishlist' | translate }}</a></li>
+            <li class="profile-container__nav-block__items__item"><a routerLinkActive="active" [routerLink]="['/accaunt/profile/my-orders']">{{ 'cabinet.my-orders' | translate }}</a></li>
+            <li class="profile-container__nav-block__items__item"><a  routerLinkActive="active"[routerLink]="['/accaunt/profile/my-review']">{{ 'cabinet.my-review' | translate }}</a></li>
+            <li class="profile-container__nav-block__items__item"><a routerLinkActive="active">{{ 'cabinet.log-out' | translate }}</a></li>
+        </ul>
+    </div>
+
+    <div class="profile-container-page">
+        <router-outlet></router-outlet>
+    </div>
+</div>
