@@ -10,6 +10,35 @@
     td{
       padding-bottom: 20px;
     }
+    .change-data{
+      margin-left: 20px;
+    }
+    .change{
+      width:600px;
+      //margin-left: 20px;
+    }
+    .personal-data-container__table_two-input{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      max-width: 398px;
+      width: 100%;
+      .personal-data-container__table__input{
+        box-sizing: border-box;
+        &:first-child{
+          width: 122px;
+          //width: 90%;
+          margin-right:10px ;
+
+        }
+        &:nth-child(2){
+         width: 220px;
+
+        }
+      }
+
+    }
+
   }
   .personal-data-container__change-password{
     padding-top: 80px;
@@ -20,5 +49,87 @@
       width: 155px;
       height: 39px;
     }
+    .personal-data-container__change-password__change{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 350px;
+     .save{
+       border-radius: 5px;
+       background-color: #42996F;
+       color: white;
+       }
+      .cancel{
+        border-radius: 5px;
+        margin-right: 16px;
+        background-color: #DDDDDD;
+        color:#242626 ;
+      }
+    }
+  }
+}
+.data-change{
+  max-width: 675px;
+  width: 100%;
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+
+    .labels {
+      display: flex;
+      flex: 1 1;
+      label {
+        padding: 9px 16px;
+      }
+    }
+    .values {
+      display: flex;
+      flex: 2 2;
+    }
+    .input__group {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: row;
+      input {
+        margin: 0 5px;
+        flex: 1 1;
+      }
+    }
+  }
+
+
+  .data-change__block{
+
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 20px;
+
+    span{
+     width: 270px;
+      display: block;
+      //width: 100%;
+    }
+    .data-change__block__label{
+      flex-grow: 1;
+    }
+
+  .data-change__block__iputs{
+      flex-grow: 2;
+      max-width: 390px;
+      width:100% ;
+      display: flex;
+      justify-content:  flex-start;
+      flex-direction: row;
+
+     &:first-child{
+       margin-right: 10px;
+     }
+    }
+    .data-change__block__first-input{
+      margin-right: 10px;
+    }
+
   }
 }

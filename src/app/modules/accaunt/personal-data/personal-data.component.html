@@ -1,27 +1,88 @@
-<show-u-title [title]="'Profile'"></show-u-title>
-<b>First name:</b> {{accaunt.current?.user?.first_name}} <br>
-<b>Last name: </b>{{accaunt.current?.user?.last_name}} <br>
-<b>Phone:</b> {{accaunt.current?.user?.tel}} <br>
-<b>Email:</b> {{accaunt.current?.user?.email}} <br>
-<b>Is email confirm:</b> {{accaunt.current?.user?.is_confirm_email}} <br>
-<b>Register on site:</b> {{accaunt.current?.user?.created_at | localDate}} <br>
-<b>Last update info:</b> {{accaunt.current?.user?.updated_at | localDate}} <br>
- <pre>{{accaunt.current | json}}</pre>
+<!--<show-u-title [title]="'Profile'"></show-u-title>-->
+<!--<b>First name:</b> {{accaunt.current?.user?.first_name}} <br>-->
+<!--<b>Last name: </b>{{accaunt.current?.user?.last_name}} <br>-->
+<!--<b>Phone:</b> {{accaunt.current?.user?.tel}} <br>-->
+<!--<b>Email:</b> {{accaunt.current?.user?.email}} <br>-->
+<!--<b>Is email confirm:</b> {{accaunt.current?.user?.is_confirm_email}} <br>-->
+<!--<b>Register on site:</b> {{accaunt.current?.user?.created_at | localDate}} <br>-->
+<!--<b>Last update info:</b> {{accaunt.current?.user?.updated_at | localDate}} <br>-->
+<!-- <pre>{{accaunt.current | json}}</pre>-->
 
 
-<!--<div class="personal-data-container">-->
-<!--    <p class="title">Personal data</p>-->
-<!--    <table class="personal-data-container__table">-->
-<!--        <tr><td>First name</td><td>Misha</td></tr>-->
-<!--        <tr><td>Last name</td><td>Stetsyk</td></tr>-->
-<!--        <tr><td>Phone</td><td>064321423</td></tr>-->
-<!--        <tr><td>Email</td><td>MishaStetsyk@gmail.com</td></tr>-->
-<!--        <tr><td>Is email confirm</td><td>Misha</td></tr>-->
-<!--        <tr><td>Register on site</td><td>Misha</td></tr>-->
-<!--        <tr><td>Last update info</td><td>Misha</td></tr>-->
-<!--    </table>-->
-<!--    <div  class="personal-data-container__change-password">-->
-<!--        <button>Change password</button>-->
-<!--    </div>-->
+<div class="personal-data-container">
+    <p class="title">Personal data</p>
+    <table class="personal-data-container__table" *ngIf="!personStatus">
+        <tr>
+            <td>First name</td>
+            <td>Misha</td>
+        </tr>
+        <tr>
+            <td>Last name</td>
+            <td>Stetsyk</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>064321423</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>MishaStetsyk@gmail.com</td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td>Ukraine</td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>Lviv</td>
+        </tr>
+        <tr>
+            <td>Details for the courier</td>
+            <td>Lviv Nova street</td>
+        </tr>
+        <tr>
+            <td>NovaPoshta data</td>
+            <td>Misha</td>
+        </tr>
+    </table>
+    <div class="data-change" *ngIf="personStatus">
+        <div class="wrapper">
+            <div class="labels">
+                <label for="firstName" class="input__group">First name</label>
+                <label for="secondName" class="input__group">Last name</label>
+                <label for="phone" class="input__group">Phone</label>
+                <label for="email" class="input__group">Email</label>
+                <label for="country" class="input__group">Country</label>
+                <label for="city" class="input__group">City</label>
+                <label for="detail-city" class="input__group">Details for the courier</label>
+                <label for="detail-post" class="input__group">NovaPoshta data</label></div>
+            <div class="values">
+                <div class="input__group"><input id="firstName" type="text"></div>
+                <div class="input__group"><input id="secondName" type="text"></div>
+                <div class="input__group"><input  id="phone"type="text"></div>
+                <div class="input__group"><input  id="email"type="text"></div>
+                <div class="input__group"><input  id="country"type="text"></div>
+                <div class="input__group"><input id="city" type="text"></div>
+                <div class="input__group" id="detail-city">
+                    <input  type="text">
+                    <input type="text">
+                </div>
+                <div class="input__group"  id="detail-post">
+                    <input type="text">
+                    <input type="text">
+                </div>
+            </div>
+        </div>
 
-<!--</div>-->
+
+
+    </div>
+    <div class="personal-data-container__change-password">
+        <button (click)="changeStatus()" *ngIf="!personStatus">Change password</button>
+        <div class="personal-data-container__change-password__change" *ngIf="personStatus">
+            <button class="save" (click)="changeStatus()">Save</button>
+            <button class="cancel" (click)="changeStatus()">Cancel</button>
+        </div>
+    </div>
+
+</div>

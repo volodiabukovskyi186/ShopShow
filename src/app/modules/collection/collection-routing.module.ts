@@ -1,15 +1,15 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { CollectionPageComponent } from './collection-page/collection-page.component';
 import { CollectionViewPageComponent } from './collection-view-page/collection-view-page.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: CollectionPageComponent,
   },
   {
-    path: "view/:id",
+    path: 'view/:id',
     component: CollectionViewPageComponent,
   },
 ];

@@ -144,5 +144,12 @@
     "your-review":"Ваш відгук",
     "name":"Ім'я",
     "email": "E-mail"
+  },
+  "cabinet": {
+    "personal-data": "Особисті дані",
+    "wishlist": "Список бажань",
+    "my-orders": "Мої замовлення",
+    "my-review": "Мій огляд",
+    "log-out": "Вихід"
   }
 }

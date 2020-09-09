@@ -202,19 +202,19 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         this.attrMapArr = attrArr;
     };
 
-    generateProductViewForm(): void {
-        this.productViewForm = new FormGroup({
-            color: new FormControl('', []),
-            size: new FormControl('', [])
-        });
-        console.log(this.productViewForm.value);
-    }
+  generateProductViewForm(): void {
+    this.productViewForm = new FormGroup({
+      color: new FormControl('', []),
+      size: new FormControl('', [])
+    });
 
-    getProdReviewHandler = data => {
-        this.product.reviews = data;
-        console.log(this.product.reviews);
-        // this.ngxService.stopAll();
-    };
+  }
+
+  getProdReviewHandler = data => {
+    this.product.reviews = data;
+
+    // this.ngxService.stopAll();
+  }
 
     count: number = 1;
 
