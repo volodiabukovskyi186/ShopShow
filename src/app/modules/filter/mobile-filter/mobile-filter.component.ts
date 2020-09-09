@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ICategoryFilter } from '../filter.service';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {MatCheckboxChange} from '@angular/material/checkbox';
 
 interface IFilterItem {
   id: number;
@@ -9,11 +8,12 @@ interface IFilterItem {
 }
 
 @Component({
-  selector: 'app-filter-item',
-  templateUrl: './filter-item.component.html',
-  styleUrls: ['./filter-item.component.scss']
+  selector: 'app-mobile-filter',
+  templateUrl: './mobile-filter.component.html',
+  styleUrls: ['./mobile-filter.component.scss']
 })
-export class FilterItemComponent implements OnInit {
+export class MobileFilterComponent implements OnInit {
+
   @Input() filter: IFilterItem;
   @Output() filterSelected = new EventEmitter<number>();
   @Output() filterDeselected = new EventEmitter<number>();
@@ -30,11 +30,11 @@ export class FilterItemComponent implements OnInit {
   }
 
   public onCheckboxChange(event: MatCheckboxChange) {
-     if (event.checked) {
-       this.filterSelected.emit(this.filter.id);
-     } else {
-       this.filterDeselected.emit(this.filter.id);
-     }
+    if (event.checked) {
+      this.filterSelected.emit(this.filter.id);
+    } else {
+      this.filterDeselected.emit(this.filter.id);
+    }
   }
 
   public onChildFilterSelected(filterId: number) {

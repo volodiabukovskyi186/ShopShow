@@ -2,8 +2,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    //margin-right: 40px;
-    //width: 207px;
     margin-left: -65px;
     width: 202px;
     border-bottom: 1px solid #EEF1F5;
@@ -26,4 +24,10 @@
 
 .checkbox {
     margin-top: -3px;
+}
+@media screen and(max-width: 768px){
+    .category{
+        margin-left: 0;
+        width: 90%;
+    }
 }

@@ -1,4 +1,4 @@
-<button (click)="openedFilter = !openedFilter" class="button radius large upper delete open-filter mobile">
+<button (click)="openedFilter = !openedFilter" class="button radius large upper delete open-filter mobile  filter-modile">
   Filters
 </button>
 
@@ -36,11 +36,12 @@
       </div>
   </div>
 </div>
-
 <div class="filter-container mobile" *ngIf="openedFilter" @slideLeft>
+  <div class="close-btn" (click)="openedFilter = !openedFilter">X</div>
   <div class="categories">
     <div class="category" *ngFor="let category of categories">
-      <app-filter-item [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-filter-item>
+
+      <app-mobile-filter [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-mobile-filter>
     </div>
   </div>
   <div class="manufactures" *ngIf="isManufacturerPage">
