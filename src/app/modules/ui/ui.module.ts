@@ -10,19 +10,21 @@ import { FilterItemComponent } from '../filter/filter-item/filter-item.component
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { Ng5SliderModule } from 'ng5-slider';
+import {FilterModule} from '../filter/filter.module';
 
 const COMPONENTS = [ FilterComponent, FilterItemComponent ];
 
 @NgModule({
   declarations: [...COMPONENTS],
-  imports: [
-    CommonModule, 
-    DynamicFormModule,
-    TranslateModule,
-    MatCheckboxModule,
-    MatSliderModule,
-    Ng5SliderModule,
-  ],
+    imports: [
+        CommonModule,
+        DynamicFormModule,
+        TranslateModule,
+        MatCheckboxModule,
+        MatSliderModule,
+        Ng5SliderModule,
+        FilterModule,
+    ],
   exports: [...COMPONENTS, ShowUModule, RapModule, DynamicFormModule]
 })
 export class UiModule {}
