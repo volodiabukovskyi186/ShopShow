@@ -1,7 +1,48 @@
 <div class="review-container">
+    <div class="review-container__sort-block">
+        <div class="sort-content">
+            <mat-form-field appearance="standart" class="sort-products">
+                <div class="sort-products-wrapper">
+                    <mat-label class="sort-products-label">{{ 'sortBy.sort' | translate }}</mat-label>
+                    <mat-select>
+                        <!-- <mat-option *ngFor="let productData of sortProductsData" [value]="productData">
+                          {{ productData }}
+                        </mat-option> -->
+                        <mat-option [value]="'minPrice'">
+                            {{ 'sortBy.minPrice' | translate}}
+                        </mat-option>
+                        <mat-option [value]="'maxPrice'">
+                            {{ 'sortBy.maxPrice' | translate}}
+                        </mat-option>
+                        <mat-option [value]="'rating'">
+                            {{ 'sortBy.rating' | translate}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="standart" class="sort-products">
+                <div class="sort-products-wrapper">
+                    <mat-label class="sort-products-label"> {{ 'sortBy.view' | translate }}: </mat-label>
+                    <mat-select >
+                        <mat-option [value]="'price'">
+                            {{ 'sortBy.price' | translate}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </mat-form-field>
+        </div>
+    </div>
+
+
+
+
+
+
+
+<div class="review-container__wrapper">
     <div class="review-container__items ">
         <div class="review-container__items__item">
-            <div class="cell cell1">№PT0001
+            <div class="cell cell1"><p>№PT0001</p>
             <div class="review-container__items__item__drop"   [ngClass]="{'changeIcon':itemStatus}" (click)="itemDrop()">
                 <img src="assets/icons/arrow-down.svg">
             </div></div>
@@ -14,71 +55,74 @@
 <!--            [ngClass]="{'review-container__items__item__drop-block':itemStatus}"-->
             <div class="review-container__items__item__drop-block cell6" *ngIf="itemStatus">
                 <div class="drop__container">
-                    <div class="drop-photo drop__item"><img class="cell__img" src="assets/icons/user.svg"/></div>
+                    <div class="drop-photo drop__item">
+                        <div class="drop-photo__img">
+                            <img class="cell__img" src="assets/collections.png"/>
+                        </div>
+
+                    </div>
                     <div class="drop-price  drop__item">
                        <p class="blue">Vbrana(140001)</p>
                         <p>2000 грн</p>
                     </div>
-                    <div class="drop-count  drop__item"><p>1 штука</p></div>
+                    <div class="drop-count  drop__item"><p>1 шт</p></div>
                     <div class="drop-second-price  drop__item"><p>2000 грн</p></div>
                 </div>
                 <div class="drop__container">
-                    <div class="drop-photo drop__item"><img class="cell__img" src="assets/icons/user.svg"/></div>
+                    <div class="drop-photo drop__item">  <div class="drop-photo__img">
+                        <img class="cell__img" src="assets/collections.png"/>
+                    </div></div>
                     <div class="drop-price  drop__item">
                         <p class="blue">Vbrana(140001)</p>
                         <p>2000 грн</p>
                     </div>
-                    <div class="drop-count  drop__item"><p>1 штука</p></div>
+                    <div class="drop-count  drop__item"><p>1 шт</p></div>
                     <div class="drop-second-price  drop__item"><p>2000 грн</p></div>
                 </div>
                 <div class="drop__container">
-                    <div class="drop-photo drop__item"><img class="cell__img" src="assets/icons/user.svg"/></div>
+                    <div class="drop-photo drop__item">  <div class="drop-photo__img">
+                        <img class="cell__img" src="assets/collections.png"/>
+                    </div></div>
                     <div class="drop-price  drop__item">
                         <p class="blue">Vbrana(140001)</p>
                         <p>2000 грн</p>
                     </div>
-                    <div class="drop-count  drop__item"><p>1 штука</p></div>
+                    <div class="drop-count  drop__item"><p>1 шт</p></div>
                     <div class="drop-second-price  drop__item"><p>2000 грн</p></div>
                 </div>
             </div>
             <div *ngIf="itemStatus" class="drop__container__bottom">
-                <div class="bottom-first-left">
+<!--                <div class="drop__container__top">-->
+<!--                <div class="bottom-first-left">-->
+<!--                    <p>Доставка : Нова Пошта</p>-->
+<!--                </div>-->
+<!--                <div class="bottom-first-right">-->
+<!--                    <p class="d4">Разом до оплати</p>-->
+<!--                </div>-->
+<!--                </div>-->
+
+<!--                <div class="bottom-first-o">-->
+<!--                    <p>відповідно до тарифів перевізника</p>-->
+<!--                    <p class="d4">13000 грн</p>-->
+<!--                </div>-->
+                <div class="drop__container__bottom__top">
                     <p>Доставка : Нова Пошта</p>
-                </div>
-                <div class="bottom-first-right">
-                    <p class="d4">Разом до оплати</p>
-                </div>
-                <div class="bottom-first-o">
                     <p>відповідно до тарифів перевізника</p>
-                    <p class="d4">13000 грн</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="review-container__items__item">
-            <div class="cell">№PT0001
-                <div class="review-container__items__item__drop">
-                    <img src="assets/icons/arrow-down.svg">
-                </div></div>
-            <div class="cell">163 травня 2020</div>
-            <div class="cell"> <img class="cell__img" src="assets/icons/en.svg"/></div>
-            <div class="cell">1 товар на 2 500 грн</div>
-            <div class="cell yellow status ">Обробляється</div>
+                <div class="drop__container__bottom_down">
+                    <div>
+                    <p class="d4">Разом до оплати</p>
+                    <p class="d4">13000 грн</p>
+                    </div>
+                </div>
 
         </div>
-        <div class="review-container__items__item">
-            <div class="cell">№PT0001
-                <div class="review-container__items__item__drop">
-                    <img src="assets/icons/arrow-down.svg">
-                </div></div>
-            <div class="cell">16 травня 2020</div>
-            <div class="cell"> <img class="cell__img" src="assets/icons/en.svg"/></div>
-            <div class="cell">1 товар на 2 500 грн</div>
-            <div class="cell red status">Скасовано</div>
 
-        </div>
 
 
 
     </div>
+</div>
+</div>
+
 </div>
