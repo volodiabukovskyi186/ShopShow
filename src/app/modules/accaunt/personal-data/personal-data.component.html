@@ -10,8 +10,9 @@
 
 
 <div class="personal-data-container">
-    <p class="title">Personal data</p>
+
     <table class="personal-data-container__table" *ngIf="!personStatus">
+        <div class="personal-data__title"> <p class="title">Personal data</p></div>
         <tr>
             <td>First name</td>
             <td>Misha</td>
@@ -44,45 +45,67 @@
             <td>NovaPoshta data</td>
             <td>Misha</td>
         </tr>
+        <div class="personal-data-container__change-password">
+            <button (click)="changeStatus()" *ngIf="!personStatus">Change password</button>
+        </div>
+
     </table>
-    <div class="data-change" *ngIf="personStatus">
-        <div class="wrapper">
-            <div class="labels">
+
+
+   <div class="data-change__wrapper" *ngIf="personStatus">
+
+
+
+        <div class="change-data"  >
+            <div class="change-data__input-container">
                 <label for="firstName" class="input__group">First name</label>
-                <label for="secondName" class="input__group">Last name</label>
-                <label for="phone" class="input__group">Phone</label>
-                <label for="email" class="input__group">Email</label>
-                <label for="country" class="input__group">Country</label>
-                <label for="city" class="input__group">City</label>
-                <label for="detail-city" class="input__group">Details for the courier</label>
-                <label for="detail-post" class="input__group">NovaPoshta data</label></div>
-            <div class="values">
                 <div class="input__group"><input id="firstName" type="text"></div>
+            </div>
+            <div class="change-data__input-container">
+                <label for="secondName" class="input__group">Last name</label>
                 <div class="input__group"><input id="secondName" type="text"></div>
-                <div class="input__group"><input  id="phone"type="text"></div>
-                <div class="input__group"><input  id="email"type="text"></div>
-                <div class="input__group"><input  id="country"type="text"></div>
+            </div>
+            <div class="change-data__input-container">
+                <label for="phone" class="input__group">Phone</label>
+                <div class="input__group"><input id="phone" type="text"></div>
+            </div>
+            <div class="change-data__input-container">
+                <label for="email" class="input__group">Email</label>
+                <div class="input__group"><input id="email" type="text"></div>
+            </div>
+            <div class="change-data__input-container">
+                <label for="country" class="input__group">Country</label>
+                <div class="input__group"><input id="country" type="text"></div>
+            </div>
+            <div class="change-data__input-container">
+                <label for="city" class="input__group">City</label>
                 <div class="input__group"><input id="city" type="text"></div>
-                <div class="input__group" id="detail-city">
-                    <input  type="text">
+            </div>
+            <div class="change-data__input-container">
+                <label for="detail-city" class="input__group">Details for the courier</label>
+                <div class="input__group-two" id="detail-city">
+                    <input class="input__group-two__firts" type="text">
                     <input type="text">
                 </div>
-                <div class="input__group"  id="detail-post">
+
+            </div>
+
+
+            <div class="change-data__input-container">
+                <label for="detail-post" class="input__group">NovaPoshta data</label>
+                <div class="input__group-two" id="detail-post">
+                    <input class="input__group-two__firts" type="text">
                     <input type="text">
-                    <input type="text">
+                </div>
+
+            </div>
+            <div class="change-data__input-container">
+                <div class="data-change__btn" *ngIf="personStatus">
+                    <button class="save__btn" (click)="changeStatus()">Save</button>
+                    <button class="cancel__btn" (click)="changeStatus()">Cancel</button>
                 </div>
             </div>
         </div>
-
-
-
-    </div>
-    <div class="personal-data-container__change-password">
-        <button (click)="changeStatus()" *ngIf="!personStatus">Change password</button>
-        <div class="personal-data-container__change-password__change" *ngIf="personStatus">
-            <button class="save" (click)="changeStatus()">Save</button>
-            <button class="cancel" (click)="changeStatus()">Cancel</button>
-        </div>
-    </div>
-
+   </div>
 </div>
+

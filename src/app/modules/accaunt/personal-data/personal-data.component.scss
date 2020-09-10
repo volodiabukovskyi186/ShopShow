@@ -1,38 +1,47 @@
-.personal-data-container{
-  .title{
+.personal-data-container {
+  font-size: 14px;
+
+  .title {
     font-size: 18px;
     font-weight: normal;
   }
+
   max-width: 570px;
-  .personal-data-container__table{
+
+  .personal-data-container__table {
     max-width: 480px;
     width: 100%;
-    td{
+
+    td {
       padding-bottom: 20px;
     }
-    .change-data{
+
+    .change-data {
       margin-left: 20px;
     }
-    .change{
-      width:600px;
-      //margin-left: 20px;
+
+    .change {
+      width: 600px;
     }
-    .personal-data-container__table_two-input{
+
+    .personal-data-container__table_two-input {
       display: flex;
       justify-content: space-between;
       flex-direction: row;
       max-width: 398px;
       width: 100%;
-      .personal-data-container__table__input{
+
+      .personal-data-container__table__input {
         box-sizing: border-box;
-        &:first-child{
+
+        &:first-child {
           width: 122px;
-          //width: 90%;
-          margin-right:10px ;
+          margin-right: 10px;
 
         }
-        &:nth-child(2){
-         width: 220px;
+
+        &:nth-child(2) {
+          width: 220px;
 
         }
       }
@@ -40,37 +49,32 @@
     }
 
   }
-  .personal-data-container__change-password{
-    padding-top: 80px;
-    button{
+
+  .personal-data-container__change-password {
+    margin-top: 51px;
+
+    button {
+
       border: none;
       color: white;
       background-color: #000000;
-      width: 155px;
+      max-width: 155px;
+      min-width: 125px;
+      width: 100%;
+
       height: 39px;
-    }
-    .personal-data-container__change-password__change{
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row;
-      width: 350px;
-     .save{
-       border-radius: 5px;
-       background-color: #42996F;
-       color: white;
-       }
-      .cancel{
-        border-radius: 5px;
-        margin-right: 16px;
-        background-color: #DDDDDD;
-        color:#242626 ;
-      }
     }
   }
 }
-.data-change{
+
+.data-change__wrapper {
+
+}
+
+.data-change {
   max-width: 675px;
   width: 100%;
+
   .wrapper {
     display: flex;
     flex-direction: row;
@@ -78,58 +82,209 @@
     .labels {
       display: flex;
       flex: 1 1;
+
       label {
-        padding: 9px 16px;
+        padding: 9px 16px 9px 0;
+
       }
     }
+
     .values {
       display: flex;
       flex: 2 2;
     }
-    .input__group {
-      margin-bottom: 15px;
-      display: flex;
-      flex-direction: row;
-      input {
-        margin: 0 5px;
-        flex: 1 1;
-      }
-    }
+
   }
 
 
-  .data-change__block{
-
+  .data-change__block {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
     margin-bottom: 20px;
 
-    span{
-     width: 270px;
+    span {
+      width: 270px;
       display: block;
       //width: 100%;
     }
-    .data-change__block__label{
+
+    .data-change__block__label {
       flex-grow: 1;
     }
 
-  .data-change__block__iputs{
+    .data-change__block__iputs {
       flex-grow: 2;
       max-width: 390px;
-      width:100% ;
+      width: 100%;
       display: flex;
-      justify-content:  flex-start;
+      justify-content: flex-start;
       flex-direction: row;
 
-     &:first-child{
-       margin-right: 10px;
-     }
-    }
-    .data-change__block__first-input{
-      margin-right: 10px;
+      &:first-child {
+        margin-right: 10px;
+      }
     }
 
+    .data-change__block__first-input {
+      margin-right: 10px;
+    }
   }
 }
+
+.change-data {
+  max-width: 674px;
+  width: 100%;
+
+  .change-data__input-container {
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    label {
+      min-width: 180px;
+    }
+
+    .input__group {
+      max-width: 400px;
+      width: 100%;
+
+      input {
+        //margin: 0 5px;
+        flex: 1 1;
+      }
+    }
+
+    .input__group-two {
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+
+      .input__group-two__firts {
+        width: 40%;
+        margin-right: 25px;
+      }
+    }
+  }
+}
+
+.data-change__btn {
+  padding-top: 51px;
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+
+  .save__btn {
+    max-width: 122px;
+    width: 100%;
+    background-color: #42996F;
+    border-radius: 2px;
+    margin-right: 15px;
+  }
+
+  .cancel__btn {
+    color: black;
+    max-width: 122px;
+    width: 100%;
+    background-color: #DDDDDD;
+    border-radius: 2px;
+
+  }
+
+  button {
+    border: none;
+    color: white;
+    height: 39px;
+    border-radius: 2px;
+  }
+}
+
+
+@media screen and(max-width: 981px) {
+  .personal-data__title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+  }
+  .personal-data-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  .personal-data-container {
+    max-width: 94vw;
+    margin: 0 auto;
+  }
+}
+
+@media screen and(max-width: 768px) {
+
+  .change-data {
+    max-width: 674px;
+    width: 100%;
+
+    .change-data__input-container {
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+
+      label {
+        padding-bottom: 5px;
+      }
+
+      .input__group {
+        max-width: 400px;
+        width: 100%;
+
+        input {
+
+          flex: 1 1;
+        }
+      }
+
+      .input__group-two {
+        max-width: 400px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+
+
+        .input__group-two__firts {
+          width: 40%;
+          margin-right: 25px;
+        }
+      }
+    }
+  }
+  .data-change__wrapper {
+    padding-right: 20px;
+    width: 94vw;
+
+    .personal-data-container__change-password {
+      min-width: 155px;
+      margin-top: 51px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+
+    }
+  }
+   .input__group {
+     padding-bottom: 10px;
+   }
+
+
+}
+
+
