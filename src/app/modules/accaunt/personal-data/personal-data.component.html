@@ -9,6 +9,15 @@
 <!-- <pre>{{accaunt.current | json}}</pre>-->
 
 
+<!--<div class="success-container" *ngIf="personStatus">-->
+<!--    <div class="data-change-success">-->
+<!--        <div class="data-change-success__img">-->
+<!--            <img class="cell__img" src="assets/icons/check.png"/>-->
+<!--        </div>-->
+
+<!--        <p>Account details changed successfully.</p>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="personal-data-container">
 
     <table class="personal-data-container__table" *ngIf="!personStatus">
@@ -52,10 +61,10 @@
     </table>
 
 
+
+
    <div class="data-change__wrapper" *ngIf="personStatus">
-
-
-
+       <div class="personal-data__title"> <p class="title">Personal data</p></div>
         <div class="change-data"  >
             <div class="change-data__input-container">
                 <label for="firstName" class="input__group">First name</label>
