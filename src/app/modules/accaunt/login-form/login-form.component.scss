@@ -4,10 +4,21 @@
 
     .description {
       padding: 36px 0 10px;
+
+      label {
+        font-size: 15px;
+        font-weight: 500;
+
+        &::after {
+          content: "*";
+          color: red;
+          // margin-left: 3px;
+        }
+      }
     }
     .original{
       input{
-        height: 50px;
+        height: 41px;
       }
     }
   }
@@ -22,7 +33,7 @@
   .form-row{
     .original{
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       flex-direction: row;
 
 
@@ -39,7 +50,8 @@
   }
   .singing-container__sing-in-btn{
     button{
-      width: 200px;
+      //width: 200px;
+      width: 130px;
     }
     .singing-container__sing-in-btn__remember{
       padding-left: 10px;
@@ -58,3 +70,11 @@
   }
 }
 
+.login-btn {
+  padding: 11px 32px !important;
+  border-radius: 3px;
+}
+
+.lost-pass-underline {
+  text-decoration: underline;
+}

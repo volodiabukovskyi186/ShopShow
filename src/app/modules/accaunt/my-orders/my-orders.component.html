@@ -46,9 +46,10 @@
             <div class="review-container__items__item__drop"   [ngClass]="{'changeIcon':itemStatus}" (click)="itemDrop()">
                 <img src="assets/icons/arrow-down.svg">
             </div></div>
-            <div class="cell cell2" > <p > 1 травня 2020</p></div>
+            <div *ngFor="let order of myOrdersService.myOrders$ | async"></div>
+            <div class="cell cell2" > <p >{{ clientOrders?.data?.created_at }}</p></div>
             <div class="cell cell3"></div>
-            <div class="cell cell4"><p *ngIf="!itemStatus">133 товар на 2333500 грн</p></div>
+            <div class="cell cell4"><p *ngIf="!itemStatus">133 товар на {{ clientOrders?.data?.total }} грн</p></div>
 <!--            <div *ngIf="itemStatus"> Статус замов</div>-->
             <div class="cell status green  cell5 "><div class="status-block"><p class="status-order" *ngIf="itemStatus">Статус замовлення</p><p >Виконано</p>
                 <button  *ngIf="itemStatus">Залишити відгук про замовлення</button></div></div>
@@ -112,7 +113,7 @@
                 <div class="drop__container__bottom_down">
                     <div>
                     <p class="d4">Разом до оплати</p>
-                    <p class="d4">13000 грн</p>
+                    <p class="d4">{{ clientOrders?.data?.total }} грн</p>
                     </div>
                 </div>
 

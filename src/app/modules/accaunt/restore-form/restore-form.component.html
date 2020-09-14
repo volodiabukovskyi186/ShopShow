@@ -1,12 +1,12 @@
 <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="login">
   <div class="login__input-container">
     <div class="description">
-      <label for="ShowUEmail">{{ labelEmail }} </label>
+      <label for="ShowUEmail">{{ 'accaunt.accauntEmail' | translate }} </label>
     </div>
     <div class="original">
       <input
         formControlName="email"
-        placeholder="{{ placeholderEmail }}"
+        
         required
         class=""
         id="ShowUEmail"

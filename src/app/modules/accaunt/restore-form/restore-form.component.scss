@@ -1,20 +1,35 @@
 .login {
-  border-top:1px solid silver ;
+  //border-top:1px solid silver ;
   .login__input-container {
 
     .description {
-      padding: 36px 0 10px;
+      //padding: 36px 0 10px;
+      padding: 4px 0 10px;
+      
+      label {
+        font-size: 15px;
+        font-weight: 500;
+        
+        &::after {
+          content: "*";
+          color: red;
+        }
+      }
     }
     .original{
       input{
-        height: 50px;
+        //height: 50px;
+        height: 42px;
+        max-width: 40vw;
+        border-radius: 3px;
       }
     }
   }
 }
 .singing-container{
-  max-width: 94vw;
-  padding-top: 48px;
+  max-width: 40.3vw;
+  //padding-top: 48px;
+  padding-top: 29px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -39,7 +54,8 @@
   }
   .singing-container__sing-in-btn{
     button{
-      width: 200px;
+      width: 160px;
+      border-radius: 3px;
     }
     .singing-container__sing-in-btn__remember{
       padding-left: 10px;
@@ -58,3 +74,6 @@
   }
 }
 
+.button.large {
+  padding: 11px 6px !important;
+}

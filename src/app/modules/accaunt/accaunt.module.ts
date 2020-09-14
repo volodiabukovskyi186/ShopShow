@@ -17,8 +17,8 @@ import { RouterModule } from '@angular/router';
 import { PersonalDataComponent } from './personal-data/personal-data.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { MyReviewComponent } from './my-review/my-review.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
 const components = [

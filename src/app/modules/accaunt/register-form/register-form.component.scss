@@ -3,33 +3,49 @@
   .login__input-container {
 
     .description {
-
       padding: 36px 0 10px;
+
+      label {
+        font-size: 15px;
+        font-weight: 500;
+
+        &::after {
+          content: "*";
+          color: red;
+        }
+      }
     }
-    .original{
-      input{
-        height: 50px;
+    .original {
+      input {
+        height: 41px;
       }
     }
   }
 }
-.singing-container{
+.singing-container {
   padding-top: 48px;
   flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  .form-row{
 
-    .original{
+  .form-row {
+    .original {
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
+      align-items: center;
       flex-direction: row;
 
-      a{
+      a {
         text-align: end;
         padding: 0 5px;
       }
     }
   }
+}
+
+.register-btn {
+  padding: 10px 58px !important;
+  border-radius: 2px !important;
+  cursor: pointer;
 }

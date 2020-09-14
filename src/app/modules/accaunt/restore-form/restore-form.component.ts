@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
@@ -35,7 +35,7 @@ export class RestoreFormComponent implements OnInit {
   }
 
   authForm = new FormGroup({
-    email: new FormControl("")
+    email: new FormControl("", Validators.required)
   });
 
   onSubmit() {

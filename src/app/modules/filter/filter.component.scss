@@ -161,8 +161,8 @@
   .filter-container.mobile {
     overflow-x: scroll;
     padding-top: 50px;
-    min-height: 140vh;
-    //height: 73vw;
+    //min-height: 140vh;
+    height: 100%;
     z-index: 10000;
     position: fixed;
     top: 0;

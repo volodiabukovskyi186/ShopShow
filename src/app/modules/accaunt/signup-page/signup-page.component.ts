@@ -15,7 +15,7 @@ export class SignupPageComponent implements OnInit {
       title: "Homepage",
     },
     {
-      link: "/register",
+      link: "/accaunt/register",
       title: "Create accaunt",
     },
   ];

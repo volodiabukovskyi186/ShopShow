@@ -3,6 +3,8 @@ import { CartService } from "../../cart/cart.service";
 import { fadeHeight } from "../../ui/animations";
 import { CheckoutService } from "../checkout.service";
 import { CurrencyService } from "../../currency/currency.service";
+import { AccauntService } from '../../../modules/accaunt/accaunt.service';
+import { MyOrdersService } from '../../accaunt/my-orders/services/my-orders.service';
 
 @Component({
   animations: [fadeHeight],
@@ -11,15 +13,28 @@ import { CurrencyService } from "../../currency/currency.service";
   styleUrls: ["./checkout-product-list.component.scss"],
 })
 export class CheckoutProductListComponent implements OnInit {
+  public clientId: number;
+
   constructor(
     public cart: CartService,
     public currency: CurrencyService,
-    public check: CheckoutService
+    public check: CheckoutService,
+    public accauntService: AccauntService,
+    public myOrdersService: MyOrdersService
   ) {}
 
   ngOnInit(): void {}
+  
+  public getUserClientId(): void {
+    this.accauntService.getUser().subscribe((res) => {
+      this.clientId = res.data.user.id;
+      console.log(this.clientId);
+    })
+  }
 
   order() {
+    this.getUserClientId();
+
     this.orderResult = {
       products: [],
       // checkoutContact: this.check.checkoutContact,
@@ -32,6 +47,7 @@ export class CheckoutProductListComponent implements OnInit {
       sort_order: 1,
       costumer: "",
       currency_id: this.currency.current.id,
+      client_id: this.clientId,
       first_name: this.check.checkoutContact.firstName,
       last_name: this.check.checkoutContact.lastName,
       email: this.check.checkoutContact.email,
@@ -55,7 +71,14 @@ export class CheckoutProductListComponent implements OnInit {
       });
     });
 
-    this.check.post(this.orderResult).subscribe(this.orderHadler);
+    this.check.post(this.orderResult).subscribe((res) => {
+      this.orderHadler(res);
+      console.log(res);
+      this.myOrdersService.myOrders.next(res);
+      console.log(this.myOrdersService.myOrders.next(res));
+      
+      //console.log(this.myOrdersService.myOrders.value);
+    });
 
   }
 

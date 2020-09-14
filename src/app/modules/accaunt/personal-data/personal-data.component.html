@@ -15,19 +15,19 @@
         <div class="personal-data__title"> <p class="title">Personal data</p></div>
         <tr>
             <td>First name</td>
-            <td>Misha</td>
+            <td>{{ accaunt.current?.user?.first_name }}</td>
         </tr>
         <tr>
             <td>Last name</td>
-            <td>Stetsyk</td>
+            <td>{{ accaunt.current?.user?.last_name }}</td>
         </tr>
         <tr>
             <td>Phone</td>
-            <td>064321423</td>
+            <td>{{ accaunt.current?.user?.tel }}</td>
         </tr>
         <tr>
             <td>Email</td>
-            <td>MishaStetsyk@gmail.com</td>
+            <td>{{ accaunt.current?.user?.email }}</td>
         </tr>
         <tr>
             <td>Country</td>

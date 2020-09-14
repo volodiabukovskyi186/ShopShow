@@ -97,5 +97,8 @@
     "my-orders": "Moje zamówienia",
     "my-review": "Moja recenzja",
     "log-out": "Wejście"
+  },
+  "accaunt": {
+    "accauntEmail": "Nazwa użytkownika lub adres e-mail"
   }
 }

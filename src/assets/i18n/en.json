@@ -47,7 +47,7 @@
     "password": "Password",
     "enterLogin": "Enter your login",
     "enterPass": "Enter your password",
-    "forgotPass": "Forgot a password",
+    "forgotPass": "Lost your password?",
     "email": "Email",
     "phone": "Phone",
     "register": "Register",
@@ -57,8 +57,10 @@
     "enterLname": "Enter your last name",
     "enterEmail": "Enter your email",
     "enterPhone": "Enter your phone",
-    "restore": "Restore",
-    "profile": "Profile"
+    "restore": "Reset password",
+    "profile": "Profile",
+    "accauntEmail": "Username or email address",
+    "lostPassword": "Lost your password? Please enter your usernameor email address. You will receive a link to create a new password via email."
   },
   "cart": {
     "checkout": "Checkout",

@@ -6,13 +6,13 @@
     <div class="original">
       <input
         formControlName="first_name"
-        placeholder="{{ placeholderFirstName }}"
         required
         class=""
         id="ShowUFirstName"
         name="first_name"
         type="text"
       />
+      <!-- placeholder="{{ placeholderFirstName }}" -->
     </div>
   </div>
 
@@ -23,13 +23,13 @@
     <div class="original">
       <input
         formControlName="last_name"
-        placeholder="{{ placeholderLastName }}"
         required
         class=""
         id="ShowULastName"
         name="last_name"
         type="text"
       />
+      <!-- placeholder="{{ placeholderLastName }}" -->
     </div>
   </div>
 
@@ -41,7 +41,6 @@
       <input
         autocomplete="username"
         formControlName="email"
-        placeholder="{{ placeholderEmail }}"
         required
         class=""
         id="ShowUEmail"
@@ -49,6 +48,7 @@
         type="email"
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
       />
+      <!-- placeholder="{{ placeholderEmail }}" -->
     </div>
   </div>
 
@@ -59,13 +59,13 @@
     <div class="original">
       <input
         formControlName="phone"
-        placeholder="{{ placeholderPhone }}"
         required
         class=""
         id="ShowUPhone"
         name="phone"
         type="tel"
       />
+      <!-- placeholder="{{ placeholderPhone }}" -->
     </div>
   </div>
 
@@ -76,7 +76,6 @@
     <div class="original">
       <input
         autocomplete="current-password"
-        placeholder="{{ placeholderPassword }}"
         formControlName="password"
         class=""
         id="ShowUPassword"
@@ -84,13 +83,14 @@
         name="password"
         type="password"
       />
+      <!-- placeholder="{{ placeholderPassword }}" -->
     </div>
   </div>
   <div class="singing-container">
     <div class="flex space-between">
       <button
               [disabled]="!authForm.valid || isSubmit"
-              class="button delete radius large"
+              class="button delete radius large register-btn"
               type="submit"
       >
         {{ labelSubmit }}

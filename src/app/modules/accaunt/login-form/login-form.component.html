@@ -1,19 +1,19 @@
 <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="login">
   <div class="login__input-container">
     <div class="description">
-      <label for="ShowULogin">{{ labelLogin }} </label>
+      <label for="ShowULogin">{{ 'accaunt.accauntEmail' | translate }} </label>
     </div>
     <div class="original">
       <input
         autocomplete="username"
         formControlName="login"
-        placeholder="{{ placeholderLogin }}"
         required
         class=""
         id="ShowULogin"
         name="login"
         type="text"
       />
+      <!-- placeholder="{{ placeholderLogin }}" -->
     </div>
   </div>
 
@@ -24,7 +24,6 @@
     <div class="original">
       <input
         autocomplete="current-password"
-        placeholder="{{ placeholderPassword }}"
         formControlName="password"
         class=""
         id="ShowUPassword"
@@ -32,6 +31,7 @@
         name="login"
         type="password"
       />
+      <!-- placeholder="{{ placeholderPassword }}" -->
     </div>
   </div>
 
@@ -39,10 +39,10 @@
     <div class="flex space-between singing-container__sing-in-btn">
       <button
               [disabled]="!authForm.valid"
-              class="button delete  large"
+              class="button delete large login-btn"
               type="submit"
       >
-        {{ labelSubmit }}
+        {{ 'accaunt.login' | translate }}
       </button>
 <!--      <div class="singing-container__sing-in-btn__remember">-->
 <!--        <input type="checkbox">-->
@@ -53,7 +53,7 @@
       <div class="description"></div>
       <div class="original">
         <a [routerLink]="['/', 'accaunt', 'restore']"
-        ><small>{{ labelForgotPassword }}</small></a
+        ><small class="lost-pass-underline">{{ labelForgotPassword }}</small></a
         >
         <a [routerLink]="['/', 'accaunt', 'register']"
         ><small>{{ labelReg }}</small></a

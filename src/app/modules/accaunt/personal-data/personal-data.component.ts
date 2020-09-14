@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AccauntService} from '../accaunt.service';
+import jwt_decode from "jwt-decode";
 
 @Component({
     selector: 'app-personal-data',
