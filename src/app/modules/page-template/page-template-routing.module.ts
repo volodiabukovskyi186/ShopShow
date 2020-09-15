@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { PageTemplateComponent } from "./page-template/page-template.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import {BlogPageComponent} from '../blog/blog-page/blog-page.component';
 
 export const pageRoutes: Routes = [
   {
@@ -11,6 +12,14 @@ export const pageRoutes: Routes = [
       import("src/app/modules/collection/collection.module").then(
         (m) => m.CollectionModule
       ),
+  },
+  {
+    path: "blog",
+    component: PageTemplateComponent,
+    loadChildren: () =>
+        import("src/app/modules/blog/blog.module").then(
+            (m) => m.BlogModule
+        ),
   },
   {
     path: "accaunt",

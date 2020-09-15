@@ -1,0 +1,73 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
+<div class="open-nav__btn" (click)="blogSmallStatus=!blogSmallStatus">
+    <button class="button radius large upper delete open-filter mobile ">Categories</button>
+</div>
+<div class="blog-container">
+    <div class="blog-containt" >
+        <div  *ngFor="let item of arrPost">
+            <app-blog-item  [item]="item"></app-blog-item>
+        </div>
+    </div>
+    <div class="blog-nav desctop "   *ngIf="!blogSmallStatus">
+        <div class="blog-nav-item">
+            <div class="blog-nav-item__title">
+                <h1>Recent Posts</h1>
+            </div>
+            <div class="blog-nav-item__items" *ngFor="let item of arrPost">
+                <div *ngFor="let elem of item.descriptions">
+                    <p><a>{{elem.title}}</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="blog-nav-item">
+            <div class="blog-nav-item__title">
+                <h1>Categories</h1>
+            </div>
+            <div class="blog-nav-item__items">
+                <p>All post(3)</p>
+                <p>Trending(3)</p>
+            </div>
+        </div>
+        <div class="blog-nav-item popular">
+            <div class="blog-nav-item__title">
+                <h1>Categories</h1>
+            </div>
+            <div class="blog-nav-item__items">
+                <p>backpack, jackets, jeans, leggings, shoes, sneakers, sneark</p>
+            </div>
+        </div>
+    </div>
+    <div class="blog-nav mobile " @slideLeft  *ngIf="blogSmallStatus">
+        <div class="blog-nav__close"  (click)="blogSmallStatus=!blogSmallStatus">
+            <p>X</p>
+        </div>
+        <div class="blog-nav-item">
+            <div class="blog-nav-item__title">
+                <h1>Recent Posts</h1>
+            </div>
+            <div class="blog-nav-item__items" *ngFor="let item of arrPost">
+                <div *ngFor="let elem of item.descriptions">
+                    <p><a>{{elem.title}}</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="blog-nav-item">
+            <div class="blog-nav-item__title">
+                <h1>Categories</h1>
+            </div>
+            <div class="blog-nav-item__items">
+                <p>All post(3)</p>
+                <p>Trending(3)</p>
+            </div>
+
+        </div>
+        <div class="blog-nav-item popular">
+            <div class="blog-nav-item__title">
+                <h1>Categories</h1>
+            </div>
+            <div class="blog-nav-item__items">
+                <p>backpack, jackets, jeans, leggings, shoes, sneakers, sneark</p>
+            </div>
+        </div>
+    </div>
+</div>

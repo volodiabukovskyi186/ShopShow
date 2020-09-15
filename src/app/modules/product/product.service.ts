@@ -177,7 +177,6 @@ export class ProductService {
     if (value === 'maxPrice') {
       params = `${params}&sort_by=price&desc=DESC`;
     }
-    
     console.log(value);
     console.log(environment.products + params);
 

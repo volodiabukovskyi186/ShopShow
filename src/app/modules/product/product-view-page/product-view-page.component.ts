@@ -47,7 +47,6 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             ...this.testGroup.value
         };
         if (review.user_id! = '') {
-
             this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe();
         }
 

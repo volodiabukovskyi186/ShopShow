@@ -1,0 +1,43 @@
+ <div class="blog-containt__item"  >
+    <div class="blog-containt__item__img">
+        <img src="./assets/blog.png">
+    </div>
+    <div class="blog-containt__item__date">
+        <p>Trending/{{item.created_at|date:'MMMM d , y ' }}</p>
+    </div>
+    <div class="blog-containt__item__text" *ngFor="let descrp of item.descriptions ">
+        <div class="block__item__title" >
+            <h1>{{descrp.title}}</h1>
+        </div>
+        <div class="block__item__text">
+            <p> {{descrp.text}}</p>
+        </div>
+        <div class="block__item__button" *ngIf="!readMoreStatus">
+            <button (click)="readMoreStatus=!readMoreStatus">Read more</button>
+        </div>
+    <div class="read-more" *ngIf="readMoreStatus ">
+        <div class="read-more__wrapper" >
+            <div class="read-more__img">
+                <img src="./assets/blog.png">
+            </div>
+            <div class="read-more__content">
+                <p></p>
+            </div>
+        </div>
+        <div class="read-more__form">
+            <div class="read-more__form__content">
+                <p>Leave a reply</p>
+                <p> Your email address will not be published. Required fields are marked *</p>
+            </div>
+            <form>
+                <textarea placeholder="Your comment" name="" class="textarea" rows="11"></textarea>
+                <div class="form-group">
+                    <input  type="text" placeholder="Email">
+                    <input type="text" placeholder="Full name">
+                </div>
+                <button class="button radius large  delete  mobile " (click)="readMoreStatus=!readMoreStatus">Post comment</button>
+            </form>
+        </div>
+    </div>
+    </div>
+ </div>

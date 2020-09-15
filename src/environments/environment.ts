@@ -5,7 +5,7 @@ const hoststatic = "https://api.showu.com.ua/";
 
 export const environment = {
   production: false,
-
+  blog: host + 'blogs',
   categories: host + "client/category", //assets/data/categories.json
   manufacturers: host + "client/manufacturers",
   products: host + "client/products",

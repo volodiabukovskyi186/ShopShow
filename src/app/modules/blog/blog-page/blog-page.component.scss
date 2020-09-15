@@ -1,0 +1,146 @@
+
+.blog-container{
+  box-sizing: border-box;
+  padding-top: 115px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  .mobile{
+    display: none;
+  }
+  .desctop{
+    display: block;
+  }
+
+  .blog-containt{
+    display: flex;
+   flex-direction: column;
+    max-width: 1226px;
+    width: 100%;
+    flex: 1;
+  }
+  .blog-nav{
+    padding-top: 56px;
+    max-width: 300px;
+    flex: 1;
+    .blog-nav-item{
+      padding-left: 20px;
+      .blog-nav-item__title{
+        h1{
+          font-weight: bold;
+          color: #333333;
+          font-size: 24px;
+          margin-top: 0;
+        }
+        padding-bottom: 15px;
+
+      }
+      .blog-nav-item__items{
+        cursor: pointer;
+        p{
+          margin-bottom: 0;
+          font-size: 18px;
+          color: #333333;
+          padding-bottom: 20px;
+
+        }
+      }
+    }
+  }
+}
+.open-nav__btn{
+  max-width: 200px;
+  padding-top: 2vw;
+  margin-left: 1rem;
+  display: none;
+}
+@media screen and(max-width: 1024px) {
+  .blog-container {
+    //height: 300vw;
+    padding-top: 0px;
+    .blog-nav {
+      .blog-nav-item {
+        .blog-nav-item__title {
+          h1 {
+            font-size: 20px;
+          }
+          padding-bottom: 15px;
+        }
+        .blog-nav-item__items {
+          padding-bottom: 60px;
+          p {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and(max-width: 768px) {
+  .open-nav__btn{
+    display: block;
+
+  }
+  .blog-container {
+    //height: 350vw;
+    .mobile{
+      display: block;
+    }
+    .desctop{
+      display: none;
+    }
+    width: 92vw;
+    margin: 0 auto;
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+    position: relative;
+    .blog-nav {
+      .blog-nav__close{
+        position: absolute;
+        z-index: 1000;
+        right: 20px;
+        top: 20px;
+        margin-bottom: 0;
+      }
+      position: fixed;
+      z-index: 1000;
+      max-width: 90vw;
+      max-height: 110vh;
+      width: 70%;
+      height: 120vh;
+      top:0px;
+      left: 0px;
+      background: white;
+      .blog-nav-item {
+        padding-left: 30px;
+        padding-right: 20px;
+        .blog-nav-item__title {
+          h1 {
+            font-size: 18px;
+          }
+          padding-bottom: 0;
+        }
+        .blog-nav-item__items {
+          padding-bottom: 20px;
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and(max-width: 480px) {
+  .blog-container {
+    padding-top: 50px;
+    .blog-nav {
+      max-width: 120vw;
+      width: 100%;
+      .blog-nav-item{
+        width: 80%;
+      }
+    }
+  }
+}

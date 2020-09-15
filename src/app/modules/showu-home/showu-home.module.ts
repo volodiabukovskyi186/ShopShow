@@ -12,6 +12,7 @@ import { WelcomeStatisticComponent } from './welcome-statistic/welcome-statistic
 import { ReviewModule } from '../review/review.module';
 import { ManufacturersModule } from '../manufacturers/manufacturers.module';
 import { ProductModule } from '../product/product.module';
+import {BlogModule} from '../blog/blog.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ProductModule } from '../product/product.module';
     CollectionModule,
     ReviewModule,
     ManufacturersModule,
+    BlogModule,
     ProductModule,
     SallersModule
   ]

@@ -54,10 +54,8 @@ export class ProductsPageComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.route.params.subscribe((data) => {  
-    
+    this.route.params.subscribe((data) => {
       this.id = data["id"];
-
       this.breadcrumbs = [
         {
           link: "/",

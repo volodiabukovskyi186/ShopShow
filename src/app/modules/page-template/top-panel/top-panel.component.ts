@@ -75,9 +75,7 @@ export class TopPanelComponent implements OnInit {
     changeLang(lang, item) {
         console.log(lang);
         console.log('item', item);
-
         this.langs = item;
-
         this.appLang.use(lang);
         window.location.reload();
     }
