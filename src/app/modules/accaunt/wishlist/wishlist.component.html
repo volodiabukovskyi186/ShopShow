@@ -46,6 +46,14 @@
       [products]="product.products.data.products"
     ></app-product-list> -->
 
+    <div class="wishlist-container">
+        <app-wishlist-product-item
+            *ngFor="let wishProduct of wishlistProducts"
+            [product]="wishProduct"
+            style="margin: 10px; width: 29%"
+        ></app-wishlist-product-item>
+    </div>
+
     <app-pagination
       class="radius"
       [page]="product.page"

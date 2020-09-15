@@ -20,6 +20,7 @@ import { MyReviewComponent } from './my-review/my-review.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { WishlistProductItemComponent } from './wishlist/wishlist-product-item/wishlist-product-item.component';
 
 const components = [
   AccauntButtonComponent,
@@ -39,6 +40,7 @@ const components = [
     MyOrdersComponent,
     MyReviewComponent,
     WishlistComponent,
+    WishlistProductItemComponent,
   ],
   exports: [...components, PersonalDataComponent],
   imports: [

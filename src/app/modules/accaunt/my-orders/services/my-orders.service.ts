@@ -17,6 +17,10 @@ export class MyOrdersService {
     return this.http.get<any>(`${environment.host}order/${id}`);
   }
 
+  public getUserOrdersByClientId(clientId): Observable<any> {
+    return this.http.get<any>(`${environment.host}clientOrders/${clientId}`)
+  }
+
 //   public getOrdersList() {
 //     this.myOrders$.subscribe((res) => {
 //         console.log(res);

@@ -18,7 +18,7 @@ export class MyOrdersComponent implements OnInit {
     selectedCardNumber: number;
     selectedSorting: string;
     promotions: any[] = [];
-  
+    myOrders: any[] = [];
 
     constructor(
         public myOrdersService: MyOrdersService,
@@ -29,10 +29,11 @@ export class MyOrdersComponent implements OnInit {
     ngOnInit(): void {
         // this.getMyOrders();
         // console.log(this.getMyOrders());
-        // console.log(this.orders);
+        console.log(this.myOrders);
 
         this.getUserClientId();
         this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
+        this.getOrdersByClientId();
     }
 
     public getUserClientId(): void {
@@ -85,6 +86,22 @@ export class MyOrdersComponent implements OnInit {
         });
     }
 
+    public getOrdersByClientId() {
+        this.accauntService.getUser().subscribe((res) => {
+            this.clientId = res.data.user.id;
+              console.log(this.clientId);
+      
+              this.myOrdersService.getUserOrdersByClientId(this.clientId).subscribe((res) => {
+                this.myOrders = res.data.orders;
+                console.log(this.myOrders);
+              })
+      
+            // this.accaunt.current = data.data;
+            // this.accaunt.onCurrent();
+            // console.log(data.data);
+        });
+    }
+
     // public changeMaterialCategory(event, cardNumber?: number) {
     //     console.log(event);
     //     console.log(cardNumber);
@@ -94,11 +111,6 @@ export class MyOrdersComponent implements OnInit {
     //     });
     // }
     
-
-    // modifyDate() {
-        
-    // }
-
     // public getOrderById(id) {
     //     return `${environment.host}/order/${id}`;
     // }
