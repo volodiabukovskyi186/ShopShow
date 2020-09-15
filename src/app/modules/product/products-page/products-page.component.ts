@@ -19,6 +19,10 @@ export class ProductsPageComponent implements OnInit {
   breadcrumbs: Array<NavLink> = [];
   Math = Math;
   public sortProductsData: any;
+  public cardNumbers: number[] = [];
+  selectedCardNumber: number;
+  selectedSorting: string;
+  promotions: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -69,6 +73,8 @@ export class ProductsPageComponent implements OnInit {
     });
 
     this.sortProducts();
+
+    this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
   }
 
   public onFilterChanged(filters: IFilters): void {
@@ -99,9 +105,41 @@ export class ProductsPageComponent implements OnInit {
     this.get();
   } 
 
-  public changeMaterialCategory(event) {
-    console.log(event);
-    this.product.sortBy(event.value).subscribe((res) => {
+  // public changeMaterialCategory(event, cardNumber?: number) {
+  //   console.log(event);
+  //   console.log(cardNumber);
+  //   this.product.sortBy(event.value, cardNumber).subscribe((res) => {
+  //     this.product.products.data.products = res.data.products;
+  //   });
+  // }
+
+  public onSortingChanged(sorting: string) {
+    this.selectedSorting = sorting;
+    this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
+      if (this.selectedSorting !== 'promotions') {
+        this.product.products.data.products = res.data.products;
+      }
+
+      if (this.selectedSorting === 'promotions') {
+        console.log(this.product.products.data.products);
+        
+        res.data.products.forEach((val) => {
+          if (val.promotion) {
+            this.promotions.unshift(val);
+          }
+          if (val.promotion === null) {
+            this.promotions.push(val);
+          }
+        })
+
+        this.product.products.data.products = this.promotions;
+      }
+    });
+  }
+
+  public onCardNumberChanged(cardNumber: number) {
+    this.selectedCardNumber = cardNumber;
+    this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
       this.product.products.data.products = res.data.products;
     });
   }

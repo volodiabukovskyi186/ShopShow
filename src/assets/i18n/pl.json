@@ -68,7 +68,8 @@
     "sort": "Sortuj według:",
     "minPrice": "Od tanich do drogich",
     "maxPrice": "Od drogich do tanich",
-    "rating": "ocena",
+    "rating": "Ocena",
+    "promotions": "Promocje",
     "view": "Widok"
   },
   "filter": {

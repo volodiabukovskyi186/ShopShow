@@ -45,7 +45,7 @@
       <mat-form-field appearance="standart" class="sort-products">
         <div class="sort-products-wrapper">
           <mat-label class="sort-products-label">{{ 'sortBy.sort' | translate }}</mat-label>
-          <mat-select (selectionChange)="changeMaterialCategory($event)">
+          <mat-select (selectionChange)="onSortingChanged($event.value)">
             <!-- <mat-option *ngFor="let productData of sortProductsData" [value]="productData">
               {{ productData }}
             </mat-option> -->
@@ -58,17 +58,23 @@
             <mat-option [value]="'rating'">
               {{ 'sortBy.rating' | translate}}
             </mat-option>
+            <mat-option [value]="'promotions'">
+              {{ 'sortBy.promotions' | translate}}
+            </mat-option>
           </mat-select>
         </div>
       </mat-form-field>
       <mat-form-field appearance="standart" class="sort-products">
         <div class="sort-products-wrapper">
           <mat-label class="sort-products-label"> {{ 'sortBy.view' | translate }}: </mat-label>
-          <mat-select (selectionChange)="changeMaterialCategory($event)">
-            <mat-option [value]="'price'">
-              {{ 'sortBy.price' | translate}}
-            </mat-option>
-          </mat-select>
+          <!-- <div *ngFor="let card of cardNumbers"> -->
+            <mat-select (selectionChange)="onCardNumberChanged($event.value)">
+              <mat-option *ngFor="let card of cardNumbers" [value]="card">
+                {{ card }}
+                <!-- {{ 'sortBy.take' | translate }} -->
+              </mat-option>
+            </mat-select>
+          <!-- </div> -->
         </div>
       </mat-form-field>
     </div>

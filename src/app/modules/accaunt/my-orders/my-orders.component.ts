@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { MyOrdersService } from './services/my-orders.service';
 import { environment } from 'src/environments/environment';
 import { AccauntService } from '../../accaunt/accaunt.service';
+import { ProductService } from "src/app/modules/product/product.service";
 
 @Component({
     selector: 'app-my-orders',
@@ -13,10 +14,16 @@ export class MyOrdersComponent implements OnInit {
     orders: any[] = [];
     clientId: number;
     clientOrders: any;
+    public cardNumbers: any[] = [];
+    selectedCardNumber: number;
+    selectedSorting: string;
+    promotions: any[] = [];
+  
 
     constructor(
         public myOrdersService: MyOrdersService,
-        public accauntService: AccauntService
+        public accauntService: AccauntService,
+        public product: ProductService
     ) {}
 
     ngOnInit(): void {
@@ -25,6 +32,7 @@ export class MyOrdersComponent implements OnInit {
         // console.log(this.orders);
 
         this.getUserClientId();
+        this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
     }
 
     public getUserClientId(): void {
@@ -45,6 +53,47 @@ export class MyOrdersComponent implements OnInit {
         this.itemStatus == false ? this.itemStatus = true : this.itemStatus = false;
         console.log(this.itemStatus);
     }
+
+    public onSortingChanged(sorting: string) {
+        this.selectedSorting = sorting;
+        this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
+            if (this.selectedSorting !== 'promotions') {
+                this.product.products.data.products = res.data.products;
+            }
+        
+            if (this.selectedSorting === 'promotions') {
+                console.log(this.product.products.data.products);
+                
+                res.data.products.forEach((val) => {
+                if (val.promotion) {
+                    this.promotions.unshift(val);
+                }
+                if (val.promotion === null) {
+                    this.promotions.push(val);
+                }
+                })
+        
+                this.product.products.data.products = this.promotions;
+            }
+        });
+      }
+    
+    public onCardNumberChanged(cardNumber: number) {
+        this.selectedCardNumber = cardNumber;
+        this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
+          this.product.products.data.products = res.data.products;
+        });
+    }
+
+    // public changeMaterialCategory(event, cardNumber?: number) {
+    //     console.log(event);
+    //     console.log(cardNumber);
+
+    //     this.product.sortBy(event.value, cardNumber).subscribe((res) => {
+    //       this.product.products.data.products = res.data.products;
+    //     });
+    // }
+    
 
     // modifyDate() {
         

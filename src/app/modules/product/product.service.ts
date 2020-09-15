@@ -85,6 +85,8 @@ export class ProductService {
     take: 20,
   };
 
+  takeNumber;
+
   constructor(private http: HttpClient, private appLang: AppLangService) {}
 
   getBy(categoryId: number) {
@@ -161,10 +163,20 @@ export class ProductService {
     );
   }
 
-  sortBy(value: string) {
-    const take = 20;
+  sortBy(value: string, cardNumber?: number) {
+    console.log(value);
+    console.log(cardNumber);
+
     const lang = this.appLang.current;
-    let params = `?lang=${lang}&skip=0&take=${take}`;
+    let params = `?lang=${lang}&skip=0`;
+
+    if (cardNumber) {
+      this.takeNumber = cardNumber;
+      params = `${params}&take=${this.takeNumber}`;
+    }
+
+    //const lang = this.appLang.current;
+    //let params = `?lang=${lang}&skip=0&take=${this.takeNumber}`;
 
     if (value === 'rating') {
       params = `${params}&sort_by=rating`;
@@ -177,8 +189,12 @@ export class ProductService {
     if (value === 'maxPrice') {
       params = `${params}&sort_by=price&desc=DESC`;
     }
+
+    // if (value === 'promotions') {
+    //   params = `${params}`;
+    // }
     
-    console.log(value);
+
     console.log(environment.products + params);
 
     return this.http.get<any>(
