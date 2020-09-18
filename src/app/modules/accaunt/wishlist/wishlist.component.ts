@@ -8,6 +8,7 @@ import { WishlistService } from '../wishlist/services/wishlist.service';
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.scss']
 })
+
 export class WishlistComponent implements OnInit {
   public cardNumbers: any[] = [];
   public Math = Math;
@@ -16,6 +17,8 @@ export class WishlistComponent implements OnInit {
   public promotions: any[] = [];
   public wishlistProducts: any[] = [];
   public clientId: number;
+  public allwishlistData: any;
+  public page: number = 1;
 
   constructor(
     public product: ProductService,
@@ -29,16 +32,18 @@ export class WishlistComponent implements OnInit {
   }
 
   public onSortingChanged(sorting: string) {
+    console.log(sorting);
     this.selectedSorting = sorting;
-    this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
+    this.wishlistService.getUserWishlistByClientId(this.clientId, this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
       if (this.selectedSorting !== 'promotions') {
-        this.product.products.data.products = res.data.products;
+        this.wishlistProducts = res.data;
+        this.allwishlistData = res;
       }
 
       if (this.selectedSorting === 'promotions') {
-        console.log(this.product.products.data.products);
+        //console.log(this.product.products.data.products);
         
-        res.data.products.forEach((val) => {
+        res.data.products?.forEach((val) => {
           if (val.promotion) {
             this.promotions.unshift(val);
           }
@@ -47,15 +52,16 @@ export class WishlistComponent implements OnInit {
           }
         })
 
-        this.product.products.data.products = this.promotions;
+        this.wishlistProducts = this.promotions;
       }
     });
   }
 
   public onCardNumberChanged(cardNumber: number) {
     this.selectedCardNumber = cardNumber;
-    this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
-      this.product.products.data.products = res.data.products;
+    this.wishlistService.getUserWishlistByClientId(this.clientId, this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
+      this.wishlistProducts = res.data;
+      this.allwishlistData = res;
     });
   }
 
@@ -65,7 +71,8 @@ export class WishlistComponent implements OnInit {
         console.log(this.clientId);
 
         this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
-          this.wishlistProducts = res.data.wishlist;
+          this.wishlistProducts = res.data;
+          this.allwishlistData = res;
           console.log(this.wishlistProducts);
         })
 
@@ -75,13 +82,9 @@ export class WishlistComponent implements OnInit {
     });
   }
 
-  // public changeMaterialCategory(event: MatSelectChange, cardNumber?: number) {
-  //   console.log(event);
-  //   console.log(this.product.products);
-
-  //   this.product.sortBy(event.value, cardNumber).subscribe((res) => {
-  //     this.product.products.data.products = res.data.products;
-  //   });
-  // }
-
+  
+  pageChangedHandler(page: number): void {
+    this.page = page;
+    this.getClientWishlistByClientId();
+  }
 }

@@ -19,6 +19,10 @@ export class MyOrdersComponent implements OnInit {
     selectedSorting: string;
     promotions: any[] = [];
     myOrders: any[] = [];
+    allOrders: any;
+    Math = Math;
+    page: number = 1;
+    //take: number = 10;
 
     constructor(
         public myOrdersService: MyOrdersService,
@@ -50,20 +54,16 @@ export class MyOrdersComponent implements OnInit {
         })
     }    
 
-    itemDrop(): void {
-        this.itemStatus == false ? this.itemStatus = true : this.itemStatus = false;
-        console.log(this.itemStatus);
-    }
-
     public onSortingChanged(sorting: string) {
         this.selectedSorting = sorting;
-        this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
+        this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber, this.selectedSorting).subscribe((res) => {
             if (this.selectedSorting !== 'promotions') {
-                this.product.products.data.products = res.data.products;
+                this.myOrders = res.data;
+                this.allOrders = res;
             }
         
             if (this.selectedSorting === 'promotions') {
-                console.log(this.product.products.data.products);
+                //console.log(this.product.products.data.products);
                 
                 res.data.products.forEach((val) => {
                 if (val.promotion) {
@@ -74,15 +74,16 @@ export class MyOrdersComponent implements OnInit {
                 }
                 })
         
-                this.product.products.data.products = this.promotions;
+                this.myOrders = this.promotions;
             }
         });
       }
     
     public onCardNumberChanged(cardNumber: number) {
         this.selectedCardNumber = cardNumber;
-        this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
-          this.product.products.data.products = res.data.products;
+        this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber, this.selectedSorting).subscribe((res) => {
+          this.myOrders = res.data;
+          this.allOrders = res;
         });
     }
 
@@ -92,7 +93,11 @@ export class MyOrdersComponent implements OnInit {
               console.log(this.clientId);
       
               this.myOrdersService.getUserOrdersByClientId(this.clientId).subscribe((res) => {
-                this.myOrders = res.data.orders;
+                //this.myOrders = res.data[0].orders;
+                this.myOrders = res.data;
+                this.allOrders = res;
+
+                console.log(res);
                 console.log(this.myOrders);
               })
       
@@ -101,6 +106,12 @@ export class MyOrdersComponent implements OnInit {
             // console.log(data.data);
         });
     }
+
+    public pageChangedHandler(page: number): void {
+        console.log(page);
+        this.page = page;
+        this.getOrdersByClientId();
+      }
 
     // public changeMaterialCategory(event, cardNumber?: number) {
     //     console.log(event);

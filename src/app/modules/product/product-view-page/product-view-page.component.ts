@@ -101,8 +101,8 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     getByIdHandler = (data) => {
         this.product.item = data.data;
         //this.updateTitle(this.product.item.description.name + ` | ShowU ` + this.product.item.description.tag);
-        this.updateTitle(this.product.item.description.name + ` | ShowU `);
-        this.updateDescription(this.product.item.description.meta_discription);
+        this.updateTitle(this.product.item?.description?.name + ` | ShowU `);
+        this.updateDescription(this.product.item?.description?.meta_discription);
         // link: "manufacturer" + "/" + this.id,
 
         if (this.product.item?.category?.category?.descriptions.name) {
@@ -176,7 +176,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         this.product.attributes = data.data;
 
         const attrMap = {};
-        data.data.attrybutes.forEach(element => {
+        data.data.attrybutes?.forEach(element => {
             if (!attrMap[element.attribyte.description.name]) {
                 attrMap[element.attribyte.description.name] = [];
             }

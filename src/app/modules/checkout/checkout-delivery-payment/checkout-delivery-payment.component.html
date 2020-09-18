@@ -12,7 +12,7 @@
   >
     <div style="flex: 1;">
       <h4>{{ check.checkoutDelivery }} {{ check.checkoutDeliveryAddress }}</h4>
-      <span>{{ check.checkoutPayment }}, {{ check.checkoutRecipient }}</span>
+      <span>{{ check.checkoutPayment | translate}}, {{ check.checkoutRecipient }}</span>
       <span
         >{{ check.checkoutContact.country }},
         {{ check.checkoutContact.city }}</span
@@ -51,48 +51,48 @@
         <div class="description">
           <h6>{{ "cart.delivery" | translate }}</h6>
         </div>
-        <div class="original">
+        <div class="original" *ngIf="check.checkoutContact.country === ('countries.ukraine' | translate)">
           <input
             class="raisins-radio label"
             type="radio"
             [(ngModel)]="check.checkoutDelivery"
-            name="delivery"
-            value="courier"
-            id="del_courier"
+            name="deliveryToTheNovaPoshta"
+            value="{{ 'deliveryMethods.deliveryToTheNovaPoshta' | translate }}"
+            id="delivery_deliveryToTheNovaPoshta"
           />
-          <label for="del_courier">Courier</label>
+          <label for="delivery_deliveryToTheNovaPoshta">{{ "deliveryMethods.deliveryToTheNovaPoshta" | translate }}</label>
 
           <input
             class="raisins-radio label"
             type="radio"
             [(ngModel)]="check.checkoutDelivery"
-            name="delivery"
-            value="mail_company"
-            id="mail_company"
+            name="deliveryByCourierOfNovaPoshta"
+            value="{{ 'deliveryMethods.deliveryByCourierOfNovaPoshta' | translate }}"
+            id="delivery_deliveryByCourierOfNovaPoshta"
           />
-          <label for="mail_company">Mail company</label>
+          <label for="delivery_deliveryByCourierOfNovaPoshta">{{ "deliveryMethods.deliveryByCourierOfNovaPoshta" | translate }}</label>
 
           <input
             class="raisins-radio label"
             type="radio"
-            name="delivery"
+            name="deliveryIsMadeToTheEntranceOfTheBuilding"
             [(ngModel)]="check.checkoutDelivery"
-            value="meest"
-            id="meest"
+            value="{{ 'deliveryMethods.deliveryIsMadeToTheEntranceOfTheBuilding' | translate }}"
+            id="delivery_deliveryIsMadeToTheEntranceOfTheBuilding"
           />
-          <label for="meest">Meest</label>
+          <label for="delivery_deliveryIsMadeToTheEntranceOfTheBuilding">{{ "deliveryMethods.deliveryIsMadeToTheEntranceOfTheBuilding" | translate }}</label>
 
           <input
             class="raisins-radio label"
             type="radio"
-            name="delivery"
+            name="selfPickupFromShowroom"
             [(ngModel)]="check.checkoutDelivery"
-            value="other_mail"
-            id="other_mail"
+            value="{{ 'deliveryMethods.selfPickupFromShowroom' | translate }}"
+            id="delivery_selfPickupFromShowroom"
           />
-          <label for="other_mail">Other mail conpany</label>
+          <label for="delivery_selfPickupFromShowroom">{{ "deliveryMethods.selfPickupFromShowroom" | translate }}</label>
 
-          <input
+          <!-- <input
             class="raisins-radio label"
             type="radio"
             [(ngModel)]="check.checkoutDelivery"
@@ -100,7 +100,88 @@
             value="delivery"
             id="delivery"
           />
-          <label for="delivery">Delivery</label>
+          <label for="delivery">Delivery</label> -->
+        </div>
+        <div class="original" *ngIf="check.checkoutContact.country === ('countries.poland' | translate)">
+          <input
+            class="raisins-radio label"
+            type="radio"
+            [(ngModel)]="check.checkoutDelivery"
+            name="polishpost"
+            value="{{'deliveryMethodsPl.polishPost' | translate }}"
+            id="delivery_polishPost"
+          />
+          <label for="delivery_polishPost">{{ 'deliveryMethodsPl.polishPost' | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            [(ngModel)]="check.checkoutDelivery"
+            name="paczkomatyinpost"
+            value="{{ 'deliveryMethodsPl.paczkomatyInPost' | translate }}"
+            id="delivery_paczkomatyInPost"
+          />
+          <label for="delivery_paczkomatyInPost">{{ 'deliveryMethodsPl.paczkomatyInPost' | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="DPDcourierYouNeedAContract"
+            [(ngModel)]="check.checkoutDelivery"
+            value="{{ 'deliveryMethodsPl.DPDcourierYouNeedAContract' | translate }}"
+            id="delivery_DPDcourierYouNeedAContract"
+          />
+          <label for="delivery_DPDcourierYouNeedAContract">{{ 'deliveryMethodsPl.DPDcourierYouNeedAContract' | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="DHLcourierYouNeedAContract"
+            [(ngModel)]="check.checkoutDelivery"
+            value="{{ 'deliveryMethodsPl.DHLcourierYouNeedAContract' | translate }}"
+            id="delivery_DHLcourierYouNeedAContract"
+          />
+          <label for="delivery_DHLcourierYouNeedAContract">{{ 'deliveryMethodsPl.DHLcourierYouNeedAContract' | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            [(ngModel)]="check.checkoutDelivery"
+            name="GLScourierYouNeedAContract"
+            value="{{ 'deliveryMethodsPl.GLScourierYouNeedAContract' | translate }}"
+            id="delivery_GLScourierYouNeedAContract"
+          />
+          <label for="delivery_GLScourierYouNeedAContract">{{ 'deliveryMethodsPl.GLScourierYouNeedAContract' | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            [(ngModel)]="check.checkoutDelivery"
+            name="UPScourierYouNeedAContract"
+            value="{{ 'deliveryMethodsPl.UPScourierYouNeedAContract' | translate }}"
+            id="delivery_UPScourierYouNeedAContract"
+          />
+          <label for="delivery_UPScourierYouNeedAContract">{{ 'deliveryMethodsPl.UPScourierYouNeedAContract' | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            [(ngModel)]="check.checkoutDelivery"
+            name="parcelInRUCH"
+            value="{{ 'deliveryMethodsPl.parcelInRUCH' | translate }}"
+            id="delivery_parcelInRUCH"
+          />
+          <label for="delivery_parcelInRUCH">{{ 'deliveryMethodsPl.parcelInRUCH' | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            [(ngModel)]="check.checkoutDelivery"
+            name="pickupInPerson"
+            value="{{ 'deliveryMethodsPl.pickupInPerson' | translate }}"
+            id="delivery_pickupInPerson"
+          />
+          <label for="delivery_pickupInPerson">{{ 'deliveryMethodsPl.pickupInPerson' | translate }}</label>
         </div>
       </div>
 
@@ -141,39 +222,118 @@
         <div class="description">
           <h6>{{ "cart.payment" | translate }}</h6>
         </div>
-        <div class="original">
+        <div class="original" *ngIf="check.checkoutContact.country === ('countries.ukraine' | translate)">
           <input
             class="raisins-radio label"
             type="radio"
             name="payment"
-            value="cash"
+            value="{{ 'cart.cash' | translate }}"
             [(ngModel)]="check.checkoutPayment"
             id="payment_cash"
           />
-          <label for="payment_cash">{{ "cart.cash" | translate }}</label>
+          <label for="payment_cash">{{ 'cart.cash' | translate }}</label>
 
           <input
             class="raisins-radio label"
             type="radio"
             name="payment"
-            value="cashless"
+            value="{{ 'cart.cashless' | translate }}"
             [(ngModel)]="check.checkoutPayment"
             id="payment_cashless"
           />
-          <label for="payment_cashless">{{
-            "cart.cashless" | translate
-          }}</label>
+          <label for="payment_cashless">{{ "cart.cashless" | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="LiqPay"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_ligpay"
+          />
+          <label for="payment_ligpay">LiqPay</label>
 
           <!-- <input
             class="raisins-radio label"
             type="radio"
             name="payment"
-            value="ligpay"
+            value="paypal"
             [(ngModel)]="check.checkoutPayment"
-            id="payment_ligpay"
+            id="payment_paypal"
           />
-          <label for="payment_ligpay">Ligpay</label>
+          <label for="payment_paypal">PayPal</label>
           <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="przelewy24pl"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_przelewy24pl"
+          />
+          <label for="payment_przelewy24pl">Przelewy24.pl</label> -->
+        </div>
+        <div class="original" *ngIf="check.checkoutContact.country === ('countries.poland' | translate)">
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="{{ 'paymentPl.payment' | translate }}"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_cash"
+          />
+          <label for="payment_cash">{{ "paymentPl.payment" | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="{{ 'paymentPl.transfers' | translate }}"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_przelewy24pl"
+          />
+          <label for="payment_przelewy24pl">{{ "paymentPl.transfers" | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="pay"
+            value="{{ 'paymentPl.payU' | translate }}"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_payU"
+          />
+          <label for="payment_payU">{{ "paymentPl.payU" | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="payment"
+            value="{{ 'paymentPl.blik' | translate }}"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_blik"
+          />
+          <label for="payment_blik">{{ "paymentPl.blik" | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="creditcard"
+            value="{{ 'paymentPl.creditCard' | translate }}"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_creditCard"
+          />
+          <label for="payment_creditCard">{{ "paymentPl.creditCard" | translate }}</label>
+
+          <input
+            class="raisins-radio label"
+            type="radio"
+            name="fasttransfer"
+            value="{{ 'paymentPl.fastTransfer' | translate }}"
+            [(ngModel)]="check.checkoutPayment"
+            id="payment_fastTransfer"
+          />
+          <label for="payment_fastTransfer">{{ "paymentPl.fastTransfer" | translate }}</label>
+
+          <!-- <input
             class="raisins-radio label"
             type="radio"
             name="payment"
@@ -205,7 +365,7 @@
             class="raisins-radio label"
             type="radio"
             name="recipient"
-            value="me"
+            value="{{ 'cart.me' | translate }}"
             [(ngModel)]="check.checkoutRecipient"
             id="me"
           />

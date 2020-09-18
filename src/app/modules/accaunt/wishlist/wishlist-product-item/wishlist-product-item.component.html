@@ -3,7 +3,7 @@
     <div  class="product-item-wrap">
    <div class="ratio" >
     <div class="square" >
-      <a [routerLink]="['/products/view/' + product.id]" class="product-img-padding">
+      <a [routerLink]="['/products/view/' + product?.id]" class="product-img-padding">
         <div class="sale-label-container">
           <div *ngIf="product.promotion" class="sale-label sale">{{'product.sale' | translate}}</div>
           <div *ngIf="isIn24Created(product.product.created_at)" class="sale-label new">{{'product.new' | translate}}</div>
@@ -26,20 +26,20 @@
       <div class="product-buttons">
         <a
           class="button"
-          [routerLink]="['/products/view/' + product.id]"
+          [routerLink]="['/products/view/' + product?.product_id]"
           routerLinkActive="router-link-active"
         >
           <rap-svg-ico [src]="'assets/icons/eye.svg'"></rap-svg-ico>
         </a>
   
-        <a class="button" (click)="save($event, product.id)">
+        <a class="button" (click)="save($event, product?.product_id)">
           <rap-svg-ico [src]="'assets/icons/heart.svg'"></rap-svg-ico>
         </a>
   
         <a
           class="button"
           *ngIf="!product.soldout"
-          (click)="toCart($event, product)"
+          (click)="toCart($event, product.product)"
         >
           <rap-svg-ico [src]="'assets/icons/cart-add.svg'"></rap-svg-ico>
         </a>

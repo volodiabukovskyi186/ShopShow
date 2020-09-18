@@ -46,10 +46,14 @@ export class CheckoutContactComponent implements OnInit {
   nextStep() {
     this.check.steps[0].done = true;
     this.check.currentStepIndex = 1;
+
+    console.log(this.check.checkoutContact);
   }
 
   edit() {
     this.check.steps[0].done = false;
     this.check.currentStepIndex = 0;
+
+    console.log(this.check.checkoutContact);
   }
 }

@@ -1,11 +1,11 @@
 {
   "footer": {
-    "description": "We are eager to help you to make you life more beautiful, and you open Ukraine with other side on affordable price & good quality.",
+    "description": "Find harmony in your life with us and your appearance will show beauty to the whole world.",
     "shop": "Shop",
     "help": "Help",
     "copyright": "All Rights Reserved",
     "newsletter": "Newsletter",
-    "wantNews": "I want emails from ShowU with products information and promotion."
+    "wantNews": "I want to receive e-mails from ShowU with information about manufacturers' products and sales."
   },
   "nav": {
     "promotion": "Promotion",
@@ -60,7 +60,7 @@
     "restore": "Reset password",
     "profile": "Profile",
     "accauntEmail": "Username or email address",
-    "lostPassword": "Lost your password? Please enter your usernameor email address. You will receive a link to create a new password via email."
+    "lostPassword": "Lost your password? Please enter your user name or email address. You will receive a link to create a new password via email."
   },
   "cart": {
     "checkout": "Checkout",
@@ -158,5 +158,53 @@
   "take": {
     "cardsNumber": "cards",
     "allCards": "All cards"
+  },
+  "statusCodes": {
+    "done": "Done",
+    "inProgress": "In Progress",
+    "canceled": "Canceled",
+    "sent": "Sent"
+  },
+  "months": {
+    "Jan": "January", 
+    "Feb": "February",
+    "Mar": "March",
+    "Apr": "April",
+    "May": "May",
+    "Jun": "June",
+    "Jul": "July",
+    "Aug": "August",
+    "Sep": "September",
+    "Oct": "October",
+    "Nov": "November",
+    "Dec": "December"
+  },
+  "deliveryMethods": {
+    "deliveryToTheNovaPoshta": "Delivery to the «Nova Poshta»",
+    "deliveryByCourierOfNovaPoshta": "Delivery by courier of «Nova Poshta»",
+    "deliveryIsMadeToTheEntranceOfTheBuilding": "Delivery is made to the entrance of the building",
+    "selfPickupFromShowroom": "Self-pickup from the manufacturer's showroom"
+  },
+  "deliveryMethodsPl": {
+    "polishPost": "Poczta Polska",
+    "paczkomatyInPost": "PACZKOMATY 24/ InPost",
+    "DPDcourierYouNeedAContract": "Kurier DPD – trzeba umowa",
+    "DHLcourierYouNeedAContract": "Kurier DHL – trzeba umowa",
+    "GLScourierYouNeedAContract": "Kurier GLS – trzeba umowa",
+    "UPScourierYouNeedAContract": "Kurier UPS – trzeba umowa",
+    "parcelInRUCH": "Paczka w RUCHU",
+    "pickupInPerson": "Odbiór osobisty"
+  },
+  "paymentPl": {
+    "payment": "Płatności",
+    "transfers": "Przelewy 24",
+    "payU": "PayU",
+    "blik": "Blik",
+    "creditCard": "Karta płatnicza",
+    "fastTransfer": "Szybki przelew"
+  },
+  "countries": {
+    "ukraine": "Ukraine",
+    "poland": "Poland"
   }
 }

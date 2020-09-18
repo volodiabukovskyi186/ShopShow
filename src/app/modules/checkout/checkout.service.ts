@@ -38,7 +38,7 @@ export class CheckoutService {
   checkoutPayment:
     | "cash"
     | "visamastercard"
-    | "ligpay"
+    | "liqpay"
     | "paypal"
     | "przelewy24pl" = "cash";
 

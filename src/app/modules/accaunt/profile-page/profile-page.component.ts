@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NavLink } from "src/app/modules/ui/rap/nav-item/nav-link";
 import { AccauntService } from "src/app/modules/accaunt/accaunt.service";
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   selector: "app-profile-page",
@@ -19,7 +20,10 @@ export class ProfilePageComponent implements OnInit {
     },
   ];
 
-  constructor(public accaunt: AccauntService) {}
+  constructor(
+    public accaunt: AccauntService,
+    public auth: AuthService,
+  ) {}
 
   ngOnInit(): void {
     this.accaunt.getUser().subscribe((data) => {

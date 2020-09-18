@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class MyOrdersService {
   public myOrders: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   public myOrders$: Observable<any> = this.myOrders.asObservable();
+  public takeNumber: number;
 
   constructor(private http: HttpClient) {} 
 
@@ -17,8 +18,15 @@ export class MyOrdersService {
     return this.http.get<any>(`${environment.host}order/${id}`);
   }
 
-  public getUserOrdersByClientId(clientId): Observable<any> {
-    return this.http.get<any>(`${environment.host}clientOrders/${clientId}`)
+  public getUserOrdersByClientId(clientId, cardNumber?: number, value?: string): Observable<any> {
+    let params = `clientOrders/${clientId}`;
+
+    if (cardNumber) {
+      this.takeNumber = cardNumber;
+      params = `${params}?take=${this.takeNumber}`;
+    }
+
+    return this.http.get<any>(environment.host + params);
   }
 
 //   public getOrdersList() {

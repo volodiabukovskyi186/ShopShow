@@ -13,12 +13,14 @@ export class CheckoutDeliveryPaymentComponent implements OnInit {
   constructor(public cart: CartService, public check: CheckoutService) {}
 
   ngOnInit(): void {}
+
   nextStep() {
     this.check.steps[1].done = true;
   }
 
   edit() {
     this.check.steps[1].done = false;
+    console.log(this.check.checkoutContact.country);
   }
 
   valid: boolean = true;

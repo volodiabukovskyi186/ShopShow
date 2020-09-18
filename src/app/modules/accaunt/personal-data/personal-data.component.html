@@ -48,44 +48,44 @@
         <div class="personal-data-container__change-password">
             <button (click)="changeStatus()" *ngIf="!personStatus">Change password</button>
         </div>
-
     </table>
-
-
-   <div class="data-change__wrapper" *ngIf="personStatus">
-
-
-
-        <div class="change-data"  >
+    <div class="data-change__wrapper" *ngIf="personStatus">
+        <form [formGroup]="personalDataForm" class="change-data">
             <div class="change-data__input-container">
                 <label for="firstName" class="input__group">First name</label>
-                <div class="input__group"><input id="firstName" type="text"></div>
+                <div class="input__group">
+                <input id="firstName" type="text" formControlName="firstName"></div>
             </div>
             <div class="change-data__input-container">
                 <label for="secondName" class="input__group">Last name</label>
-                <div class="input__group"><input id="secondName" type="text"></div>
+                <div class="input__group">
+                <input id="secondName" type="text" formControlName="lastName"></div>
             </div>
             <div class="change-data__input-container">
                 <label for="phone" class="input__group">Phone</label>
-                <div class="input__group"><input id="phone" type="text"></div>
+                <div class="input__group">
+                <input id="phone" type="text" formControlName="phone"></div>
             </div>
             <div class="change-data__input-container">
                 <label for="email" class="input__group">Email</label>
-                <div class="input__group"><input id="email" type="text"></div>
+                <div class="input__group">
+                <input id="email" type="text" formControlName="email"></div>
             </div>
             <div class="change-data__input-container">
                 <label for="country" class="input__group">Country</label>
-                <div class="input__group"><input id="country" type="text"></div>
+                <div class="input__group">
+                <input id="country" type="text" formControlName="country"></div>
             </div>
             <div class="change-data__input-container">
                 <label for="city" class="input__group">City</label>
-                <div class="input__group"><input id="city" type="text"></div>
+                <div class="input__group">
+                <input id="city" type="text" formControlName="city"></div>
             </div>
             <div class="change-data__input-container">
                 <label for="detail-city" class="input__group">Details for the courier</label>
                 <div class="input__group-two" id="detail-city">
-                    <input class="input__group-two__firts" type="text">
-                    <input type="text">
+                    <input class="input__group-two__firts" type="text" formControlName="detailsForTheCourierOne">
+                    <input type="text" formControlName="detailsForTheCourierTwo">
                 </div>
 
             </div>
@@ -94,8 +94,8 @@
             <div class="change-data__input-container">
                 <label for="detail-post" class="input__group">NovaPoshta data</label>
                 <div class="input__group-two" id="detail-post">
-                    <input class="input__group-two__firts" type="text">
-                    <input type="text">
+                    <input class="input__group-two__firts" type="text" formControlName="novaPoshtaDataOne">
+                    <input type="text" formControlName="novaPoshtaDataTwo">
                 </div>
 
             </div>
@@ -105,7 +105,7 @@
                     <button class="cancel__btn" (click)="changeStatus()">Cancel</button>
                 </div>
             </div>
-        </div>
+        </form>
    </div>
 </div>
 

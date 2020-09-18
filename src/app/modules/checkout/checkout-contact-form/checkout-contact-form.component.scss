@@ -1,3 +1,71 @@
 [hidden] {
     display: none;
 }
+
+.checkout-content ::ng-deep {
+  .mat-form-field {
+    width: 100%;
+    line-height: 0;
+    .mat-form-field-wrapper {
+       .mat-form-field-flex {
+          padding: 0 0 0 0;
+          border-top: 1px solid #808080;
+          border-left: 1px solid #808080;
+          border-right: 1px solid #808080;
+          border-bottom: 1px solid #808080;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        .mat-form-field-infix {
+          width: 100%;
+          padding: 0 0 0 0;
+          .mat-select {
+            margin-right: 5px;
+            //margin-left: -37px;
+            margin-top: 5px;
+            .mat-select-trigger {
+                .mat-select-value {
+                    overflow: visible;
+
+                    .mat-select-value-text {
+                        font-size: 15px;
+                        margin-left: 15px;
+                    }
+                }
+              .mat-select-arrow-wrapper {
+                .mat-select-arrow {
+                  box-sizing: border-box;
+                  height: 10px;
+                  width: 10px;
+                  border-style: solid;
+                  border-color: #000;
+                  border-width: 0px 1px 1px 0px;
+                  transform: rotate(45deg);
+                  transition: border-width 150ms ease-in-out;
+                  margin-right: 10px;
+                  margin-top: -3px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .mat-form-field-underline {
+        width: unset;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .mat-option {
+    height: 2.3em !important;
+    .mat-option-text {
+      font-size: 14px;
+    }
+  }
+}
+
+.city-input,
+.country-description {
+    margin-top: -20px;
+}

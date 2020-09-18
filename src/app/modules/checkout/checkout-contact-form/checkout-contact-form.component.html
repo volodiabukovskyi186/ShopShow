@@ -49,11 +49,25 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <div class="description">
+  <div class="form-row checkout-content">
+    <div class="description country-description">
       <label for="country">{{ "cart.country" | translate }}</label>
     </div>
-    <div class="original">
+    <mat-form-field appearance="fill">
+      <mat-select 
+        #country="ngModel"
+        id="country"
+        required
+        name="country"
+        [(ngModel)]="model.country"
+        (selectionChange)="onChange($event)"
+      >
+        <mat-option *ngFor="let country of countries" [value]="country | translate">
+          {{ country | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <div class="original">
       <input
         #country="ngModel"
         class="radius"
@@ -70,11 +84,11 @@
         class="validation-msg red"
       >
         {{ "cart.countryRequired" | translate }}
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
   </div>
 
-  <div class="form-row">
+  <div class="form-row city-input">
     <div class="description">
       <label for="city">{{ "cart.city" | translate }}</label>
     </div>

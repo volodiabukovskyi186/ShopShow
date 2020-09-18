@@ -82,7 +82,7 @@ export class CheckoutProductListComponent implements OnInit {
 
   }
 
-  orderHadler = data => {
+  orderHadler(data) {
     console.log(data);
     alert("Замовлення відправлено\r\nОчікуйте дзвінка від менеджера ^_^");
     this.cart.list = [];

@@ -9,6 +9,8 @@ import { fadeHeight } from '../../ui/animations';
   styleUrls: ["./checkout-contact-form.component.scss"],
 })
 export class CheckoutContactFormComponent implements OnInit {
+  public countries = ['countries.ukraine', 'countries.poland'];
+  public countryName: any;
 
   @Output() formSubmit = new EventEmitter();
 
@@ -22,6 +24,7 @@ export class CheckoutContactFormComponent implements OnInit {
   }
 
   @Input() get model(): ICheckoutContact {
+    //console.log(this._model);
     return this._model;
   }
 
@@ -29,7 +32,14 @@ export class CheckoutContactFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onChange(event) {
+    this.countryName = event.value;
+    console.log(event);
+    console.log(this.countryName);
+  }
+
   onSubmit() {
-    this.formSubmit.emit();
+    console.log(this.countryName);
+    this.formSubmit.emit(this.countryName);
   }
 }

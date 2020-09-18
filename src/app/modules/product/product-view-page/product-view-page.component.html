@@ -5,7 +5,7 @@
     <product-image-view
       class="sticky"
       [host]="'https://api.showu.com.ua/'"
-      [images]="product.item.images"
+      [images]="product?.item?.images"
       [main]="product?.item?.image?.src"
     ></product-image-view>
   </div>
@@ -15,10 +15,10 @@
         {{ product.item?.description?.name }}
       </h4>
       <h4 class="title model-title">
-        {{ "product.productCode" | translate }}: {{ product.item.model }}
+        {{ "product.productCode" | translate }}: {{ product?.item?.model }}
       </h4>
       <div class="flex">
-        <rap-rating [rating]="product.item.rating"></rap-rating>
+        <rap-rating [rating]="product?.item?.rating"></rap-rating>
       </div>
       <!-- <hr />
       <p>
@@ -27,14 +27,14 @@
       <hr />
       <div class="price flex v_center space">
         <b
-          >{{ currency.current.simbol_left
-          }}{{ product.item.price * currency.current.value
-          }}{{ currency.current.simbol_right }}</b
+          >{{ currency?.current?.simbol_left
+          }}{{ product?.item?.price * currency?.current?.value
+          }}{{ currency?.current?.simbol_right }}</b
         >
         <span
           class="stock-status"
-          [ngClass]="{ 'in-stock': product.item.stock_status_id }"
-          >{{ product.item.stock_status_id ? "in stock" : "sold out" }}</span
+          [ngClass]="{ 'in-stock': product?.item?.stock_status_id }"
+          >{{ product?.item?.stock_status_id ? "in stock" : "sold out" }}</span
         >
       </div>
       <hr />
@@ -42,9 +42,9 @@
         <div class="product-description-title">
           {{ 'product.description' | translate }}
         </div>
-        <div class="read-text" [innerHTML]="product.item.description?.discription"></div>
+        <div class="read-text" [innerHTML]="product?.item?.description?.discription"></div>
         <div>
-          {{ product.item.description?.meta_discription }}
+          {{ product?.item?.description?.meta_discription }}
         </div>
       </div>
       <hr />
@@ -57,7 +57,7 @@
         ></rap-count-input>
         <button
           class="button radius large delete add-to-catt-btn"
-          (click)="add(product.item)"
+          (click)="add(product?.item)"
         >
           <rap-svg-ico class="basket-icon" [src]="'assets/icons/basket_1.svg'"></rap-svg-ico>
           <span class="add-to-card-text">{{ "product.addToCart" | translate }}</span>
@@ -99,18 +99,18 @@
     <div class="manufacturer" style="margin: 1rem 0;">
       <div class="golden manufacturer-shadow">
         <div class="long padding">
-          <a [routerLink]="['/manufacturer', product.item.manufactured?.id]"
+          <a [routerLink]="['/manufacturer', product?.item?.manufactured?.id]"
             ><h6 style="margin: 4px 0;">
-              {{ product.item.manufactured?.description?.name }}
+              {{ product?.item?.manufactured?.description?.name }}
             </h6></a
           >
           <div class="flex">
             <rap-rating
-              [rating]="product.item.manufactured?.rating"
+              [rating]="product?.item?.manufactured?.rating"
             ></rap-rating>
           </div>
           <br />
-          <p>{{ product.item.manufactured?.description?.description }}</p>
+          <p>{{ product?.item?.manufactured?.description?.description }}</p>
         </div>
         <div class="short" style="align-items: center;">
           <div class="ratio" style="width: 100%; margin: auto;">
@@ -118,9 +118,9 @@
               <img
                 src="{{
                   'https://api.showu.com.ua/' +
-                    product.item.manufactured?.image.src_mini
+                    product?.item?.manufactured?.image.src_mini
                 }}"
-                alt="{{ product.item.manufactured?.description?.name }}"
+                alt="{{ product?.item?.manufactured?.description?.name }}"
                 class="contain radius"
               />
             </div>
@@ -139,12 +139,12 @@
 
   <rap-step-tabs  >
     <rap-step-tab [title]="'product.description' | translate">
-      <div class="read-text" [innerHTML]="product.item.description?.discription"></div>
+      <div class="read-text" [innerHTML]="product?.item?.description?.discription"></div>
     </rap-step-tab>
     <rap-step-tab [title]="'product.additionalInfo' | translate">
       <table class="table">
         <tbody>
-        <tr *ngFor="let item of product.attributes.attrybutes">
+        <tr *ngFor="let item of product?.attributes?.attrybutes">
           <td width="35%">
             <div class="dotted-caption">
               <span>{{ item.attribyte.description?.name }}</span>

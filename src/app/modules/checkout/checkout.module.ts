@@ -14,6 +14,7 @@ import { CheckoutRoutingModule } from "./checkout-routing.module";
 import { CheckoutPageComponent } from "./checkout-page/checkout-page.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { AccauntModule } from '../accaunt/accaunt.module';
+import { MatSelectModule } from '@angular/material/select';
 
 const COMP = [
   CheckoutProductListComponent,
@@ -36,7 +37,8 @@ const COMP = [
     FormsModule,
     CheckoutRoutingModule,
     TranslateModule,
-    AccauntModule
+    AccauntModule,
+    MatSelectModule
   ],
 })
 export class CheckoutModule {}
