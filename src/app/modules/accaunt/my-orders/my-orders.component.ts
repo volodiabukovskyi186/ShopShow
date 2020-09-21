@@ -21,7 +21,7 @@ export class MyOrdersComponent implements OnInit {
     myOrders: any[] = [];
     allOrders: any;
     Math = Math;
-    page: number = 1;
+    //page: number = 1;
     //take: number = 10;
 
     constructor(
@@ -92,7 +92,7 @@ export class MyOrdersComponent implements OnInit {
             this.clientId = res.data.user.id;
               console.log(this.clientId);
       
-              this.myOrdersService.getUserOrdersByClientId(this.clientId).subscribe((res) => {
+              this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber).subscribe((res) => {
                 //this.myOrders = res.data[0].orders;
                 this.myOrders = res.data;
                 this.allOrders = res;
@@ -109,7 +109,7 @@ export class MyOrdersComponent implements OnInit {
 
     public pageChangedHandler(page: number): void {
         console.log(page);
-        this.page = page;
+        this.myOrdersService.page = page;
         this.getOrdersByClientId();
       }
 

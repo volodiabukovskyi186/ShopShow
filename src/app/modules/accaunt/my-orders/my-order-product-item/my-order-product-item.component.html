@@ -7,7 +7,7 @@
                     №{{ order.id }}
                 </p>
             <div class="review-container__items__item__drop"   [ngClass]="{'changeIcon':itemStatus}" (click)="itemDrop()">
-                <img src="assets/icons/arrow-down.svg">
+                <img class="pointer" src="assets/icons/arrow-down.svg">
             </div>
         </div>
             <div *ngFor="let order of order.products"></div>

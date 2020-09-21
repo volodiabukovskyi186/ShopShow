@@ -87,7 +87,7 @@ export class PaginationComponent implements OnInit {
     }
 
     if (p != 1) pages.push(1);
-    if (p != c) pages.push(c);
+  //if (p != c) pages.push(c);
 
     pages.sort((a, b) => a - b);
     return pages;

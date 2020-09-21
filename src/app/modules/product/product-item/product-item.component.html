@@ -60,15 +60,16 @@
   <div class="product-item-name">{{ product.name }}</div>
 
   <div class="flex space">
-    <span *ngIf="product.oldPrice">
+    <span *ngIf="product.discont?.price" class="old-price">
       <del
         >{{ currency.current.simbol_left }}
-        {{ product.oldPrice * currency.current.value | number }}
+        {{ product.discont?.price * currency.current.value | number }}
         {{ currency.current.simbol_right }}</del
       >
     </span>
-    <span
-      >{{ currency.current.simbol_left }}
+    <span [ngClass]="{ 'new-price': product.discont?.price }"
+      class="price-padding">
+      {{ currency.current.simbol_left }}
       {{ product.price * currency.current.value | number }}
       {{ currency.current.simbol_right }}</span
     >

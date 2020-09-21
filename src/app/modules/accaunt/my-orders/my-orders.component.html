@@ -41,7 +41,7 @@
 
     <app-pagination
       class="radius"
-      [page]="page"
+      [page]="myOrdersService.page"
       [total]="allOrders?.data.length > 0 ? Math.ceil(allOrders.count / allOrders.take): 0"
       [pagesToShow]="5"
       (pageChanged)="pageChangedHandler($event)"

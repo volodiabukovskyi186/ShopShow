@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { WishlistProductItemComponent } from './wishlist/wishlist-product-item/wishlist-product-item.component';
 import { MyOrderProductItemComponent } from './my-orders/my-order-product-item/my-order-product-item.component';
+import { MyReviewProductItemComponent } from './my-review/my-review-product-item/my-review-product-item.component';
 
 const components = [
   AccauntButtonComponent,
@@ -43,6 +44,7 @@ const components = [
     WishlistComponent,
     WishlistProductItemComponent,
     MyOrderProductItemComponent,
+    MyReviewProductItemComponent,
   ],
   exports: [...components, PersonalDataComponent],
   imports: [

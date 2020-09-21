@@ -18,6 +18,7 @@ export class ProductItemComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log(this.product);
     }
 
     save($event: Event, id: number) {

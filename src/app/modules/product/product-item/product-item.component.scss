@@ -30,6 +30,7 @@
 }
 .product-item-wrap{
   box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  padding-bottom: 19px;
  //border: solid 1px black;
 }
 
@@ -132,6 +133,21 @@ img.soldout {
   }
 }
 
+.old-price {
+  color: #9F1941;
+}
+
+.new-price {
+  color: #42996F;
+}
+
+.price-padding {
+  //padding-bottom: 20px;
+}
+
+.padding {
+  padding: 4px 16px 3px !important;
+}
 
 @media (hover: none) {
   .product-buttons {
