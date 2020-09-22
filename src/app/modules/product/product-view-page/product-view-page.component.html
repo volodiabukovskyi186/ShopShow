@@ -171,7 +171,7 @@
         <div class="d4">{{ "review.no_reviews" | translate }}</div>
       </ng-template>
       <div class="add-review-container">
-        <form class="add-review-container__form" [formGroup]="testGroup" (ngSubmit)="addReview()">
+        <form class="add-review-container__form" [formGroup]="review" (ngSubmit)="addReview()">
         <div class="add-review-container__header">
           <p class="text-bold">{{'add-review.add-review' | translate}}<sup class="su-required">*</sup></p>
 <!--          <p>Your email address will not be published. Required fields are marked </p>-->
@@ -182,7 +182,7 @@
             <ng-container *ngFor="let star of stars">
               <label [for]="star.id">
                 <img class="add-review-container__rating__stars__star" [src]="star.src">
-                <input [id]="star.id" type="radio" formControlName="star" [value]="star.value">
+                <input [id]="star.id" type="radio" formControlName="rating" [value]="star.value">
               </label>
             </ng-container>
           </div>
@@ -194,7 +194,7 @@
         <div class="add-review-container__user-inf">
           <div class="add-review-container__user-inf__input-block">
             <p>{{'add-review.name' | translate}} <sup class="su-required">*</sup></p>
-            <input formControlName="name" type="text">
+            <input formControlName="author" type="text">
           </div>
           <div class="add-review-container__user-inf__input-block">
             <p>{{'add-review.email' | translate}} <sup class="su-required">*</sup></p>
@@ -202,7 +202,7 @@
           </div>
         </div>
           <div class="add-review-container__submit">
-            <button type="submit"   [disabled]="!testGroup.valid">Submit</button>
+            <button type="submit"   [disabled]="!review.valid">Submit</button>
           </div>
         </form>
       </div>

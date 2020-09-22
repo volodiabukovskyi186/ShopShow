@@ -148,14 +148,14 @@ hr {
 }
 
 .white-group{
-  margin: 0 -6rem;
-  background: white;
-  @media (max-width: 1080px) {
-      margin: 0 -2rem;
-  }
-  @media (max-width: 768px) {
-    margin: 0;
-  }
+  //margin: 0 -6rem;
+  //background: white;
+  //@media (max-width: 1080px) {
+  //    margin: 0 -2rem;
+  //}
+  //@media (max-width: 768px) {
+  //  margin: 0;
+  //}
 }
 .card-description{
   margin: 0 auto;
@@ -175,6 +175,7 @@ hr {
   border-top: 1px solid $gray200 ;
   margin: 0 auto;
   padding-top: 20px;
+  margin-top: 20px;
   p{
     margin-bottom: 2px;
   }
@@ -211,8 +212,8 @@ hr {
         }
       }
       img {
-        width: 50px;
-        height: 50px;
+        width: 25px;
+        height: 25px;
         opacity: 70%;
       }
 
