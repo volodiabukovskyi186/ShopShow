@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
+import { Observable, ObservableLike } from "rxjs";
 import { AppLangService } from "../core/app-lang.service";
 
 @Injectable({
@@ -32,5 +32,9 @@ export class ClientMenuService {
       environment.host +
         `client/getMenuByType?lang=${l}&skip=0&take=20&type=shop`
     );
+  }
+
+  public sendSubscription(userData): Observable<any> {
+    return this.http.post<any>(environment.host + `client`, userData);
   }
 }

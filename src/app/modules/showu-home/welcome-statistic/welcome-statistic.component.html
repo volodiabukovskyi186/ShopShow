@@ -1,7 +1,7 @@
 <div class="item welcome-to-show-small" *ngFor="let item of list">
   <rap-svg-ico [src]="item.icon"></rap-svg-ico>
   <div class="info"  style="width: 100px">
-    <h6>{{item.title | translate}}</h6>
+    <h6>{{ (item.title | translate).toUpperCase() }}</h6>
     <div>{{item.description | translate}}</div>
   </div>
 </div>

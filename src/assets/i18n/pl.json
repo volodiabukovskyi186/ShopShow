@@ -14,20 +14,20 @@
     "wishes":"Życzenia"
   },
   "main": {
-    "wellcome": "Wellcome to ShowU",
-    "openUkraine": "OPEN UKRAINE FOR YOU",
+    "wellcome": "Witamy w Show U",
+    "openUkraine": "Otwórz Ukrainę dla się",
     "newCollection": "Nowe kolekcje",
-    "bestSellers": "Bestsellery",
-    "lastReviews": "Ostatnie recenzje",
+    "bestSellers": "Najlepsze rabaty",
+    "lastReviews": "Najnowsze recenzje",
     "popularProducts": "Popularne produkty",
     "ourManufacturers": "Nasi producenci",
-    "comeClearUsNow": "Chodź, oczyść nas teraz",
+    "comeClearUsNow": "Przyjdź i odnów swój styl",
     "moreCollections": "Więcej kolekcji",
     "viewMoreCollection": "Zobacz więcej kolekcji",
-    "QUICK_SHIPPING_WORLDWIDE": "SZYBKA WYSYŁKA NA CAŁYM ŚWIECIE",
-    "DAYS_RETURN": "ZWROT 14 DNI",
-    "SHOP_WITH_CONFIDENCE": "KUPUJ Z PEWNOŚCIĄ",
-    "order_from": "Zamów tylko od $230",
+    "QUICK_SHIPPING_WORLDWIDE": "Szybka dostawa po całym świecie",
+    "DAYS_RETURN": "Zwrot towaru w ciągu 14 dni",
+    "SHOP_WITH_CONFIDENCE": "Pewny on-line-sklep",
+    "order_from": "Tylko dla zamówienia od 230 dolarów",
     "call_back": "Skontaktuj się z nami",
     "search": "Szukaj"
   },
@@ -85,6 +85,11 @@
   },
   "collection": {
     "details": "Detale"
+  },
+  "review": {
+    "sliderDesc": "Nie tylko od nas. Posłuchaj także naszych klientów.",
+    "reviews": "Recenzje produktu",
+    "no_reviews": "Brak recenzji"
   },
   "sortBy": {
     "sort": "Sortuj według:",

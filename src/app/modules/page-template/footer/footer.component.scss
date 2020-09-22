@@ -138,3 +138,26 @@ ul.col-nav {
     }
   }
 }
+
+.subscribe-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 22px;
+}
+
+.input-subscribe {
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-subscribe {
+  background: #9F1941;
+  border: none;
+  color: #fff;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+  outline: none;
+  cursor: pointer;
+}
