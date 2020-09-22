@@ -60,8 +60,8 @@ export class RegisterFormComponent implements OnInit {
     // this.ngxService.start();
     // this.toastr.clear();
     this.isSubmit = true;
-
     let form = this.authForm.value;
+    console.log(form);
     this.data = form;
     this.auth.signup(form).subscribe(this.signupHandler);
   }

@@ -1,6 +1,15 @@
-<div class="reviews-item" *ngFor="let item of reviews">
-  <h6>{{ item.author }}</h6>
-  <rap-rating [rating]="item.rating"></rap-rating>
-  
-  <small class="comment" (click)="active($event)">{{ item.text }}</small>
+
+<div class="review-item-wrapper" *ngFor="let item of reviews">
+  <div class="review-item">
+  <div class="review-item__image">
+  <img src="assets/icons/user-review.svg">
+  </div>
+    <div class="review-item__content__wrapper">
+  <div class="review-item__content">
+    <div class="review-item__content__stars"><rap-rating [rating]="item.rating"></rap-rating></div>
+    <div class="review-item__content__user"><h6>{{ item.author }}</h6><p>{{item.created_at|date:'MMMM d yyyy'}}</p></div>
+  </div>
+    <div class="review-item__content__comment"><small class="comment" (click)="active($event)">{{ item.text }}</small></div>
+  </div>
+  </div>
 </div>

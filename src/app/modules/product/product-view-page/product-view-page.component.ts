@@ -11,6 +11,7 @@ import {CurrencyService} from '../../currency/currency.service';
 import {FormGroup, FormControlName, FormControl, Validators} from '@angular/forms';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {AccauntService} from '../../accaunt/accaunt.service';
 
 @Component({
     selector: 'app-product-view-page',
@@ -25,35 +26,22 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     productViewForm: FormGroup;
     isAttrColor: boolean = false;
     isAttrSize: boolean = false;
+    user: any;
 
-    testGroup: FormGroup = new FormGroup({
-        text: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]{2,100}')]),
-        name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]{2,10}')]),
-        email: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9_]+@[a-z]{2,6}.[a-z]{2,4}')]),
-        star: new FormControl(5, [Validators.required]),
+    review: FormGroup = new FormGroup({
+        author: new FormControl('', [Validators.required]),
+        text: new FormControl('', [Validators.required]),
+        rating: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required]),
     });
     private destroy$: Subject<void> = new Subject<void>();
 
     ngOnDestroy() {
         this.destroy$.next();
         this.destroy$.complete();
+
     }
 
-    addReview() {
-        const review = {
-            product_id: this.id,
-            user_id: '',
-            author: 'User',
-            ...this.testGroup.value
-        };
-        if (review.user_id! = '') {
-
-            this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe();
-        }
-
-        // this.myService.create(review).pipe(takeUntil(this.destroy$)).subscribe(resp=>{
-        // });
-    }
 
     breadcrumbs: Array<NavLink>;
 
@@ -65,7 +53,8 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         public cart: CartService,
         private title: Title,
         private meta: Meta,
-        private router: Router
+        private router: Router,
+        private accauntService: AccauntService
     ) {
     }
 
@@ -127,8 +116,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.testGroup
-            .get('star')
+        this.getUser();
+        this.review
+            .get('rating')
             .valueChanges
             .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
@@ -202,19 +192,19 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         this.attrMapArr = attrArr;
     };
 
-  generateProductViewForm(): void {
-    this.productViewForm = new FormGroup({
-      color: new FormControl('', []),
-      size: new FormControl('', [])
-    });
+    generateProductViewForm(): void {
+        this.productViewForm = new FormGroup({
+            color: new FormControl('', []),
+            size: new FormControl('', [])
+        });
 
-  }
+    }
 
-  getProdReviewHandler = data => {
-    this.product.reviews = data;
+    getProdReviewHandler = data => {
+        this.product.reviews = data;
 
-    // this.ngxService.stopAll();
-  }
+        // this.ngxService.stopAll();
+    };
 
     count: number = 1;
 
@@ -228,5 +218,29 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     pageChangedHandler(page: number): void {
         this.product.page = page;
         this.getProdReview(this.id);
+    }
+
+    getUser(): void {
+        this.accauntService.getUser().pipe(takeUntil(this.destroy$)).subscribe(data => {
+            this.user = data;
+        });
+    }
+
+    addReview() {
+        const review = {
+            product_id: this.id,
+            user_id: this.user.data.user.id,
+            status: 2,
+            created_at: new Date(),
+            updated_at: null,
+            ...this.review.value
+        };
+        console.log(review);
+        this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe();
+        // if ( review.user_id! = '') {
+        // }
+
+        // this.myService.create(review).pipe(takeUntil(this.destroy$)).subscribe(resp=>{
+        // });
     }
 }

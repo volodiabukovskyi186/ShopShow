@@ -193,17 +193,14 @@ export class ProductService {
     // if (value === 'promotions') {
     //   params = `${params}`;
     // }
-    
-
     console.log(environment.products + params);
 
     return this.http.get<any>(
       environment.products + params
     );
   }
-  postReview(review): Observable <any> {
-    return this.http.get('hgf');
-  //  this.http.post
+  postReview(reviewItem): Observable <any> {
+    return this.http.post(environment.review, reviewItem );
   }
 
 }
