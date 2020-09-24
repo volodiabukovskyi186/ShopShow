@@ -120,6 +120,8 @@ export class ProductService {
   }
 
   getByFilters(filters: IFilters){
+    console.log(filters);
+
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;
    

@@ -23,7 +23,8 @@ export interface IFilters {
 })
 export class FilterComponent implements OnInit {
     @Output() filterChanged = new EventEmitter<IFilters>();
-    @Input() isManufacturerPage: boolean = true;
+    @Input() isManufacturerPage: boolean = false;
+    @Input() manufacturerPageId: number;
 
     public isOpenManufactures: boolean = true;
     public isOpenPrices: boolean = true;
@@ -31,7 +32,7 @@ export class FilterComponent implements OnInit {
     public isOpenFirstSubCategoryWoman: boolean = false;
     public manufacturers: any;
     public manufacturersTitle;
-
+    
     public value: number;
     public highValue: number;
     public minMaxValues: any;
@@ -132,12 +133,29 @@ export class FilterComponent implements OnInit {
     }
 
     private onFilterChanged() {
-        this.filterChanged.emit({
-            categories: this.selectedCategoryIds,
-            manufacturers: this.selectedManufacturerIds,
-            minPrice: this.value,
-            maxPrice: this.highValue
-        });
+        //this.manufacturersSelectedIds.push(Number(this.manufacturerPageId));
+
+        //console.log(this.manufacturersSelectedIds);
+        console.log(this.selectedManufacturerIds);
+
+        if (this.isManufacturerPage) {
+            this.filterChanged.emit({
+                categories: this.selectedCategoryIds,
+                manufacturers: [Number(this.manufacturerPageId)],
+                minPrice: this.value,
+                maxPrice: this.highValue
+            });
+            //this.selectedManufacturerIds = this.manufacturerPageId;
+        }
+
+        if (!this.isManufacturerPage) {
+            this.filterChanged.emit({
+                categories: this.selectedCategoryIds,
+                manufacturers: this.selectedManufacturerIds,
+                minPrice: this.value,
+                maxPrice: this.highValue
+            });
+        }
     }
 
     public onPriceFilterApplied() {

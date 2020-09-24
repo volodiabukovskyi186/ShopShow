@@ -17,7 +17,7 @@
                     </mat-select>
                 </div>
             </mat-form-field> -->
-            <mat-form-field appearance="standart" class="sort-products">
+            <!-- <mat-form-field appearance="standart" class="sort-products">
                 <div class="sort-products-wrapper">
                     <mat-label class="sort-products-label"> {{ 'sortBy.view' | translate }}: </mat-label>
                     <mat-select >
@@ -26,8 +26,11 @@
                         </mat-option>
                     </mat-select>
                 </div>
-            </mat-form-field>
+            </mat-form-field> -->
         </div>
     </div>
-    <app-my-review-product-item></app-my-review-product-item>
+    <app-my-review-product-item
+        *ngFor="let myReview of myReviews"
+        [review]="myReview">
+    </app-my-review-product-item>
 </div>

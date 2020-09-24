@@ -1,7 +1,7 @@
 <form #heroForm="ngForm" (submit)="onSubmit(heroForm)" class="form-container">
   <div class="form-row">
     <div class="description">
-      <label for="fullName">Full name</label>
+      <label for="fullName">{{ 'contactUsPage.fullName' | translate }}</label>
     </div>
     <div class="original">
       <input
@@ -9,7 +9,7 @@
         class="radius"
         type="text"
         id="fullName"
-        placeholder="Enter ur first name"
+        placeholder="{{'contactUsPage.enterYourFirstName' | translate }}"
         required
         name="name"
         [(ngModel)]="model.name"
@@ -19,14 +19,14 @@
         @fadeHeight
         class="validation-msg red"
       >
-        First name is required
+        {{ 'contactUsPage.firstNameIsRequired' | translate }}
       </div>
     </div>
   </div>
 
   <div class="form-row">
     <div class="description">
-      <label for="email">Email</label>
+      <label for="email">{{ 'contactUsPage.email' | translate }}</label>
     </div>
     <div class="original">
       <input
@@ -34,7 +34,7 @@
         class="radius"
         type="email"
         id="email"
-        placeholder="Enter ur Email"
+        placeholder="{{ 'contactUsPage.enterYourEmail' | translate }}"
         required
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
         name="email"
@@ -45,14 +45,14 @@
         @fadeHeight
         class="validation-msg red"
       >
-        Email is required
+        {{ 'contactUsPage.emailIsRequired' | translate }}
       </div>
     </div>
   </div>
 
   <div class="form-row">
     <div class="description">
-      <label for="phone">Phone</label>
+      <label for="phone">{{ 'contactUsPage.phone' | translate }}</label>
     </div>
     <div class="original">
       <input
@@ -60,7 +60,7 @@
         class="radius"
         type="text"
         id="phone"
-        placeholder="Enter phone"
+        placeholder="{{ 'contactUsPage.enterPhone' | translate }}"
         name="phone"
         [(ngModel)]="model.phone"
       />
@@ -69,7 +69,7 @@
 
   <div class="form-row">
     <div class="description">
-      <label for="message">Message</label>
+      <label for="message">{{ 'contactUsPage.message' | translate }}</label>
     </div>
     <div class="original">
       <textarea
@@ -78,7 +78,7 @@
         type="text"
         required
         id="message"
-        placeholder="Enter message"
+        placeholder="{{ 'contactUsPage.enterMessage' | translate }}"
         name="message"
         [(ngModel)]="model.message"
         rows="5"
@@ -88,7 +88,7 @@
         @fadeHeight
         class="validation-msg red"
       >
-        Message is required
+        {{ 'contactUsPage.messageIsRequired' | translate }}
       </div>
     </div>
   </div>
@@ -102,7 +102,7 @@
           type="submit"
           class="button radius delete"
         >
-          Submit
+          {{ 'contactUsPage.submit' | translate }}
         </button>
       </div>
     </div>

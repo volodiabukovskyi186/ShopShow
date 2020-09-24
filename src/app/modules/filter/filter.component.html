@@ -8,7 +8,7 @@
       <app-filter-item [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-filter-item>
     </div>
   </div>
-  <div class="manufactures" *ngIf="isManufacturerPage">
+  <div class="manufactures" *ngIf="!isManufacturerPage">
     <div class="manufactures-list">
       <div *ngIf="manufacturersTitle">
         <div>{{ manufacturersTitle.description.title }}</div>
@@ -44,7 +44,7 @@
       <app-mobile-filter [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-mobile-filter>
     </div>
   </div>
-  <div class="manufactures" *ngIf="isManufacturerPage">
+  <div class="manufactures" *ngIf="!isManufacturerPage">
     <div class="manufactures-list">
       <div *ngIf="manufacturersTitle">
         <div>{{ manufacturersTitle.description.title }}</div>

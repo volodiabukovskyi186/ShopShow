@@ -4,8 +4,9 @@
   <div class="col col-side filter-margin-left">
     <!-- <i>Filters will be here</i> -->
     <app-filter-page 
-      (filterChanged)="onFilterChanged($event)"
-      [isManufacturerPage]="isManufacturerPage">
+      [isManufacturerPage]="isManufacturerPage"
+      [manufacturerPageId]="id"
+      (filterChanged)="onFilterChanged($event)">
     </app-filter-page>
   </div>
   <div class="col">

@@ -3,15 +3,16 @@
     width: 100%;
   }
   .review-container__items{
-    padding-top: 79px;
+    padding-top: 10px;
     min-width: 745px;
     .review-container__items__item{
-
       display: grid;
-      grid-template-columns: 110px 0.5fr 40px 0.7fr 0.7fr;
+      //grid-template-columns: 110px 0.5fr 40px 0.7fr 0.7fr;
+      grid-template-columns: 110px 8.5fr 40px 0.7fr 0.7fr;
       background-color: white;
       box-shadow: 0px 3px 6px #00000029;
       margin-bottom: 20px;
+      border-radius: 4px;
       .cell{
         align-items: center;
         flex-direction: row;
@@ -23,9 +24,9 @@
        }
 
       }
-      .status{
+      // .status{
 
-      }
+      // }
       .green{
         color: #42996F;
       }
@@ -40,6 +41,45 @@
       }
     }
 
+  }
+
+  .review-product-details__img-wrapper {
+    margin-left: 25px;
+    justify-content: center;
+  }
+
+  .review-product-details__img {
+    height: 60px;
+    width: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .review-product-details__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .review-product-details__leave-comment {
+    color: #9F1941;
+    cursor: pointer;
+  }
+
+  .review-comment-text {
+    font-size: 15px;
+  }
+
+  .text-gray {
+    color: #cccccc;
+    margin-top: 15px;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
   }
 
 @media screen and(max-width:768px) {

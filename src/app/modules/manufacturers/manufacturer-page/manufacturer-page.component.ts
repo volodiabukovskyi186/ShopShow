@@ -37,7 +37,7 @@ export class ManufacturerPageComponent implements OnInit {
   ) {}
 
   id: number = 0;
-  isManufacturerPage: boolean = false;
+  isManufacturerPage: boolean = true;
 
   getByIdHandler = (data) => {
     // this.ngxService.stopAll();
@@ -75,6 +75,7 @@ export class ManufacturerPageComponent implements OnInit {
   }
 
   public onFilterChanged(filters: IFilters): void {
+    console.log(filters);
     this.product.getByFilters(filters).subscribe((data) => {
       this.product.products.data.products = data.data.products;
       console.log(this.product.products.data.products);

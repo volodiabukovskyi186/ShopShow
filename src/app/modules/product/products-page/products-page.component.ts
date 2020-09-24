@@ -117,7 +117,7 @@ export class ProductsPageComponent implements OnInit {
     this.selectedSorting = sorting;
     this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
       if (this.selectedSorting !== 'promotions') {
-        this.product.products.data.products = res.data.products;
+        this.product.products = res;
       }
 
       if (this.selectedSorting === 'promotions') {
@@ -140,7 +140,7 @@ export class ProductsPageComponent implements OnInit {
   public onCardNumberChanged(cardNumber: number) {
     this.selectedCardNumber = cardNumber;
     this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
-      this.product.products.data.products = res.data.products;
+      this.product.products = res;
     });
   }
 }

@@ -1,6 +1,6 @@
 <div class="contacts-block">
   <app-contact-card
-    [title]="'Phone number'"
+    [title]="'contactUsPage.phoneNumber' | translate"
     [src]="'assets/icons/phone.svg'"
     [links]="[
       {
@@ -12,7 +12,7 @@
   ></app-contact-card>
 
   <app-contact-card
-    [title]="'Address'"
+    [title]="'contactUsPage.address' | translate"
     [src]="'assets/icons/map.svg'"
     [links]="[
       {
@@ -22,7 +22,7 @@
   ></app-contact-card>
 
   <app-contact-card
-    [title]="'Email'"
+    [title]="'contactUsPage.email' | translate"
     [src]="'assets/icons/mail.svg'"
     [links]="[
       {
@@ -57,9 +57,9 @@
 <!--</div>-->
 <div class="card-form radius" style="max-width: unset;">
   <div style="width: 100%;" class="d4 text-center flex row center v_center">
-    <h1 style="margin-top: 0;" class="contacts-form-header">Leave your message</h1>
+    <h1 style="margin-top: 0;" class="contacts-form-header">{{ 'contactUsPage.leaveYourMessage' | translate }}</h1>
     <span style="color: #9b9b9b;"
-      >Feel freeto contact width us by using the form below</span
+      >{{ 'contactUsPage.feelFreeToContactWithUs' | translate }}</span
     >
   </div>
 

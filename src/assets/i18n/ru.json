@@ -201,5 +201,24 @@
   "countries": {
     "ukraine": "Украина",
     "poland": "Польша"
+  },
+  "contactUsPage": {
+    "contactUs": "Связаться с нами",
+    "phoneNumber": "Телефонный номер",
+    "address": "Адрес",
+    "email": "Email",
+    "leaveYourMessage": "Оставьте ваше сообщение",
+    "feelFreeToContactWithUs": "Свободно обращайтесь к нам, используя форму ниже",
+    "fullName": "Полное имя",
+    "firstNameIsRequired": "Имя обязательно",
+    "emailIsRequired": "Электронная почта обязательно",
+    "phone": "Телефон",
+    "message": "Сообщение",
+    "messageIsRequired": "Сообщение обязательно",
+    "submit": "Отправить",
+    "enterYourFirstName": "Введите свое имя",
+    "enterYourEmail": "Введите адрес электронной почты",
+    "enterPhone": "Введите телефон",
+    "enterMessage": "Введите сообщение"
   }
 }

@@ -46,6 +46,28 @@ ul.nav {
   }
 }
 
+.subscribe-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 22px;
+}
+
+.input-subscribe {
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-subscribe {
+  background: #9F1941;
+  border: none;
+  color: #fff;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+  outline: none;
+  cursor: pointer;
+}
 
 @include screen-w(1080px) {
   .logo {
@@ -59,6 +81,7 @@ ul.nav {
     margin-top: $space/2;
     margin-bottom: $space;
   }
+
   .small-footer{
 
     display: flex;
@@ -86,9 +109,19 @@ ul.nav {
 
     }
   }
-  .small-footer-input{
+  .small-footer-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 25px;
+    padding-right: 25px;
+    align-items: center !important;
+
     h5{
       text-align: start;
+      display: flex;
+      align-self: end;
+      margin-left: 7%;
     }
     p{
       font-size: 12px;
@@ -108,9 +141,53 @@ ul.nav {
 
   }
 
+  .btn-subscribe {
+    border-top-right-radius: 6px !important;
+    border-bottom-right-radius: 6px  !important;
+  }
+  
+  .input-subscribe {
+    border-top-left-radius: 6px !important;
+    border-bottom-left-radius: 6px !important;
+  }
 
+  .subscribe-container {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
+@include screen-w(589px) {
+  .small-footer-input {
+    h5 {
+      margin-left: 5%;
+    }
+  }
+}
+
+@include screen-w(489px) {
+  .small-footer-input {
+    h5 {
+      margin-left: 3%;
+    }
+  }
+}
+
+@include screen-w(389px) {
+  .small-footer-input {
+    h5 {
+      margin-left: 1%;
+    }
+  }
+}
+
+@include screen-w(372px) {
+  .small-footer-input {
+    h5 {
+      margin-left: 0;
+    }
+  }
+}
 
 .gray {
   color: $gray300;
@@ -137,27 +214,4 @@ ul.col-nav {
       padding: $space/2;
     }
   }
-}
-
-.subscribe-container {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 22px;
-}
-
-.input-subscribe {
-  border-top-left-radius: 13px;
-  border-bottom-left-radius: 13px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.btn-subscribe {
-  background: #9F1941;
-  border: none;
-  color: #fff;
-  border-top-right-radius: 13px;
-  border-bottom-right-radius: 13px;
-  outline: none;
-  cursor: pointer;
 }

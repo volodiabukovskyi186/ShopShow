@@ -13,7 +13,7 @@ import { MyOrdersService } from '../../accaunt/my-orders/services/my-orders.serv
   styleUrls: ["./checkout-product-list.component.scss"],
 })
 export class CheckoutProductListComponent implements OnInit {
-  public clientId: number;
+  public userId: number;
 
   constructor(
     public cart: CartService,
@@ -27,8 +27,8 @@ export class CheckoutProductListComponent implements OnInit {
   
   public getUserClientId(): void {
     this.accauntService.getUser().subscribe((res) => {
-      this.clientId = res.data.user.id;
-      console.log(this.clientId);
+      this.userId = res.data.user.id;
+      console.log(this.userId);
     })
   }
 
@@ -47,7 +47,7 @@ export class CheckoutProductListComponent implements OnInit {
       sort_order: 1,
       costumer: "",
       currency_id: this.currency.current.id,
-      client_id: this.clientId,
+      user_id: this.userId,
       first_name: this.check.checkoutContact.firstName,
       last_name: this.check.checkoutContact.lastName,
       email: this.check.checkoutContact.email,

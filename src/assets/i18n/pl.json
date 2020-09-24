@@ -196,5 +196,24 @@
   "countries": {
     "ukraine": "Ukraina",
     "poland": "Polska"
+  },
+  "contactUsPage": {
+    "contactUs": "Skontaktuj się z nami",
+    "phoneNumber": "Numer telefonu",
+    "address": "Adres",
+    "email": "Email",
+    "leaveYourMessage": "Zostaw wiadomość",
+    "feelFreeToContactWithUs": "Zapraszamy do kontaktu z nami za pomocą poniższego formularza",
+    "fullName": "Pełne imię i nazwisko",
+    "firstNameIsRequired": "Pierwsze imię jest wymagane",
+    "emailIsRequired": "Email jest wymagany",
+    "phone": "Telefon",
+    "message": "Wiadomość",
+    "messageIsRequired": "Wiadomość jest wymagana",
+    "submit": "Zatwierdź",
+    "enterYourFirstName": "Wpisz swoje imię",
+    "enterYourEmail": "Wprowadź swój email",
+    "enterPhone": "Wpisz telefon",
+    "enterMessage": "Wpisz wiadomość"
   }
 }

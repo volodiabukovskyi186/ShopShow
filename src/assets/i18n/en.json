@@ -206,5 +206,24 @@
   "countries": {
     "ukraine": "Ukraine",
     "poland": "Poland"
+  },
+  "contactUsPage": {
+    "contactUs": "Contact Us",
+    "phoneNumber": "Phone number",
+    "address": "Address",
+    "email": "Email",
+    "leaveYourMessage": "Leave your message",
+    "feelFreeToContactWithUs": "Feel free to contact with us by using the form below",
+    "fullName": "Full name",
+    "firstNameIsRequired": "First name is required",
+    "emailIsRequired": "Email is required",
+    "phone": "Phone",
+    "message": "Message",
+    "messageIsRequired": "Message is required",
+    "submit": "Submit",
+    "enterYourFirstName": "Enter your first name",
+    "enterYourEmail": "Enter your Email",
+    "enterPhone": "Enter phone",
+    "enterMessage": "Enter message"
   }
 }
