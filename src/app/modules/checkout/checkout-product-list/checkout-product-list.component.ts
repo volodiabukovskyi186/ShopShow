@@ -14,6 +14,13 @@ import { MyOrdersService } from '../../accaunt/my-orders/services/my-orders.serv
 })
 export class CheckoutProductListComponent implements OnInit {
   public userId: number;
+  public orderId: any;
+  public paymentDescription: string = 'Payment';
+  public hashedDataToSend: any;
+  public hashedPrivateData: any;
+  public hashedData: any;
+  public isOrderBtnCliked: boolean = false;
+  private liqPayData: any;
 
   constructor(
     public cart: CartService,
@@ -68,11 +75,42 @@ export class CheckoutProductListComponent implements OnInit {
       this.orderResult.products.push({
         product_id: p.product.id,
         quantity: p.count,
+        manufacturer_id: p.product.manufactured_id
       });
     });
 
     this.check.post(this.orderResult).subscribe((res) => {
+      //console.log(this.orderId.data.id);
+      console.log(this.cart.total);
+      console.log(this.currency.current.currency_title);
+
       this.orderHadler(res);
+      this.orderId = res;
+
+      if (this.orderId.checkoutPayment === 'LiqPay') {
+        this.isOrderBtnCliked = true;
+
+        this.liqPayData = {
+          public_key: "sandbox_i23346177686",
+          version: "3",
+          action: "pay",
+          amount: this.cart.total,
+          currency: this.currency.current.currency_title,
+          description: this.paymentDescription,
+          order_id: this.orderId.data.id
+        }
+
+        this.check.getHashKey().subscribe((res) => {
+          console.log(res);
+          this.hashedData = res;
+
+          this.hashedDataToSend = this.hashedData.result.data;
+          this.hashedPrivateData = this.hashedData.result.sign;
+        })
+      }
+      
+      //{{host}}hash_key
+
       console.log(res);
       this.myOrdersService.myOrders.next(res);
       console.log(this.myOrdersService.myOrders.next(res));

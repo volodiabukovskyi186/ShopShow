@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccauntService } from '../../accaunt/accaunt.service';
-import { MyReviewService } from './services/my-review.service'
+import { MyReviewService } from './services/my-review.service';
 
 @Component({
   selector: 'app-my-review',

@@ -215,5 +215,18 @@
     "enterYourEmail": "Wprowadź swój email",
     "enterPhone": "Wpisz telefon",
     "enterMessage": "Wpisz wiadomość"
+  },
+  "personalData": {
+    "userPersonalData": "Dane osobiste",
+    "userSave": "Zapisać",
+    "userCancel": "Anulować",
+    "userChangePassword": "Zmień hasło",
+    "userName": "Imię",
+    "userSurname": "Nazwisko",
+    "userEmail": "Email",
+    "userPhone": "Telefon",
+    "userCountry": "Kraj",
+    "userCity": "Miasto",
+    "userDetailsForTheCourier": "Szczegóły dla kuriera"
   }
 }

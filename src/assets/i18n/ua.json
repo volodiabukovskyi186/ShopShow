@@ -220,5 +220,18 @@
     "enterYourEmail": "Введіть вашу електронну адресу",
     "enterPhone": "Введіть телефон",
     "enterMessage": "Введіть повідомлення"
+  },
+  "personalData": {
+    "userPersonalData": "Особисті дані",
+    "userSave": "Зберегти",
+    "userCancel": "Скасувати",
+    "userChangePassword": "Змінити пароль",
+    "userName": "Ім'я",
+    "userSurname": "Прізвище",
+    "userEmail": "Email",
+    "userPhone": "Телефон",
+    "userCountry": "Країна",
+    "userCity": "Місто",
+    "userDetailsForTheCourier": "Деталі для кур’єра"
   }
 }

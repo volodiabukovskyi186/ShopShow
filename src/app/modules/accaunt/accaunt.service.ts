@@ -25,6 +25,9 @@ export interface IUser {
   role_id: number;
   tel: string;
   updated_at: string;
+  city?: string;
+  country?: string;
+  delivery_adress?: string;
 }
 
 export interface IAccaunt {

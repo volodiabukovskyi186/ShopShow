@@ -62,6 +62,12 @@
     >
       {{ "cart.placeOrder" | translate }}
     </button>
+    <form
+      method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
+      <input type="hidden" name="data" id="datasign" value="hashedDataToSend"/>
+      <input type="hidden" name="signature" value="hashedPrivateData" id="signagure"/>
+      <button id="liqpaybtn"> Pay </button>
+    </form>
   </div>
 </footer>
 

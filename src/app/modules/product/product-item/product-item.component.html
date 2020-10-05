@@ -63,14 +63,15 @@
     <span *ngIf="product.discont?.price" class="old-price">
       <del
         >{{ currency.current.simbol_left }}
-        {{ product.discont?.price * currency.current.value | number }}
+        {{ product.price * currency.current.value | number }}
         {{ currency.current.simbol_right }}</del
       >
     </span>
     <span [ngClass]="{ 'new-price': product.discont?.price }"
       class="price-padding">
       {{ currency.current.simbol_left }}
-      {{ product.price * currency.current.value | number }}
+      <span *ngIf="product.discont?.price === null">{{ product.price * currency.current.value | number }}</span>
+      <span *ngIf="product.discont?.price !== null">{{ product.discont?.price * currency.current.value | number }}</span>
       {{ currency.current.simbol_right }}</span
     >
   </div>

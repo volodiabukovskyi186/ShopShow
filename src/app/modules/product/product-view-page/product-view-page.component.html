@@ -171,7 +171,7 @@
         <div class="d4">{{ "review.no_reviews" | translate }}</div>
       </ng-template>
       <div class="add-review-container">
-        <form class="add-review-container__form" [formGroup]="review" (ngSubmit)="addReview()">
+        <form class="add-review-container__form" [formGroup]="review" (ngSubmit)="addReview()" #review>
         <div class="add-review-container__header">
           <p class="text-bold">{{'add-review.add-review' | translate}}<sup class="su-required">*</sup></p>
 <!--          <p>Your email address will not be published. Required fields are marked </p>-->

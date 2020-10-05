@@ -13,4 +13,8 @@ export class PersonalDataService {
   getUserWishlistByClientId(clientId, data) {
     return this.http.put<any>(environment.host + `client/${clientId}`, data);
   }
+
+  updateUserPersonalDataByUserId(userId, data) {
+    return this.http.put<any>(environment.host + `user/${userId}`, data);
+  }
 }

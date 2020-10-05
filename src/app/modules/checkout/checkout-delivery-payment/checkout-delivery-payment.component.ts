@@ -10,6 +10,8 @@ import { CheckoutService } from "../checkout.service";
   styleUrls: ["./checkout-delivery-payment.component.scss"],
 })
 export class CheckoutDeliveryPaymentComponent implements OnInit {
+  public isLigpayChecked: boolean = false;
+
   constructor(public cart: CartService, public check: CheckoutService) {}
 
   ngOnInit(): void {}
@@ -26,6 +28,25 @@ export class CheckoutDeliveryPaymentComponent implements OnInit {
   valid: boolean = true;
   onValid(valid: boolean) {
     this.valid = valid;
+  }
+
+  onItemChange(eventValue) {
+    if (eventValue.cheked) {
+      this.isLigpayChecked = true;
+    }
+
+    console.log(eventValue);
+
+    // let liqPayData = {
+    //   public_key: "sandbox_i23346177686",
+    //   version: "3",
+    //   action: "pay",
+    //   amount: "",
+    //   currency: "",
+    //   description: "",
+    //   order_id: ""
+    // }
+      //{{host}}hash_key
   }
 
 }

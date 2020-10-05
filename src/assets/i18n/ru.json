@@ -220,5 +220,18 @@
     "enterYourEmail": "Введите адрес электронной почты",
     "enterPhone": "Введите телефон",
     "enterMessage": "Введите сообщение"
+  },
+  "personalData": {
+    "userPersonalData": "Личные данные",
+    "userSave": "Сохранить",
+    "userCancel": "Отмена",
+    "userChangePassword": "Изменить пароль",
+    "userName": "Имя",
+    "userSurname": "Фамилия",
+    "userEmail": "Email",
+    "userPhone": "Телефон",
+    "userCountry": "Страна",
+    "userCity": "Город",
+    "userDetailsForTheCourier": "Детали для курьера"
   }
 }

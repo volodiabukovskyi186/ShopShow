@@ -92,7 +92,7 @@
       class="radius"
       [page]="product.page"
       [total]="product.products.data.products.length > 0 ? Math.ceil(product.products.count / product.products.take): 0"
-      [pagesToShow]="5"
+      [pagesToShow]="6"
       (pageChanged)="pageChangedHandler($event)"
     ></app-pagination>
   </div>

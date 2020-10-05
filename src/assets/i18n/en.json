@@ -225,5 +225,18 @@
     "enterYourEmail": "Enter your Email",
     "enterPhone": "Enter phone",
     "enterMessage": "Enter message"
+  },
+  "personalData": {
+    "userPersonalData": "Personal data",
+    "userSave": "Save",
+    "userCancel": "Cancel",
+    "userChangePassword": "Change password",
+    "userName": "Name",
+    "userSurname": "Surname",
+    "userEmail": "Email",
+    "userPhone": "Phone",
+    "userCountry": "Country",
+    "userCity": "City",
+    "userDetailsForTheCourier": "Details for the courier"
   }
 }

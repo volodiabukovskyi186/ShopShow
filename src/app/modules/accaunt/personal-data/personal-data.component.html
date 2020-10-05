@@ -12,97 +12,89 @@
 <div class="personal-data-container">
 
     <table class="personal-data-container__table" *ngIf="!personStatus">
-        <div class="personal-data__title"> <p class="title">Personal data</p></div>
+        <div class="personal-data__title"> <p class="title">{{ 'personalData.userPersonalData' | translate }}</p></div>
         <tr>
-            <td>First name</td>
+            <td>{{ 'personalData.userName' | translate }}</td>
             <td>{{ accaunt.current?.user?.first_name }}</td>
         </tr>
         <tr>
-            <td>Last name</td>
+            <td>{{ 'personalData.userSurname' | translate }}</td>
             <td>{{ accaunt.current?.user?.last_name }}</td>
         </tr>
         <tr>
-            <td>Phone</td>
-            <td>{{ accaunt.current?.user?.tel }}</td>
-        </tr>
-        <tr>
-            <td>Email</td>
+            <td>{{ 'personalData.userEmail' | translate }}</td>
             <td>{{ accaunt.current?.user?.email }}</td>
         </tr>
         <tr>
-            <td>Country</td>
-            <td>Ukraine</td>
+            <td>{{ 'personalData.userPhone' | translate }}</td>
+            <td>{{ accaunt.current?.user?.tel }}</td>
         </tr>
         <tr>
-            <td>City</td>
-            <td>Lviv</td>
+            <td>{{ 'personalData.userCountry' | translate }}</td>
+            <td>{{ accaunt.current?.user?.country }}</td>
         </tr>
         <tr>
-            <td>Details for the courier</td>
-            <td>Lviv Nova street</td>
+            <td>{{ 'personalData.userCity' | translate }}</td>
+            <td>{{ accaunt.current?.user?.city}}</td>
         </tr>
         <tr>
+            <td>{{ 'personalData.userDetailsForTheCourier' | translate }}</td>
+            <td>{{ accaunt.current?.user?.delivery_adress }}</td>
+        </tr>
+        <!-- <tr>
             <td>NovaPoshta data</td>
             <td>Misha</td>
-        </tr>
+        </tr> -->
         <div class="personal-data-container__change-password">
-            <button (click)="changeStatus()" *ngIf="!personStatus">Change password</button>
+            <button (click)="changeStatus()" *ngIf="!personStatus">{{ 'personalData.userChangePassword' | translate }}</button>
         </div>
     </table>
     <div class="data-change__wrapper" *ngIf="personStatus">
         <form [formGroup]="personalDataForm" class="change-data">
             <div class="change-data__input-container">
-                <label for="firstName" class="input__group">First name</label>
+                <label for="firstName" class="input__group">{{ 'personalData.userName' | translate }}</label>
                 <div class="input__group">
                 <input id="firstName" type="text" formControlName="firstName"></div>
             </div>
             <div class="change-data__input-container">
-                <label for="secondName" class="input__group">Last name</label>
+                <label for="secondName" class="input__group">{{ 'personalData.userEmail' | translate }}</label>
                 <div class="input__group">
                 <input id="secondName" type="text" formControlName="lastName"></div>
             </div>
             <div class="change-data__input-container">
-                <label for="phone" class="input__group">Phone</label>
-                <div class="input__group">
-                <input id="phone" type="text" formControlName="phone"></div>
-            </div>
-            <div class="change-data__input-container">
-                <label for="email" class="input__group">Email</label>
+                <label for="email" class="input__group">{{ 'personalData.userEmail' | translate }}</label>
                 <div class="input__group">
                 <input id="email" type="text" formControlName="email"></div>
             </div>
             <div class="change-data__input-container">
-                <label for="country" class="input__group">Country</label>
+                <label for="phone" class="input__group">{{ 'personalData.userPhone' | translate }}</label>
+                <div class="input__group">
+                <input id="phone" type="text" formControlName="phone"></div>
+            </div>
+            <div class="change-data__input-container">
+                <label for="country" class="input__group">{{ 'personalData.userCountry' | translate }}</label>
                 <div class="input__group">
                 <input id="country" type="text" formControlName="country"></div>
             </div>
             <div class="change-data__input-container">
-                <label for="city" class="input__group">City</label>
+                <label for="city" class="input__group">{{ 'personalData.userCity' | translate }}</label>
                 <div class="input__group">
                 <input id="city" type="text" formControlName="city"></div>
             </div>
             <div class="change-data__input-container">
-                <label for="detail-city" class="input__group">Details for the courier</label>
+                <label for="detail-city" class="input__group">{{ 'personalData.userDetailsForTheCourier' | translate }}</label>
                 <div class="input__group-two" id="detail-city">
                     <input class="input__group-two__firts" type="text" formControlName="detailsForTheCourierOne">
                     <input type="text" formControlName="detailsForTheCourierTwo">
                 </div>
-
             </div>
 
-
-            <div class="change-data__input-container">
-                <label for="detail-post" class="input__group">NovaPoshta data</label>
-                <div class="input__group-two" id="detail-post">
-                    <input class="input__group-two__firts" type="text" formControlName="novaPoshtaDataOne">
-                    <input type="text" formControlName="novaPoshtaDataTwo">
-                </div>
-
-            </div>
             <div class="change-data__input-container">
                 <div class="data-change__btn" *ngIf="personStatus">
-                    <button class="save__btn" (click)="changeStatus()">Save</button>
-                    <button class="cancel__btn" (click)="changeStatus()">Cancel</button>
+                    <button class="save__btn" (click)="changeStatus()">{{ 'personalData.userSave' | translate }}</button>
+                </div>
+                <div class="data-change__btn">
+                    <button class="cancel__btn" (click)="changeStatus()">{{ 'personalData.userCancel' | translate }}</button>
                 </div>
             </div>
         </form>

@@ -249,6 +249,7 @@
             name="payment"
             value="LiqPay"
             [(ngModel)]="check.checkoutPayment"
+            (change)="onItemChange($event.target.value)"
             id="payment_ligpay"
           />
           <label for="payment_ligpay">LiqPay</label>

@@ -11,6 +11,8 @@ export class MyOrderProductItemComponent implements OnInit {
   @Input() hoststatic = environment.hoststatic;
 
   public itemStatus = false;
+  public orderId: number;
+  public orders: any[] = [];
   
   public statusCodes = {
     "1": {
@@ -50,6 +52,16 @@ export class MyOrderProductItemComponent implements OnInit {
 
   public ngOnInit(): void {
     console.log(this.order);
+
+    this.orderId = this.order.id;
+    //this.order = this.order.manufacturers;
+
+    this.order.manufacturers.forEach((res) => {
+      this.orders.push(res.products);
+    })
+
+    console.log("manufacturers", this.order);
+    console.log("this.orders", this.orders);
   }
 
   public itemDrop(): void {
@@ -62,7 +74,7 @@ export class MyOrderProductItemComponent implements OnInit {
   }
 
   public modifyDateString(date, type: string) {
-    let substringDate = date.substring(0, 10);
+    let substringDate = date?.substring(0, 10);
     let t = new Date(substringDate);
   
     if(type === 'day') {

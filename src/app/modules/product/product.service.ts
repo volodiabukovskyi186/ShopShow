@@ -66,7 +66,7 @@ export class ProductService {
     count: 0,
     data: [],
     skip: 0,
-    take: 20
+    take: 21
   };
 
   item: any = {
@@ -82,7 +82,7 @@ export class ProductService {
     count: 0,
     data: { category: {}, manufacturer: {}, products: [] },
     skip: 0,
-    take: 20,
+    take: 21,
   };
 
   takeNumber;

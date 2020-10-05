@@ -17,7 +17,7 @@
                 <div
                     *ngIf="review.text === ''"
                     class="review-product-details__leave-comment review-comment-text">
-                    <a [routerLink]="">
+                    <a [routerLink]="['/products/view/' + review?.product_id]" fragment="review">
                         Залишити відгук
                     </a>
                 </div>

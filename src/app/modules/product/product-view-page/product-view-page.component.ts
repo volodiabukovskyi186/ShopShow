@@ -12,6 +12,7 @@ import {FormGroup, FormControlName, FormControl, Validators} from '@angular/form
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {AccauntService} from '../../accaunt/accaunt.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
     selector: 'app-product-view-page',
@@ -27,6 +28,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     isAttrColor: boolean = false;
     isAttrSize: boolean = false;
     user: any;
+    fragment: string;
 
     review: FormGroup = new FormGroup({
         author: new FormControl('', [Validators.required]),
@@ -54,7 +56,8 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         private title: Title,
         private meta: Meta,
         private router: Router,
-        private accauntService: AccauntService
+        private accauntService: AccauntService,
+        private viewportScroller: ViewportScroller
     ) {
     }
 
@@ -151,6 +154,19 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
         });
         this.generateProductViewForm();
+        this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+
+        console.log(this.fragment);
+
+        if (this.fragment) {
+            this.viewportScroller.scrollToAnchor('review');
+        }
+    }
+
+    ngAfterViewInit(): void {
+        try {
+          document.querySelector('#' + this.fragment).scrollIntoView();
+        } catch (e) { }
     }
 
     getProdAttr(id) {

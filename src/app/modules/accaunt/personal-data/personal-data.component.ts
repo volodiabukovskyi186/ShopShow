@@ -11,8 +11,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class PersonalDataComponent implements OnInit {
     personStatus = false;
-    clientId: number;
+    public userId: number;
     public personalDataForm: FormGroup;
+    public isSaveClickedBtn: boolean = true;
+    public userPersonalDataToUpdate: any;
+    public isCancelClickedBtn: boolean = true;
 
     constructor(
         public accaunt: AccauntService,
@@ -20,39 +23,60 @@ export class PersonalDataComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.getUserAccauntData();
+        this.generatepersonalDataForm();
+    }
+
+    public getUserAccauntData(): void {
         this.accaunt.getUser().subscribe((data) => {
-            this.clientId = data.data.user.id;
+            this.userId = data.data.user.id;
 
             this.accaunt.current = data.data;
             this.accaunt.onCurrent();
         });
-
-        this.generatepersonalDataForm();
     }
 
     public generatepersonalDataForm(): void {
         this.personalDataForm = new FormGroup({
             firstName: new FormControl('', []),
             lastName: new FormControl('', []),
-            phone: new FormControl('', []),
             email: new FormControl('', []),
+            phone: new FormControl('', []),
             country: new FormControl('', []),
             city: new FormControl('', []),
             detailsForTheCourierOne: new FormControl('', []),
-            detailsForTheCourierTwo: new FormControl('', []),
-            novaPoshtaDataOne: new FormControl('', []),
-            novaPoshtaDataTwo: new FormControl('', []),
+            detailsForTheCourierTwo: new FormControl('', [])
         });
     }
 
     changeStatus() {
         const data = this.personalDataForm.value;
 
-        console.log(data);
+        this.userPersonalDataToUpdate = {
+            role_id: 3,
+            id: this.userId,
+            email: data.email,
+            permissions: [],
+            first_name: data.firstName,
+            last_name: data.lastName,
+            tel: data.phone,
+            city: data.city,
+            country: data.country,
+            delivery_adress: `${data.detailsForTheCourierOne} ${data.detailsForTheCourierTwo}`
+        }
+
+        // console.log(data);
+        // console.log(this.userPersonalDataToUpdate);
+
+        if (this.personStatus) {
+            console.log('this.personStatus', this.personStatus);
+
+            this.personalDataService.updateUserPersonalDataByUserId(this.userId, this.userPersonalDataToUpdate).subscribe((res) => {
+                console.log(res);
+                this.getUserAccauntData();
+            })
+        }
   
-        this.personalDataService.getUserWishlistByClientId(this.clientId, data).subscribe((res) => {
-            console.log(res);
-        })
         this.personStatus == false ? this.personStatus = true : this.personStatus = false;
     }
 
