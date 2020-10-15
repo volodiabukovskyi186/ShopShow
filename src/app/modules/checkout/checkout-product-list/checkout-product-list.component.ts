@@ -100,7 +100,9 @@ export class CheckoutProductListComponent implements OnInit {
           order_id: this.orderId.data.id
         }
 
-        this.check.getHashKey().subscribe((res) => {
+        console.log(this.liqPayData);
+
+        this.check.getHashKey(this.liqPayData).subscribe((res) => {
           console.log(res);
           this.hashedData = res;
 

@@ -7,6 +7,8 @@ import { NavLink } from 'src/app/modules/ui/rap/nav-item/nav-link';
   styleUrls: ['./restore-page.component.scss']
 })
 export class RestorePageComponent implements OnInit {
+  public isResetBtnClicked: boolean;
+
   breadcrumbs: Array<NavLink> = [
     {
       link: "/",
@@ -21,6 +23,11 @@ export class RestorePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public resetBtnClicked(event): void {
+    console.log(event);
+    this.isResetBtnClicked = event;
   }
 
 }

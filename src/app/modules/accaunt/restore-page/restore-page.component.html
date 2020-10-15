@@ -1,6 +1,6 @@
 <rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
 <div class="sing-container">
-  <show-u-title [title]="'accaunt.lostPassword' | translate" class="lost-accaunt-title"></show-u-title>
+  <div *ngIf="!isResetBtnClicked" class="lost-accaunt-title">{{ 'accaunt.lostPassword' | translate }}</div>
 
   <app-restore-form
     [labelEmail]="'accaunt.email' | translate"
@@ -9,5 +9,6 @@
     [labelForgotPassword]="'accaunt.email' | translate"
     [labelSubmit]="'accaunt.restore' | translate"
     [placeholderEmail]="'accaunt.enterEmail' | translate"
+    (resetBtnClicked)="resetBtnClicked($event)"
   ></app-restore-form>
 </div>

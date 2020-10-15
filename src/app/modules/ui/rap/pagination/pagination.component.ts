@@ -80,7 +80,7 @@ export class PaginationComponent implements OnInit {
           pages.push(Math.min.apply(null, pages) - 1);
         }
 
-        if (Math.max.apply(null, pages) < c - 1) {
+        if (Math.max.apply(null, pages) < c) {
           pages.push(Math.max.apply(null, pages) + 1);
         }
       }

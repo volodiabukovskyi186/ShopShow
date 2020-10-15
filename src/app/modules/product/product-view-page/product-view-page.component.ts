@@ -29,6 +29,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     isAttrSize: boolean = false;
     user: any;
     fragment: string;
+    userId: number;
 
     review: FormGroup = new FormGroup({
         author: new FormControl('', [Validators.required]),
@@ -161,6 +162,8 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         if (this.fragment) {
             this.viewportScroller.scrollToAnchor('review');
         }
+
+        this.getUserAccauntData();
     }
 
     ngAfterViewInit(): void {
@@ -258,5 +261,28 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
         // this.myService.create(review).pipe(takeUntil(this.destroy$)).subscribe(resp=>{
         // });
+    }
+
+    public getUserAccauntData(): void {
+        this.accauntService.getUser().subscribe((data) => {
+            console.log(data);
+
+            this.userId = data.data.user.id;
+
+            this.accauntService.current = data.data;
+            this.accauntService.onCurrent();
+        });
+    }
+
+    public addToWishlist(product) {
+        console.log(product);
+
+        this.product.addProductToWishlist({
+            product_id: product.description.product_id,
+            user_id: this.userId
+        }).subscribe((res) => {
+            console.log(res);
+            alert(`Product #${res.data.product_id} was added to wishlist!`);
+        })
     }
 }

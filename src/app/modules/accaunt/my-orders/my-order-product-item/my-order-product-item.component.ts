@@ -56,7 +56,7 @@ export class MyOrderProductItemComponent implements OnInit {
     this.orderId = this.order.id;
     //this.order = this.order.manufacturers;
 
-    this.order.manufacturers.forEach((res) => {
+    this.order?.manufacturers?.forEach((res) => {
       this.orders.push(res.products);
     })
 

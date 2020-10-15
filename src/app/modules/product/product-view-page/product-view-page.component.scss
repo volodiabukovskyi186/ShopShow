@@ -191,7 +191,7 @@ hr {
 
 
     .text-bold{
-      padding-bottom: 70px;
+      padding-bottom: 15px;
     }
 
     .add-review-container__rating__stars{
@@ -199,6 +199,7 @@ hr {
       justify-content: flex-start;
       flex-direction: row;
       padding-bottom: 28px;
+      margin-left: -5px;
       label {
         position: relative;
         input {
@@ -265,9 +266,13 @@ hr {
   }
 }
 
-
-
-
+.heart-icon {
+  &:hover {
+    fill: green !important;
+    stroke: #fce57e !important;
+    //background-color: sepia(100%);
+  }
+}
 
 @include screen-w(752px) {
     .add-review-container{

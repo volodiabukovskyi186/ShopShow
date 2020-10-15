@@ -49,4 +49,8 @@ export class LoginFormComponent {
     this.router.navigate(['/']);
   }
 
+  get formAuthControls(): any {
+    return this.authForm['controls'];
+  }
+
 }

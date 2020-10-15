@@ -1,5 +1,5 @@
 .login {
-  border-top:1px solid silver ;
+  //border-top: 1px solid silver;
   .login__input-container {
 
     .description {
@@ -77,4 +77,46 @@
 
 .lost-pass-underline {
   text-decoration: underline;
+}
+
+.reset-success-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.success-message {
+  width: 100%;
+  height: 50px;
+  background-color: #fae2e5;
+  border: 0.5px solid #b14464;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.success-message-icon {
+  max-width: 23px;
+  margin-left: 18px;
+}
+
+.success-message-text {
+  margin-left: 13px;
+  font-size: 14px;
+}
+
+.auth-title-content {
+  border-bottom: 1px solid silver;
+  margin-top: 11px;
+}
+
+.auth-title {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+.error-container {
+  margin-bottom: 8px;
 }

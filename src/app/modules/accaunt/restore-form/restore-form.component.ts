@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../core/auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-restore-form',
@@ -19,6 +20,10 @@ export class RestoreFormComponent implements OnInit {
   @Input() labelSubmit: string = "Submit";
 
   @Input() placeholderEmail: string = "Enter your email";
+  @Output() resetBtnClicked = new EventEmitter();
+
+  public isResetBtnClicked: boolean = false;
+  host = environment.hoststatic;
  
   /**
    *
@@ -52,5 +57,11 @@ export class RestoreFormComponent implements OnInit {
   restoreHandler = (data: any) => {
     // this.ngxService.stopAll();
   };
+
+  public successResetPassword(): void {
+    this.isResetBtnClicked = true;
+
+    this.resetBtnClicked.emit(this.isResetBtnClicked);
+  }
 
 }

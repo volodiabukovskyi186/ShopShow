@@ -59,9 +59,9 @@ export class CheckoutService {
     return this.http.post(environment.host + `order`, data);
   }
 
-  getHashKey() {
+  getHashKey(data) {
     //{{host}}hash_key
-    return this.http.get(`${environment.host}hash_key`);
+    return this.http.get(`${environment.host}hash_key?${data}`);
   }
 
 }

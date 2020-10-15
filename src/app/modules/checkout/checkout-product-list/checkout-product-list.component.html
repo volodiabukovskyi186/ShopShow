@@ -62,7 +62,7 @@
     >
       {{ "cart.placeOrder" | translate }}
     </button>
-    <form
+    <form *ngIf="isOrderBtnCliked"
       method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
       <input type="hidden" name="data" id="datasign" value="hashedDataToSend"/>
       <input type="hidden" name="signature" value="hashedPrivateData" id="signagure"/>

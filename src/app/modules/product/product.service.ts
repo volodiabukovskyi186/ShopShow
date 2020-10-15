@@ -205,4 +205,7 @@ export class ProductService {
     return this.http.post(environment.review, reviewItem );
   }
 
+  addProductToWishlist(data): Observable <any> {
+    return this.http.post(`${environment.host}wishlist`, data);
+  }
 }

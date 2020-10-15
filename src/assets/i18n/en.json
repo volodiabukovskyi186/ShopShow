@@ -60,7 +60,10 @@
     "restore": "Reset password",
     "profile": "Profile",
     "accauntEmail": "Username or email address",
-    "lostPassword": "Lost your password? Please enter your user name or email address. You will receive a link to create a new password via email."
+    "lostPassword": "Lost your password? Please enter your user name or email address. You will receive a link to create a new password via email.",
+    "requiredUsername": "Error: Username is required.",
+    "requiredEmail": "Error: Email is required.",
+    "requiredPassword": "Error: Password is required."
   },
   "cart": {
     "checkout": "Checkout",
@@ -151,9 +154,8 @@
     "wishlist": "Wishlist",
     "my-orders": "My orders",
     "my-review": "My review",
-    "log-out": "Log out"
-
-
+    "log-out": "Log out",
+    "edit": "Edit"
   },
   "take": {
     "cardsNumber": "cards",
@@ -238,5 +240,6 @@
     "userCountry": "Country",
     "userCity": "City",
     "userDetailsForTheCourier": "Details for the courier"
-  }
+  },
+  "contactAddress": "202, Stryiska street, Lviv, 79031"
 }

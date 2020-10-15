@@ -74,4 +74,8 @@ export class RegisterFormComponent implements OnInit {
     this.isSubmit = false;
     // this.ngxService.stopAll();
   };
+
+  get formRegisterControls(): any {
+    return this.authForm['controls'];
+  }
 }

@@ -8,13 +8,15 @@
   <h4>{{ value.product.description?.name  }}</h4>
 
   <span
-    >{{ value.product.price }} x
-    <rap-count-input [min]="1" [(value)]="value.count"></rap-count-input>
-    | <span style="text-align: center" [@changeValueHighlight]="value.count">
+    >
+    <!-- {{ value.product.price }}  -->
+    <span style="text-align: center" [@changeValueHighlight]="value.count">
       {{currency.current.simbol_left}}
       {{ value.product.price * currency.current.value * value.count | number }}
       {{currency.current.simbol_right}}
     </span>
+    x
+    <rap-count-input [min]="1" [(value)]="value.count"></rap-count-input>
   </span
   >
 </div>

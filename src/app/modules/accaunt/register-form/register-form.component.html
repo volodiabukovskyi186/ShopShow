@@ -1,5 +1,24 @@
 <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="login">
-  <div class="login__input-container">
+  <div *ngIf="formRegisterControls.email.invalid && (formRegisterControls.email.dirty || formRegisterControls.email.touched)" class="error-container">
+    <div *ngIf="formRegisterControls.email.errors.required" class="reset-success-content">
+      <div class="success-message">
+        <img class="success-message-icon" src="assets/icons/tick-error.svg"/>
+        <div class="success-message-text">{{ 'accaunt.requiredEmail' | translate }}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="formRegisterControls.password.invalid && (formRegisterControls.password.dirty || formRegisterControls.password.touched)">
+    <div *ngIf="formRegisterControls.password.errors.required" class="reset-success-content">
+      <div class="success-message">
+        <img class="success-message-icon" src="assets/icons/tick-error.svg"/>
+        <div class="success-message-text">{{ 'accaunt.requiredPassword' | translate }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="auth-title-content">
+    <div class="auth-title">{{ 'accaunt.register' | translate }}</div>
+  </div>
+  <!-- <div class="login__input-container">
     <div class="description">
       <label for="ShowUFirstName">{{ labelFirstName }} </label>
     </div>
@@ -12,11 +31,10 @@
         name="first_name"
         type="text"
       />
-      <!-- placeholder="{{ placeholderFirstName }}" -->
     </div>
-  </div>
+  </div> -->
 
-  <div class="login__input-container">
+  <!-- <div class="login__input-container">
     <div class="description">
       <label for="ShowULastName">{{ labelLastName }} </label>
     </div>
@@ -29,9 +47,8 @@
         name="last_name"
         type="text"
       />
-      <!-- placeholder="{{ placeholderLastName }}" -->
     </div>
-  </div>
+  </div> -->
 
   <div class="login__input-container">
     <div class="description">
@@ -48,11 +65,10 @@
         type="email"
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
       />
-      <!-- placeholder="{{ placeholderEmail }}" -->
     </div>
   </div>
 
-  <div class="login__input-container">
+  <!-- <div class="login__input-container">
     <div class="description">
       <label for="ShowUPhone">{{ labelPhone }} </label>
     </div>
@@ -65,9 +81,8 @@
         name="phone"
         type="tel"
       />
-      <!-- placeholder="{{ placeholderPhone }}" -->
     </div>
-  </div>
+  </div> -->
 
   <div class="login__input-container">
     <div class="description">
@@ -83,7 +98,6 @@
         name="password"
         type="password"
       />
-      <!-- placeholder="{{ placeholderPassword }}" -->
     </div>
   </div>
   <div class="singing-container">

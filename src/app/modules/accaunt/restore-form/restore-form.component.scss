@@ -1,6 +1,7 @@
 .login {
   //border-top:1px solid silver ;
   .login__input-container {
+    margin-top: 10px;
 
     .description {
       //padding: 36px 0 10px;
@@ -34,6 +35,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: row;
+  align-items: center;
   .form-row{
     .original{
       display: flex;
@@ -76,4 +78,40 @@
 
 .button.large {
   padding: 11px 6px !important;
+}
+
+.form-row {
+  margin-bottom: 0 !important;
+}
+
+.reset-success-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.success-message {
+  width: 100%;
+  height: 50px;
+  background-color: #f3fdf0;
+  border: 1px solid #a4c7ac;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.success-message-icon {
+  max-width: 23px;
+  margin-left: 18px;
+}
+
+.success-message-text {
+  margin-left: 13px;
+  font-size: 14px;
+}
+
+.success-details {
+  margin-top: 25px;
+  font-size: 12px;
 }

@@ -16,6 +16,7 @@ export class PersonalDataComponent implements OnInit {
     public isSaveClickedBtn: boolean = true;
     public userPersonalDataToUpdate: any;
     public isCancelClickedBtn: boolean = true;
+    public isEditMode: boolean = false;
 
     constructor(
         public accaunt: AccauntService,
@@ -50,6 +51,8 @@ export class PersonalDataComponent implements OnInit {
     }
 
     changeStatus() {
+        this.isEditMode = true;
+        
         const data = this.personalDataForm.value;
 
         this.userPersonalDataToUpdate = {

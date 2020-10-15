@@ -10,9 +10,17 @@
 
 
 <div class="personal-data-container">
-
+    <div class="personal-data__title personal-data__wrapper"> 
+        <p class="title">{{ 'personalData.userPersonalData' | translate }}</p>
+        <button
+            *ngIf="!isEditMode"
+            (click)="changeStatus()" 
+            class="personal-data__edit-btn"
+        >
+            {{ 'cabinet.edit' | translate }}
+        </button>
+    </div>
     <table class="personal-data-container__table" *ngIf="!personStatus">
-        <div class="personal-data__title"> <p class="title">{{ 'personalData.userPersonalData' | translate }}</p></div>
         <tr>
             <td>{{ 'personalData.userName' | translate }}</td>
             <td>{{ accaunt.current?.user?.first_name }}</td>
