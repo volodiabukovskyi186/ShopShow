@@ -13,7 +13,7 @@
     <div class="personal-data__title personal-data__wrapper"> 
         <p class="title">{{ 'personalData.userPersonalData' | translate }}</p>
         <button
-            *ngIf="!isEditMode"
+            *ngIf="!personStatus"
             (click)="changeStatus()" 
             class="personal-data__edit-btn"
         >
@@ -59,6 +59,14 @@
     </table>
     <div class="data-change__wrapper" *ngIf="personStatus">
         <form [formGroup]="personalDataForm" class="change-data">
+            <div class="reset-success-content" *ngIf="isUpdateBtnClicked">
+                <div class="success-message">
+                    <div class="success-message-content">
+                        <img class="success-message-icon" src="assets/icons/tick.svg"/>
+                        <div class="success-message-text">{{ 'accaunt.accountDetailsChanged' | translate }}</div>
+                    </div>
+                </div>
+            </div>
             <div class="change-data__input-container">
                 <label for="firstName" class="input__group">{{ 'personalData.userName' | translate }}</label>
                 <div class="input__group">
@@ -99,7 +107,7 @@
 
             <div class="change-data__input-container">
                 <div class="data-change__btn" *ngIf="personStatus">
-                    <button class="save__btn" (click)="changeStatus()">{{ 'personalData.userSave' | translate }}</button>
+                    <button class="save__btn" (click)="updateUserPersonalData()">{{ 'personalData.userSave' | translate }}</button>
                 </div>
                 <div class="data-change__btn">
                     <button class="cancel__btn" (click)="changeStatus()">{{ 'personalData.userCancel' | translate }}</button>

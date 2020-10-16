@@ -17,6 +17,7 @@ export class WishlistService {
 
   getUserWishlistByClientId(clientId, value?: string, cardNumber?: number): Observable<any> {
     let params = `clientWishlist/${clientId}`;
+    console.log(params);
 
     if (cardNumber) {
       this.takeNumber = cardNumber;

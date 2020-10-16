@@ -13,6 +13,7 @@ import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {AccauntService} from '../../accaunt/accaunt.service';
 import { ViewportScroller } from '@angular/common';
+import { WishlistService } from '../../../modules/accaunt/wishlist/services/wishlist.service';
 
 @Component({
     selector: 'app-product-view-page',
@@ -28,8 +29,11 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     isAttrColor: boolean = false;
     isAttrSize: boolean = false;
     user: any;
-    fragment: string;
+    // fragment: string;
     userId: number;
+    count: number = 1;
+    Math = Math;
+    wishlistProducts = [];
 
     review: FormGroup = new FormGroup({
         author: new FormControl('', [Validators.required]),
@@ -54,6 +58,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         public currency: CurrencyService,
         public product: ProductService,
         public cart: CartService,
+        public wishlistService: WishlistService,
         private title: Title,
         private meta: Meta,
         private router: Router,
@@ -92,22 +97,22 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
 
     getByIdHandler = (data) => {
-        this.product.item = data.data;
+        this.product.item = data?.data;
         //this.updateTitle(this.product.item.description.name + ` | ShowU ` + this.product.item.description.tag);
-        this.updateTitle(this.product.item?.description?.name + ` | ShowU `);
-        this.updateDescription(this.product.item?.description?.meta_discription);
+        this.updateTitle(this.product?.item?.description?.name + ` | ShowU `);
+        this.updateDescription(this.product?.item?.description?.meta_discription);
         // link: "manufacturer" + "/" + this.id,
 
-        if (this.product.item?.category?.category?.descriptions.name) {
+        if (this.product?.item?.category?.category?.descriptions.name) {
             this.breadcrumbs.push({
-                link: `/products/${this.product.item?.category?.category_id}`,
-                title: this.product.item?.category?.category?.descriptions.name,
+                link: `/products/${this.product?.item?.category?.category_id}`,
+                title: this.product?.item?.category?.category?.descriptions.name,
             });
         }
 
         this.breadcrumbs.push({
             link: `/products/view/${this.id}`,
-            title: this.product.item?.description.name,
+            title: this.product?.item?.description.name,
         });
     };
 
@@ -121,6 +126,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.getUser();
+        //this.getClientWishlistById();
         this.review
             .get('rating')
             .valueChanges
@@ -154,22 +160,6 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             });
 
         });
-        this.generateProductViewForm();
-        this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
-
-        console.log(this.fragment);
-
-        if (this.fragment) {
-            this.viewportScroller.scrollToAnchor('review');
-        }
-
-        this.getUserAccauntData();
-    }
-
-    ngAfterViewInit(): void {
-        try {
-          document.querySelector('#' + this.fragment).scrollIntoView();
-        } catch (e) { }
     }
 
     getProdAttr(id) {
@@ -181,43 +171,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     }
 
     getProdAttrHandler = data => {
-
-        this.product.attributes = data.data;
-
-        const attrMap = {};
-        data.data.attrybutes?.forEach(element => {
-            if (!attrMap[element.attribyte.description.name]) {
-                attrMap[element.attribyte.description.name] = [];
-            }
-            attrMap[element.attribyte.description.name].push(element);
-        });
-
-        const attrArr = Object.keys(attrMap);
-        const attrArrValues = Object.values(attrMap);
-
-        attrArrValues.forEach((attr) => {
-            if (attr[0].attribyte_id === 1) {
-                this.isAttrColor = true;
-                this.attrColor.push(attr[0]);
-                this.productViewForm.get('color').setValue(attr[0].text);
-            }
-
-            if (attr[0].attribyte_id === 5) {
-                this.isAttrSize = true;
-                this.attrSize.push(attr[0]);
-                this.productViewForm.get('size').setValue(attr[0].text);
-            }
-        });
-        this.attrMapArr = attrArr;
+        this.product.attributes = data?.data;
     };
 
-    generateProductViewForm(): void {
-        this.productViewForm = new FormGroup({
-            color: new FormControl('', []),
-            size: new FormControl('', [])
-        });
-
-    }
 
     getProdReviewHandler = data => {
         this.product.reviews = data;
@@ -225,14 +181,10 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         // this.ngxService.stopAll();
     };
 
-    count: number = 1;
-
     add(item: any) {
         this.cart.isCartView = true;
         this.cart.addToCart(item, this.count);
     }
-
-    Math = Math;
 
     pageChangedHandler(page: number): void {
         this.product.page = page;
@@ -248,7 +200,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     addReview() {
         const review = {
             product_id: this.id,
-            user_id: this.user.data.user.id,
+            user_id: this.user?.data?.user.id,
             status: 2,
             created_at: new Date(),
             updated_at: null,
@@ -256,33 +208,30 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         };
         console.log(review);
         this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe();
-        // if ( review.user_id! = '') {
-        // }
-
-        // this.myService.create(review).pipe(takeUntil(this.destroy$)).subscribe(resp=>{
-        // });
     }
 
-    public getUserAccauntData(): void {
-        this.accauntService.getUser().subscribe((data) => {
-            console.log(data);
-
-            this.userId = data.data.user.id;
-
-            this.accauntService.current = data.data;
-            this.accauntService.onCurrent();
-        });
-    }
+    // public getClientWishlistById() {
+    //     this.wishlistService.getUserWishlistByClientId(this.user?.data?.user.id).subscribe((res) => {
+    //         this.wishlistProducts.push(res);
+    //     })
+    // }
 
     public addToWishlist(product) {
         console.log(product);
+        console.log(this.wishlistProducts);
 
-        this.product.addProductToWishlist({
-            product_id: product.description.product_id,
-            user_id: this.userId
-        }).subscribe((res) => {
-            console.log(res);
-            alert(`Product #${res.data.product_id} was added to wishlist!`);
-        })
+        //const found = this.wishlistProducts?.some((el) => { el.product_id === product?.item?.description?.product_id});
+
+        //if (found) {
+            this.product.addProductToWishlist({
+                product_id: product?.item?.description?.product_id,
+                user_id: this.user?.data?.user.id
+            }).subscribe((res) => {
+                console.log(res);
+                alert(`Product #${res.data.product_id} was added to wishlist!`);
+            })
+        //} else {
+            //alert(`Product already exist in wishlist!`);
+        //}
     }
 }

@@ -1,4 +1,17 @@
-<div class="review-container">
+<div class="review-container" *ngIf="myOrders.length === 0">
+    <div class="reset-success-content">
+        <div class="success-message">
+            <div class="success-message-content">
+                <img class="success-message-icon" src="assets/icons/tick.svg"/>
+                <div class="success-message-text">{{ 'accaunt.noOrderHasBeenMade' | translate }}</div>
+            </div>
+            <a [routerLink]="['/']" class="success-message-btn">
+                <button class="go-shop-btn">{{ 'accaunt.goShop' | translate }}</button>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="review-container" *ngIf="myOrders.length > 0">
     <div class="review-container__sort-block">
         <div class="sort-content">
             <!-- <mat-form-field appearance="standart" class="sort-products">
@@ -42,7 +55,7 @@
     <app-pagination
       class="radius"
       [page]="myOrdersService.page"
-      [total]="allOrders?.data.length > 0 ? Math.ceil(allOrders.count / allOrders.take): 0"
+      [total]="Math.ceil(allOrders?.count / allOrders?.take)"
       [pagesToShow]="5"
       (pageChanged)="pageChangedHandler($event)"
     ></app-pagination>

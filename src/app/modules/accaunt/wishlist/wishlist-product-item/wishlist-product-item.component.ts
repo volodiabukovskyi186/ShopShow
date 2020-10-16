@@ -13,9 +13,11 @@ import { ProductService } from 'src/app/modules/product/product.service';
 export class WishlistProductItemComponent implements OnInit {
   @Input() product: any;
   @Input() hoststatic = environment.hoststatic;
+  @Input() wishlistProducts;
 
   public Math = Math;
   public userId: number;
+  public newWishlistProduct: any;
 
   constructor(
     public currency: CurrencyService, 
@@ -61,17 +63,19 @@ export class WishlistProductItemComponent implements OnInit {
   public addToWishlist(product) {
     //$event.preventDefault();
 
-    console.log(product);
+    const found = this.wishlistProducts.some((el) => { el.product_id === product.product_id});
 
-      // alert(`Product #${id} saved`);
-
+    if (found) {
       this.productService.addProductToWishlist({
-          product_id: product.description.product_id,
-          user_id: this.userId
+        product_id: product?.description?.product_id,
+        user_id: this.userId
       }).subscribe((res) => {
-          console.log(res);
-          alert(`Product #${res.data.product_id} was added to wishlist!`);
+        console.log(res);
+        alert(`Product #${res.data.product_id} was added to wishlist!`);
       })
+    } else {
+      alert(`Product already exsist in wishlist!`);
+    }
   }
 
 }

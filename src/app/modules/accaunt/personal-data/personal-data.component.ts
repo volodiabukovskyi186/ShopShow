@@ -17,6 +17,7 @@ export class PersonalDataComponent implements OnInit {
     public userPersonalDataToUpdate: any;
     public isCancelClickedBtn: boolean = true;
     public isEditMode: boolean = false;
+    public isUpdateBtnClicked: boolean = false;
 
     constructor(
         public accaunt: AccauntService,
@@ -50,37 +51,48 @@ export class PersonalDataComponent implements OnInit {
         });
     }
 
-    changeStatus() {
+    public changeStatus(): void {
         this.isEditMode = true;
+        this.personStatus == false ? this.personStatus = true : this.personStatus = false;
+    }
+
+    public updateUserPersonalData(): void {
+        this.isUpdateBtnClicked = true; 
         
         const data = this.personalDataForm.value;
 
         this.userPersonalDataToUpdate = {
             role_id: 3,
-            id: this.userId,
+            //id: this.userId,
             email: data.email,
             permissions: [],
             first_name: data.firstName,
             last_name: data.lastName,
-            tel: data.phone,
+            phone: data.phone,
             city: data.city,
+            //secret: "secret",
             country: data.country,
-            delivery_adress: `${data.detailsForTheCourierOne} ${data.detailsForTheCourierTwo}`
+            delivery_adress: `${data.detailsForTheCourierOne} ${data.detailsForTheCourierTwo}`,
+            is_subscription: true
         }
 
-        // console.log(data);
-        // console.log(this.userPersonalDataToUpdate);
+        console.log('this.userPersonalDataToUpdate', this.userPersonalDataToUpdate);
 
-        if (this.personStatus) {
-            console.log('this.personStatus', this.personStatus);
+        this.personalDataService.updateUserPersonalDataByUserId(this.userId, this.userPersonalDataToUpdate).subscribe((res) => {
+            console.log(res);
+            this.getUserAccauntData();
+        })
 
-            this.personalDataService.updateUserPersonalDataByUserId(this.userId, this.userPersonalDataToUpdate).subscribe((res) => {
-                console.log(res);
-                this.getUserAccauntData();
-            })
-        }
-  
-        this.personStatus == false ? this.personStatus = true : this.personStatus = false;
+        // if (this.personStatus) {
+        //     console.log('this.personStatus', this.personStatus);
+
+        //     this.personalDataService.updateUserPersonalDataByUserId(this.userId, this.userPersonalDataToUpdate).subscribe((res) => {
+        //         console.log(res);
+        //         this.getUserAccauntData();
+        //     })
+        // }
+
+        //this.personStatus = false;
     }
 
 }

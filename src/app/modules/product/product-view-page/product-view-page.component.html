@@ -73,7 +73,7 @@
         </span>
       </div>
       <hr />
-      <div class="product-attributes-content" [formGroup]="productViewForm">
+      <!-- <div class="product-attributes-content" [formGroup]="productViewForm"> -->
 <!--        <div class="product-label">-->
 <!--          <div *ngFor="let attrb of attrMapArr">-->
 <!--            <mat-label class="product-label-text">{{ attrb }}</mat-label>-->
@@ -86,8 +86,8 @@
 <!--            </mat-option>-->
 <!--          </mat-select>-->
 <!--        </mat-form-field>-->
-      </div>
-      <div class="product-attributes-content" [formGroup]="productViewForm">
+      <!-- </div> -->
+      <!-- <div class="product-attributes-content" [formGroup]="productViewForm"> -->
 <!--        <div></div>-->
 <!--        <mat-form-field appearance="standart" class="product-attributes-field" *ngIf="isAttrSize">-->
 <!--          <mat-select formControlName="size">-->
@@ -96,7 +96,7 @@
 <!--            </mat-option>-->
 <!--          </mat-select>-->
 <!--        </mat-form-field>-->
-      </div>
+      <!-- </div> -->
     </div>
 
     <div class="manufacturer" style="margin: 1rem 0;">
@@ -174,7 +174,7 @@
         <div class="d4">{{ "review.no_reviews" | translate }}</div>
       </ng-template>
       <div class="add-review-container">
-        <form class="add-review-container__form" [formGroup]="review" (ngSubmit)="addReview()" #review>
+        <form class="add-review-container__form" [formGroup]="review" (ngSubmit)="addReview()">
         <div class="add-review-container__header">
           <!-- <p class="text-bold">
             {{'add-review.add-review' | translate}}
@@ -188,23 +188,23 @@
             <ng-container *ngFor="let star of stars">
               <label [for]="star.id">
                 <img class="add-review-container__rating__stars__star" [src]="star.src">
-                <input [id]="star.id" type="radio" formControlName="rating" [value]="star.value">
+                <input [id]="star.id" type="radio" formControlName="rating" [value]="star.value" id="rating">
               </label>
             </ng-container>
           </div>
         </div>
         <div class="add-review-container__review">
           <p>{{'add-review.your-review' | translate}} <sup class="su-required">*</sup> </p>
-          <textarea formControlName="text" rows="11" class="add-review-container__review__area"></textarea>
+          <textarea formControlName="text" rows="11" class="add-review-container__review__area" id="text"></textarea>
         </div>
         <div class="add-review-container__user-inf">
           <div class="add-review-container__user-inf__input-block">
             <p>{{'add-review.name' | translate}} <sup class="su-required">*</sup></p>
-            <input formControlName="author" type="text">
+            <input formControlName="author" type="text" id="author">
           </div>
           <div class="add-review-container__user-inf__input-block">
             <p>{{'add-review.email' | translate}} <sup class="su-required">*</sup></p>
-            <input formControlName="email" type="text" >
+            <input formControlName="email" type="text" id="email">
           </div>
         </div>
           <div class="add-review-container__submit">
@@ -220,5 +220,5 @@
   <h1 style="margin-bottom: 0;">{{ "product.related" | translate }}</h1>
 </div>
 
-<app-product-slider [products]="product.popular"></app-product-slider>
+<app-product-slider [products]="product?.popular"></app-product-slider>
 </div>

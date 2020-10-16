@@ -151,7 +151,12 @@
     "lostPassword": "Zgubiłeś hasło? Wprowadź swoją nazwę użytkownika lub adres e-mail. Otrzymasz link do utworzenia nowego hasła e-mail.",
     "requiredUsername": "Błąd: Nazwa użytkownika jest wymagana.",
     "requiredEmail": "Błąd: Email jest wymagany.",
-    "requiredPassword": "Błąd: Hasło jest wymagane."
+    "requiredPassword": "Błąd: Hasło jest wymagane.",
+    "noOrderHasBeenMade": "Żadne zamówienie nie zostało jeszcze złożone.",
+    "goShop": "Do sklepu",
+    "wishlistIsEmpty": "Lista życzeń jest pusta.",
+    "noReviewsYet": "Brak recenzji",
+    "accountDetailsChanged": "Dane osobowe zostały pomyślnie zmienione."
   },
   "statusCodes": {
     "done": "Gotowe",

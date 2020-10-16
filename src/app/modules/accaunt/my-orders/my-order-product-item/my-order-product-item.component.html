@@ -1,6 +1,6 @@
 <div class="review-container__wrapper">
     <div class="review-container__items ">
-        <div class="review-container__items__item" *ngIf="order?.manufacturers?.length > 0">
+        <div class="review-container__items__item" *ngIf="order?.products?.length > 0">
             <div class="cell cell1">
                 <p>
                     <!-- №PT0001 -->
@@ -39,7 +39,7 @@
             </div>
         </div>
 <!--            [ngClass]="{'review-container__items__item__drop-block':itemStatus}"-->
-            <div class="review-container__items__item__drop-block cell6" *ngIf="itemStatus">
+            <div class="review-container__items__item__drop-block" *ngIf="itemStatus">
                 <div class="drop__container" *ngFor="let order of orders">
                     <div class="drop-photo drop__item">
                         <div class="drop-photo__img">

@@ -63,7 +63,12 @@
     "lostPassword": "Lost your password? Please enter your user name or email address. You will receive a link to create a new password via email.",
     "requiredUsername": "Error: Username is required.",
     "requiredEmail": "Error: Email is required.",
-    "requiredPassword": "Error: Password is required."
+    "requiredPassword": "Error: Password is required.",
+    "noOrderHasBeenMade": "No order has been made yet.",
+    "goShop": "Go Shop",
+    "wishlistIsEmpty": "Wishlist is empty.",
+    "noReviewsYet": "There are no reviews yet.",
+    "accountDetailsChanged": "Account details changed successfully."
   },
   "cart": {
     "checkout": "Checkout",

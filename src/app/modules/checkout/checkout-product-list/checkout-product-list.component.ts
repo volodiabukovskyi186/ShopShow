@@ -14,7 +14,7 @@ import { MyOrdersService } from '../../accaunt/my-orders/services/my-orders.serv
 })
 export class CheckoutProductListComponent implements OnInit {
   public userId: number;
-  public orderId: any;
+  public orderData: any;
   public paymentDescription: string = 'Payment';
   public hashedDataToSend: any;
   public hashedPrivateData: any;
@@ -30,7 +30,9 @@ export class CheckoutProductListComponent implements OnInit {
     public myOrdersService: MyOrdersService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUserClientId();
+  }
   
   public getUserClientId(): void {
     this.accauntService.getUser().subscribe((res) => {
@@ -40,17 +42,8 @@ export class CheckoutProductListComponent implements OnInit {
   }
 
   order() {
-    this.getUserClientId();
-
     this.orderResult = {
       products: [],
-      // checkoutContact: this.check.checkoutContact,
-      // checkoutDelivery: this.check.checkoutDelivery,
-      // checkoutDeliveryAddress: this.check.checkoutDeliveryAddress,
-      // checkoutPayment: this.check.checkoutPayment,
-      // checkoutRecipient: this.check.checkoutRecipient,
-      // checkoutRecipientContact: this.check.checkoutRecipientContact,
-
       sort_order: 1,
       costumer: "",
       currency_id: this.currency.current.id,
@@ -72,60 +65,51 @@ export class CheckoutProductListComponent implements OnInit {
     };
 
     this.cart.list.forEach((p) => {
-      this.orderResult.products.push({
+      this.orderResult?.products.push({
         product_id: p.product.id,
         quantity: p.count,
-        manufacturer_id: p.product.manufactured_id
+        manufactured_id: p.product?.manufactured_id
       });
     });
 
+    console.log(this.orderResult);
+
     this.check.post(this.orderResult).subscribe((res) => {
-      //console.log(this.orderId.data.id);
-      console.log(this.cart.total);
-      console.log(this.currency.current.currency_title);
 
-      this.orderHadler(res);
-      this.orderId = res;
+      if (res) {
+        this.orderHadler(res);
+        this.orderData = res;
 
-      if (this.orderId.checkoutPayment === 'LiqPay') {
-        this.isOrderBtnCliked = true;
+        if (this.check.checkoutPayment === 'liqpay') {
+          this.isOrderBtnCliked = true;
 
-        this.liqPayData = {
-          public_key: "sandbox_i23346177686",
-          version: "3",
-          action: "pay",
-          amount: this.cart.total,
-          currency: this.currency.current.currency_title,
-          description: this.paymentDescription,
-          order_id: this.orderId.data.id
+          this.check.getHashKey({
+              public_key: "sandbox_i23346177686",
+              version: "3",
+              action: "pay",
+              amount: this.cart?.total,
+              currency: this.currency?.current?.currency_title,
+              description: this.paymentDescription,
+              order_id: this.orderData?.data.id
+            }).subscribe((resp) => {
+              if (resp) {
+                this.hashedData = resp;
+                this.hashedDataToSend = this.hashedData.result.data;
+                this.hashedPrivateData = this.hashedData.result.sign;
+
+                this.cart.list = [];
+              }
+          })
         }
-
-        console.log(this.liqPayData);
-
-        this.check.getHashKey(this.liqPayData).subscribe((res) => {
-          console.log(res);
-          this.hashedData = res;
-
-          this.hashedDataToSend = this.hashedData.result.data;
-          this.hashedPrivateData = this.hashedData.result.sign;
-        })
+        this.myOrdersService.myOrders.next(res);
       }
-      
-      //{{host}}hash_key
-
-      console.log(res);
-      this.myOrdersService.myOrders.next(res);
-      console.log(this.myOrdersService.myOrders.next(res));
-      
-      //console.log(this.myOrdersService.myOrders.value);
     });
-
   }
 
   orderHadler(data) {
     console.log(data);
     alert("Замовлення відправлено\r\nОчікуйте дзвінка від менеджера ^_^");
-    this.cart.list = [];
+    //this.cart.list = [];
   }
 
   orderResult: any;

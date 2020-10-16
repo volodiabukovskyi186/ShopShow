@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 export interface IContact {
   firstName: string;
@@ -55,13 +57,28 @@ export class CheckoutService {
 
   constructor(private http: HttpClient) {}
 
-  post(data) {
-    return this.http.post(environment.host + `order`, data);
+  post(data): Observable<any> {
+    return this.http.post(environment.host + `order`, data)
+      .pipe(
+        //retry(1),
+        catchError(this.handleError)
+      );
   }
 
   getHashKey(data) {
-    //{{host}}hash_key
-    return this.http.get(`${environment.host}hash_key?${data}`);
+    return this.http.post(`${environment.host}hash_key`, data);
   }
 
+  handleError(error) {
+    let errorMessage = 'Error!';
+    
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+
+    return throwError(errorMessage);
+  }
 }

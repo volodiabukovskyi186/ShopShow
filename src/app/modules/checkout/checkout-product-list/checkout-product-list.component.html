@@ -60,15 +60,14 @@
       (click)="order()"
       class="button large radius green"
     >
-      {{ "cart.placeOrder" | translate }}
+      <span class="margin-bottom__10">{{ "cart.placeOrder" | translate }}</span>
+      <form ngNoForm *ngIf="isOrderBtnCliked"
+        method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
+        <input type="hidden" name="data" id="datasign" [value]="hashedDataToSend"/>
+        <input type="hidden" name="signature" [value]="hashedPrivateData" id="signagure"/>
+        <input type="image" src="//static.liqpay.ua/buttons/p1ru.radius.png"/>
+      </form>
     </button>
-    <form *ngIf="isOrderBtnCliked"
-      method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
-      <input type="hidden" name="data" id="datasign" value="hashedDataToSend"/>
-      <input type="hidden" name="signature" value="hashedPrivateData" id="signagure"/>
-      <button id="liqpaybtn"> Pay </button>
-    </form>
   </div>
 </footer>
-
 <!-- <pre style="overflow: auto;">{{ orderResult | json }}</pre> -->
