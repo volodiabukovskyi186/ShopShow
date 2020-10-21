@@ -150,7 +150,11 @@
     "accauntEmail": "Nazwa użytkownika lub adres e-mail",
     "lostPassword": "Zgubiłeś hasło? Wprowadź swoją nazwę użytkownika lub adres e-mail. Otrzymasz link do utworzenia nowego hasła e-mail.",
     "requiredUsername": "Błąd: Nazwa użytkownika jest wymagana.",
+    "requiredUserSurname": "Błąd: Nazwisko użytkownika jest wymagane.",
     "requiredEmail": "Błąd: Email jest wymagany.",
+    "requiredPhone": "Błąd: Telefon użytkownika jest wymagany.",
+    "requiredCountry": "Błąd: Kraj jest wymagany.",
+    "requiredCity": "Błąd: Miasto jest wymagane.",
     "requiredPassword": "Błąd: Hasło jest wymagane.",
     "noOrderHasBeenMade": "Żadne zamówienie nie zostało jeszcze złożone.",
     "goShop": "Do sklepu",
@@ -236,7 +240,11 @@
     "userPhone": "Telefon",
     "userCountry": "Kraj",
     "userCity": "Miasto",
-    "userDetailsForTheCourier": "Szczegóły dla kuriera"
+    "userDetailsForTheCourier": "Szczegóły dla kuriera",
+    "oldPassword": "Aktualne hasło",
+    "newPassword": "Nowe hasło",
+    "confirmPassword": "Potwierdź hasło",
+    "changePasswordSuccess": "Hasło zostało pomyślnie zmienione"
   },
   "contactAddress": "ulica Stryiska 202, Lwów, 79031"
 }

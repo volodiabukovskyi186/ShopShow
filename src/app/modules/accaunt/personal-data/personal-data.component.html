@@ -10,7 +10,7 @@
 
 
 <div class="personal-data-container">
-    <div class="personal-data__title personal-data__wrapper"> 
+    <div class="personal-data__title personal-data__wrapper" *ngIf="!isChangePassBtnClicked"> 
         <p class="title">{{ 'personalData.userPersonalData' | translate }}</p>
         <button
             *ngIf="!personStatus"
@@ -20,7 +20,7 @@
             {{ 'cabinet.edit' | translate }}
         </button>
     </div>
-    <table class="personal-data-container__table" *ngIf="!personStatus">
+    <table class="personal-data-container__table" *ngIf="!personStatus && !isChangePassBtnClicked">
         <tr>
             <td>{{ 'personalData.userName' | translate }}</td>
             <td>{{ accaunt.current?.user?.first_name }}</td>
@@ -54,9 +54,65 @@
             <td>Misha</td>
         </tr> -->
         <div class="personal-data-container__change-password">
-            <button (click)="changeStatus()" *ngIf="!personStatus">{{ 'personalData.userChangePassword' | translate }}</button>
+            <button (click)="changePassword()">{{ 'personalData.userChangePassword' | translate }}</button>
         </div>
     </table>
+    <div class="personal-data__title personal-data__wrapper change-pass-wrapper" *ngIf="isChangePassBtnClicked">
+        <p class="title">{{ 'personalData.userChangePassword' | translate }}</p>
+        <div class="data-change__wrapper">
+            <form [formGroup]="changePasswordForm" class="change-data">
+                <div class="reset-success-content" *ngIf="isPassSuccessMessage">
+                    <div class="success-message">
+                        <div class="success-message-content">
+                            <img class="success-message-icon" src="assets/icons/tick.svg"/>
+                            <div class="success-message-text">{{ 'personalData.changePasswordSuccess' | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="change-data__input-container change-data__input-container-password">
+                    <label for="oldPassword" class="input__group">{{ 'personalData.oldPassword' | translate }}</label>
+                    <div class="input__group input__group-password">
+                        <input id="oldPassword" type="password" formControlName="oldPassword" class="input-password" required>
+                        <div *ngIf="formAuthControls?.oldPassword?.invalid && (formAuthControls?.oldPassword?.dirty || formAuthControls?.oldPassword?.touched)" class="error-message">
+                            <div *ngIf="formAuthControls?.oldPassword?.errors.required" class="">
+                                {{ 'accaunt.requiredUsername' | translate }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="change-data__input-container change-data__input-container-password">
+                    <label for="oldPassword" class="input__group">{{ 'personalData.newPassword' | translate }}</label>
+                    <div class="input__group input__group-password">
+                        <input id="oldPassword" type="password" formControlName="newPassword" class="input-password" required>
+                        <div *ngIf="formAuthControls?.newPassword?.invalid && (formAuthControls?.newPassword?.dirty || formAuthControls?.newPassword?.touched)" class="error-message">
+                            <div *ngIf="formAuthControls?.newPassword?.errors.required" class="">
+                                {{ 'accaunt.requiredUsername' | translate }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="change-data__input-container">
+                    <label for="oldPassword" class="input__group">{{ 'personalData.confirmPassword' | translate }}</label>
+                    <div class="input__group input__group-password">
+                        <input id="oldPassword" type="password" formControlName="confirmPassword" class="input-password" required>
+                        <div *ngIf="formAuthControls?.confirmPassword?.invalid && (formAuthControls?.confirmPassword?.dirty || formAuthControls?.confirmPassword?.touched)" class="error-message">
+                            <div *ngIf="formAuthControls?.confirmPassword?.errors.required" class="">
+                                {{ 'accaunt.requiredUsername' | translate }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="change-data__input-container change-data__btns-password">
+                    <div class="data-change__btn data-change__btn-password" *ngIf="isChangePassBtnClicked">
+                        <button class="save__btn" [disabled]="!changePasswordForm.valid" (click)="updatePassword()">{{ 'personalData.userSave' | translate }}</button>
+                    </div>
+                    <div class="data-change__btn data-change__btn-password">
+                        <button class="cancel__btn" (click)="changeStatusPassword()">{{ 'personalData.userCancel' | translate }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="data-change__wrapper" *ngIf="personStatus">
         <form [formGroup]="personalDataForm" class="change-data">
             <div class="reset-success-content" *ngIf="isUpdateBtnClicked">
@@ -70,32 +126,68 @@
             <div class="change-data__input-container">
                 <label for="firstName" class="input__group">{{ 'personalData.userName' | translate }}</label>
                 <div class="input__group">
-                <input id="firstName" type="text" formControlName="firstName"></div>
+                    <input id="firstName" type="text" formControlName="firstName" required>
+                    <div *ngIf="formAuthControls?.firstName?.invalid && (formAuthControls?.firstName?.dirty || formAuthControls?.firstName?.touched)" class="error-message">
+                        <div *ngIf="formAuthControls?.firstName?.errors.required" class="">
+                            {{ 'accaunt.requiredUsername' | translate }}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="change-data__input-container">
-                <label for="secondName" class="input__group">{{ 'personalData.userEmail' | translate }}</label>
+                <label for="secondName" class="input__group">{{ 'personalData.userSurname' | translate }}</label>
                 <div class="input__group">
-                <input id="secondName" type="text" formControlName="lastName"></div>
+                    <input id="secondName" type="text" formControlName="lastName" required>
+                    <div *ngIf="formAuthControls?.lastName?.invalid && (formAuthControls?.lastName?.dirty || formAuthControls?.lastName?.touched)" class="error-message">
+                        <div *ngIf="formAuthControls?.lastName?.errors.required" class="">
+                            {{ 'accaunt.requiredUserSurname' | translate }}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="change-data__input-container">
                 <label for="email" class="input__group">{{ 'personalData.userEmail' | translate }}</label>
                 <div class="input__group">
-                <input id="email" type="text" formControlName="email"></div>
+                    <input id="email" type="text" formControlName="email" required>
+                    <div *ngIf="formAuthControls?.email?.invalid && (formAuthControls?.email?.dirty || formAuthControls?.email?.touched)" class="error-message">
+                        <div *ngIf="formAuthControls?.email?.errors.required" class="">
+                            {{ 'accaunt.requiredEmail' | translate }}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="change-data__input-container">
                 <label for="phone" class="input__group">{{ 'personalData.userPhone' | translate }}</label>
                 <div class="input__group">
-                <input id="phone" type="text" formControlName="phone"></div>
+                    <input id="phone" type="text" formControlName="phone" required>
+                    <div *ngIf="formAuthControls?.phone?.invalid && (formAuthControls?.phone?.dirty || formAuthControls?.phone?.touched)" class="error-message">
+                        <div *ngIf="formAuthControls?.phone?.errors.required" class="">
+                            {{ 'accaunt.requiredPhone' | translate }}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="change-data__input-container">
                 <label for="country" class="input__group">{{ 'personalData.userCountry' | translate }}</label>
                 <div class="input__group">
-                <input id="country" type="text" formControlName="country"></div>
+                    <input id="country" type="text" formControlName="country" required>
+                    <div *ngIf="formAuthControls?.country?.invalid && (formAuthControls?.country?.dirty || formAuthControls?.country?.touched)" class="error-message">
+                        <div *ngIf="formAuthControls?.country?.errors.required" class="">
+                            {{ 'accaunt.requiredCountry' | translate }}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="change-data__input-container">
                 <label for="city" class="input__group">{{ 'personalData.userCity' | translate }}</label>
                 <div class="input__group">
-                <input id="city" type="text" formControlName="city"></div>
+                    <input id="city" type="text" formControlName="city" required>
+                    <div *ngIf="formAuthControls?.city?.invalid && (formAuthControls?.city?.dirty || formAuthControls?.city?.touched)" class="error-message">
+                        <div *ngIf="formAuthControls?.city?.errors.required" class="">
+                            {{ 'accaunt.requiredCity' | translate }}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="change-data__input-container">
                 <label for="detail-city" class="input__group">{{ 'personalData.userDetailsForTheCourier' | translate }}</label>
@@ -107,7 +199,7 @@
 
             <div class="change-data__input-container">
                 <div class="data-change__btn" *ngIf="personStatus">
-                    <button class="save__btn" (click)="updateUserPersonalData()">{{ 'personalData.userSave' | translate }}</button>
+                    <button class="save__btn" [disabled]="!personalDataForm.valid" (click)="updateUserPersonalData()">{{ 'personalData.userSave' | translate }}</button>
                 </div>
                 <div class="data-change__btn">
                     <button class="cancel__btn" (click)="changeStatus()">{{ 'personalData.userCancel' | translate }}</button>

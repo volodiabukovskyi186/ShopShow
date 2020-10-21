@@ -64,7 +64,11 @@
     "accauntEmail": "Ім'я користувача чи електронна адреса",
     "lostPassword": "Втратили пароль? Введіть своє ім'я користувача або електронну адресу. Ви отримаєте посилання для створення нового пароля по електронній пошті.",
     "requiredUsername": "Помилка: Потрібне ім’я користувача.",
+    "requiredUserSurname": "Помилка: Потрібне прізвище користувача.",
     "requiredEmail": "Помилка: Потрібна електронна пошта.",
+    "requiredPhone": "Помилка: Потрібен телефон користувача.",
+    "requiredCountry": "Error: Country is required.",
+    "requiredCity": "Error: City is required.",
     "requiredPassword": "Помилка: Потрібен пароль.",
     "noOrderHasBeenMade": "Замовлення ще не зроблено.",
     "goShop": "Перейти в магазин",
@@ -242,7 +246,11 @@
     "userPhone": "Телефон",
     "userCountry": "Країна",
     "userCity": "Місто",
-    "userDetailsForTheCourier": "Деталі для кур’єра"
+    "userDetailsForTheCourier": "Деталі для кур’єра",
+    "oldPassword": "Поточний пароль",
+    "newPassword": "Новий пароль",
+    "confirmPassword": "Підтвердити пароль",
+    "changePasswordSuccess": "Пароль успішно змінено"
   },
   "contactAddress": "79031, м. Львів, вулиця Стрийська 202"
 }

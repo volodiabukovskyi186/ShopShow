@@ -62,7 +62,11 @@
     "accauntEmail": "Username or email address",
     "lostPassword": "Lost your password? Please enter your user name or email address. You will receive a link to create a new password via email.",
     "requiredUsername": "Error: Username is required.",
+    "requiredUserSurname": "Error: Surname is required.",
     "requiredEmail": "Error: Email is required.",
+    "requiredPhone": "Error: Phone is required.",
+    "requiredCountry": "Error: Country is required.",
+    "requiredCity": "Error: City is required.",
     "requiredPassword": "Error: Password is required.",
     "noOrderHasBeenMade": "No order has been made yet.",
     "goShop": "Go Shop",
@@ -244,7 +248,11 @@
     "userPhone": "Phone",
     "userCountry": "Country",
     "userCity": "City",
-    "userDetailsForTheCourier": "Details for the courier"
+    "userDetailsForTheCourier": "Details for the courier",
+    "oldPassword": "Current password",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "changePasswordSuccess": "Password changed successfully"
   },
   "contactAddress": "202, Stryiska street, Lviv, 79031"
 }

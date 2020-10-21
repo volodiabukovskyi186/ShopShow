@@ -17,4 +17,8 @@ export class PersonalDataService {
   updateUserPersonalDataByUserId(userId, data) {
     return this.http.put<any>(environment.host + `user/${userId}`, data);
   }
+
+  changeUserPassword(data) {
+    return this.http.put<any>(`${environment.host}changePassword`, data);
+  }
 }

@@ -266,6 +266,50 @@
   margin-right: 12px;
 }
 
+.error-message {
+  height: 33px;
+  width: 100%;
+  background-color: #fae2e5;
+  //border: 0.5px solid #b14464;
+  color: #b14464;
+  border-radius: 3px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 8px;
+  margin-top: 2px;
+}
+
+.change-pass-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.change-data__input-container-password {
+  padding-bottom: 15px !important;
+}
+
+.change-data__btns-password {
+  justify-content: flex-start !important;
+}
+
+.data-change__btn-password {
+  width: 24% !important;
+}
+
+.input__group-password {
+  height: 32px !important;
+  max-width: 334px !important;
+}
+
+.input-password {
+  font-size: 49px;
+  letter-spacing: 7px;
+  height: 32px;
+  border-radius: 3px !important;
+}
+
 @media screen and(max-width: 981px) {
   .personal-data__title {
     width: 100%;

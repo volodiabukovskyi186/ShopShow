@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AccauntService} from '../accaunt.service';
 import jwt_decode from "jwt-decode";
 import { PersonalDataService } from '../personal-data/services/personal-data.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-personal-data',
@@ -18,6 +18,9 @@ export class PersonalDataComponent implements OnInit {
     public isCancelClickedBtn: boolean = true;
     public isEditMode: boolean = false;
     public isUpdateBtnClicked: boolean = false;
+    public isChangePassBtnClicked: boolean = false;
+    public changePasswordForm: FormGroup;
+    public isPassSuccessMessage: boolean = false;
 
     constructor(
         public accaunt: AccauntService,
@@ -27,6 +30,7 @@ export class PersonalDataComponent implements OnInit {
     ngOnInit(): void {
         this.getUserAccauntData();
         this.generatepersonalDataForm();
+        this.generateChangePasswordForm();
     }
 
     public getUserAccauntData(): void {
@@ -34,6 +38,20 @@ export class PersonalDataComponent implements OnInit {
             this.userId = data.data.user.id;
 
             this.accaunt.current = data.data;
+
+            console.log(this.accaunt.current);
+
+            this.personalDataForm.setValue({
+                firstName: this.accaunt.current.user.first_name,
+                lastName: this.accaunt.current.user.last_name,
+                email: this.accaunt.current.user.email,
+                phone: this.accaunt.current.user.tel,
+                country: this.accaunt.current.user.country,
+                city: this.accaunt.current.user.city,
+                detailsForTheCourierOne: '',
+                detailsForTheCourierTwo: ''
+            })
+
             this.accaunt.onCurrent();
         });
     }
@@ -51,13 +69,20 @@ export class PersonalDataComponent implements OnInit {
         });
     }
 
+    get formAuthControls(): any {
+        return this.personalDataForm['controls'];
+    }
+
     public changeStatus(): void {
         this.isEditMode = true;
+        this.isUpdateBtnClicked = false;
         this.personStatus == false ? this.personStatus = true : this.personStatus = false;
+
+        this.getUserAccauntData();
     }
 
     public updateUserPersonalData(): void {
-        this.isUpdateBtnClicked = true; 
+        this.isUpdateBtnClicked = true;
         
         const data = this.personalDataForm.value;
 
@@ -82,17 +107,47 @@ export class PersonalDataComponent implements OnInit {
             console.log(res);
             this.getUserAccauntData();
         })
+    }
 
-        // if (this.personStatus) {
-        //     console.log('this.personStatus', this.personStatus);
+    public changePassword() {
+        this.isChangePassBtnClicked = true;
+        this.isPassSuccessMessage = false;
 
-        //     this.personalDataService.updateUserPersonalDataByUserId(this.userId, this.userPersonalDataToUpdate).subscribe((res) => {
-        //         console.log(res);
-        //         this.getUserAccauntData();
-        //     })
-        // }
+        this.changePasswordForm.setValue({
+            oldPassword: '',
+            newPassword: '',
+            confirmPassword: ''
+        })
 
-        //this.personStatus = false;
+        //this.personStatus == false ? this.personStatus = true : this.personStatus = false;
+    }
+
+    public generateChangePasswordForm() {
+        this.changePasswordForm = new FormGroup({
+            oldPassword: new FormControl('', []),
+            newPassword: new FormControl('', []),
+            confirmPassword: new FormControl('', [])
+        })
+    }
+
+    public updatePassword() {
+        console.log(this.changePasswordForm.value);
+
+        if (this.changePasswordForm.value.newPassword === this.changePasswordForm.value.confirmPassword) {
+            this.personalDataService.changeUserPassword({ 
+                oldPassword: this.changePasswordForm.value.oldPassword,
+                newPassword: this.changePasswordForm.value.newPassword
+            }).subscribe((resp) => {
+                if (resp) {
+                    this.isPassSuccessMessage = true;
+                }
+            })
+        }
+    }
+
+    public changeStatusPassword() {
+        this.isEditMode = false;
+        this.isChangePassBtnClicked = false;
     }
 
 }
