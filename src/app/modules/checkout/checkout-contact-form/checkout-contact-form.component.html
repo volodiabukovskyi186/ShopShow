@@ -61,9 +61,12 @@
         name="country"
         [(ngModel)]="model.country"
         (selectionChange)="onChange($event)"
+
       >
-        <mat-option *ngFor="let country of countries" [value]="country | translate">
-          {{ country | translate }}
+<!--      country?.descriptions[currentLang]?.name  -->
+        <mat-option *ngFor="let country of countries"  (click)="setCountry(country)"  [value]="_model.country" >
+          {{ country?.descriptions[currentLang]?.name }}
+
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -178,3 +181,4 @@
     </div>
   </div>
 </form>
+<!--{{countries.data.descriptions|json}}-->

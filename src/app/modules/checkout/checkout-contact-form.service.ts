@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { QuestionBase, TextboxQuestion, CheckboxGroupQuestion } from '../ui/dynamic-form';
 import { ICheckoutContact } from './checkout.service';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { ICheckoutContact } from './checkout.service';
 export class CheckoutContactFormService {
   questions$: Observable<QuestionBase<any>[]>;
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   getQuestions(checkContact: ICheckoutContact): Observable<QuestionBase<string>[]> {
     let questions: QuestionBase<string>[] = [];
@@ -33,4 +34,11 @@ export class CheckoutContactFormService {
 
     return of(questions.sort((a, b) => a.order - b.order));
   }
+
+  getCountry(): Observable<any> {
+    return this.http.get(`https://api.showu.com.ua/countrys`);
+  }
+
+
+
 }

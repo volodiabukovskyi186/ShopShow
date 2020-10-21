@@ -29,12 +29,12 @@ export class AppLangService {
   use(language: string) {
     // get browser lang
     const browserLang = this.getBrowserLang();
-
     // if data["lang"] is null set browserLang
     let lang = language ?? browserLang;
 
     this.updated.emit(lang);
     console.log("set lang:", lang);
+
 
     // set lang
     this.translate.use(lang.match(/en|pl|ua|ru/) ? lang : this.translate.defaultLang);
