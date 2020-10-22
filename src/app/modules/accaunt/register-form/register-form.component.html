@@ -1,18 +1,30 @@
-<form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="login">
+<form [formGroup]="authForm" class="login">
   <div *ngIf="formRegisterControls.email.invalid && (formRegisterControls.email.dirty || formRegisterControls.email.touched)" class="error-container">
-    <div *ngIf="formRegisterControls.email.errors.required" class="reset-success-content">
-      <div class="success-message">
-        <img class="success-message-icon" src="assets/icons/tick-error.svg"/>
-        <div class="success-message-text">{{ 'accaunt.requiredEmail' | translate }}</div>
+    <div *ngIf="formRegisterControls.email.errors.required" class="reset-error-content">
+      <div class="error-message">
+        <img class="error-message-icon" src="assets/icons/tick-error.svg"/>
+        <div class="error-message-text">{{ 'accaunt.requiredEmail' | translate }}</div>
       </div>
     </div>
   </div>
   <div *ngIf="formRegisterControls.password.invalid && (formRegisterControls.password.dirty || formRegisterControls.password.touched)">
-    <div *ngIf="formRegisterControls.password.errors.required" class="reset-success-content">
-      <div class="success-message">
-        <img class="success-message-icon" src="assets/icons/tick-error.svg"/>
-        <div class="success-message-text">{{ 'accaunt.requiredPassword' | translate }}</div>
+    <div *ngIf="formRegisterControls.password.errors.required" class="reset-error-content">
+      <div class="error-message">
+        <img class="error-message-icon" src="assets/icons/tick-error.svg"/>
+        <div class="error-message-text">{{ 'accaunt.requiredPassword' | translate }}</div>
       </div>
+    </div>
+  </div>
+  <div *ngIf="isSuccessRegistration" class="reset-success-content">
+    <div class="success-message">
+      <img class="success-message-icon" src="assets/icons/tick.svg"/>
+      <div class="success-message-text">{{ 'accaunt.successfullRegistration' | translate }}</div>
+    </div>
+  </div>
+  <div *ngIf="isRegistrationError" class="reset-error-content">
+    <div class="error-message">
+      <img class="error-message-icon" src="assets/icons/tick-error.svg"/>
+      <div class="error-message-text">{{ 'accaunt.emailAlreadyExists' | translate }}</div>
     </div>
   </div>
   <div class="auth-title-content">
@@ -103,9 +115,10 @@
   <div class="singing-container">
     <div class="flex space-between">
       <button
-              [disabled]="!authForm.valid || isSubmit"
-              class="button delete radius large register-btn"
-              type="submit"
+        [disabled]="!authForm.valid || isSubmit"
+        class="button delete radius large register-btn"
+        type="submit"
+        (click)="onSubmit()" 
       >
         {{ labelSubmit }}
       </button>

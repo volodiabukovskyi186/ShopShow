@@ -19,6 +19,7 @@ export class WishlistComponent implements OnInit {
   public clientId: number;
   public allwishlistData: any;
   public page: number = 1;
+  public isWishlistProducts: boolean = false;
 
   constructor(
     public product: ProductService,
@@ -71,6 +72,10 @@ export class WishlistComponent implements OnInit {
         console.log(this.clientId);
 
         this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
+          setTimeout(() => {
+            this.isWishlistProducts = true;
+          }, 1000);
+
           this.wishlistProducts = res.data;
           this.allwishlistData = res;
           console.log(this.wishlistProducts);

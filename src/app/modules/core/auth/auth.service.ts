@@ -3,6 +3,8 @@ import { isPlatformBrowser } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
+import { throwError, Subject } from "rxjs";
+import { map, catchError } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -17,6 +19,7 @@ export class AuthService {
   ) {}
 
   public auth: EventEmitter<any> = new EventEmitter<any>();
+  public onError: Subject<string> = new Subject();
 
   public onAuth() {
     this.auth.emit();
@@ -37,13 +40,30 @@ export class AuthService {
       login,
       password,
     });
-    return this._http.post(environment.signin, data);
+    return this._http.post(environment.signin, data)
   }
 
-  signup(data: any) {
-    data = JSON.stringify(data);
-    return this._http.post(environment.signup, data);
+  signup(data: any): Promise<any> {
+    //data = JSON.stringify(data);
+
+   return this._http.post(environment.signup, data).toPromise();
+    // .subscribe(
+    //   (response) => { return response },
+    //   (error) => {
+    //      // .... HANDLE ERROR HERE 
+    //      console.log(error.message);
+    // });
+      // .pipe(
+      //   map((response) => 
+      //   console.log(response)),
+      //   catchError(error => {
+      //     this.onError.next(error.message);
+      //     console.log(error);
+      //     return throwError(error);
+      //   })
+      // );
   }
+
   restore(data: any) {
     data = JSON.stringify(data);
     return this._http.post(environment.signup, data);

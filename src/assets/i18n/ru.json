@@ -74,7 +74,9 @@
       "goShop": "Перейти в магазин",
       "wishlistIsEmpty": "Список желаний пустой.",
       "noReviewsYet": "Отзывов пока нет",
-      "accountDetailsChanged": "Личные данные успешно изменено."
+      "accountDetailsChanged": "Личные данные успешно изменено.",
+      "successfullRegistration": "Регистрация прошла успешно.",
+      "emailAlreadyExists": "Пользователь с таким адресом уже существует."
     },
     "cart": {
       "checkout": "Оформить заказ",
@@ -172,7 +174,8 @@
     "done": "Выполнено",
     "inProgress": "Обрабатывается",
     "canceled": "Отменено",
-    "sent": "Отправлено"
+    "sent": "Отправлено",
+    "new": "Новый"
   },
   "months": {
     "Jan": "Январь", 

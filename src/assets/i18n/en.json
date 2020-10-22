@@ -72,7 +72,9 @@
     "goShop": "Go Shop",
     "wishlistIsEmpty": "Wishlist is empty.",
     "noReviewsYet": "There are no reviews yet.",
-    "accountDetailsChanged": "Account details changed successfully."
+    "accountDetailsChanged": "Account details changed successfully.",
+    "successfullRegistration": "Registration was successful.",
+    "emailAlreadyExists": "A user with this email already exists."
   },
   "cart": {
     "checkout": "Checkout",
@@ -174,7 +176,8 @@
     "done": "Done",
     "inProgress": "In Progress",
     "canceled": "Canceled",
-    "sent": "Sent"
+    "sent": "Sent",
+    "new": "New"
   },
   "months": {
     "Jan": "January", 

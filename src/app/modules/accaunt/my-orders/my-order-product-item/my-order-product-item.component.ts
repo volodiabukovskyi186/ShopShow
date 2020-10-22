@@ -16,11 +16,11 @@ export class MyOrderProductItemComponent implements OnInit {
   
   public statusCodes = {
     "1": {
-      name: 'statusCodes.done',
+      name: 'statusCodes.new',
       color: '#42996F'
     },
     "2": {
-      name: 'statusCodes.inProgress',
+      name: 'statusCodes.done',
       color: '#ffff00'
     },
     "3": {
@@ -56,11 +56,11 @@ export class MyOrderProductItemComponent implements OnInit {
     this.orderId = this.order.id;
     //this.order = this.order.manufacturers;
 
-    this.order?.manufacturers?.forEach((res) => {
+    this.order?.products?.forEach((res) => {
       this.orders.push(res.products);
     })
 
-    console.log("manufacturers", this.order);
+    console.log("products", this.order);
     console.log("this.orders", this.orders);
   }
 

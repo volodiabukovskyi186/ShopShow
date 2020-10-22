@@ -21,6 +21,7 @@ export class MyOrdersComponent implements OnInit {
     myOrders: any[] = [];
     allOrders: any;
     Math = Math;
+    isSuccessOrders: boolean = false;
     //page: number = 1;
     //take: number = 10;
 
@@ -93,6 +94,10 @@ export class MyOrdersComponent implements OnInit {
               console.log(this.clientId);
       
               this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber).subscribe((res) => {
+                setTimeout(() => {
+                  this.isSuccessOrders = true;
+                }, 1000);
+
                 //this.myOrders = res.data[0].orders;
                 this.myOrders = res.data;
                 this.allOrders = res;

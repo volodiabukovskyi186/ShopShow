@@ -10,7 +10,7 @@
                 <img class="pointer" src="assets/icons/arrow-down.svg">
             </div>
         </div>
-            <div *ngFor="let order of order?.products"></div>
+            <!-- <div *ngFor="let order of order?.products"></div> -->
             <div class="cell cell2">
                 <p> <span> {{ modifyDateString(order?.created_at, 'day') }} </span>
                     <span> {{ modifyDateString(order?.created_at, 'months') | translate }} </span>
@@ -23,13 +23,13 @@
                 {{ modifyPrice(order?.total) }} грн
             </p>
         </div>
-<!--            <div *ngIf="itemStatus"> Статус замов</div>-->
-            <div class="cell status green  cell5 ">
+            <div class="cell status green cell5">
                 <div class="status-block">
                 <p class="status-order" *ngIf="itemStatus">Статус замовлення</p>
                 <!-- <p>Виконано</p> -->
                 <p [style]="{'color': statusCodes[order?.status_id]?.color}">
-                    {{ statusCodes[order?.status_id]?.name | translate }}
+                    <!-- {{ statusCodes[order?.status_id]?.name | translate }} -->
+                    {{ order.status[0].description.dectiption }}
                 </p>
                 <button 
                     *ngIf="itemStatus"
@@ -40,22 +40,21 @@
         </div>
 <!--            [ngClass]="{'review-container__items__item__drop-block':itemStatus}"-->
             <div class="review-container__items__item__drop-block" *ngIf="itemStatus">
-                <div class="drop__container" *ngFor="let order of orders">
+                <div class="drop__container" *ngFor="let order of order.products">
                     <div class="drop-photo drop__item">
                         <div class="drop-photo__img">
-                            <img class="cell__img" src="{{ hoststatic + order[0]?.product?.image?.src }}"/>
+                            <img class="cell__img" src="{{ hoststatic + order?.product?.image?.src }}"/>
                         </div>
-
                     </div>
                     <div class="drop-price  drop__item">
-                       <p class="blue">
-                           {{ order[0].product.manufactured.description.name }}
+                        <div class="blue order-product-name-container">
+                            <span>{{ order?.product?.description?.name }} ({{ order?.product?.model }})</span> 
                            <!-- Vbrana(140001) -->
-                        </p>
-                        <p>{{ modifyPrice(order[0]?.product?.price) }} грн</p>
+                        </div>
+                        <p>{{ modifyPrice(order?.product?.price) }} грн</p>
                     </div>
-                    <div class="drop-count  drop__item"><p>{{ modifyPrice(order[0]?.quantity) }} шт</p></div>
-                    <div class="drop-second-price  drop__item"><p>{{ modifyPrice(order[0]?.product?.price) }} грн</p></div>
+                    <div class="drop-count  drop__item"><p>{{ modifyPrice(order?.quantity) }} шт</p></div>
+                    <div class="drop-second-price  drop__item"><p>{{ modifyPrice(order?.product?.price) }} грн</p></div>
                 </div>
             </div>
             <div *ngIf="itemStatus" class="drop__container__bottom">

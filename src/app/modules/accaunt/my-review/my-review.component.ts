@@ -10,6 +10,7 @@ import { MyReviewService } from './services/my-review.service';
 export class MyReviewComponent implements OnInit {
   public myReviews: any[] = [];
   public clientId: number;
+  public isSuccessReviews: boolean = false;
 
   constructor(
     public accauntService: AccauntService,
@@ -26,6 +27,11 @@ export class MyReviewComponent implements OnInit {
           console.log(this.clientId);
   
           this.myReviewService.getUserReviewsByClientId(this.clientId).subscribe((res) => {
+            setTimeout(() => {
+              this.isSuccessReviews = true;
+              console.log(this.isSuccessReviews);
+            }, 1000)
+
             this.myReviews = res.data;
             //this.allReviews = res;
 

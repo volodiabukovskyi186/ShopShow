@@ -160,13 +160,16 @@
     "goShop": "Do sklepu",
     "wishlistIsEmpty": "Lista życzeń jest pusta.",
     "noReviewsYet": "Brak recenzji",
-    "accountDetailsChanged": "Dane osobowe zostały pomyślnie zmienione."
+    "accountDetailsChanged": "Dane osobowe zostały pomyślnie zmienione.",
+    "successfullRegistration": "Rejestracja przebiegła pomyślnie.",
+    "emailAlreadyExists": "Użytkownik z tym adresem e-mail już istnieje."
   },
   "statusCodes": {
     "done": "Gotowe",
     "inProgress": "W trakcie",
     "canceled": "Anulowany",
-    "sent": "Wysłano"
+    "sent": "Wysłano",
+    "new": "Nowy"
   },
   "months": {
     "Jan": "Styczeń", 

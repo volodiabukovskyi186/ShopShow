@@ -67,14 +67,16 @@
     "requiredUserSurname": "Помилка: Потрібне прізвище користувача.",
     "requiredEmail": "Помилка: Потрібна електронна пошта.",
     "requiredPhone": "Помилка: Потрібен телефон користувача.",
-    "requiredCountry": "Error: Country is required.",
-    "requiredCity": "Error: City is required.",
+    "requiredCountry": "Помилка: Країна обов’язкова.",
+    "requiredCity": "Помилка: Місто обов’язкове.",
     "requiredPassword": "Помилка: Потрібен пароль.",
     "noOrderHasBeenMade": "Замовлення ще не зроблено.",
     "goShop": "Перейти в магазин",
     "wishlistIsEmpty": "Список бажань порожній.",
     "noReviewsYet": "Відгуків поки немає",
-    "accountDetailsChanged": "Особисті дані успішно змінено."
+    "accountDetailsChanged": "Особисті дані успішно змінено.",
+    "successfullRegistration": "Реєстрація пройшла успішно.",
+    "emailAlreadyExists": "Користувач з такою електронною адресою вже існує."
   },
   "cart": {
     "checkout": "Оформити замовлення",
@@ -172,7 +174,8 @@
     "done": "Виконано",
     "inProgress": "Обробляється",
     "canceled": "Скасовано",
-    "sent": "Відправлено"
+    "sent": "Відправлено",
+    "new": "Новий"
   },
   "months": {
     "Jan": "Січень", 
