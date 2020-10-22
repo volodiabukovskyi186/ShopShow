@@ -1,16 +1,26 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {Inject, Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import { QuestionBase, TextboxQuestion, CheckboxGroupQuestion } from '../ui/dynamic-form';
 import { ICheckoutContact } from './checkout.service';
 import {HttpClient} from '@angular/common/http';
+import {TranslateService} from '@ngx-translate/core';
+import {AppLangService} from '../core/app-lang.service';
+import {DOCUMENT} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CheckoutContactFormService {
-  questions$: Observable<QuestionBase<any>[]>;
+  currentLang;
+  countries:any;
 
-  constructor(private http: HttpClient) {}
+  questions$: Observable<QuestionBase<any>[]>;
+  lang:any;
+  BSubject=new BehaviorSubject({lang: this.lang});
+
+  constructor(private http: HttpClient){
+    this.getCountry();
+  }
 
   getQuestions(checkContact: ICheckoutContact): Observable<QuestionBase<string>[]> {
     let questions: QuestionBase<string>[] = [];
@@ -37,6 +47,18 @@ export class CheckoutContactFormService {
 
   getCountry(): Observable<any> {
     return this.http.get(`https://api.showu.com.ua/countrys`);
+  }
+
+  getCountryDeliver(id: number,lang:any): Observable<any> {
+    console.log(lang)
+    return this.http.get(`https://api.showu.com.ua/getDeliveriesCountry/${id}?lang=${lang}`);
+  }
+  getCountryPayment(id: number,lang:any): Observable<any> {
+    console.log(lang)
+    return this.http.get(`https://api.showu.com.ua/getPaymentsCountry/${id}?lang=${lang}`);
+  }
+  getDelivers(): Observable<any> {
+    return this.http.get(`https://api.showu.com.ua/deliverys`);
   }
 
 

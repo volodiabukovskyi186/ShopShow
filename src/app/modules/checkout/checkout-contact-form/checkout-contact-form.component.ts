@@ -13,16 +13,19 @@ import {DOCUMENT} from '@angular/common';
     templateUrl: './checkout-contact-form.component.html',
     styleUrls: ['./checkout-contact-form.component.scss'],
 })
-export class CheckoutContactFormComponent implements OnInit ,OnChanges{
+export class CheckoutContactFormComponent implements OnInit, OnChanges {
     // public countries = ['countries.ukraine', 'countries.poland'];
-    currentLang: any;
-    selectedCuntry:any;
+    selectedCuntry: any;
     public countryName: any;
-
     @Output() formSubmit = new EventEmitter();
-
-    countries: any;
-     _model: ICheckoutContact;
+    currentLang;
+    values: any;
+    localLang: any;
+    countries = [];
+    selectCountry: any;
+    selected: any;
+    _model: ICheckoutContact;
+    selectedCountry: any;
 
     @Output() modelChange = new EventEmitter();
 
@@ -36,46 +39,53 @@ export class CheckoutContactFormComponent implements OnInit ,OnChanges{
         return this._model;
     }
 
-    // constructor( public checkContact: CheckoutContactFormService,
-    //              public  langService: AppLangService ) {}
 
     constructor(private translate: TranslateService,
                 public checkContact: CheckoutContactFormService,
                 public  langService: AppLangService,
                 @Inject(DOCUMENT) private document: Document) {
-        translate.onLangChange.subscribe(lang => {
 
-            if (lang.lang == 'en') {
-                this.currentLang = 0;
-            } else if (lang.lang == 'ua') {
-                this.currentLang = 1;
-            } else if (lang.lang == 'ru') {
-                this.currentLang = 2;
-            } else if (lang.lang == 'pl') {
-                this.currentLang = 3;
-            }
-            console.log('currentLang++++++>',  this.currentLang);
-
-        });
     }
 
 
     ngOnInit(): void {
+
+        this.localLang = localStorage.getItem('current_lang');
+        // console.log('lang=========>', this.localLang);
         this.getCountry();
-
     }
-    ngOnChanges(changes: SimpleChanges) {
-            if(changes){
-                console.log('change===>',this._model);
 
-                // this.getCountry();
-            }
+    ngOnChanges(changes: SimpleChanges) {
     }
 
     getCountry(): void {
-
         this.checkContact.getCountry().subscribe(data => {
-            this.countries = data.data;
+            if (this.localLang == 'ua') {
+                this.currentLang = 2;
+            } else if (this.localLang == 'en') {
+                this.currentLang = 1;
+            } else if (this.localLang == 'ru') {
+                this.currentLang = 3;
+            } else if (this.localLang == 'pl') {
+                this.currentLang = 4;
+            }
+
+            this.countries = [];
+            this.selectCountry = data.data;
+            data.data.forEach(elem => {
+                elem.descriptions.forEach(item => {
+                    if (item.lang_id == this.currentLang) {
+                        this.countries.push(item.name);
+                        // console.log(this.countries);
+                    }
+                });
+            });
+            if (this._model.country == '') {
+                this._model.country = this.countries[0];
+            }
+
+            // console.log(this.testVal)
+            // this.values = this._model.country;
             // console.log(this.countries);
 
         });
@@ -83,8 +93,8 @@ export class CheckoutContactFormComponent implements OnInit ,OnChanges{
 
 
     onChange(event) {
-        this.countryName = event.value;
-        console.log(event);
+        this._model.country = event.value;
+        // console.log( event);
         // console.log(this.countryName);
     }
 
@@ -92,9 +102,25 @@ export class CheckoutContactFormComponent implements OnInit ,OnChanges{
         // console.log('sadsdasdas', this.countryName);
         this.formSubmit.emit(this.countryName);
     }
+
     setCountry(item): void {
-        this._model.country = item.descriptions[this.currentLang]?.name;
+        this._model.country = item;
         // this.selectedCuntry=item
         // console.log('change===>',this._model);
     }
+
+    nextBtn(): void {
+        this.selectCountry.forEach(elem => {
+            this.selected = elem;
+            elem.descriptions.forEach(item => {
+                if (item.name == this._model.country) {
+                    this.selectedCountry = this.selected;
+                    this.checkContact.BSubject.next( this.selectedCountry)
+                    // console.log( this.selectedCountry);
+                }
+            });
+        });
+    }
+
+
 }
