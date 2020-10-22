@@ -71,7 +71,6 @@ export class CheckoutService {
 
   handleError(error) {
     let errorMessage = 'Error!';
-    
     if (error.error instanceof ErrorEvent) {
       errorMessage = `Error: ${error.error.message}`;
     } else {

@@ -12,7 +12,7 @@ import { AuthService } from '../../core/auth/auth.service';
   styleUrls: ["./checkout-contact.component.scss"],
 })
 export class CheckoutContactComponent implements OnInit {
-  countries: Array <any>;
+  countries:any;
   constructor(
     public check: CheckoutService,
     public auth: AuthService,
@@ -28,6 +28,7 @@ export class CheckoutContactComponent implements OnInit {
     this.auth.auth.subscribe((_) => {     
       this.copyContactFromCurrent();
     });
+
 
   }
 
