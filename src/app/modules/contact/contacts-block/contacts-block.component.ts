@@ -3,6 +3,7 @@ import { ContactService } from "../contact.service";
 import { IContactLink } from '../contact-card/contact-card.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CallbackSuccessDialogComponent } from '../../dialogs/callback-success-dialog/callback-success-dialog.component';
+import { UIService } from '../../../modules/ui/services/ui.service';
 
 @Component({
   selector: "app-contacts-block",
@@ -10,12 +11,19 @@ import { CallbackSuccessDialogComponent } from '../../dialogs/callback-success-d
   styleUrls: ["./contacts-block.component.scss"],
 })
 export class ContactsBlockComponent implements OnInit {
+  public siteData: any;
+  public siteDataDesctionByLang: any;
+
   constructor(
     public contact: ContactService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public uiservice: UIService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getSiteSettingsData();
+    this.getSiteDescriptionsData();
+  }
  
   onSubmit(event) {
     this.contact.sendContactFormData(event);
@@ -41,6 +49,20 @@ export class ContactsBlockComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(res => {});
     // alert("Mail send");
+  }
+
+  public getSiteSettingsData(): void {
+    this.uiservice.getSiteSettingsValues().subscribe((res) => {
+      this.siteData = res.data[0];
+    })
+  }
+
+  public getSiteDescriptionsData(): void {
+    this.uiservice.getSiteDescriptions().subscribe((res) => {
+      console.log(res);
+
+      this.siteDataDesctionByLang = res.data[0];
+    })
   }
 
   zoom: number = 15;

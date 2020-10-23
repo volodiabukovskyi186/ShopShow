@@ -16,7 +16,7 @@
     [src]="'assets/icons/map.svg'"
     [links]="[
       {
-        title: 'contactAddress' | translate
+        title: siteDataDesctionByLang?.adress
       }
     ]"
   ></app-contact-card>
@@ -26,8 +26,8 @@
     [src]="'assets/icons/mail.svg'"
     [links]="[
       {
-        link: contact.contacts?.email,
-        title: contact.contacts?.email,
+        link: siteData?.email,
+        title: siteData?.email,
         type: 'mailto'
       }
     ]"

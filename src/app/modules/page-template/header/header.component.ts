@@ -5,6 +5,8 @@ import { AuthService } from '../../core/auth/auth.service';
 import { AccauntService } from '../../accaunt/accaunt.service';
 import { CartService } from '../../cart/cart.service';
 import { CallbackDialogComponent } from '../../dialogs/callback-dialog/callback-dialog.component';
+import { UIService } from '../../ui/services/ui.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: "app-header",
@@ -12,12 +14,17 @@ import { CallbackDialogComponent } from '../../dialogs/callback-dialog/callback-
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
+  public sitePhones: any;
+  public siteData: any;
+  hoststatic = environment.hoststatic;
+
   constructor(
     public cart: CartService,
     public auth: AuthService,
     public appLang: AppLangService,
     public accaunt: AccauntService,
     public dialog: MatDialog,
+    public uiservice: UIService
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +32,8 @@ export class HeaderComponent implements OnInit {
     this.auth.auth.subscribe((_) => {
       this.getUser();
     });
+
+    this.getSiteData();
   }
 
   getUser() {
@@ -33,6 +42,13 @@ export class HeaderComponent implements OnInit {
         this.accaunt.current = data.data;
         this.accaunt.onCurrent();
       });
+  }
+
+  getSiteData(): void {
+    this.uiservice.getSiteSettingsValues().subscribe((res) => {
+      this.sitePhones = res.data[0].phones;
+      this.siteData = res.data[0];
+    })
   }
 
   openCallBackModal() {
