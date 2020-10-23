@@ -76,8 +76,11 @@ export class CheckoutDeliveryPaymentComponent implements OnInit {
 
 
     getSelectCountry(): void {
+
+
         this.localLang = localStorage.getItem('current_lang');
         this.checkContact.BSubject.subscribe(data => {
+            this.arrDelivers=[];
             this.selectedCountry = data;
             this.checkContact.getCountryDeliver(this.selectedCountry.id, this.localLang).subscribe(data => {
                 data.data.deliveries.forEach(elem => {
@@ -86,10 +89,12 @@ export class CheckoutDeliveryPaymentComponent implements OnInit {
                 console.log(this.arrDelivers);
             });
         });
+
     }
     getSelectCountryPay(): void {
         this.localLang = localStorage.getItem('current_lang');
         this.checkContact.BSubject.subscribe(data => {
+            this.arrPayment=[];
             this.selectedCountry = data;
             this.checkContact.getCountryPayment(this.selectedCountry.id, this.localLang).subscribe(data => {
                 data.data.payments.forEach(elem => {

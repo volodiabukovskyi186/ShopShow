@@ -12,8 +12,8 @@ import {FormGroup, FormControlName, FormControl, Validators} from '@angular/form
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {AccauntService} from '../../accaunt/accaunt.service';
-import { ViewportScroller } from '@angular/common';
-import { WishlistService } from '../../../modules/accaunt/wishlist/services/wishlist.service';
+import {ViewportScroller} from '@angular/common';
+import {WishlistService} from '../../../modules/accaunt/wishlist/services/wishlist.service';
 
 @Component({
     selector: 'app-product-view-page',
@@ -25,6 +25,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     attrMapArr;
     attrColor = [];
     attrSize = [];
+    arrProdStatus = [];
     productViewForm: FormGroup;
     isAttrColor: boolean = false;
     isAttrSize: boolean = false;
@@ -132,7 +133,6 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             .valueChanges
             .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
-                console.log(value);
                 this.stars = this.stars.map(star => {
                     return {
                         ...star,
@@ -161,6 +161,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
         });
     }
+
+
+
 
     getProdAttr(id) {
         this.product.getProdAttr(id).subscribe(this.getProdAttrHandler);
@@ -223,15 +226,15 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         //const found = this.wishlistProducts?.some((el) => { el.product_id === product?.item?.description?.product_id});
 
         //if (found) {
-            this.product.addProductToWishlist({
-                product_id: product?.item?.description?.product_id,
-                user_id: this.user?.data?.user.id
-            }).subscribe((res) => {
-                console.log(res);
-                alert(`Product #${res.data.product_id} was added to wishlist!`);
-            })
+        this.product.addProductToWishlist({
+            product_id: product?.item?.description?.product_id,
+            user_id: this.user?.data?.user.id
+        }).subscribe((res) => {
+            console.log(res);
+            alert(`Product #${res.data.product_id} was added to wishlist!`);
+        });
         //} else {
-            //alert(`Product already exist in wishlist!`);
+        //alert(`Product already exist in wishlist!`);
         //}
     }
 }

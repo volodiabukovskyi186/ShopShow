@@ -42,6 +42,9 @@ export class MyOrdersService {
 
     return this.http.get<any>(environment.host + params);
   }
+  getProdStatus(id: number, lang: any ): Observable <any> {
+    return this.http.get(`https://api.showu.com.ua/order/client/${id}?lang=${lang}`);
+  }
 
 //   public getOrdersList() {
 //     this.myOrders$.subscribe((res) => {

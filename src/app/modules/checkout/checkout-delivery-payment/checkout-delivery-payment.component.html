@@ -52,7 +52,6 @@
           <h6>{{ "cart.delivery" | translate }}</h6>
         </div>
         <div class="original" >
-        {{check.checkoutDelivery|json}}
           <span *ngFor="let country of arrDelivers"  style="margin-top:10px">
               <input
                      class="raisins-radio label"
@@ -104,7 +103,7 @@
           <h6>{{ "cart.payment" | translate }}</h6>
         </div>
         <div class="original" >
-          {{check.checkoutPayment|json}}
+
 
           <span *ngFor="let payment of arrPayment"  style="margin-bottom:10px">
               <input

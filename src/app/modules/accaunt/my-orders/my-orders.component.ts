@@ -3,6 +3,9 @@ import { MyOrdersService } from './services/my-orders.service';
 import { environment } from 'src/environments/environment';
 import { AccauntService } from '../../accaunt/accaunt.service';
 import { ProductService } from "src/app/modules/product/product.service";
+import {Observable} from 'rxjs';
+import {retry} from 'rxjs/operators';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: 'app-my-orders',
@@ -28,6 +31,7 @@ export class MyOrdersComponent implements OnInit {
         public myOrdersService: MyOrdersService,
         public accauntService: AccauntService,
         public product: ProductService
+
     ) {}
 
     ngOnInit(): void {
@@ -39,6 +43,7 @@ export class MyOrdersComponent implements OnInit {
         this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
         this.getOrdersByClientId();
     }
+
 
     public getUserClientId(): void {
         this.accauntService.getUser().subscribe((res) => {
@@ -52,7 +57,7 @@ export class MyOrdersComponent implements OnInit {
             this.clientOrders = res;
           })
         })
-    }    
+    }
 
     public onSortingChanged(sorting: string) {
         this.selectedSorting = sorting;
@@ -61,10 +66,10 @@ export class MyOrdersComponent implements OnInit {
                 this.myOrders = res.data;
                 this.allOrders = res;
             }
-        
+
             if (this.selectedSorting === 'promotions') {
                 //console.log(this.product.products.data.products);
-                
+
                 res.data.products.forEach((val) => {
                 if (val.promotion) {
                     this.promotions.unshift(val);
@@ -73,12 +78,12 @@ export class MyOrdersComponent implements OnInit {
                     this.promotions.push(val);
                 }
                 })
-        
+
                 this.myOrders = this.promotions;
             }
         });
       }
-    
+
     public onCardNumberChanged(cardNumber: number) {
         this.selectedCardNumber = cardNumber;
         this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber, this.selectedSorting).subscribe((res) => {
@@ -91,7 +96,6 @@ export class MyOrdersComponent implements OnInit {
         this.accauntService.getUser().subscribe((res) => {
             this.clientId = res.data.user.id;
               console.log(this.clientId);
-      
               this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber).subscribe((res) => {
                 //this.myOrders = res.data[0].orders;
                 this.myOrders = res.data;
@@ -100,7 +104,7 @@ export class MyOrdersComponent implements OnInit {
                 console.log(res);
                 console.log(this.myOrders);
               })
-      
+
             // this.accaunt.current = data.data;
             // this.accaunt.onCurrent();
             // console.log(data.data);
@@ -113,6 +117,8 @@ export class MyOrdersComponent implements OnInit {
         this.getOrdersByClientId();
       }
 
+
+
     // public changeMaterialCategory(event, cardNumber?: number) {
     //     console.log(event);
     //     console.log(cardNumber);
@@ -121,11 +127,11 @@ export class MyOrdersComponent implements OnInit {
     //       this.product.products.data.products = res.data.products;
     //     });
     // }
-    
+
     // public getOrderById(id) {
     //     return `${environment.host}/order/${id}`;
     // }
-    
+
     // public getMyOrders(): void {
     //     this.myOrdersService.myOrders.subscribe((res) => {
     //         console.log(res);
