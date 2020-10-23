@@ -31,11 +31,13 @@
           }}{{ product?.item?.price * currency?.current?.value
           }}{{ currency?.current?.simbol_right }}</b
         >
+        <!--          [ngClass]="{ 'in-stock': product?.item?.stock_status_id }"-->
         <span
-          class="stock-status"
-          [ngClass]="{ 'in-stock': product?.item?.stock_status_id }"
-          >{{ product?.item?.stock_status_id ? "in stock" : "sold out" }}</span
+          class="stock-status" [ngStyle]="{'background':product.item.stock_status?.color}"
+
+          >{{product.item.stock_status?.description.name}}</span
         >
+<!--        {{ product?.item?.stock_status_id ? "in stock" : "sold out" }}-->
       </div>
       <hr />
       <div>
@@ -131,11 +133,9 @@
         </div>
       </div>
     </div>
-
-
   </div>
-
 </div>
+{{product.item.stock_status|json}}
 <div class="white-group">
 <section class="  card-description">
   <div class="card-description__container">
@@ -158,6 +158,7 @@
         </tbody>
       </table>
     </rap-step-tab>
+
     <rap-step-tab [title]="'review.reviews' | translate">
       <app-review-list
               *ngIf="product.reviews.data.length > 0; else noReviews"

@@ -208,4 +208,10 @@ export class ProductService {
   addProductToWishlist(data): Observable <any> {
     return this.http.post(`${environment.host}wishlist`, data);
   }
+  getProdStorage(id:number): Observable <any> {
+    return this.http.get(`https://api.showu.com.ua/stock_status/${id}`);
+  }
+
+
+
 }

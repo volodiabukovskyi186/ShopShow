@@ -27,9 +27,11 @@
                 <div class="status-block">
                 <p class="status-order" *ngIf="itemStatus">Статус замовлення</p>
                 <!-- <p>Виконано</p> -->
+<!--                    [ngStyle]-->
                 <p [style]="{'color': statusCodes[order?.status_id]?.color}">
-                    <!-- {{ statusCodes[order?.status_id]?.name | translate }} -->
-                    {{ order.status[0].description.dectiption }}
+                    {{orderStatus}}
+<!--                    {{ orderStatus.status.description.dectiption }}-->
+<!--                    {{ statusCodes[order?.status_id]?.name | translate }}-->
                 </p>
                 <button 
                     *ngIf="itemStatus"
@@ -74,3 +76,4 @@
     </div>
 </div>
 </div>
+

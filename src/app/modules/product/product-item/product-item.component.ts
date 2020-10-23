@@ -50,7 +50,7 @@ export class ProductItemComponent implements OnInit {
 
     public getUserAccauntData(): void {
         this.accauntService.getUser().subscribe((data) => {
-            console.log(data);
+
     
             this.userId = data.data.user.id;
     
@@ -61,13 +61,13 @@ export class ProductItemComponent implements OnInit {
     
     public addToWishlist(event: Event, product) {
         event.preventDefault();
-        console.log(product);
+
     
         this.productService.addProductToWishlist({
             product_id: product.description.product_id,
             user_id: this.userId
         }).subscribe((res) => {
-            console.log(res);
+
             alert(`Product #${res.data.product_id} was added to wishlist!`);
         })
     }
