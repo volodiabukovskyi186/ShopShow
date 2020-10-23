@@ -29,8 +29,8 @@
                 <!-- <p>Виконано</p> -->
 <!--                    [ngStyle]-->
                 <p [style]="{'color': statusCodes[order?.status_id]?.color}">
-                    {{orderStatus}}
-<!--                    {{ orderStatus.status.description.dectiption }}-->
+                    <!-- {{orderStatus}} -->
+                   {{ order?.status[0]?.description?.dectiption }}
 <!--                    {{ statusCodes[order?.status_id]?.name | translate }}-->
                 </p>
                 <button 
