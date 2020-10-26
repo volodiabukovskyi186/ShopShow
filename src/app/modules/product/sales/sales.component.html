@@ -1,0 +1,55 @@
+<rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
+<br />
+<div class="row wrap">
+  <div class="col col-side filter-margin-left">
+    <app-filter-page class="" (filterChanged)="onFilterChanged($event)"></app-filter-page>
+  </div>
+  <div class="col">
+    <div class="sort-content">
+      <mat-form-field appearance="standart" class="sort-products">
+        <div class="sort-products-wrapper">
+          <mat-label class="sort-products-label">{{ 'sortBy.sort' | translate }}</mat-label>
+          <mat-select (selectionChange)="onSortingChanged($event.value)">
+            <mat-option [value]="'minPrice'">
+              {{ 'sortBy.minPrice' | translate}}
+            </mat-option>
+            <mat-option [value]="'maxPrice'">
+              {{ 'sortBy.maxPrice' | translate}}
+            </mat-option>
+            <mat-option [value]="'rating'">
+              {{ 'sortBy.rating' | translate}}
+            </mat-option>
+            <mat-option [value]="'promotions'">
+              {{ 'sortBy.promotions' | translate}}
+            </mat-option>
+          </mat-select>
+        </div>
+      </mat-form-field>
+      <mat-form-field appearance="standart" class="sort-products">
+        <div class="sort-products-wrapper">
+          <mat-label class="sort-products-label"> {{ 'sortBy.view' | translate }}: </mat-label>
+            <mat-select (selectionChange)="onCardNumberChanged($event.value)">
+              <mat-option *ngFor="let card of cardNumbers" [value]="card">
+                {{ card }}
+              </mat-option>
+            </mat-select>
+        </div>
+      </mat-form-field>
+    </div>
+    <h1 style="margin-top: 0;">{{ product?.item?.name }}</h1>
+
+    <br />
+
+    <app-product-list
+      [products]="product?.products?.data?.products"
+    ></app-product-list>
+
+    <app-pagination
+      class="radius"
+      [page]="product?.page"
+      [total]="product?.products?.data?.products?.length > 0 ? Math.floor(product?.products?.count / product?.products?.take): 0"
+      [pagesToShow]="5"
+      (pageChanged)="pageChangedHandler($event)"
+    ></app-pagination>
+  </div>
+</div>

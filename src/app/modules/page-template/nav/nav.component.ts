@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
   links2: Array<any> = [
     { link: '/promotions', name: 'Promotions' },
     { link: '/manufacturers', name: 'Manufacturers' },
-    // { link: '/sales', name: 'Sales' }
+    { link: '/sales', name: 'Sales' }
   ];
   public categorySet: Set<number> = new Set<number>();
 

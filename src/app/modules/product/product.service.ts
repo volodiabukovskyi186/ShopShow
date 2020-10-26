@@ -89,6 +89,13 @@ export class ProductService {
 
   constructor(private http: HttpClient, private appLang: AppLangService) {}
 
+  getProducts(): Observable<any> {
+    let skip = this.page * this.products.take - this.products.take;
+    let lang = this.appLang.current;
+    let params = `?lang=${lang}&skip=${skip}&take=${this.products.take}&sort_by=id`;
+    return this.http.get(`${environment.products}${params}`)
+  }
+
   getBy(categoryId: number) {
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;

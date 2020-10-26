@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { Ng5SliderModule } from 'ng5-slider';
+import { SalesComponent } from './sales/sales.component';
 
 const c = [
   ProductListComponent,
@@ -33,7 +34,7 @@ const c = [
 ];
 
 @NgModule({
-  declarations: [...c, ProductsPageComponent, ProductViewPageComponent, GaleryProductFotoDialogComponent, ProductListViewComponent],
+  declarations: [...c, ProductsPageComponent, ProductViewPageComponent, GaleryProductFotoDialogComponent, ProductListViewComponent, SalesComponent],
   imports: [
     CommonModule,
     RouterModule,

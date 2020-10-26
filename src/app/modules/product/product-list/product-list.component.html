@@ -4,6 +4,16 @@
   style="margin: 10px;"
 ></app-product-item>
 
+
+<!-- <div *ngIf="isSalesPage">
+  <div *ngFor="let item of products">
+    <app-product-item
+      [product]="item"
+      style="margin: 10px;"
+    ></app-product-item>
+  </div>
+</div> -->
+
 <div class="d4 text-cente product-iten-text" *ngIf="!products || products.length <= 0">
   not found
 </div>

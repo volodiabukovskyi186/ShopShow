@@ -1,0 +1,116 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+// import { NgxUiLoaderService } from "ngx-ui-loader";
+import { NavLink } from "src/app/modules/ui/rap/nav-item/nav-link";
+import { ProductService } from "src/app/modules/product/product.service";
+import { PaginationPage } from "src/app/modules/ui/rap/pagination/pagination-page";
+import { IManufacturerReviews } from 'src/app/modules/review/review';
+import { ReviewService } from 'src/app/modules/review/review.service';
+import { FilterService } from '../../filter/filter.service';
+import { CurrencyService } from '../../currency/currency.service';
+import { IFilters } from '../../filter/filter.component';
+
+@Component({
+  selector: 'app-sales',
+  templateUrl: './sales.component.html',
+  styleUrls: ['./sales.component.scss']
+})
+export class SalesComponent implements OnInit {
+  breadcrumbs: Array<NavLink> = [];
+  Math = Math;
+  public sortProductsData: any;
+  public cardNumbers: number[] = [];
+  selectedCardNumber: number;
+  selectedSorting: string;
+  promotions: any[] = [];
+  //id: number = 0;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    // private ngxService: NgxUiLoaderService,
+    public product: ProductService,
+    public filter: FilterService,
+    public currency: CurrencyService,
+    public review: ReviewService
+  ) {}
+
+  getByIdHandler = (data) => {
+    this.product.products = data;
+    console.log(this.product?.products?.data?.products);
+  
+    // this.ngxService.stopAll();
+    this.product.products.data.products = this.product?.products?.data?.products.filter((product) => {
+      return product?.discont !== null;
+    })
+
+    console.log('after', this.product?.products?.data?.products);
+  };
+
+  ngOnInit(): void {
+    this.route.params.subscribe((data) => {
+      this.breadcrumbs = [
+        {
+          link: "/",
+          title: "Homepage",
+        },
+        {
+          link: "/sales",
+          title: "Sales",
+        },
+      ];
+    
+      this.get();
+      this.getLastReviews();
+    });
+
+    this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
+  }
+
+  public onFilterChanged(filters: IFilters): void {
+    this.product.getByFilters(filters).subscribe((res) => {
+      this.product.products.data.products = res?.data?.products?.filter((val) => {
+        return val.discont !== null;
+      })
+    });
+
+  }
+
+  get() {
+    // this.ngxService.start();
+    this.product.getProducts().subscribe(this.getByIdHandler);
+  }
+
+  getLastReviews() {
+    this.review.get().subscribe(this.getLastReviewsHandler)
+  }
+  getLastReviewsHandler = data => {
+    this.review.review = data.data;
+  } 
+  pageChangedHandler(page: number): void {
+    this.product.page = page;
+    this.get();
+  } 
+
+  public onSortingChanged(sorting: string) {
+    this.selectedSorting = sorting;
+    this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
+
+      if (this.selectedSorting !== 'promotions' || this.selectedSorting === 'promotions') {
+        this.product.products.data.products = res?.data?.products?.filter((val) => {
+          return val.discont !== null;
+        })
+
+      }
+    });
+  }
+
+  public onCardNumberChanged(cardNumber: number) {
+    this.selectedCardNumber = cardNumber;
+    this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
+      this.product.products.data.products = res?.data?.products?.filter((val) => {
+        return val.discont !== null;
+      })
+    });
+  }
+}

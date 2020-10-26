@@ -60,7 +60,14 @@ export const pageRoutes: Routes = [
         (m) => m.SallersModule
       ),
   },
-
+  {
+    path: "sales",
+    component: PageTemplateComponent,
+    loadChildren: () =>
+      import("src/app/modules/product/product.module").then(
+        (m) => m.ProductModule
+      ),
+  },
   {
     path: "contacts",
     component: PageTemplateComponent,
