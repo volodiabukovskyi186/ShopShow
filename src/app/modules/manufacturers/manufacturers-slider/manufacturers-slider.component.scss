@@ -43,6 +43,9 @@
     width: calc(50% - #{$space});
     margin: $space/2;
   }
+  .r3x1{
+    max-width: 34vw;
+  }
 }
 @media screen and(max-width: 768px){
   [drag-scroll-item] {

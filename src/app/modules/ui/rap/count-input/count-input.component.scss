@@ -74,7 +74,8 @@
   
     input {
       text-align: center;
-      padding: $space/4 $space/2;
+      //padding: $space/4 $space/2;
+      margin-left: 6px;
       &[disabled] {
         background-color: #ececec;
         color: $white;
@@ -88,4 +89,3 @@
     -moz-appearance: none;
     appearance: none;
   }
-  

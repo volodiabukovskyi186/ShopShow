@@ -31,13 +31,12 @@
           }}{{ product?.item?.price * currency?.current?.value
           }}{{ currency?.current?.simbol_right }}</b
         >
-        <!--          [ngClass]="{ 'in-stock': product?.item?.stock_status_id }"-->
         <span
           class="stock-status" [ngStyle]="{'background':product.item.stock_status?.color}"
 
           >{{product.item.stock_status?.description.name}}</span
         >
-<!--        {{ product?.item?.stock_status_id ? "in stock" : "sold out" }}-->
+
       </div>
       <hr />
       <div>
@@ -50,7 +49,7 @@
         </div>
       </div>
       <hr />
-      <div class="flex">
+      <div class="flex count-add-tobag">
         <rap-count-input
           class="add-to-card-content-input"
           [min]="1"
@@ -75,30 +74,6 @@
         </span>
       </div>
       <hr />
-      <!-- <div class="product-attributes-content" [formGroup]="productViewForm"> -->
-<!--        <div class="product-label">-->
-<!--          <div *ngFor="let attrb of attrMapArr">-->
-<!--            <mat-label class="product-label-text">{{ attrb }}</mat-label>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <mat-form-field appearance="standart" class="product-attributes-field" *ngIf="isAttrColor">-->
-<!--          <mat-select formControlName="color">-->
-<!--            <mat-option *ngFor="let item of attrColor" [value]="item.text">-->
-<!--              <div>{{ item.text }}</div>-->
-<!--            </mat-option>-->
-<!--          </mat-select>-->
-<!--        </mat-form-field>-->
-      <!-- </div> -->
-      <!-- <div class="product-attributes-content" [formGroup]="productViewForm"> -->
-<!--        <div></div>-->
-<!--        <mat-form-field appearance="standart" class="product-attributes-field" *ngIf="isAttrSize">-->
-<!--          <mat-select formControlName="size">-->
-<!--            <mat-option *ngFor="let item of attrSize" [value]="item.text">-->
-<!--              <div>{{ item.text }}</div>-->
-<!--            </mat-option>-->
-<!--          </mat-select>-->
-<!--        </mat-form-field>-->
-      <!-- </div> -->
     </div>
 
     <div class="manufacturer" style="margin: 1rem 0;">
@@ -135,11 +110,10 @@
     </div>
   </div>
 </div>
-{{product.item.stock_status|json}}
+
 <div class="white-group">
 <section class="  card-description">
   <div class="card-description__container">
-
   <rap-step-tabs  >
     <rap-step-tab [title]="'product.description' | translate">
       <div class="read-text" [innerHTML]="product?.item?.description?.discription"></div>
@@ -221,5 +195,5 @@
   <h1 style="margin-bottom: 0;">{{ "product.related" | translate }}</h1>
 </div>
 
-<app-product-slider [products]="product?.popular"></app-product-slider>
+<app-product-slider class="product-view-slider" [products]="product?.popular"></app-product-slider>
 </div>

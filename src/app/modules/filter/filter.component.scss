@@ -139,19 +139,31 @@
 .filter-modile{
   width: 50%;
 }
+.filter-btn{
+  margin-left: 10px;
+  text-transform: uppercase;
+  width: 140px;
+  height: 30px;
+  background-color:#9F1941;
+   color: white;
+  border: none;
+  display: none;
+}
 
 @media (max-width: 768px) {
   .desktop {
     display: none;
+  }
+  .filter-btn{
+    display: block;
   }
   .mobile {
     display: block;
 
   }
   .filter-modile{
-
     min-width: 80px;
-    width: 25%;
+    width: 140px;
     margin-bottom: 20px;
     padding: 16px 0px;
     text-align: center;

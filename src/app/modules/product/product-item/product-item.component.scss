@@ -90,7 +90,7 @@ img.soldout {
 }
 
 .product-buttons {
-  z-index: 1000;
+  z-index: 0;
   opacity: 0;
   display: flex;
   flex-direction: row;
@@ -166,5 +166,10 @@ img.soldout {
       justify-content: center;
     }
 
+  }
+  .space-card-beetwen{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between !important;
   }
 }

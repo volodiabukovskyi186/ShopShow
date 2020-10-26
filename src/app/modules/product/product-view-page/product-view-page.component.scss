@@ -24,6 +24,9 @@
   background-color: $white;
   @include material-shadow(1, 1, $gray400);
 }
+.product-view-slider{
+  padding-bottom: 50px;
+}
 
 .manufacturer-shadow {
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
@@ -162,7 +165,6 @@ hr {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  padding-bottom: 100px;
   .card-description__container{
     max-width: 975px;
     width: 90vw;
@@ -281,10 +283,18 @@ hr {
        flex-direction: column;
          .add-review-container__user-inf__input-block{
            width: 70vw;
+           padding-top: 20px;
+           input{
+             height: 55px;
+           }
          }
       }
+        .add-review-container__submit{
+          padding-top: 30px;
+        }
       }
     }
+
   .sticky {
     margin-left: 16px;
   }
@@ -302,10 +312,11 @@ hr {
 
     .long {
       flex-basis: 90%;
-      max-width: 90%;
+      max-width: 100%;
     }
   }
 }
+
 
 @media (max-width: 480px) {
   .add-review-container{
@@ -313,17 +324,23 @@ hr {
       flex-direction: column;
       .add-review-container__user-inf__input-block{
         width: 100%;
+
       }
 
     }
   }
+  .count-add-tobag{
+    margin:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
-@media (max-width: 420px) {
 
-}
 
 .add-to-card-content-input {
-  width: 108px; 
+  width: 108px;
+  min-width: 100px;
   margin-right: 90px;
   border-radius: 5px;
   background: #fff;
@@ -434,4 +451,20 @@ hr {
 
 .product-name {
   font-weight: 400;
+}
+
+@media (max-width: 480px) {
+  .add-to-card-content-input {
+    margin-right: 0;
+  }
+  .add-to-catt-btn {
+    max-width: 190px;
+    min-width: 126px;
+    width: 100%;
+  }
+}
+@media (max-width: 420px) {
+  .add-to-catt-btn {
+    width: 126px;
+  }
 }
