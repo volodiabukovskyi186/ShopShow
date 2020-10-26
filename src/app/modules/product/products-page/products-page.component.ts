@@ -23,6 +23,8 @@ export class ProductsPageComponent implements OnInit {
   selectedCardNumber: number;
   selectedSorting: string;
   promotions: any[] = [];
+  selectStatus = false;
+  selectStatusBy = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -114,6 +116,8 @@ export class ProductsPageComponent implements OnInit {
   // }
 
   public onSortingChanged(sorting: string) {
+    this.selectStatusBy=true;
+
     this.selectedSorting = sorting;
     this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
       if (this.selectedSorting !== 'promotions') {
@@ -138,6 +142,7 @@ export class ProductsPageComponent implements OnInit {
   }
 
   public onCardNumberChanged(cardNumber: number) {
+    this.selectStatus=true;
     this.selectedCardNumber = cardNumber;
     this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
       this.product.products = res;

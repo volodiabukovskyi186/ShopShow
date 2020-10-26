@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {CartService} from '../../cart/cart.service';
 import {fadeHeight} from '../../ui/animations';
 import {CheckoutService} from '../checkout.service';
@@ -12,13 +12,13 @@ import {AppLangService} from '../../core/app-lang.service';
     templateUrl: './checkout-delivery-payment.component.html',
     styleUrls: ['./checkout-delivery-payment.component.scss'],
 })
-export class CheckoutDeliveryPaymentComponent implements OnInit {
+export class CheckoutDeliveryPaymentComponent implements OnInit,OnChanges {
     public isLigpayChecked: boolean = false;
     localLang: any;
     selectedCountry: any;
 
     arrDelivers = [];
-    arrPayment=[];
+    arrPayment = [];
     currentLang: any;
     itemDelivery = [];
 
@@ -30,8 +30,17 @@ export class CheckoutDeliveryPaymentComponent implements OnInit {
 
     ngOnInit(): void {
 
+        this.arrDelivers = [];
+        this.arrPayment = [];
         this.getSelectCountry();
         this.getSelectCountryPay();
+    }
+    ngOnChanges(changes: SimpleChanges) {
+        if(changes){
+            this.arrPayment = [];
+            this.arrDelivers = [];
+            console.log( this.arrDelivers )
+        }
     }
 
     nextStep() {
@@ -80,13 +89,14 @@ export class CheckoutDeliveryPaymentComponent implements OnInit {
 
         this.localLang = localStorage.getItem('current_lang');
         this.checkContact.BSubject.subscribe(data => {
-            this.arrDelivers=[];
+
             this.selectedCountry = data;
+
             this.checkContact.getCountryDeliver(this.selectedCountry.id, this.localLang).subscribe(data => {
+                this.arrDelivers = [] ;
                 data.data.deliveries.forEach(elem => {
                     this.arrDelivers.push(elem.delivery);
                 });
-                console.log(this.arrDelivers);
             });
         });
 
@@ -94,13 +104,14 @@ export class CheckoutDeliveryPaymentComponent implements OnInit {
     getSelectCountryPay(): void {
         this.localLang = localStorage.getItem('current_lang');
         this.checkContact.BSubject.subscribe(data => {
-            this.arrPayment=[];
+
             this.selectedCountry = data;
+
             this.checkContact.getCountryPayment(this.selectedCountry.id, this.localLang).subscribe(data => {
+                this.arrPayment = [];
                 data.data.payments.forEach(elem => {
                     this.arrPayment.push(elem.payment);
                 });
-                console.log(this.arrPayment);
             });
         });
     }

@@ -155,6 +155,13 @@ ul.nav {
     width: 100%;
     justify-content: center;
   }
+  .footer-small-help{
+    text-align: left;
+  }
+  .footer-small-shop{
+    text-align: left;
+    padding-left: 17vw;
+  }
 }
 
 @include screen-w(589px) {
@@ -179,6 +186,10 @@ ul.nav {
       margin-left: 1%;
     }
   }
+  .footer-small-shop{
+
+    padding-left: 10vw;
+  }
 }
 
 @include screen-w(372px) {
@@ -186,6 +197,10 @@ ul.nav {
     h5 {
       margin-left: 0;
     }
+  }
+  .footer-small-shop{
+
+    padding-left: 5vw;
   }
 }
 
