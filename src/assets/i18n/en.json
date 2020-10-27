@@ -126,7 +126,9 @@
   "review": {
     "sliderDesc": "Don’t hear from us only. Listen to our customers too.",
     "reviews": "Product reviews",
-    "no_reviews": "No Reviews Yet"
+    "no_reviews": "No Reviews Yet",
+    "leaveReview": "Leave review",
+    "leaveReviewAboutOrder": "Leave review about order"
   },
   "product": {
     "addToCart": "Add to cart",
@@ -166,7 +168,9 @@
     "my-orders": "My orders",
     "my-review": "My review",
     "log-out": "Log out",
-    "edit": "Edit"
+    "edit": "Edit",
+    "orderStatus": "Order status",
+    "totalPayment": "Total payment"
   },
   "take": {
     "cardsNumber": "cards",
@@ -257,5 +261,13 @@
     "confirmPassword": "Confirm password",
     "changePasswordSuccess": "Password changed successfully"
   },
-  "contactAddress": "202, Stryiska street, Lviv, 79031"
+  "contactAddress": "202, Stryiska street, Lviv, 79031",
+  "delivery": {
+    "deliveryTitle": "Delivery",
+    "mailСompanyPlan": "Mail company plan",
+    "pcs": "pcs.",
+    "items": "items",
+    "item": "item",
+    "uah": "uah"
+  }
 }

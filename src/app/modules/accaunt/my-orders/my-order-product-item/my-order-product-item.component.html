@@ -10,7 +10,6 @@
                 <img class="pointer" src="assets/icons/arrow-down.svg">
             </div>
         </div>
-            <!-- <div *ngFor="let order of order?.products"></div> -->
             <div class="cell cell2">
                 <p> <span> {{ modifyDateString(order?.created_at, 'day') }} </span>
                     <span> {{ modifyDateString(order?.created_at, 'months') | translate }} </span>
@@ -20,12 +19,12 @@
             <div class="cell cell3"></div>
             <div class="cell cell4">
                 <p *ngIf="!itemStatus">{{ order?.products?.length }} товар на 
-                {{ modifyPrice(order?.total) }} грн
+                {{ modifyPrice(order?.total) }} {{ 'delivery.uah' | translate }}
             </p>
         </div>
             <div class="cell status green cell5">
                 <div class="status-block">
-                <p class="status-order" *ngIf="itemStatus">Статус замовлення</p>
+                <p class="status-order" *ngIf="itemStatus">{{ 'cabinet.orderStatus' | translate }}</p>
                 <!-- <p>Виконано</p> -->
 <!--                    [ngStyle]-->
                 <p [style]="{'color': statusCodes[order?.status_id]?.color}">
@@ -34,9 +33,16 @@
 <!--                    {{ statusCodes[order?.status_id]?.name | translate }}-->
                 </p>
                 <button 
-                    *ngIf="itemStatus"
-                    [routerLink]="['/products/view/' + order?.product_id]">
-                    Залишити відгук про замовлення
+                    *ngIf="itemStatus && order?.products?.length > 1"
+                    (click)="openReviewModal()"
+                    >
+                    {{ 'review.leaveReviewAboutOrder' | translate }}
+                </button>
+                <button 
+                    *ngIf="itemStatus && order?.products?.length === 1"
+                    [routerLink]="['/products/view/' + order?.products[0].product.id]"
+                    >
+                    {{ 'review.leaveReviewAboutOrder' | translate }}
                 </button>
             </div>
         </div>
@@ -53,22 +59,22 @@
                             <span>{{ order?.product?.description?.name }} ({{ order?.product?.model }})</span> 
                            <!-- Vbrana(140001) -->
                         </div>
-                        <p>{{ modifyPrice(order?.product?.price) }} грн</p>
+                        <p>{{ modifyPrice(order?.product?.price) }} {{ 'delivery.uah' | translate }}</p>
                     </div>
-                    <div class="drop-count  drop__item"><p>{{ modifyPrice(order?.quantity) }} шт</p></div>
-                    <div class="drop-second-price  drop__item"><p>{{ modifyPrice(order?.product?.price) }} грн</p></div>
+                    <div class="drop-count  drop__item"><p>{{ modifyPrice(order?.quantity) }} {{ 'delivery.pcs' | translate }}</p></div>
+                    <div class="drop-second-price  drop__item"><p>{{ modifyPrice(order?.product?.price) }} {{ 'delivery.uah' | translate }}</p></div>
                 </div>
             </div>
             <div *ngIf="itemStatus" class="drop__container__bottom">
                 <div class="drop__container__bottom__top">
-                    <p>Доставка : Нова Пошта</p>
-                    <p>відповідно до тарифів перевізника</p>
+                    <p>{{ 'delivery.deliveryTitle' | translate }} : Нова Пошта</p>
+                    <p>{{ 'delivery.mailСompanyPlan' | translate }}</p>
                 </div>
                 <div class="drop__container__bottom_down">
                     <div>
-                    <p class="d4">Разом до оплати</p>
+                    <p class="d4">{{ 'cabinet.totalPayment' | translate }}</p>
                     <p class="d4">
-                        {{ modifyPrice(order?.total) }} грн
+                        {{ modifyPrice(order?.total) }} {{ 'delivery.uah' | translate }}
                     </p>
                     </div>
                 </div>

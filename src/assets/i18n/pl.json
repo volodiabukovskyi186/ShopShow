@@ -89,7 +89,9 @@
   "review": {
     "sliderDesc": "Nie tylko od nas. Posłuchaj także naszych klientów.",
     "reviews": "Recenzje produktu",
-    "no_reviews": "Brak recenzji"
+    "no_reviews": "Brak recenzji",
+    "leaveReview": "Sprawdź vidguk",
+    "leaveReviewAboutOrder": "Zostaw opinię o zamówieniu"
   },
   "sortBy": {
     "sort": "Sortuj według:",
@@ -125,7 +127,9 @@
     "my-orders": "Moje zamówienia",
     "my-review": "Moja recenzja",
     "log-out": "Wejście",
-    "edit": "Edit"
+    "edit": "Edytować",
+    "orderStatus": "Status zamówienia",
+    "totalPayment": "Całkowita płatność"
   },
   "accaunt": {
     "accaunt": "Konto",
@@ -249,5 +253,13 @@
     "confirmPassword": "Potwierdź hasło",
     "changePasswordSuccess": "Hasło zostało pomyślnie zmienione"
   },
-  "contactAddress": "ulica Stryiska 202, Lwów, 79031"
+  "contactAddress": "ulica Stryiska 202, Lwów, 79031",
+  "delivery": {
+    "deliveryTitle": "Dostawa",
+    "mailСompanyPlan": "Zgodnie z taryfami przewoźnika",
+    "pcs": "szt.",
+    "items": "pozycje",
+    "item": "pozycja",
+    "uah": "uah"
+  }
 }

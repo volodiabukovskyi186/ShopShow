@@ -128,7 +128,9 @@
   "review": {
     "sliderDesc": "Не слухайте тільки нас, послухайте також і наших клієнтів.",
     "reviews": "Відгуки про продукт",
-    "no_reviews": "Відгуків покищо немає"
+    "no_reviews": "Відгуків покищо немає",
+    "leaveReview": "Залишити відгук",
+    "leaveReviewAboutOrder": "Залишити відгук про замовлення"
   },
   "product": {
     "addToCart": "Додати в кошик",
@@ -168,7 +170,9 @@
     "my-orders": "Мої замовлення",
     "my-review": "Мій огляд",
     "log-out": "Вихід",
-    "edit": "Edit"
+    "edit": "Редагувати",
+    "orderStatus": "Статус замовлення",
+    "totalPayment": "Разом до оплати"
   },
   "statusCodes": {
     "done": "Виконано",
@@ -255,5 +259,13 @@
     "confirmPassword": "Підтвердити пароль",
     "changePasswordSuccess": "Пароль успішно змінено"
   },
-  "contactAddress": "79031, м. Львів, вулиця Стрийська 202"
+  "contactAddress": "79031, м. Львів, вулиця Стрийська 202",
+  "delivery": {
+    "deliveryTitle": "Доставка",
+    "mailСompanyPlan": "Відповідно до тарифів перевізника",
+    "pcs": "шт.",
+    "items": "позиції",
+    "item": "позиція",
+    "uah": "грн"
+  }
 }

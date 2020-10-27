@@ -1,0 +1,27 @@
+<div class="review-dialog">
+    <div class="dialog-header">
+        <div>{{ 'review.leaveReview' | translate }}</div>
+        <span class="material-icons close-icon" (click)="onNoClick()">close</span>
+    </div>
+    <hr>
+    <div class="dialog-wrapper" *ngIf="orders?.order?.products">
+      <div *ngFor="let orderProduct of orders?.order?.products">
+        <div class="products-container">
+            <div class="product">
+                <div class="product-left-content">
+                    <img class="product-photo__img" src="{{ host + orderProduct?.product?.image?.src }}"/>
+                    <span>{{ orderProduct?.product?.description?.name }}</span>
+                    <span>({{ orderProduct?.product?.model }})</span>
+                </div>
+                <div class="product-right-content">
+                    <button class="leave-review-btn cursor-pointer"
+                    [routerLink]="['/products/view/' + orderProduct?.product?.id]"
+                    (click)="onNoClick()"
+                    >{{ 'review.leaveReview' | translate }}</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+  

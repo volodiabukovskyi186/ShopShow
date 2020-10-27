@@ -1,6 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {environment} from 'src/environments/environment';
-import {MyOrdersService} from '../services/my-orders.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { MyOrdersService } from '../services/my-orders.service';
+import { ReviewDialogComponent } from '../../../dialogs/review-dialog/review-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-my-order-product-item',
@@ -50,12 +52,12 @@ export class MyOrderProductItemComponent implements OnInit {
         11: 'months.Dec'
     }];
 
-    constructor(public myOrderService: MyOrdersService) {
-    }
+    constructor(
+        public myOrderService: MyOrdersService,
+        public dialog: MatDialog
+    ) {}
 
     public ngOnInit(): void {
-
-
         this.orderId = this.order.id;
         //this.order = this.order.manufacturers;
 
@@ -65,6 +67,7 @@ export class MyOrderProductItemComponent implements OnInit {
 
 
         //this.getOrderStatus();
+        console.log(this.order);
     }
 
     public itemDrop(): void {
@@ -87,6 +90,26 @@ export class MyOrderProductItemComponent implements OnInit {
         } else if (type === 'year') {
             return t.getFullYear();
         }
+    }
+
+    public openReviewModal() {
+        const dialogRef = this.dialog.open(ReviewDialogComponent, {
+            data: {
+                title: 'Select product to review',
+                actions: [
+                  {
+                    param: 'closeIcon',
+                    label: 'Cancel',
+                  },
+                  {
+                    param: 'add',
+                    label: 'Add',
+                  },
+                ],
+                order: this.order
+              },
+            });
+        dialogRef.afterClosed().subscribe(res => {});
     }
 
     // getOrderStatus(): void {

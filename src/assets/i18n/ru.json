@@ -128,7 +128,9 @@
     "review": {
       "sliderDesc": "Не слушайте только нас, послушайте также и наших клиентов.",
       "reviews": "Отзывы о продукте",
-      "no_reviews": "Отзывов пока нет"
+      "no_reviews": "Отзывов пока нет",
+      "leaveReview": "Оставить отзыв",
+      "leaveReviewAboutOrder": "Оставить отзыв о заказе"
     },
     "product": {
       "addToCart": "Добавить в корзину",
@@ -168,7 +170,9 @@
     "my-orders": "Мои заказы",
     "my-review": "Мой обзор",
     "log-out": "Выход",
-    "edit": "Edit"
+    "edit": "Pедактировать",
+    "orderStatus": "Статус заказа",
+    "totalPayment": "Всего к оплате"
   },
   "statusCodes": {
     "done": "Выполнено",
@@ -255,5 +259,13 @@
     "confirmPassword": "Подтвердить пароль",
     "changePasswordSuccess": "Пароль успешно изменен"
   },
-  "contactAddress": "79031, г. Львов, улица Стрийская, 202"
+  "contactAddress": "79031, г. Львов, улица Стрийская, 202",
+  "delivery": {
+    "deliveryTitle": "Доставка",
+    "mailСompanyPlan": "В соответствии с тарифами перевозчика",
+    "pcs": "шт.",
+    "items": "позиции",
+    "item": "позиция",
+    "uah": "грн"
+  }
 }

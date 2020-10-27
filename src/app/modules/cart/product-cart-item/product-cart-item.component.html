@@ -7,7 +7,7 @@
 <div class="info">
   <h4>{{ value.product.description?.name  }}</h4>
 
-  <span
+  <span *ngIf="!value.product.discont"
     >
     {{currency.current.simbol_left}}
     {{ value.product.price * currency.current.value }}
@@ -17,6 +17,20 @@
     <span style="text-align: center" [@changeValueHighlight]="value.count">
       {{currency.current.simbol_left}}
       {{ value.product.price * currency.current.value * value.count | number }}
+      {{currency.current.simbol_right}}
+    </span>
+  </span
+  >
+  <span *ngIf="value.product.discont"
+    >
+    {{currency.current.simbol_left}}
+    {{ value.product.discont.price * currency.current.value }}
+    {{currency.current.simbol_right}}
+    x
+    <rap-count-input [min]="1" [(value)]="value.count"></rap-count-input>
+    <span style="text-align: center" [@changeValueHighlight]="value.count">
+      {{currency.current.simbol_left}}
+      {{ value.product.discont.price * currency.current.value * value.count | number }}
       {{currency.current.simbol_right}}
     </span>
   </span

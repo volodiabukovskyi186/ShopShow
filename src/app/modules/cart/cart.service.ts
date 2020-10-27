@@ -104,8 +104,15 @@ export class CartService {
     this.totalPrice = 0;
     for (let i = 0; i < this.list.length; i++) {
       const element = this.list[i];
-      let sum = element.product.price * element.count;
-      this.totalPrice += sum;
+      if (!element?.product?.discont?.price) {
+        let sum = element?.product?.price * element?.count;
+        this.totalPrice += sum;
+      }
+
+      if (element?.product?.discont?.price) {
+        let sum = element?.product?.discont?.price * element?.count;
+        this.totalPrice += sum;
+      }
     }
   }
   calcTotalCount() {

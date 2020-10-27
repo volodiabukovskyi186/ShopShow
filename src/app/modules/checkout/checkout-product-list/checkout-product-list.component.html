@@ -33,12 +33,13 @@
 
 <div @fadeHeight *ngIf="check.currentStepIndex >= 1">
   <div class="total flex space">
-    <span>{{ cart.count }} items</span>
+    <span *ngIf="cart.count === 1">{{ cart.count }} {{ 'delivery.item' | translate }}</span>
+    <span *ngIf="cart.count > 1">{{ cart.count }} {{ 'delivery.items' | translate }}</span>
     <span>{{ cart.total | number }}</span>
   </div>
   <div class="total flex space">
-    <span>Delivery</span>
-    <span>mail company plan</span>
+    <span>{{ 'delivery.deliveryTitle' | translate }}</span>
+    <span>{{'delivery.mailСompanyPlan' | translate }}</span>
   </div>
 </div>
 

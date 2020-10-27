@@ -23,6 +23,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { WishlistProductItemComponent } from './wishlist/wishlist-product-item/wishlist-product-item.component';
 import { MyOrderProductItemComponent } from './my-orders/my-order-product-item/my-order-product-item.component';
 import { MyReviewProductItemComponent } from './my-review/my-review-product-item/my-review-product-item.component';
+import { ReviewDialogComponent } from '../dialogs/review-dialog/review-dialog.component';
 
 const components = [
   AccauntButtonComponent,
@@ -45,6 +46,7 @@ const components = [
     WishlistProductItemComponent,
     MyOrderProductItemComponent,
     MyReviewProductItemComponent,
+    ReviewDialogComponent,
   ],
   exports: [...components, PersonalDataComponent],
   imports: [

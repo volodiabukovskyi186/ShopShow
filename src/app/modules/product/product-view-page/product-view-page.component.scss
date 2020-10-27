@@ -276,6 +276,43 @@ hr {
   }
 }
 
+.old-price {
+  color: #9F1941;
+  padding-right: 40px;
+}
+
+.new-price {
+  color: #42996F;
+}
+
+.price-padding {
+  //padding-bottom: 20px;
+}
+
+.padding {
+  padding: 4px 16px 3px !important;
+}
+
+.price-title {
+  height: 45px;
+}
+
+@media screen  and (max-width: 768px){
+  .padding{
+    text-align: center;
+    div{
+      display: flex;
+      justify-content: center;
+    }
+
+  }
+  .space-card-beetwen{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+  }
+}
+
 @include screen-w(752px) {
     .add-review-container{
       .add-review-container__form{
