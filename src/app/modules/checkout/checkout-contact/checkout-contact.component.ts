@@ -38,6 +38,8 @@ export class CheckoutContactComponent implements OnInit {
       this.check.checkoutContact.lastName = this.accaunt.current.user.last_name;
       this.check.checkoutContact.email = this.accaunt.current.user.email;
       this.check.checkoutContact.phone = this.accaunt.current.user.tel;
+      this.check.checkoutContact.country = this.accaunt.current.user.country;
+      this.check.checkoutContact.city = this.accaunt.current.user.city;
     } else {
       this.check.checkoutContact.firstName = "";
       this.check.checkoutContact.lastName = "";

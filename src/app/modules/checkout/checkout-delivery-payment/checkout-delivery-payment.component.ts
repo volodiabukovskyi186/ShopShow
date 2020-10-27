@@ -12,22 +12,19 @@ import {AppLangService} from '../../core/app-lang.service';
     templateUrl: './checkout-delivery-payment.component.html',
     styleUrls: ['./checkout-delivery-payment.component.scss'],
 })
-export class CheckoutDeliveryPaymentComponent implements OnInit,OnChanges {
+export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
     public isLigpayChecked: boolean = false;
     localLang: any;
     selectedCountry: any;
-
     arrDelivers = [];
     arrPayment = [];
     currentLang: any;
     itemDelivery = [];
-
     constructor(public cart: CartService, public check: CheckoutService,
                 private translate: TranslateService,
                 public checkContact: CheckoutContactFormService,
                 public  langService: AppLangService,) {
     }
-
     ngOnInit(): void {
 
         this.arrDelivers = [];
@@ -36,35 +33,28 @@ export class CheckoutDeliveryPaymentComponent implements OnInit,OnChanges {
         this.getSelectCountryPay();
     }
     ngOnChanges(changes: SimpleChanges) {
-        if(changes){
+        if (changes){
             this.arrPayment = [];
             this.arrDelivers = [];
-            console.log( this.arrDelivers )
+            console.log(this.arrDelivers);
         }
     }
-
     nextStep() {
         this.check.steps[1].done = true;
     }
-
     edit() {
         this.check.steps[1].done = false;
         console.log(this.check.checkoutContact.country);
     }
-
     valid: boolean = true;
-
     onValid(valid: boolean) {
         this.valid = valid;
     }
-
     onItemChange(eventValue) {
         if (eventValue.cheked) {
             this.isLigpayChecked = true;
         }
-
         console.log(eventValue);
-
         // let liqPayData = {
         //   public_key: "sandbox_i23346177686",
         //   version: "3",

@@ -5,7 +5,11 @@
     "help": "Help",
     "copyright": "All Rights Reserved",
     "newsletter": "Newsletter",
-    "wantNews": "I want to receive e-mails from ShowU with information about manufacturers' products and sales."
+    "wantNews": "I want to receive e-mails from ShowU with information about manufacturers' products and sales.",
+    "thanks": "Thanks  for subscription",
+    "youKnow": "Now you will be aware of all our news and promotions",
+    "favorite": "Favorite"
+
   },
   "nav": {
     "promotion": "Promotion",

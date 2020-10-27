@@ -12,7 +12,6 @@ import { CurrencyService } from "../../currency/currency.service";
 export class ProductCartItemComponent implements OnInit {
   host: string = "https://api.showu.com.ua/";
   @Output() delete = new EventEmitter<any>();
-
   private _value: any;
   @Output() valueChange = new EventEmitter();
 

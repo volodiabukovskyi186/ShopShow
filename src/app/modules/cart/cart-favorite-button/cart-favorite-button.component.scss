@@ -47,3 +47,55 @@
     }
   }
 }
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+:host {
+  position: relative;
+  min-width: unset;
+  padding: $space/8;
+  width: 32px;
+  height: 32px;
+  // border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  margin: 0 $space/2;
+  align-items: center;
+  @include transition();
+  fill: rgba(lighten(mix($gray800, darken($blue, 30%)), 5%), 0.8);
+  rap-svg-ico {
+    width: inherit;
+    height: inherit;
+    display: block;
+    fill: currentColor;
+  }
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+}
+
+
+.count {
+  position: absolute;
+  top: -5px;
+  right: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: $primary;
+  color: $white;
+  font-size: $fontSizeSmall / 1.5;
+}
+
+.phone-menu{
+  width: 25px;
+  height: 17px;
+  background-color:#242626
+}
+
+

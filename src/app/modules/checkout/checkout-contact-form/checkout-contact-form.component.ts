@@ -36,6 +36,7 @@ export class CheckoutContactFormComponent implements OnInit, OnChanges {
 
     @Input() get model(): ICheckoutContact {
         //console.log(this._model);
+
         return this._model;
     }
 
@@ -51,7 +52,6 @@ export class CheckoutContactFormComponent implements OnInit, OnChanges {
     ngOnInit(): void {
 
         this.localLang = localStorage.getItem('current_lang');
-        // console.log('lang=========>', this.localLang);
         this.getCountry();
     }
 
@@ -80,9 +80,17 @@ export class CheckoutContactFormComponent implements OnInit, OnChanges {
                     }
                 });
             });
-            if (this._model.country == '') {
-                this._model.country = this.countries[0];
+            if(this._model.country.toLowerCase()=="poland"||this._model.country.toLowerCase()=="польша"||this._model.country.toLowerCase()=="польща"){
+                this._model.country=this.countries[1];
             }
+            else{
+                this._model.country=this.countries[0];
+            }
+
+
+            // if (this._model.country == '') {
+            //     this._model.country = this.countries[0];
+            // }
 
             // console.log(this.testVal)
             // this.values = this._model.country;

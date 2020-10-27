@@ -1,11 +1,14 @@
 import { Injectable, Inject, PLATFORM_ID } from "@angular/core";
 import { isPlatformBrowser } from "@angular/common";
+import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: "root",
 })
 export class CartService {
   isCartView: boolean = false;
+  fLanth:any;
+  favoritelenth= new Subject();
   mode: "cart" | "favorite" = "cart";
 
   list: Array<any> = [];
@@ -33,7 +36,6 @@ export class CartService {
 
   addToCart(prod: any, count: number = 1) {
     let prodIndex = this.searchProduct(prod, this.list);
-
     if (prodIndex >= 0) {
       let oldCount: number = this.list[prodIndex].count;
       let newCount: number = parseInt(oldCount + "") + parseInt(count + "");

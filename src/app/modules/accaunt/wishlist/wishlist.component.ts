@@ -73,7 +73,6 @@ export class WishlistComponent implements OnInit {
         this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
           this.wishlistProducts = res.data;
           this.allwishlistData = res;
-          console.log(this.wishlistProducts);
         })
 
       // this.accaunt.current = data.data;
