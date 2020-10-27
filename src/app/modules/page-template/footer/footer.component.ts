@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientMenuService } from '../../client-menu/client-menu.service';
 import { FormGroup, FormControl } from '@angular/forms';
-
+import {CallbackDialogComponent} from '../../dialogs/callback-dialog/callback-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import {FooterSubscribeDialogComponent} from '../../dialogs/footer-subscribe-dialog/footer-subscribe-dialog.component';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -12,7 +14,8 @@ export class FooterComponent implements OnInit {
   public userDataSubscribe;
   
   constructor(
-    public clientMenu: ClientMenuService
+    public clientMenu: ClientMenuService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +29,11 @@ export class FooterComponent implements OnInit {
   }
 
   public sendUserSubscription(): void {
-    console.log(this.subscribeForm.value);
+    const dialogRef = this.dialog.open(FooterSubscribeDialogComponent, {
+
+    });
+  //   dialogRef.afterClosed().subscribe(res => {});
+  // }
 
     this.userDataSubscribe = {
       "subscriptions_type_id": 1,
@@ -35,11 +42,10 @@ export class FooterComponent implements OnInit {
       "last_name": null,
       "telephone": null,
       "password": null,
-      "subscrition": true
+      // "subscrition": true
   }
-
     this.clientMenu.sendSubscription(this.userDataSubscribe).subscribe((res) => {
-      console.log(res);
+
     })
   }
 }

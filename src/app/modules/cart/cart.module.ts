@@ -9,12 +9,13 @@ import { ProductCartItemComponent } from "./product-cart-item/product-cart-item.
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
+import { CardWishlistItemComponent } from './card-wishlist-item/card-wishlist-item.component';
 
 const C = [CartViewComponent, CartButtonComponent, CartFavoriteButtonComponent];
 
 @NgModule({
   exports: [...C],
-  declarations: [...C, ProductCartItemComponent],
+  declarations: [...C, ProductCartItemComponent, CardWishlistItemComponent],
   imports: [
     CommonModule,
     UiModule,

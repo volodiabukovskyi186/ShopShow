@@ -16,8 +16,9 @@
     </div>
     <h6>{{ item.author }}</h6>
     <rap-rating [rating]="item.rating"></rap-rating>
-
-    <div class="comment">{{ item.text }}</div>
+    <div class="comment">
+    <span> {{ item.text }}</span>
+    </div>
   </div>
 </drag-scroll>
 </div>

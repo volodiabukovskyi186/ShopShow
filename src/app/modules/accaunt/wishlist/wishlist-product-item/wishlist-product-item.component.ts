@@ -52,9 +52,7 @@ export class WishlistProductItemComponent implements OnInit {
   public getUserAccauntData(): void {
     this.accauntService.getUser().subscribe((data) => {
         console.log(data);
-
         this.userId = data.data.user.id;
-
         this.accauntService.current = data.data;
         this.accauntService.onCurrent();
     });
@@ -62,9 +60,7 @@ export class WishlistProductItemComponent implements OnInit {
 
   public addToWishlist(product) {
     //$event.preventDefault();
-
     const found = this.wishlistProducts.some((el) => { el.product_id === product.product_id});
-
     if (found) {
       this.productService.addProductToWishlist({
         product_id: product?.description?.product_id,

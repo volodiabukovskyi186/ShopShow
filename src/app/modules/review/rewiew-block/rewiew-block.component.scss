@@ -27,6 +27,7 @@ header {
   .comment {
     padding: $space/2 $space $space;
     margin-bottom: $space;
+    white-space: pre-wrap;
   }
 }
 

@@ -5,7 +5,10 @@
     "help": "Centrum pomocy",
     "copyright": "All Rights Reserved",
     "newsletter": "Aktualności",
-    "wantNews": "Chcę otrzymywać elektronowe listy od ShowU z informacją o towarach producentów i promocjach."
+    "wantNews": "Chcę otrzymywać elektronowe listy od ShowU z informacją o towarach producentów i promocjach.",
+    "thanks": "Dziękuję za zasubskrybowanie",
+    "youKnow": "Teraz będziesz świadomy wszystkich naszych nowości i promocji",
+    "favorite": "Ulubiony"
   },
   "nav": {
     "promotion": "Promocje",

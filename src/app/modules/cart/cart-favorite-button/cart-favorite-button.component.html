@@ -1,3 +1,10 @@
 <rap-svg-ico id="small-color" [src]="'assets/icons/heart.svg'" class="heart-icon">
 
 </rap-svg-ico>
+<!--<rap-svg-ico *ngIf="!sreenwidth"  (window:resize)="onResize($event)" [src]="'assets/icons/cart-add.svg'"></rap-svg-ico>-->
+<!--<rap-svg-ico  class="phone-menu"  (window:resize)="onResize($event)"  *ngIf="sreenwidth" class="phone-menu" [src]="'assets/icons/bag1.svg'"></rap-svg-ico>-->
+<div  *ngIf="allwishlistData?.length > 0" class="count">
+    {{ allwishlistData?.length}}
+</div>
+
+

@@ -35,6 +35,6 @@ export class ClientMenuService {
   }
 
   public sendSubscription(userData): Observable<any> {
-    return this.http.post<any>(environment.host + `client`, userData);
+    return this.http.post<any>(environment.host + `subscription_client`, userData);
   }
 }

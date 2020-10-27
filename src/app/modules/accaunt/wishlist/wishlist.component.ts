@@ -78,7 +78,6 @@ export class WishlistComponent implements OnInit {
 
           this.wishlistProducts = res.data;
           this.allwishlistData = res;
-          console.log(this.wishlistProducts);
         })
 
       // this.accaunt.current = data.data;

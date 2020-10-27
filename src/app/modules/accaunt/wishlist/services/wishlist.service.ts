@@ -17,7 +17,7 @@ export class WishlistService {
 
   getUserWishlistByClientId(clientId, value?: string, cardNumber?: number): Observable<any> {
     let params = `clientWishlist/${clientId}`;
-    console.log(params);
+
 
     if (cardNumber) {
       this.takeNumber = cardNumber;
@@ -37,5 +37,8 @@ export class WishlistService {
     }
 
     return this.http.get<any>(environment.host + params);
+  }
+  getAllWhishList(clientId: any): Observable<any> {
+    return this.http.get<any>(environment.host + `clientWishlist/${clientId}`);
   }
 }
