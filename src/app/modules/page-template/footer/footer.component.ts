@@ -44,6 +44,7 @@ export class FooterComponent implements OnInit {
       "password": null,
       // "subscrition": true
   }
+    this.subscribeForm.reset();
     this.clientMenu.sendSubscription(this.userDataSubscribe).subscribe((res) => {
 
     })

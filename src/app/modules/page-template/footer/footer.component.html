@@ -30,17 +30,18 @@
     </div>
     <form [formGroup]="subscribeForm" class="col col-25 col100m small-footer-input">
       <h5>{{ "footer.newsletter" | translate }}</h5>
+
       <div class="subscribe-container">
         <input
           class="radius input-subscribe"
           type="email"
-          placeholder="Enter your email"
+          placeholder="{{'footer.enterEmail'| translate }}"
           formControlName="userSubscription"
         />
         <button 
           class="btn-subscribe"
           (click)="sendUserSubscription()"
-          >Subscribe</button>
+          >{{ "footer.subscribe" | translate }}</button>
       </div>
       <p class="gray ">
         {{ "footer.wantNews" | translate }}

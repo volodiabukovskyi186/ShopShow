@@ -8,7 +8,9 @@
     "wantNews": "I want to receive e-mails from ShowU with information about manufacturers' products and sales.",
     "thanks": "Thanks  for subscription",
     "youKnow": "Now you will be aware of all our news and promotions",
-    "favorite": "Favorite"
+    "favorite": "Favorite",
+    "subscribe": "Subscribe",
+    "enterEmail": "Enter your email"
 
   },
   "nav": {

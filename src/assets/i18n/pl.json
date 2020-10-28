@@ -8,7 +8,9 @@
     "wantNews": "Chcę otrzymywać elektronowe listy od ShowU z informacją o towarach producentów i promocjach.",
     "thanks": "Dziękuję za zasubskrybowanie",
     "youKnow": "Teraz będziesz świadomy wszystkich naszych nowości i promocji",
-    "favorite": "Ulubiony"
+    "favorite": "Ulubiony",
+    "subscribe": "Subskrybuj",
+    "enterEmail": "Wprowadź swój email"
   },
   "nav": {
     "promotion": "Promocje",
