@@ -198,6 +198,8 @@
 
     .block-currency-language {
         width: 100%;
+        position: relative;
+        z-index: 10000;
         justify-content: space-between;
         background-color: white;
     }

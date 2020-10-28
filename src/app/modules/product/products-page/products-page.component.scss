@@ -157,7 +157,10 @@ $size: 16px;
 
   }
   .sotr-count-prodyct{
-    display: none;
+    display: block;
+  }
+  .sort-products{
+    display: block;
   }
   .filter-block{
     display: none;
@@ -170,6 +173,9 @@ $size: 16px;
   }
   .sortNone{
     visibility: hidden;
+  }
+  .sort-count-product{
+    display: none;
   }
 
 }
