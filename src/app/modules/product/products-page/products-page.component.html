@@ -45,7 +45,7 @@
 
       <app-filter-page class="filter-block-btn" (filterChanged)="onFilterChanged($event)"></app-filter-page>
 
-      <mat-form-field appearance="standart" class="sort-products  sotr-count-prodyct">
+      <mat-form-field appearance="standart" class="sort-products   sotr-count-prodyct">
         <div class="sort-products-wrapper">
 <!--          [ngClass]="{'sortNone':selectStatusBy}"-->
           <mat-label class="sort-products-label" >{{ 'sortBy.sort' | translate }}</mat-label>
@@ -83,9 +83,6 @@
       </mat-form-field>
     </div>
     <h1 style="margin-top: 0;">{{ product?.item?.name }}</h1>
-
-    <br />
-
     <!-- <pre>{{this.product.products | json}}</pre> -->
 
     <app-product-list class="product-list__padding"

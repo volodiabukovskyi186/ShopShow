@@ -49,15 +49,15 @@
   >
     <footer *ngSwitchCase="'cart'">
       <div class="total flex space">
-        <span>{{ "cart.total" | translate }}: </span>
-        <span [@changeValueHighlight]="cart.total">{{
+        <span class="text-total">{{ "cart.total" | translate }}: </span>
+        <span class="text-total" [@changeValueHighlight]="cart.total">{{
           currency.current.value * cart.total | number
         }}</span>
       </div>
       <div class="flex">
         <button
           (click)="cart.isCartView = false"
-          class="button large radius transparent"
+          class="button  radius transparent"
         >
           {{ "cart.backToStore" | translate }}
         </button>
@@ -65,7 +65,7 @@
         <a
           [routerLink]="['/checkout']"
           (click)="cart.isCartView = false"
-          class="button large radius delete"
+          class="button  radius delete orderBtn"
           >{{ "cart.checkout" | translate }}</a
         >
       </div>

@@ -24,7 +24,6 @@ export class MyOrdersComponent implements OnInit {
     myOrders: any[] = [];
     allOrders: any;
     Math = Math;
-    isSuccessOrders: boolean = false;
     //page: number = 1;
     //take: number = 10;
 
@@ -48,15 +47,15 @@ export class MyOrdersComponent implements OnInit {
 
     public getUserClientId(): void {
         this.accauntService.getUser().subscribe((res) => {
-          console.log(res);
-
-          this.clientId = res.data.user.id;
-          console.log(this.clientId);
-
-          this.myOrdersService.getOrderById(this.clientId).subscribe((res) => {
             console.log(res);
-            this.clientOrders = res;
-          })
+
+            this.clientId = res.data.user.id;
+            console.log(this.clientId);
+
+            this.myOrdersService.getOrderById(this.clientId).subscribe((res) => {
+                console.log(res);
+                this.clientOrders = res;
+            })
         })
     }
 
@@ -72,43 +71,39 @@ export class MyOrdersComponent implements OnInit {
                 //console.log(this.product.products.data.products);
 
                 res.data.products.forEach((val) => {
-                if (val.promotion) {
-                    this.promotions.unshift(val);
-                }
-                if (val.promotion === null) {
-                    this.promotions.push(val);
-                }
+                    if (val.promotion) {
+                        this.promotions.unshift(val);
+                    }
+                    if (val.promotion === null) {
+                        this.promotions.push(val);
+                    }
                 })
 
                 this.myOrders = this.promotions;
             }
         });
-      }
+    }
 
     public onCardNumberChanged(cardNumber: number) {
         this.selectedCardNumber = cardNumber;
         this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber, this.selectedSorting).subscribe((res) => {
-          this.myOrders = res.data;
-          this.allOrders = res;
+            this.myOrders = res.data;
+            this.allOrders = res;
         });
     }
 
     public getOrdersByClientId() {
         this.accauntService.getUser().subscribe((res) => {
             this.clientId = res.data.user.id;
-              console.log(this.clientId);
-              this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber).subscribe((res) => {
-                setTimeout(() => {
-                  this.isSuccessOrders = true;
-                }, 1000);
-
+            console.log(this.clientId);
+            this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber).subscribe((res) => {
                 //this.myOrders = res.data[0].orders;
                 this.myOrders = res.data;
                 this.allOrders = res;
 
                 console.log(res);
                 console.log(this.myOrders);
-              })
+            })
 
             // this.accaunt.current = data.data;
             // this.accaunt.onCurrent();
@@ -120,9 +115,7 @@ export class MyOrdersComponent implements OnInit {
         console.log(page);
         this.myOrdersService.page = page;
         this.getOrdersByClientId();
-      }
-
-
+    }
 
     // public changeMaterialCategory(event, cardNumber?: number) {
     //     console.log(event);

@@ -107,7 +107,7 @@
     "email": "Email",
     "city": "City",
     "chooseDeliveryPayment": "Choose delivery and payment",
-    "delivery": "Delivery (delivery is paid upon receipt)",
+    "delivery": "Delivery",
     "address": "Address",
     "addressRequired": "Address is required",
     "payment": "Payment",
@@ -156,7 +156,8 @@
     "view": "View"
   },
   "filter": {
-    "priceRange": "Price range"
+    "priceRange": "Price range",
+    "filterbtn":"Filter"
   },
   "wishlist": {
     "addToWishlist": "Add To Wishlist"

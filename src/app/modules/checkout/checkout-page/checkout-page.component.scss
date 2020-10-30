@@ -28,3 +28,20 @@ app-checkout-product-list {
     transform: scale(1.005);
   }
 }
+@media screen and (max-width:900px) {
+  .order-wrapper{
+    display: flex;
+    flex-direction: column;
+  }
+  .golden {
+    max-width:100%;
+    .long {
+    max-width:100%;
+    }
+    .short {
+      max-width:100%;
+    }
+
+  }
+}
+

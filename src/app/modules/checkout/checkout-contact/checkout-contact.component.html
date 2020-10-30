@@ -4,7 +4,7 @@
   [title]="'cart.enterСontacts' | translate"
 ></app-checkout-step>
 
-<div class="card padding flex" *ngIf="check.currentStepIndex != 0">
+<div class="card padding flex mobile-block" *ngIf="check.currentStepIndex != 0">
   <div style="flex: 1;" *ngIf="check.steps[0].done">
     <h4>
       {{ check.checkoutContact.firstName }} {{ check.checkoutContact.lastName }}
@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<div *ngIf="check.currentStepIndex == 0" @fadeHeight class="card padding">
+<div *ngIf="check.currentStepIndex == 0" @fadeHeight class="card padding mobile-block">
   <div class="flex" style="margin-bottom: 16px;" *ngIf="!auth.authenticated">
     <rap-step-tabs>
       <rap-step-tab [title]="'New Customer'">

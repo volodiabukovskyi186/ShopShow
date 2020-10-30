@@ -69,7 +69,7 @@
     "email": "Email",
     "city": "Miasto",
     "chooseDeliveryPayment": "Wybierz dostawę i płatność",
-    "delivery": "Dostawa (płatność za pobraniem)",
+    "delivery": "Dostawa ",
     "address": "Adres",
     "addressRequired": "Adres jest wymagany",
     "payment": "Zapłata",
@@ -107,7 +107,8 @@
     "view": "Widok"
   },
   "filter": {
-    "priceRange": "Przedział cenowy"
+    "priceRange": "Przedział cenowy",
+    "filterbtn":"Filtr"
   },
   "product": {
     "productCode": "Kod produktu",
