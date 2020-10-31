@@ -1,0 +1,13 @@
+<div class="review-dialog">
+    <div class="dialog-header">
+        <span class="material-icons close-icon" (click)="onNoClick()">close</span>
+    </div>
+    <div class="dialog-wrapper" *ngIf="data?.orderId">
+        <div>{{ 'accaunt.yourOrder' | translate }} {{ data?.orderId }} {{ 'accaunt.orderProcessing' | translate }}</div>
+        <div>{{ 'accaunt.orderManagerContact' | translate }}</div>
+        <div>{{ 'accaunt.orderThankYou' | translate }}</div>
+        <a [routerLink]="['/']" class="cursor-pointer">
+            <button class="go-shop-btn cursor-pointer">{{ 'accaunt.home' | translate }}</button>
+        </a>
+    </div>
+</div>
