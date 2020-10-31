@@ -7,6 +7,16 @@
       <p class="gray text-left">
         {{ "footer.description" | translate }}
       </p>
+      <div class="solial-networks">
+        <a *ngFor="let solial of solialArr" [href]="solial.url" target="_blank">
+        <img
+                class="solial"
+                [src]="'//' + 'api.showu.com.ua' + solial.icon.src_mini"
+                [alt]="solial.id"
+
+        />
+        </a>
+      </div>
     </div>
     <div class="col col-25 col50m footer-small-shop">
       <h5>{{ "footer.shop" | translate }}</h5>

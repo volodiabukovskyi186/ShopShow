@@ -17,7 +17,7 @@ export class MyOrdersService {
   products: any = {
     count: 0,
     skip: 0,
-    take: 20,
+    take: 10,
   };
 
 
@@ -30,17 +30,19 @@ export class MyOrdersService {
   public getUserOrdersByClientId(clientId, cardNumber?: number, value?: string): Observable<any> {
     let skip = this.page * cardNumber - cardNumber;
     let params = `clientOrders/${clientId}`;
-
+    let lang = localStorage.getItem('current_lang');
     if (skip) {
       params = `${params}?skip=${skip}`;
     }
 
     if (cardNumber) {
-      this.takeNumber = cardNumber;
-      params = `${params}?take=${this.takeNumber}`;
-    }
 
-    return this.http.get<any>(environment.host + params);
+      this.takeNumber = cardNumber;
+      params = `${params}?&take=${this.takeNumber}`;
+      //
+    }
+    console.log(skip);
+    return this.http.get<any>(`${environment.host + params}?lang=${lang}`);
   }
   getProdStatus(id: number, lang: any ): Observable <any> {
     return this.http.get(`https://api.showu.com.ua/order/client/${id}?lang=${lang}`);

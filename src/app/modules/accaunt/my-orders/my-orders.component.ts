@@ -18,7 +18,7 @@ export class MyOrdersComponent implements OnInit {
     clientId: number;
     clientOrders: any;
     public cardNumbers: any[] = [];
-    selectedCardNumber: number;
+    selectedCardNumber=10
     selectedSorting: string;
     promotions: any[] = [];
     myOrders: any[] = [];
