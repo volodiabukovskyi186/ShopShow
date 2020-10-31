@@ -4,7 +4,7 @@
   [title]="'cart.chooseDeliveryPayment' | translate"
 ></app-checkout-step>
 
-<div class="card padding" *ngIf="check.currentStepIndex > 0">
+<div class="card padding payment-wrapper"  *ngIf="check.currentStepIndex > 0">
   <div
     @fadeHeight
     *ngIf="check.currentStepIndex > 0 && check.steps[1].done"

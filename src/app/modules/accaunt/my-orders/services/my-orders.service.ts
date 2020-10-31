@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class MyOrdersService {
   public myOrders: BehaviorSubject<any> = new BehaviorSubject<any>([]);
@@ -21,7 +21,7 @@ export class MyOrdersService {
   };
 
 
-  constructor(private http: HttpClient) {} 
+  constructor(private http: HttpClient) {}
 
   public getOrderById(id) {
     return this.http.get<any>(`${environment.host}order/${id}`);

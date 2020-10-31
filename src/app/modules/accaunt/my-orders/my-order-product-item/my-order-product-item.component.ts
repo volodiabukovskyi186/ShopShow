@@ -67,7 +67,8 @@ export class MyOrderProductItemComponent implements OnInit {
 
 
         //this.getOrderStatus();
-        console.log(this.order);
+        // console.log(this.order);
+        this.   getTest()
     }
 
     public itemDrop(): void {
@@ -113,13 +114,18 @@ export class MyOrderProductItemComponent implements OnInit {
     }
 
     // getOrderStatus(): void {
-
+    //
     //     let lang = localStorage.getItem('current_lang');
     //     console.log('statusid====>',lang);
     //     this.myOrderService.getProdStatus(this.order.status[0].description.order_status_id, lang).subscribe(data => {
     //         this.orderStatus = data.data[0].status[0].description.dectiption;
     //         console.log(data.data);
     //     });
-
+    //
     // }
+    getTest():void{
+        this.myOrderService.getProdStatus(1,'ua').subscribe(data=>{
+            // console.log('datadata====>',data)
+        })
+    }
 }

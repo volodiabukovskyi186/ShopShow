@@ -114,7 +114,7 @@
       "email": "Емайл",
       "city": "Город",
       "chooseDeliveryPayment": "Выберите способ доставки и оплаты",
-      "delivery": "Доставка (доставка оплачивается после получения)",
+      "delivery": "Доставка",
       "address": "Адрес",
       "addressRequired": "Адрес обязательно",
       "payment": "Способ оплаты",
@@ -163,7 +163,8 @@
       "view": "Вид"
     },
     "filter": {
-      "priceRange": "Диапазон цен"
+      "priceRange": "Диапазон цен",
+      "filterbtn":"Фильтр"
     },
     "wishlist": {
       "addToWishlist": "Добавить В Список Желаний"

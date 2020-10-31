@@ -69,3 +69,28 @@
 .country-description {
     margin-top: -20px;
 }
+@media screen  and (max-width: 900px){
+  .city-input,
+  .country-description {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .checkout-content{
+  padding-top: 20px;
+    mat-form-field {
+      margin-top: 10px;
+      width: 100%;
+      height: 30px;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      .mat-form-field-wrapper{
+        padding-bottom: 0;
+      }
+    }
+  }
+  .city-input{
+    margin-top: 0;
+    padding-top: 0;
+  }
+}

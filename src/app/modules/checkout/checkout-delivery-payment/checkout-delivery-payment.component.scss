@@ -30,3 +30,8 @@ hr {
     align-items: unset;
   }
 }
+@media screen  and (max-width: 900px){
+  .payment-wrapper{
+    margin-left: 0;
+  }
+}

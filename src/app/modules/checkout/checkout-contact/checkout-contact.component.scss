@@ -24,3 +24,9 @@ $size: 48px;
 h4 {
   margin: $space/2 0 ;
 }
+
+@media screen and (max-width: 900px){
+  .mobile-block{
+    margin-left: 0;
+  }
+}

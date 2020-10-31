@@ -1,4 +1,4 @@
-<div class="review-container" *ngIf="(myOrders.length === 0) && isSuccessOrders">
+<div class="review-container" *ngIf="(myOrders.length === 0) ">
     <div class="reset-success-content">
         <div class="success-message">
             <div class="success-message-content">
@@ -46,12 +46,11 @@
         </div>
     </div>
     <div class="orders-container">
-        <app-my-order-product-item 
+        <app-my-order-product-item
             *ngFor="let myOrder of myOrders"
             [order]="myOrder">
         </app-my-order-product-item>
     </div>
-
     <app-pagination
       class="radius"
       [page]="myOrdersService.page"
@@ -60,3 +59,4 @@
       (pageChanged)="pageChangedHandler($event)"
     ></app-pagination>
 </div>
+
