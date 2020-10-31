@@ -191,9 +191,13 @@
             </div>
             <div class="change-data__input-container">
                 <label for="detail-city" class="input__group">{{ 'personalData.userDetailsForTheCourier' | translate }}</label>
-                <div class="input__group-two" id="detail-city">
-                    <input class="input__group-two__firts" type="text" formControlName="detailsForTheCourierOne">
-                    <input type="text" formControlName="detailsForTheCourierTwo">
+                <div class="input__group" id="detail-city">
+                    <input type="text" formControlName="delivery_adress" required>
+                    <div *ngIf="formAuthControls?.delivery_adress?.invalid && (formAuthControls?.delivery_adress?.dirty || formAuthControls?.delivery_adress?.touched)" class="error-message">
+                        <div *ngIf="formAuthControls?.delivery_adress?.errors.required" class="">
+                            {{ 'accaunt.requiredDetails' | translate }}
+                        </div>
+                    </div>
                 </div>
             </div>
 

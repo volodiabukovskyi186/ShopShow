@@ -5,6 +5,8 @@ import { CheckoutService } from "../checkout.service";
 import { CurrencyService } from "../../currency/currency.service";
 import { AccauntService } from '../../../modules/accaunt/accaunt.service';
 import { MyOrdersService } from '../../accaunt/my-orders/services/my-orders.service';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderSuccessDialogComponent } from '../../dialogs/order-success-dialog/order-success-dialog.component';
 
 @Component({
   animations: [fadeHeight],
@@ -27,7 +29,8 @@ export class CheckoutProductListComponent implements OnInit {
     public currency: CurrencyService,
     public check: CheckoutService,
     public accauntService: AccauntService,
-    public myOrdersService: MyOrdersService
+    public myOrdersService: MyOrdersService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -79,6 +82,12 @@ export class CheckoutProductListComponent implements OnInit {
       if (res) {
         this.orderHadler(res);
         this.orderData = res;
+        console.log(res);
+
+        if (this.check.checkoutPayment !== 'liqpay') {
+          this.openOrderModal(res.data[0].id);
+          this.cart.list = [];
+        }
 
         if (this.check.checkoutPayment === 'liqpay') {
           this.isOrderBtnCliked = true;
@@ -97,7 +106,7 @@ export class CheckoutProductListComponent implements OnInit {
                 this.hashedDataToSend = this.hashedData.result.data;
                 this.hashedPrivateData = this.hashedData.result.sign;
 
-                this.cart.list = [];
+                //this.cart.list = [];
               }
           })
         }
@@ -106,9 +115,29 @@ export class CheckoutProductListComponent implements OnInit {
     });
   }
 
+  openOrderModal(orderId) {
+    const dialogRef = this.dialog.open(OrderSuccessDialogComponent, {
+      data: {
+          title: 'Select product to review',
+          actions: [
+            {
+              param: 'closeIcon',
+              label: 'Cancel',
+            },
+            {
+              param: 'add',
+              label: 'Add',
+            },
+          ],
+          orderId: orderId
+        },
+      });
+  dialogRef.afterClosed().subscribe(res => {});
+  }
+
   orderHadler(data) {
     console.log(data);
-    alert("Замовлення відправлено\r\nОчікуйте дзвінка від менеджера ^_^");
+    //alert("Замовлення відправлено\r\nОчікуйте дзвінка від менеджера ^_^");
     //this.cart.list = [];
   }
 

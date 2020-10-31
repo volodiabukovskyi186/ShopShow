@@ -73,6 +73,7 @@
     "requiredPhone": "Error: Phone is required.",
     "requiredCountry": "Error: Country is required.",
     "requiredCity": "Error: City is required.",
+    "requiredDetails": "Error: Details is required.",
     "requiredPassword": "Error: Password is required.",
     "noOrderHasBeenMade": "No order has been made yet.",
     "goShop": "Go Shop",
@@ -80,7 +81,12 @@
     "noReviewsYet": "There are no reviews yet.",
     "accountDetailsChanged": "Account details changed successfully.",
     "successfullRegistration": "Registration was successful.",
-    "emailAlreadyExists": "A user with this email already exists."
+    "emailAlreadyExists": "A user with this email already exists.",
+    "home": "Home",
+    "orderManagerContact": "Our manager will contact you within 1-2 hours.!",
+    "orderThankYou": "Thank you!",
+    "yourOrder": "Your order",
+    "orderProcessing": "has been sent for processing."
   },
   "cart": {
     "checkout": "Checkout",
