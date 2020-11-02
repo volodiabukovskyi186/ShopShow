@@ -276,5 +276,10 @@
     "items": "items",
     "item": "item",
     "uah": "uah"
+  },
+  "hi": {
+    "hi": "Hello"
   }
+
+
 }

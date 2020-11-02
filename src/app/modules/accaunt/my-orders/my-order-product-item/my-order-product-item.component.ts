@@ -68,7 +68,7 @@ export class MyOrderProductItemComponent implements OnInit {
 
         //this.getOrderStatus();
         // console.log(this.order);
-        this.   getTest()
+        // this.getTest()
     }
 
     public itemDrop(): void {
@@ -123,9 +123,9 @@ export class MyOrderProductItemComponent implements OnInit {
     //     });
     //
     // }
-    getTest():void{
-        this.myOrderService.getProdStatus(1,'ua').subscribe(data=>{
-            // console.log('datadata====>',data)
-        })
-    }
+    // getTest():void{
+    //     this.myOrderService.getProdStatus(1,'ua').subscribe(data=>{
+    //         // console.log('datadata====>',data)
+    //     })
+    // }
 }

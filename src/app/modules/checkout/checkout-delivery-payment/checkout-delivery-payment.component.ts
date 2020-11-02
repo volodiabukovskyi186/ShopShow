@@ -18,6 +18,7 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
     selectedCountry: any;
     arrDelivers = [];
     arrPayment = [];
+    liqPayStatus:any;
     currentLang: any;
     itemDelivery = [];
     constructor(public cart: CartService, public check: CheckoutService,
@@ -31,6 +32,7 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
         this.arrPayment = [];
         this.getSelectCountry();
         this.getSelectCountryPay();
+        this. getLiqpayStatus()
     }
     ngOnChanges(changes: SimpleChanges) {
         if (changes){
@@ -76,12 +78,9 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
 
     getSelectCountry(): void {
 
-
         this.localLang = localStorage.getItem('current_lang');
         this.checkContact.BSubject.subscribe(data => {
-
             this.selectedCountry = data;
-
             this.checkContact.getCountryDeliver(this.selectedCountry.id, this.localLang).subscribe(data => {
                 this.arrDelivers = [] ;
                 data.data.deliveries.forEach(elem => {
@@ -104,6 +103,12 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
                 });
             });
         });
+    }
+    getLiqpayStatus(): void {
+        this.checkContact.getLiqpayStatus().subscribe(data => {
+            this.liqPayStatus = data.status;
+            console.log('liqpayStatus===>', this.liqPayStatus);
+        })
     }
 
 

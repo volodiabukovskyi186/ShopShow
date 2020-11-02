@@ -267,5 +267,8 @@
     "items": "pozycje",
     "item": "pozycja",
     "uah": "uah"
+  },
+  "hi": {
+    "hi": "Witaj"
   }
 }
