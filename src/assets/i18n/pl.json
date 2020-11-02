@@ -165,6 +165,7 @@
     "requiredPhone": "Błąd: Telefon użytkownika jest wymagany.",
     "requiredCountry": "Błąd: Kraj jest wymagany.",
     "requiredCity": "Błąd: Miasto jest wymagane.",
+    "requiredDetails": "Błąd: Wymagane są szczegóły.",
     "requiredPassword": "Błąd: Hasło jest wymagane.",
     "noOrderHasBeenMade": "Żadne zamówienie nie zostało jeszcze złożone.",
     "goShop": "Do sklepu",
@@ -172,7 +173,12 @@
     "noReviewsYet": "Brak recenzji",
     "accountDetailsChanged": "Dane osobowe zostały pomyślnie zmienione.",
     "successfullRegistration": "Rejestracja przebiegła pomyślnie.",
-    "emailAlreadyExists": "Użytkownik z tym adresem e-mail już istnieje."
+    "emailAlreadyExists": "Użytkownik z tym adresem e-mail już istnieje.",
+    "home": "Home",
+    "orderManagerContact": "Nasz menedżer skontaktuje się z Tobą w ciągu 1-2 godzin.",
+    "orderThankYou": "Dziękuję Ci!",
+    "yourOrder": "Twoje zamówienie",
+    "orderProcessing": "wysłane do przetworzenia."
   },
   "statusCodes": {
     "done": "Gotowe",

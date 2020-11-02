@@ -48,8 +48,7 @@ export class PersonalDataComponent implements OnInit {
                 phone: this.accaunt.current.user.tel,
                 country: this.accaunt.current.user.country,
                 city: this.accaunt.current.user.city,
-                detailsForTheCourierOne: '',
-                detailsForTheCourierTwo: ''
+                delivery_adress: this.accaunt.current.user.delivery_adress
             })
 
             this.accaunt.onCurrent();
@@ -64,8 +63,7 @@ export class PersonalDataComponent implements OnInit {
             phone: new FormControl('', []),
             country: new FormControl('', []),
             city: new FormControl('', []),
-            detailsForTheCourierOne: new FormControl('', []),
-            detailsForTheCourierTwo: new FormControl('', [])
+            delivery_adress: new FormControl('', [])
         });
     }
 
@@ -97,7 +95,7 @@ export class PersonalDataComponent implements OnInit {
             city: data.city,
             //secret: "secret",
             country: data.country,
-            delivery_adress: `${data.detailsForTheCourierOne} ${data.detailsForTheCourierTwo}`,
+            delivery_adress: data.delivery_adress,
             is_subscription: true
         }
 

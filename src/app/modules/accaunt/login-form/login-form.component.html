@@ -2,7 +2,7 @@
   <div *ngIf="formAuthControls.login.invalid && (formAuthControls.login.dirty || formAuthControls.login.touched)" class="error-container">
     <div *ngIf="formAuthControls.login.errors.required" class="reset-success-content">
       <div class="success-message">
-        <img class="success-message-icon" src="assets/icons/tick-error.svg"/>
+        <img class="success-message-icon" src="assets/icons/mistake-red.svg"/>
         <div class="success-message-text">{{ 'accaunt.requiredUsername' | translate }}</div>
       </div>
     </div>
@@ -10,7 +10,7 @@
   <div *ngIf="formAuthControls.password.invalid && (formAuthControls.password.dirty || formAuthControls.password.touched)">
     <div *ngIf="formAuthControls.password.errors.required" class="reset-success-content">
       <div class="success-message">
-        <img class="success-message-icon" src="assets/icons/tick-error.svg"/>
+        <img class="success-message-icon" src="assets/icons/mistake-red.svg"/>
         <div class="success-message-text">{{ 'accaunt.requiredPassword' | translate }}</div>
       </div>
     </div>

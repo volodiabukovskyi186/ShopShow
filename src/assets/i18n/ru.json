@@ -74,6 +74,7 @@
       "requiredPhone": "Ошибка: Нужен телефон пользователя.",
       "requiredCountry": "Ошибка: Укажите страну.",
       "requiredCity": "Ошибка: Укажите город.",
+      "requiredDetails": "Ошибка: Требуются подробности.",
       "requiredPassword": "Ошибка: Требуется пароль.",
       "noOrderHasBeenMade": "Заказ еще не был сделан.",
       "goShop": "Перейти в магазин",
@@ -81,7 +82,12 @@
       "noReviewsYet": "Отзывов пока нет",
       "accountDetailsChanged": "Личные данные успешно изменено.",
       "successfullRegistration": "Регистрация прошла успешно.",
-      "emailAlreadyExists": "Пользователь с таким адресом уже существует."
+      "emailAlreadyExists": "Пользователь с таким адресом уже существует.",
+      "home": "На главную",
+      "orderManagerContact": "Наш менеджер свяжется с вами в течении 1-2 часов.",
+      "orderThankYou": "Спасибо!",
+      "yourOrder": "Ваш заказ",
+      "orderProcessing": "отправлен в обработку."
     },
     "cart": {
       "checkout": "Оформить заказ",

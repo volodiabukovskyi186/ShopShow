@@ -15,6 +15,7 @@ import { CheckoutPageComponent } from "./checkout-page/checkout-page.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { AccauntModule } from '../accaunt/accaunt.module';
 import { MatSelectModule } from '@angular/material/select';
+import { OrderSuccessDialogComponent } from '../dialogs/order-success-dialog/order-success-dialog.component';
 
 const COMP = [
   CheckoutProductListComponent,
@@ -26,6 +27,7 @@ const COMP = [
   CheckoutContactFormComponent,
   CheckoutRecipientContactFormComponent,
   CheckoutPageComponent,
+  OrderSuccessDialogComponent,
 ];
 
 @NgModule({

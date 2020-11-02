@@ -74,6 +74,7 @@
     "requiredPhone": "Помилка: Потрібен телефон користувача.",
     "requiredCountry": "Помилка: Країна обов’язкова.",
     "requiredCity": "Помилка: Місто обов’язкове.",
+    "requiredDetails": "Помилка: Деталі обов’язкові.",
     "requiredPassword": "Помилка: Потрібен пароль.",
     "noOrderHasBeenMade": "Замовлення ще не зроблено.",
     "goShop": "Перейти в магазин",
@@ -81,7 +82,12 @@
     "noReviewsYet": "Відгуків поки немає",
     "accountDetailsChanged": "Особисті дані успішно змінено.",
     "successfullRegistration": "Реєстрація пройшла успішно.",
-    "emailAlreadyExists": "Користувач з такою електронною адресою вже існує."
+    "emailAlreadyExists": "Користувач з такою електронною адресою вже існує.",
+    "home": "На головну",
+    "orderManagerContact": "Наш менеджер зв'яжеться з вами протягом 1-2 годин.",
+    "orderThankYou": "Дякую!",
+    "yourOrder": "Ваше замовлення",
+    "orderProcessing": "відправлено на обробку."
   },
   "cart": {
     "checkout": "Оформити замовлення",

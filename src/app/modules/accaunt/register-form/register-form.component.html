@@ -2,7 +2,7 @@
   <div *ngIf="formRegisterControls.email.invalid && (formRegisterControls.email.dirty || formRegisterControls.email.touched)" class="error-container">
     <div *ngIf="formRegisterControls.email.errors.required" class="reset-error-content">
       <div class="error-message">
-        <img class="error-message-icon" src="assets/icons/tick-error.svg"/>
+        <img class="error-message-icon" src="assets/icons/mistake-red.svg"/>
         <div class="error-message-text">{{ 'accaunt.requiredEmail' | translate }}</div>
       </div>
     </div>
@@ -10,7 +10,7 @@
   <div *ngIf="formRegisterControls.password.invalid && (formRegisterControls.password.dirty || formRegisterControls.password.touched)">
     <div *ngIf="formRegisterControls.password.errors.required" class="reset-error-content">
       <div class="error-message">
-        <img class="error-message-icon" src="assets/icons/tick-error.svg"/>
+        <img class="error-message-icon" src="assets/icons/mistake-red.svg"/>
         <div class="error-message-text">{{ 'accaunt.requiredPassword' | translate }}</div>
       </div>
     </div>
@@ -23,7 +23,7 @@
   </div>
   <div *ngIf="isRegistrationError" class="reset-error-content">
     <div class="error-message">
-      <img class="error-message-icon" src="assets/icons/tick-error.svg"/>
+      <img class="error-message-icon" src="assets/icons/mistake-red.svg"/>
       <div class="error-message-text">{{ 'accaunt.emailAlreadyExists' | translate }}</div>
     </div>
   </div>

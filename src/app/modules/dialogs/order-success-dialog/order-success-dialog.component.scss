@@ -1,0 +1,48 @@
+.review-dialog {
+    width: 36vw;
+}
+
+.dialog-wrapper {
+    position: relative;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.dialog-header {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    min-width: 500px;
+    height: 50px;
+}
+
+.close-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    z-index: 999999;
+}
+
+.leave-review-btn {
+    border: none;
+    padding: 10px 36px;
+    outline: none;
+    border-radius: 3px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.go-shop-btn {
+    outline: none;
+    background: #9F1941;
+    color: #fff;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 17px;
+    margin-top: 30px;
+}
