@@ -24,7 +24,7 @@
                 <span></span>
                 <span></span>
             </div>
-            <img  class="burger-btn-close" *ngIf="burgerStatus" src="../../../../assets/icons/cancel.svg">
+<!--            <img  class="burger-btn-close" *ngIf="burgerStatus" src="../../../../assets/icons/cancel.svg">-->
         </div>
         <div class="mobile-search">
             <app-search></app-search>
@@ -38,6 +38,25 @@
 <!--            <img src="../../../../assets/icons/bag1.svg">-->
         </div>
       <div class="small-menu" *ngIf="burgerStatus" @slideLeft>
+          <div>
+          <div class="small-menu-top">
+              <div class="short">
+                  <a [routerLink]="['/']" routerLinkActive="router-link-active">
+                      <div class="ratio iconShow" style="margin-right: 16px;">
+                              <!-- <img src="{{ hoststatic + siteData?.logo?.src }}"/> -->
+                              <rap-svg-ico
+                                      class="logo contain icon"
+                                      [src]="'assets/showu.svg'"
+                              ></rap-svg-ico>
+
+                      </div>
+                  </a>
+              </div>
+              <div class="close-block" (click)="burgerMenu(!burgerStatus)">
+                  <img  class="burger-btn-close" *ngIf="burgerStatus" src="../../../../assets/icons/cross1.svg">
+              </div>
+
+          </div>
           <div class="small-menu-inside">
               <app-nav-list   [categories]="categories" (goTo)="burgerMenu()" (showMore)="toggle($event)" [selectedCategorySet]="categorySet"></app-nav-list>
               <app-nav-item
@@ -46,7 +65,7 @@
                       style="flex: 1;"
               ></app-nav-item>
           </div>
-
+          </div>
           <div class="small-menu-item">
               <div class="small-accaunt-item"  >
                                 <app-accaunt-button

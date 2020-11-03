@@ -5,8 +5,8 @@
             <div [ngClass]="{'active-sub': selectedCategorySet.has(link.id)}" class="category-item" (click)="showMore.emit(link.id)">
                 <span>
                     <span (click)="goToRoute(link.id)" >{{link.name}}</span>
-                    <img class="small-menu-plus-btn"  *ngIf=" !selectedCategorySet.has(link.id)&&link.sub.length>0 " src='../../../../../assets/icons/plus.svg'>
-                     <img *ngIf=" selectedCategorySet.has(link.id)&&link.sub.length>0 " src='../../../../../assets/icons/minus.svg'>
+                    <img class="small-menu-plus-btn"  *ngIf=" !selectedCategorySet.has(link.id)&&link.sub.length>0 " src='../../../../../assets/icons/plus1.svg'>
+                     <img *ngIf=" selectedCategorySet.has(link.id)&&link.sub.length>0 " src='../../../../../assets/icons/minus1.svg'>
                 </span>
             </div>
             <div   *ngIf="selectedCategorySet.has(link.id)" class="category-children">

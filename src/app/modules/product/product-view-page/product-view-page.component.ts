@@ -156,6 +156,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             this.getProdReview(this.id);
             this.product.getPopular().subscribe((data) => {
                 this.product.popular = data.data.products;
+
                 // this.ngxService.stopAll();
             });
 
@@ -210,7 +211,10 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             ...this.review.value
         };
         console.log(review);
-        this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe();
+        this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe(()=>{
+
+        });
+        this.review.reset();
     }
 
     // public getClientWishlistById() {
