@@ -73,9 +73,9 @@ ul.nav {
   flex-direction: row;
 
   .solial{
-    margin-right: 29px;
-    width: 50px;
-    height: 50px;
+    margin-right: 18px;
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -188,6 +188,9 @@ ul.nav {
       margin-left: 3%;
     }
   }
+  .solial-networks{
+    padding-left: 29px;
+  }
 }
 
 @include screen-w(389px) {
@@ -222,7 +225,7 @@ h5 {
   font-weight: bold;
   text-transform: uppercase;
   padding-left: $space/4;
-  padding-right: $space/4;
+  padding-right: $space/4
 }
 
 ul.col-nav {

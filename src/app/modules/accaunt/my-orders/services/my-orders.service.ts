@@ -34,15 +34,12 @@ export class MyOrdersService {
     if (skip) {
       params = `${params}?skip=${skip}`;
     }
-
     if (cardNumber) {
-
       this.takeNumber = cardNumber;
       params = `${params}?&take=${this.takeNumber}`;
-      //
+
     }
-    console.log(skip);
-    return this.http.get<any>(`${environment.host + params}?lang=${lang}`);
+    return this.http.get<any>(`${environment.host + params}&lang=${lang}`);
   }
   getProdStatus(id: number, lang: any ): Observable <any> {
     return this.http.get(`https://api.showu.com.ua/order/client/${id}?lang=${lang}`);

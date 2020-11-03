@@ -138,7 +138,8 @@
   "review": {
     "sliderDesc": "Don’t hear from us only. Listen to our customers too.",
     "reviews": "Product reviews",
-    "no_reviews": "No Reviews Yet",
+    "no_reviews": "Be the first to review this product",
+    "no_email": "Your email will not be published. Fill in the appropriate fields* ",
     "leaveReview": "Leave review",
     "leaveReviewAboutOrder": "Leave review about order"
   },
@@ -150,7 +151,7 @@
     "productCode": "Product code",
     "productColor": "Color:",
     "productSize": "Size:",
-    "sale": "Sale",
+    "sale": "Promotion",
     "new": "New"
   },
   "sortBy": {
@@ -282,5 +283,10 @@
     "items": "items",
     "item": "item",
     "uah": "uah"
+  },
+  "hi": {
+    "hi": "Hello"
   }
+
+
 }

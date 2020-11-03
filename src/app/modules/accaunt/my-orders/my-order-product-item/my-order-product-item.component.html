@@ -27,10 +27,11 @@
                 <p class="status-order" *ngIf="itemStatus">{{ 'cabinet.orderStatus' | translate }}</p>
                 <!-- <p>Виконано</p> -->
 <!--                    [ngStyle]-->
-                <p [style]="{'color': statusCodes[order?.status_id]?.color}">
+                <p [style]="{'color': order.status[0].color}">
                     <!-- {{orderStatus}} -->
                    {{ order?.status[0]?.description?.dectiption }}
 <!--                    {{ statusCodes[order?.status_id]?.name | translate }}-->
+<!--                    {{  statusCodes[order?.status_id]?.color|json}}-->
                 </p>
                 <button 
                     *ngIf="itemStatus && order?.products?.length > 1"

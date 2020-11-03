@@ -95,14 +95,13 @@ export class MyOrdersComponent implements OnInit {
     public getOrdersByClientId() {
         this.accauntService.getUser().subscribe((res) => {
             this.clientId = res.data.user.id;
-            console.log(this.clientId);
+            // console.log(this.clientId);
             this.myOrdersService.getUserOrdersByClientId(this.clientId, this.selectedCardNumber).subscribe((res) => {
                 //this.myOrders = res.data[0].orders;
                 this.myOrders = res.data;
                 this.allOrders = res;
-
-                console.log(res);
-                console.log(this.myOrders);
+                // console.log(res);
+                console.log('orders=====>',this.myOrders);
             })
 
             // this.accaunt.current = data.data;
@@ -112,7 +111,7 @@ export class MyOrdersComponent implements OnInit {
     }
 
     public pageChangedHandler(page: number): void {
-        console.log(page);
+        // console.log(page);
         this.myOrdersService.page = page;
         this.getOrdersByClientId();
     }

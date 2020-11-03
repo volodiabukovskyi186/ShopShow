@@ -130,7 +130,7 @@
 <div class="white-group">
 <section class="  card-description">
   <div class="card-description__container">
-  <rap-step-tabs  >
+  <rap-step-tabs  [review]="product.reviews.data.length " >
     <rap-step-tab [title]="'product.description' | translate">
       <div class="read-text" [innerHTML]="product?.item?.description?.discription"></div>
     </rap-step-tab>
@@ -148,8 +148,11 @@
         </tbody>
       </table>
     </rap-step-tab>
+<!--    Відгуків не має Будьте першими, залиште відгук для товару “ProductName” Ваш email не буде опубліковано. Заповніть відповідні поля*-->
 
-    <rap-step-tab [title]="'review.reviews' | translate">
+    <rap-step-tab
+            [checkreviev]="1"
+            [title]="'review.reviews' | translate " >
       <app-review-list
               *ngIf="product.reviews.data.length > 0; else noReviews"
               [reviews]="product.reviews.data"
@@ -162,7 +165,8 @@
               (pageChanged)="pageChangedHandler($event)"
       ></app-pagination>
       <ng-template #noReviews>
-        <div class="d4">{{ "review.no_reviews" | translate }}</div>
+        <div class="d4">{{ "review.no_reviews" | translate }} "{{ product.item?.description?.name }}"</div>
+        <div class="d6">{{ "review.no_email" | translate }}</div>
       </ng-template>
       <div class="add-review-container">
         <form class="add-review-container__form" [formGroup]="review" (ngSubmit)="addReview()">
@@ -186,7 +190,7 @@
         </div>
         <div class="add-review-container__review">
           <p>{{'add-review.your-review' | translate}} <sup class="su-required">*</sup> </p>
-          <textarea formControlName="text" rows="11" class="add-review-container__review__area" id="text"></textarea>
+          <textarea formControlName="text" rows="9" class="add-review-container__review__area" id="text"></textarea>
         </div>
         <div class="add-review-container__user-inf">
           <div class="add-review-container__user-inf__input-block">

@@ -94,7 +94,8 @@
   "review": {
     "sliderDesc": "Nie tylko od nas. Posłuchaj także naszych klientów.",
     "reviews": "Recenzje produktu",
-    "no_reviews": "Brak recenzji",
+    "no_reviews": "Napisz pierwszą opinię o produkcie",
+    "no_email": "Twój e-mail nie zostanie opublikowany. Wypełnij odpowiednie pola*",
     "leaveReview": "Sprawdź vidguk",
     "leaveReviewAboutOrder": "Zostaw opinię o zamówieniu"
   },
@@ -114,7 +115,7 @@
     "productCode": "Kod produktu",
     "productColor": "Kolor:",
     "productSize": "Rozmiar:",
-    "sale": "Sprzedaż",
+    "sale": "Akcja",
     "new": "Nowy"
   },
   "wishlist": {
@@ -273,5 +274,8 @@
     "items": "pozycje",
     "item": "pozycja",
     "uah": "uah"
+  },
+  "hi": {
+    "hi": "Witaj"
   }
 }

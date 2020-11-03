@@ -60,6 +60,9 @@ export class CheckoutContactFormService {
   getDelivers(): Observable<any> {
     return this.http.get(`https://api.showu.com.ua/deliverys`);
   }
+  getLiqpayStatus(): Observable<any> {
+    return this.http.get(`https://api.showu.com.ua/liqpay/status`);
+  }
 
 
 

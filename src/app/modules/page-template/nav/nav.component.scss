@@ -85,24 +85,45 @@ div {
 }
 .small-menu{
   left:-3%;
-  top:100%;
+  top:0%;
   position: absolute;
   z-index: 10000;
-  width:80vw;
-  min-height: 89vh;
-  height: 100%;
-  background-color:#242626;
+  width:100vw;
+  min-height: 88vh;
+
+  background-color:white;
   list-style: none;
   display: flex;
   justify-content: space-between;
  flex-direction: column;
-  //padding-bottom: 2%;
+  color: #333333;
   ul{
     list-style: none;
   }
   div{
     font-size: 16px;
   }
+  .small-menu-top{
+    width: 100%;
+    height: 44px;
+    background-color: #242626;
+    position: relative;
+    .close-block{
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      width: 40px;
+    }
+  }
+  .iconShow{
+    width: 180px;
+    height: 50px;
+    .icon{
+      width: 100%;
+      height:44px;
+    }
+  }
+
 
 
 }
@@ -120,8 +141,8 @@ div {
     ul{
       margin-left: 5%;
     }
-
   }
+
 }
 .small-nav-item{
   display: flex;
@@ -130,7 +151,7 @@ div {
 }
 .small-whish-list{
   //margin-bottom: 10%;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
@@ -144,9 +165,8 @@ div {
 .user-nav {
   position: relative;
   list-style: none;
-  background-color:#242626;
+  background-color:white;
   margin: unset;
-
   li {
     a {
       display: block;
@@ -155,7 +175,7 @@ div {
       // transition: all .3s $fn;
       &:hover {
         background-color: $primary;
-        color: $white;
+        color: #333333;
       }
     }
   }
@@ -164,6 +184,7 @@ div {
   margin-left: 17px;
 }
 .small-menu-item{
+  width: 90%;
   margin-left: 0px;
 div{
 
@@ -182,8 +203,9 @@ div{
   }
 }
 .burger-btn-close{
-  background-color: #242424;
+  //background-color: #242424;
 }
+
 
 @media screen and(max-width:768px) {
   .small-menu{
@@ -244,5 +266,16 @@ div{
       margin-top: 7px;
       margin-left: -6px;
     }
+  }
+}
+.logo {
+  display: block;
+  fill: $primary;
+  opacity: 0.9;
+  margin-right: $space;
+  margin-top: 0;
+  margin-bottom: 0;
+  &:hover {
+    opacity: 1;
   }
 }

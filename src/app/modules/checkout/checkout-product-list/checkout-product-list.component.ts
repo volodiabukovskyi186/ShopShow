@@ -45,27 +45,52 @@ export class CheckoutProductListComponent implements OnInit {
   }
 
   order() {
-    this.orderResult = {
-      products: [],
-      sort_order: 1,
-      costumer: "",
-      currency_id: this.currency.current.id,
-      user_id: this.userId,
-      first_name: this.check.checkoutContact.firstName,
-      last_name: this.check.checkoutContact.lastName,
-      email: this.check.checkoutContact.email,
-      city: this.check.checkoutContact.city,
-      country: this.check.checkoutContact.country,
-      telephone: this.check.checkoutContact.phone,
-      status_id: 1,
-      recipient: this.check.checkoutRecipient,
-      recipientLastName: this.check.checkoutRecipientContact.lastName,
-      recipientFirstName: this.check.checkoutRecipientContact.firstName,
-      recipientPhone: this.check.checkoutRecipientContact.phone,
-      checkoutDelivery: this.check.checkoutDelivery,
-      checkoutDeliveryAddress: this.check.checkoutDeliveryAddress,
-      checkoutPayment: this.check.checkoutPayment,
-    };
+    if( this.check.checkoutRecipient == "different" ) {
+      this.orderResult = {
+        products: [],
+        sort_order: 1,
+        costumer: "",
+        currency_id: this.currency.current.id,
+        user_id: this.userId,
+        first_name: this.check.checkoutContact.firstName,
+        last_name: this.check.checkoutContact.lastName,
+        email: this.check.checkoutContact.email,
+        city: this.check.checkoutContact.city,
+        country: this.check.checkoutContact.country,
+        telephone: this.check.checkoutContact.phone,
+        status_id: 1,
+        recipient: this.check.checkoutRecipient,
+        recipientLastName: this.check.checkoutRecipientContact.lastName,
+        recipientFirstName: this.check.checkoutRecipientContact.firstName,
+        recipientPhone: this.check.checkoutRecipientContact.phone,
+        checkoutDelivery: this.check.checkoutDelivery,
+        checkoutDeliveryAddress: this.check.checkoutDeliveryAddress,
+        checkoutPayment: this.check.checkoutPayment,
+      };
+    }
+    else {
+      this.orderResult = {
+        products: [],
+        sort_order: 1,
+        costumer: "",
+        currency_id: this.currency.current.id,
+        user_id: this.userId,
+        first_name: this.check.checkoutContact.firstName,
+        last_name: this.check.checkoutContact.lastName,
+        email: this.check.checkoutContact.email,
+        city: this.check.checkoutContact.city,
+        country: this.check.checkoutContact.country,
+        telephone: this.check.checkoutContact.phone,
+        status_id: 1,
+        recipient: this.check.checkoutRecipient,
+        recipientLastName: this.check.checkoutContact.firstName,
+        recipientFirstName: this.check.checkoutContact.lastName,
+        recipientPhone: this.check.checkoutContact.phone,
+        checkoutDelivery: this.check.checkoutDelivery,
+        checkoutDeliveryAddress: this.check.checkoutDeliveryAddress,
+        checkoutPayment: this.check.checkoutPayment,
+      };
+    }
 
     this.cart.list.forEach((p) => {
       this.orderResult?.products.push({
@@ -74,8 +99,6 @@ export class CheckoutProductListComponent implements OnInit {
         manufactured_id: p.product?.manufactured_id
       });
     });
-
-    console.log(this.orderResult);
 
     this.check.post(this.orderResult).subscribe((res) => {
 

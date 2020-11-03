@@ -116,6 +116,7 @@
               />
               <label for="{{payment.description.name}}">{{payment.description.name}}</label>
           </span>
+          <span *ngIf="liqPayStatus==1">
           <input
             class="raisins-radio label"
             type="radio"
@@ -125,6 +126,7 @@
             id="liqpay"
           />
           <label for="liqpay">LIQ PAY</label>
+            </span>
 
 <!--          <input-->
 <!--            class="raisins-radio label"-->

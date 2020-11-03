@@ -225,11 +225,10 @@ hr {
   }
   .add-review-container__review{
     .add-review-container__review__area{
-      margin-top: 15px;
+      margin-top: 10px;
       background: #F6F6F6 ;
       border: none;
       width: 100%;
-
       resize: none;
 
     }
@@ -240,11 +239,10 @@ hr {
     flex-direction: row;
     .add-review-container__user-inf__input-block{
       width: 40%;
-      padding-top: 50px;
-
+      padding-top: 25px;
       input{
-        margin-top: 15px;
-        height: 68px;
+        margin-top: 10px;
+        height: 34px;
         width: 100%;
         border: none;
         background: #F6F6F6;
@@ -253,10 +251,10 @@ hr {
   }
   .add-review-container__submit{
     padding-top: 50px;
-    max-width: 225px;
+    max-width: 168px;
     width: 100%;
     button{
-      height: 54px;
+      height: 40px;
       border: none;
       border-radius: 5px;
       background: #9F1941;
@@ -320,7 +318,7 @@ hr {
        flex-direction: column;
          .add-review-container__user-inf__input-block{
            width: 70vw;
-           padding-top: 20px;
+           padding-top: 0px;
            input{
              height: 55px;
            }

@@ -19,7 +19,7 @@ export class StepTabsComponent implements AfterContentInit, AfterViewInit {
   @Input() vertical;
   @Output() onSelect = new EventEmitter();
   @ContentChildren(StepTabComponent) tabs;
-
+  @Input() review;
   ngAfterContentInit() {
     this.initTabs();
   }

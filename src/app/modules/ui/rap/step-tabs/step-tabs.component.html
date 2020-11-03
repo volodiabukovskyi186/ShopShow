@@ -2,9 +2,12 @@
   <li *ngFor="let tab of tabs" [class.active]="tab.active">
     <a (click)="tabClicked(tab)" class="btn" [class.disabled]="tab.disabled">
       <span>{{ tab.title }}</span>
+      <span *ngIf="tab.checkreviev==1"> ({{review|json}})</span>
+
     </a>
   </li>
 </ul>
+
 
 <div class="tab-content">
   <ng-content></ng-content>
