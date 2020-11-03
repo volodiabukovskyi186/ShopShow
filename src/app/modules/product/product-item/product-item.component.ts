@@ -64,7 +64,7 @@ export class ProductItemComponent implements OnInit {
 
     
         this.productService.addProductToWishlist({
-            product_id: product.description.product_id,
+            product_id: product?.description?.product_id,
             user_id: this.userId
         }).subscribe((res) => {
 

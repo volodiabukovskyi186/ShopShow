@@ -16,7 +16,7 @@
   background-color: rgba(#f5f5f3, 0.64);
   backdrop-filter: blur(4px) brightness(200%);
   padding: $space;
-  z-index: 0;
+  z-index: 1;
   border-top-right-radius: $radius;
   border-bottom-right-radius: $radius;
 }
