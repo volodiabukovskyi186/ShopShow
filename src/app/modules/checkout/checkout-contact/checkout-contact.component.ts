@@ -12,7 +12,9 @@ import { AuthService } from '../../core/auth/auth.service';
   styleUrls: ["./checkout-contact.component.scss"],
 })
 export class CheckoutContactComponent implements OnInit {
-  countries:any;
+  countries: any;
+  public isCheckout = true;
+
   constructor(
     public check: CheckoutService,
     public auth: AuthService,

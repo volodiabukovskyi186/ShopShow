@@ -19,6 +19,8 @@ export class ContactCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.links);
+    console.log(this.title);
   }
 
 }

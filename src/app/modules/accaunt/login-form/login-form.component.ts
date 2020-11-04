@@ -10,7 +10,7 @@ import { AuthResponse } from '../../core/auth/models';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit {
   @Input() labelLogin: string;
   @Input() labelReg: string;
   @Input() labelPassword: string;
@@ -18,6 +18,7 @@ export class LoginFormComponent {
   @Input() labelSubmit: string;
   @Input() placeholderLogin: string;
   @Input() placeholderPassword: string;
+  @Input() isCheckoutComponent;
 
   /**
    *
@@ -29,10 +30,22 @@ export class LoginFormComponent {
     private router: Router
   ) {}
 
+  ngOnInit() {
+    console.log(this.isCheckoutComponent);
+  }
+
   authForm = new FormGroup({
     login: new FormControl(''),
     password: new FormControl('')
   });
+
+  goToHomePage(): void {
+    this.router.navigate(['/']);
+  }
+
+  goToCheckoutComponent(): void {
+    this.router.navigate(['/checkout']);
+  }
 
   onSubmit() {
     // this.ngxService.start();
@@ -46,7 +59,7 @@ export class LoginFormComponent {
     this.auth.saveToken(data.data.token);
     this.auth.onAuth();
     this.authForm.reset();
-    this.router.navigate(['/']);
+    //this.router.navigate(['/']);
   }
 
   get formAuthControls(): any {

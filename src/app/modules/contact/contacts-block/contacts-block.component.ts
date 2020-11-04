@@ -54,6 +54,7 @@ export class ContactsBlockComponent implements OnInit {
   public getSiteSettingsData(): void {
     this.uiservice.getSiteSettingsValues().subscribe((res) => {
       this.siteData = res.data[0];
+      console.log(this.siteData);
     })
   }
 

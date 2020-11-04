@@ -100,6 +100,8 @@ export class CheckoutProductListComponent implements OnInit {
       });
     });
 
+    console.log(this.orderResult?.products);
+
     this.check.post(this.orderResult).subscribe((res) => {
 
       if (res) {
