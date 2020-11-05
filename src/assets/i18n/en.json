@@ -286,7 +286,9 @@
   },
   "hi": {
     "hi": "Hello"
+  },
+  "checkout": {
+    "newCustomer": "New Customer",
+    "login": "Login"
   }
-
-
 }

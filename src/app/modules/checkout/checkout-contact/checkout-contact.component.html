@@ -30,14 +30,14 @@
 <div *ngIf="check.currentStepIndex == 0" @fadeHeight class="card padding mobile-block">
   <div class="flex" style="margin-bottom: 16px;" *ngIf="!auth.authenticated">
     <rap-step-tabs class="step-tabs__width">
-      <rap-step-tab [title]="'New Customer'" class="step-tab__new-customer" routerLinkActive="active">
+      <rap-step-tab [title]="'checkout.newCustomer' | translate" class="step-tab__new-customer" routerLinkActive="active">
         <app-checkout-contact-form
           [(model)]="check.checkoutContact"
           (formSubmit)="nextStep()"
 
         ></app-checkout-contact-form>
       </rap-step-tab>
-      <rap-step-tab [title]="'Login'" class="step-tab__login">
+      <rap-step-tab [title]="'checkout.login' | translate" class="step-tab__login">
         <app-login-form
           [labelLogin]="'accaunt.login' | translate"
           [labelReg]="'accaunt.register' | translate"

@@ -277,5 +277,9 @@
   },
   "hi": {
     "hi": "Witaj"
+  },
+  "checkout": {
+    "newCustomer": "Nowy klient",
+    "login": "Zaloguj sie"
   }
 }
