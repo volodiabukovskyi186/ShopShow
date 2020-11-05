@@ -277,5 +277,9 @@
   },
   "hi": {
     "hi": "Witaj"
+  },
+  "promotion": {
+    "left": "Pozostaje",
+    "days": "Dni"
   }
 }

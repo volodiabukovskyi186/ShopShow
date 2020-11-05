@@ -71,7 +71,7 @@
                                 <app-accaunt-button
                                         [title]="
                   auth.authenticated
-                    ? 'Hi, ' + accaunt.current?.user.first_name
+                    ? ('accaunt.accaunt' | translate) + accaunt.current?.user.first_name
                     : ('accaunt.accaunt' | translate)
                 "
               >

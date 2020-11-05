@@ -44,23 +44,24 @@
     </div>
   </div>
 </div>
+
 <drag-scroll #slider style="width: 100% ; height:100%;">
   <div class="ratio slider" drag-scroll-item *ngFor="let slide of slides">
-    <div class="date" *ngIf="slide.descriptions.length > 0">
-      {{ slide.descriptions[0]?.data_start | localDate: "mediumDate" }} -
-      {{ slide.descriptions[0]?.data_end | localDate: "mediumDate" }}
+    <div class="date" *ngIf="slide.description">
+      {{ slide.description?.data_start | localDate: "mediumDate" }} -
+      {{ slide.description?.data_end | localDate: "mediumDate" }}
     </div>
     <div class="cinema">
       <img
-        *ngIf="slide.descriptions.length > 0"
-        [src]="hoststatic + slide.descriptions[0].image?.src"
+        *ngIf="slide.description"
+        [src]="hoststatic + slide.description.image?.src"
         [alt]="slide.name"
         class="cover"
       />
 
       <div class="details">
-        <h4 *ngIf="slide.descriptions.length > 0">{{ slide.descriptions[0].title }}</h4>
-        <p *ngIf="slide.descriptions.length > 0">{{ slide.descriptions[0]?.description }}</p>
+        <h4 *ngIf="slide.description">{{ slide.description.title }}</h4>
+        <p *ngIf="slide.description">{{ slide.description?.description }}</p>
         <footer class="flex center">
           <a
             [routerLink]="['/', 'promotions', 'view', slide.id]"
@@ -69,6 +70,7 @@
           >
         </footer>
       </div>
+
     </div>
   </div>
 </drag-scroll>

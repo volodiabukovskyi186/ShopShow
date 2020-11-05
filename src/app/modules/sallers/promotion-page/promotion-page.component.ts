@@ -29,6 +29,7 @@ export class PromotionPageComponent implements OnInit {
   getHandler = (data: any) => {
     // this.ngxService.stopAll();
     this.prom.promotions = data;
+    console.log( "promotion",this.prom.promotions)
   };
 
 

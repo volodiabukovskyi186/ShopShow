@@ -286,6 +286,10 @@
   },
   "hi": {
     "hi": "Hello"
+  },
+  "promotion": {
+    "left": "Left",
+    "days": "Days"
   }
 
 
