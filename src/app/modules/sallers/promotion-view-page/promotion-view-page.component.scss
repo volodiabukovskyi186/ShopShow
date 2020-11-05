@@ -31,6 +31,21 @@
         border-bottom-right-radius: $radius;
     }
 }
+.desctop-filter{
+  display: block;
+}
+.mobile-filter{
+  display: none;
+ padding-bottom: 20px;
+}
+@media screen  and (max-width: 768px){
+  .desctop-filter{
+    display: none;
+  }
+  .mobile-filter{
+    display: block;
+  }
+}
 
 .grid {
   display: grid;

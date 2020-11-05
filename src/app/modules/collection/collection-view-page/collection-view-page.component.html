@@ -2,14 +2,18 @@
 <br />
 <div class="row">
   <div class="col col-side filter-margin-left">
-    <div class="filters">
+    <div class="filters desctop-filter">
       <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page>
       <!-- <i>Filters will be here</i> -->
     </div>
   </div>
 
   <div class="col">
-    <div class="grid">
+    <div class="grid product-container">
+      <div class=" mobile-filter">
+        <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page>
+        <!-- <i>Filters will be here</i> -->
+      </div>
       <app-collection-item
         class="medium"
         [item]="{

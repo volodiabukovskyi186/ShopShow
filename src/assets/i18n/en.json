@@ -290,5 +290,9 @@
   "checkout": {
     "newCustomer": "New Customer",
     "login": "Login"
+  },
+  "promotion": {
+    "left": "Left",
+    "days": "Days"
   }
 }

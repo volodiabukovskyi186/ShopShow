@@ -3,9 +3,9 @@
 <!-- <pre>{{sallers.item| json}}</pre> -->
 
 <div class="row">
-  <div class="col col-side filter-margin-left">
+  <div class="col col-side filter-margin-left desctop-filter">
     <!-- <i>Filters will be here</i> -->
-    <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page>
+    <app-filter-page  (filterChanged)="onFilterChanged($event)"></app-filter-page>
   </div>
   <div class="col">
     <div class="ratio radius">
@@ -26,6 +26,9 @@
       [subtitle]="sallers.item?.description.subtitle"
       [title]="sallers.item?.description.title"
     ></show-u-title>
+    <div class="mobile-filter">
+      <app-filter-page  (filterChanged)="onFilterChanged($event)"></app-filter-page>
+    </div>
 
     <div class="grid">
       <app-product-item

@@ -287,5 +287,9 @@
   "checkout": {
     "newCustomer": "Новый клиент",
     "login": "Авторизоваться"
+  },
+  "promotion": {
+    "left": "Осталось",
+    "days": "Дней"
   }
 }
