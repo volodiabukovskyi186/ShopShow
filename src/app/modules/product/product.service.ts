@@ -209,7 +209,7 @@ export class ProductService {
     );
   }
   postReview(reviewItem): Observable <any> {
-    return this.http.post(environment.review, reviewItem );
+    return this.http.post(environment.reviews, reviewItem);
   }
 
   addProductToWishlist(data): Observable <any> {

@@ -36,11 +36,10 @@ export class CheckoutProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getUserClientId();
   }
-  
   public getUserClientId(): void {
     this.accauntService.getUser().subscribe((res) => {
       this.userId = res.data.user.id;
-      console.log(this.userId);
+      console.log('userGet===>', this.userId);
     })
   }
 

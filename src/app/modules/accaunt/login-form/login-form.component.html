@@ -60,7 +60,7 @@
         [disabled]="!authForm.valid"
         class="button delete large login-btn"
         type="submit"
-        (click)="goToHomePage()"
+        (click)="goToHomePage('mainLog')"
       >
         {{ 'accaunt.login' | translate }}
       </button>
@@ -68,7 +68,7 @@
         [disabled]="!authForm.valid"
         class="button delete large login-btn"
         type="submit"
-        (click)="goToCheckoutComponent()"
+        (click)="goToCheckoutComponent('checkOut')"
       >
         {{ 'accaunt.login' | translate }}
       </button>

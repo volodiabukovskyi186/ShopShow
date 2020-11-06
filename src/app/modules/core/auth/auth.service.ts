@@ -30,6 +30,7 @@ export class AuthService {
   }
 
   public get authenticated(): boolean {
+
     if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem("token") != undefined;
     }
@@ -42,10 +43,8 @@ export class AuthService {
     });
     return this._http.post(environment.signin, data)
   }
-
   signup(data: any): Promise<any> {
     //data = JSON.stringify(data);
-
    return this._http.post(environment.signup, data).toPromise();
     // .subscribe(
     //   (response) => { return response },
@@ -70,7 +69,7 @@ export class AuthService {
   }
 
   public saveToken(token: string): void {
-    console.log('platfoem====>',this.platformId);
+
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem("token", token);
     }

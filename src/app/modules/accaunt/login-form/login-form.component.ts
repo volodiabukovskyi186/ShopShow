@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute , Event, NavigationEnd} from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { AuthResponse } from '../../core/auth/models';
 
@@ -19,7 +19,8 @@ export class LoginFormComponent implements OnInit {
   @Input() placeholderLogin: string;
   @Input() placeholderPassword: string;
   @Input() isCheckoutComponent;
-
+  @Input() checkout;
+  public  logPage
   /**
    *
    */
@@ -27,8 +28,17 @@ export class LoginFormComponent implements OnInit {
     public auth: AuthService,
     // private ngxService: NgxUiLoaderService,
     // private toastr: ToastrService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private activateRoute: ActivatedRoute,
+  ) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        const categoryName = this.activateRoute.snapshot
+        console.log('activeRoute=>', categoryName);
+      }
+    })
+  }
+  l
 
   ngOnInit() {
     console.log(this.isCheckoutComponent);
@@ -39,30 +49,34 @@ export class LoginFormComponent implements OnInit {
     password: new FormControl('')
   });
 
-  goToHomePage(): void {
-    this.router.navigate(['/']);
+  goToHomePage(name): void {
+    this.logPage = name
+    // this.router.navigate(['/']);
   }
 
-  goToCheckoutComponent(): void {
-    this.router.navigate(['/checkout']);
+  goToCheckoutComponent(name): void {
+    this.logPage = name;
+
   }
 
   onSubmit() {
     // this.ngxService.start();
     // this.toastr.clear();
-
     const form = this.authForm.value;
-    console.log('form=====>', form.login, form.password);
     this.auth.login(form.login, form.password).subscribe(this.authHandler);
   }
-
   authHandler = (data: AuthResponse) => {
-    // this.ngxService.stopAll();
-
     this.auth.saveToken(data.data.token);
     this.auth.onAuth();
     this.authForm.reset();
-    //this.router.navigate(['/']);
+
+    if( this.logPage=="mainLog"){
+      this.router.navigate(['/']);
+    }
+    else {
+      this.router.navigate(['/checkout']);
+    }
+
   }
 
   get formAuthControls(): any {

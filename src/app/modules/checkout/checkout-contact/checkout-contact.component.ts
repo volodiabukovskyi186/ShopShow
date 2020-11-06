@@ -14,7 +14,7 @@ import { AuthService } from '../../core/auth/auth.service';
 export class CheckoutContactComponent implements OnInit {
   countries: any;
   public isCheckout = true;
-
+  checkout='checkout';
   constructor(
     public check: CheckoutService,
     public auth: AuthService,
