@@ -6,7 +6,11 @@
         <div>{{ 'accaunt.yourOrder' | translate }} {{ data?.orderId }} {{ 'accaunt.orderProcessing' | translate }}</div>
         <div>{{ 'accaunt.orderManagerContact' | translate }}</div>
         <div>{{ 'accaunt.orderThankYou' | translate }}</div>
-        <a [routerLink]="['/']" class="cursor-pointer">
+        <a 
+            [routerLink]="['/']"
+            (click)="onNoClick()"
+            class="cursor-pointer"
+        >
             <button class="go-shop-btn cursor-pointer">{{ 'accaunt.home' | translate }}</button>
         </a>
     </div>

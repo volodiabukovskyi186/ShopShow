@@ -1,6 +1,9 @@
 import { Injectable, Output, EventEmitter } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { Subject } from 'rxjs';
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
 
 export interface ILangItem {
   flag: string;
@@ -16,7 +19,11 @@ export class AppLangService {
 
   @Output() updated: EventEmitter<any> = new EventEmitter<any>()
 
-  constructor(public translate: TranslateService) {
+  constructor(
+    public translate: TranslateService,
+    private http: HttpClient
+  ) {
+    this.getDefaultLanguage();
     this.init();
   }
 
@@ -61,18 +68,25 @@ export class AppLangService {
     }
   }
 
+  getDefaultLanguage(): Observable<any> {
+    return this.http.get(`${environment.host}getDefaultLanguage`);
+  }
+
   init() {
     // init langs
     const pl: ILangItem = { flag: "🇵🇱", name: "Polish", locale: "pl" };
     const en: ILangItem = { flag: "🇺🇸", name: "English", locale: "en" };
     const ru: ILangItem = { flag: "🇷🇺", name: "Russian", locale: "ru" };
     const ua: ILangItem = { flag: "🇺🇦", name: "Ukraine", locale: "ua" };
-
-    let defaultLang = localStorage.getItem('current_lang') || ua.locale;
-
+    
     this.langs = [pl, en, ua, ru];
-    this.translate.addLangs([defaultLang, en.locale]);
-    this.translate.defaultLang = defaultLang;
-    this.use(defaultLang);
+
+    this.getDefaultLanguage().subscribe((res) => {
+      this.translate.addLangs([res.data.code, en.locale]);
+      this.translate.defaultLang = res.data.code;
+      this.use(res.data.code);
+    })
+
+    console.log(this.translate.defaultLang);
   }
 }
