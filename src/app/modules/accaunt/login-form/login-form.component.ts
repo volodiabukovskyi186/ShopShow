@@ -50,12 +50,15 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     // this.ngxService.start();
     // this.toastr.clear();
+
     const form = this.authForm.value;
+    console.log('form=====>', form.login, form.password);
     this.auth.login(form.login, form.password).subscribe(this.authHandler);
   }
 
   authHandler = (data: AuthResponse) => {
     // this.ngxService.stopAll();
+
     this.auth.saveToken(data.data.token);
     this.auth.onAuth();
     this.authForm.reset();
