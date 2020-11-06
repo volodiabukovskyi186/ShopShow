@@ -70,6 +70,7 @@ export class AuthService {
   }
 
   public saveToken(token: string): void {
+    console.log('platfoem====>',this.platformId);
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem("token", token);
     }
