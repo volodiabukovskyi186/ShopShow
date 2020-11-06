@@ -37,9 +37,11 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser() {
+
     if (this.auth.authenticated)
       this.accaunt.getUser().subscribe((data) => {
         this.accaunt.current = data.data;
+        console.log('token====>', this.accaunt.current );
         this.accaunt.onCurrent();
       });
   }

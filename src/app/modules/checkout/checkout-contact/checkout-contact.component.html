@@ -38,7 +38,7 @@
         ></app-checkout-contact-form>
       </rap-step-tab>
       <rap-step-tab [title]="'checkout.login' | translate" class="step-tab__login">
-        <app-login-form
+        <app-login-form [checkout]="checkout"
           [labelLogin]="'accaunt.login' | translate"
           [labelReg]="'accaunt.register' | translate"
           [labelSubmit]="'accaunt.signin' | translate"
