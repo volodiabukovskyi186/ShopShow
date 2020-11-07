@@ -85,9 +85,6 @@
     "order": "Zamówienie",
     "backToStore": "Powrót do sklepu"
   },
-  "promotion": {
-    "details": "Detale"
-  },
   "collection": {
     "details": "Detale"
   },
@@ -284,6 +281,7 @@
   },
   "promotion": {
     "left": "Pozostaje",
-    "days": "Dni"
+    "days": "Dni",
+    "details": "Detale"
   }
 }

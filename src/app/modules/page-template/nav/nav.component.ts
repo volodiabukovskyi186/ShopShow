@@ -18,11 +18,13 @@ export class NavComponent implements OnInit {
   @ViewChild('nav') public nav: ElementRef<any>;
   // @Input() value: INavItem;
   burgerStatus = false;
-  links2: Array<any> = [
-    { link: '/promotions', name: 'Promotions' },
-    { link: '/manufacturers', name: 'Manufacturers' },
-    { link: '/sales', name: 'Sales' }
-  ];
+  links2: Array<any>;
+  
+  // links2: Array<any> = [
+  //   { link: '/promotions', name: 'Promotions' },
+  //   { link: '/manufacturers', name: 'Manufacturers' },
+  //   { link: '/sales', name: 'Sales' }
+  // ];
   public categorySet: Set<number> = new Set<number>();
 
   public get isMobile(): boolean {

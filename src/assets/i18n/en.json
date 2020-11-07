@@ -129,9 +129,6 @@
     "order": "Order",
     "backToStore": "Back to store"
   },
-  "promotion": {
-    "details": "Details"
-  },
   "collection": {
     "details": "Details"
   },
@@ -293,6 +290,7 @@
   },
   "promotion": {
     "left": "Left",
-    "days": "Days"
+    "days": "Days",
+    "details": "Details"
   }
 }

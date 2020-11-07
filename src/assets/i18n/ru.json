@@ -130,9 +130,6 @@
       "order": "Заказ",
       "backToStore": "Вернуться к покупкам"
     },
-    "promotion": {
-      "details": "Детали"
-    },
     "collection": {
       "details": "Детали"
     },
@@ -290,6 +287,7 @@
   },
   "promotion": {
     "left": "Осталось",
-    "days": "Дней"
+    "days": "Дней",
+    "details": "Детали"
   }
 }
