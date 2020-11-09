@@ -15,7 +15,7 @@ export interface ILangItem {
   providedIn: "root",
 })
 export class AppLangService {
-  
+  public siteDefaultLang;
 
   @Output() updated: EventEmitter<any> = new EventEmitter<any>()
 
@@ -23,7 +23,8 @@ export class AppLangService {
     public translate: TranslateService,
     private http: HttpClient
   ) {
-    this.getDefaultLanguage();
+    //this.getDefaultLanguage();
+    this.getSiteDefaultLang();
     this.init();
   }
 
@@ -39,13 +40,14 @@ export class AppLangService {
     // if data["lang"] is null set browserLang
     let lang = language ?? browserLang;
 
-    this.updated.emit(lang);
-    console.log("set lang:", lang);
-
-
     // set lang
     this.translate.use(lang.match(/en|pl|ua|ru/) ? lang : this.translate.defaultLang);
+    console.log(this.translate.defaultLang);
+
     localStorage.setItem('current_lang', lang);
+
+    this.updated.emit(lang);
+    console.log("set lang:", lang);
   }
 
   public get routeLang(): string {
@@ -72,21 +74,34 @@ export class AppLangService {
     return this.http.get(`${environment.host}getDefaultLanguage`);
   }
 
+  getSiteDefaultLang(): void {
+    this.getDefaultLanguage().subscribe((res) => {
+      this.siteDefaultLang = res.data.code;
+    })
+  }
+
   init() {
     // init langs
-    const pl: ILangItem = { flag: "🇵🇱", name: "Polish", locale: "pl" };
-    const en: ILangItem = { flag: "🇺🇸", name: "English", locale: "en" };
-    const ru: ILangItem = { flag: "🇷🇺", name: "Russian", locale: "ru" };
-    const ua: ILangItem = { flag: "🇺🇦", name: "Ukraine", locale: "ua" };
-    
+    const pl: ILangItem = { flag: "pl", name: "Polish", locale: "pl" };
+    const en: ILangItem = { flag: "en", name: "English", locale: "en" };
+    const ru: ILangItem = { flag: "ru", name: "Russian", locale: "ru" };
+    const ua: ILangItem = { flag: "ua", name: "Ukraine", locale: "ua" };
+
+    let defaultLang = localStorage.getItem('current_lang') || this.siteDefaultLang;
+
     this.langs = [pl, en, ua, ru];
+    this.translate.addLangs([defaultLang, ua.locale]);
+    this.translate.defaultLang = defaultLang;
+    this.use(defaultLang);
 
-    this.getDefaultLanguage().subscribe((res) => {
-      this.translate.addLangs([res.data.code, en.locale]);
-      this.translate.defaultLang = res.data.code;
-      this.use(res.data.code);
-    })
+    // this.getDefaultLanguage().subscribe((res) => {
+    //   this.defaultLang = localStorage.getItem('current_lang') || res.data.code;
 
-    console.log(this.translate.defaultLang);
+    //   this.translate.addLangs([this.defaultLang, en.locale]);
+    //   this.translate.defaultLang = this.defaultLang;
+    //   this.use(this.translate.defaultLang);
+
+    //   console.log(this.translate.defaultLang);
+    // })
   }
 }
