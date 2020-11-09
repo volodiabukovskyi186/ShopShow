@@ -283,5 +283,8 @@
     "left": "Pozostaje",
     "days": "Dni",
     "details": "Detale"
+  },
+  "dialog": {
+    "review": "Dzięki za recenzję"
   }
 }

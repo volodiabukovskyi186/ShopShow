@@ -292,5 +292,8 @@
     "left": "Left",
     "days": "Days",
     "details": "Details"
+  },
+  "dialog": {
+    "review": "Thanks  for review"
   }
 }
