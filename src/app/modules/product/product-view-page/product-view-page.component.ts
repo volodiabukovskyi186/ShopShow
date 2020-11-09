@@ -14,6 +14,9 @@ import {takeUntil} from 'rxjs/operators';
 import {AccauntService} from '../../accaunt/accaunt.service';
 import {ViewportScroller} from '@angular/common';
 import {WishlistService} from '../../../modules/accaunt/wishlist/services/wishlist.service';
+import {FooterSubscribeDialogComponent} from '../../dialogs/footer-subscribe-dialog/footer-subscribe-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {AddReviewDialogComponent} from '../../dialogs/add-review-dialog/add-review-dialog.component';
 
 @Component({
     selector: 'app-product-view-page',
@@ -63,7 +66,8 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         private meta: Meta,
         private router: Router,
         private accauntService: AccauntService,
-        private viewportScroller: ViewportScroller
+        private viewportScroller: ViewportScroller,
+        public dialog: MatDialog,
     ) {
     }
 
@@ -167,33 +171,25 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     getProdAttr(id) {
         this.product.getProdAttr(id).subscribe(this.getProdAttrHandler);
     }
-
     getProdReview(id) {
         this.product.getProdReview(id).subscribe(this.getProdReviewHandler);
 
     }
-
     getProdAttrHandler = data => {
         this.product.attributes = data?.data;
     };
-
-
     getProdReviewHandler = data => {
         this.product.reviews = data;
         console.log('reviews===>', this.product.reviews)
-        // this.ngxService.stopAll();
     };
-
     add(item: any) {
         this.cart.isCartView = true;
         this.cart.addToCart(item, this.count);
     }
-
     pageChangedHandler(page: number): void {
         this.product.page = page;
         this.getProdReview(this.id);
     }
-
     getUser(): void {
         this.accauntService.getUser().pipe(takeUntil(this.destroy$)).subscribe(data => {
             this.user = data;
@@ -212,6 +208,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     }
 
     addReview() {
+
         const review = {
             product_id: this.id,
             user_id: this.user?.data?.user.id,
@@ -220,21 +217,22 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             updated_at: null,
             ...this.review.value
         };
-        console.log('review==>', review)
-
+        console.log('review===>',review)
         this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe(() => {
-
+            const dialogRef = this.dialog.open(AddReviewDialogComponent, {
+            });
+            if(this.user){
+                this.review.setValue(
+                    {
+                        text:'',
+                        author: this.user.data.user.first_name,
+                        email: this.user.data.user.email,
+                        rating:0
+                    }
+                );
+            }
         });
-        if(this.user){
-            this.review.setValue(
-                {
-                    text:'',
-                    author: this.user.data.user.first_name,
-                    email: this.user.data.user.email,
-                    rating:0
-                }
-            );
-        }
+
 
     }
 

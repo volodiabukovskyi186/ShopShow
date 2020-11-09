@@ -33,7 +33,6 @@ export class FooterComponent implements OnInit {
 
   public sendUserSubscription(): void {
     const dialogRef = this.dialog.open(FooterSubscribeDialogComponent, {
-
     });
   //   dialogRef.afterClosed().subscribe(res => {});
   // }
