@@ -285,5 +285,8 @@
   "promotion": {
     "left": "Pozostaje",
     "days": "Dni"
+  },
+  "dialog": {
+    "review": "Dzięki za recenzję"
   }
 }

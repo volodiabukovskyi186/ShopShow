@@ -294,5 +294,8 @@
   "promotion": {
     "left": "Left",
     "days": "Days"
+  },
+  "dialog": {
+    "review": "Thanks  for review"
   }
 }

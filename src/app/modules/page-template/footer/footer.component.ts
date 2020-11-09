@@ -32,6 +32,11 @@ export class FooterComponent implements OnInit {
   }
 
   public sendUserSubscription(): void {
+    const dialogRef = this.dialog.open(FooterSubscribeDialogComponent, {
+
+    });
+  //   dialogRef.afterClosed().subscribe(res => {});
+  // }
 
     this.userDataSubscribe = {
       "subscriptions_type_id": 1,
@@ -41,14 +46,11 @@ export class FooterComponent implements OnInit {
       "telephone": null,
       "password": null,
       // "subscrition": true
-    }
-    if (this.userDataSubscribe.email) {
-      this.subscribeForm.reset();
-      const dialogRef = this.dialog.open(FooterSubscribeDialogComponent, {});
-      this.clientMenu.sendSubscription(this.userDataSubscribe).subscribe((res) => {
+  }
+    this.subscribeForm.reset();
+    this.clientMenu.sendSubscription(this.userDataSubscribe).subscribe((res) => {
 
-      })
-    }
+    })
   }
 
   getSoliaNet():void{
