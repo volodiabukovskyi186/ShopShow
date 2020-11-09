@@ -47,7 +47,6 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.destroy$.next();
         this.destroy$.complete();
-
     }
 
 
@@ -98,6 +97,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
 
     getByIdHandler = (data) => {
+
         this.product.item = data?.data;
         //this.updateTitle(this.product.item.description.name + ` | ShowU ` + this.product.item.description.tag);
         this.updateTitle(this.product?.item?.description?.name + ` | ShowU `);
@@ -164,14 +164,13 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     }
 
 
-
-
     getProdAttr(id) {
         this.product.getProdAttr(id).subscribe(this.getProdAttrHandler);
     }
 
     getProdReview(id) {
         this.product.getProdReview(id).subscribe(this.getProdReviewHandler);
+
     }
 
     getProdAttrHandler = data => {
@@ -181,7 +180,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
     getProdReviewHandler = data => {
         this.product.reviews = data;
-
+        console.log('reviews===>', this.product.reviews)
         // this.ngxService.stopAll();
     };
 
@@ -198,6 +197,17 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     getUser(): void {
         this.accauntService.getUser().pipe(takeUntil(this.destroy$)).subscribe(data => {
             this.user = data;
+            if(this.user) {
+                this.review.setValue(
+                    {
+                        text: '',
+                        author: this.user.data.user.first_name,
+                        email: this.user.data.user.email,
+                        rating: 0
+                    }
+                );
+            }
+
         });
     }
 
@@ -210,11 +220,22 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             updated_at: null,
             ...this.review.value
         };
-        console.log(review);
-        this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe(()=>{
+        console.log('review==>', review)
+
+        this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe(() => {
 
         });
-        this.review.reset();
+        if(this.user){
+            this.review.setValue(
+                {
+                    text:'',
+                    author: this.user.data.user.first_name,
+                    email: this.user.data.user.email,
+                    rating:0
+                }
+            );
+        }
+
     }
 
     // public getClientWishlistById() {

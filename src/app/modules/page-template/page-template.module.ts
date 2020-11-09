@@ -20,7 +20,8 @@ import { NavListComponent } from './nav/nav-list/nav-list.component';
 import { ClickOutsideModule } from "ng-click-outside";
 import { CallbackDialogComponent } from '../dialogs/callback-dialog/callback-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {FooterSubscribeDialogComponent} from '../dialogs/footer-subscribe-dialog/footer-subscribe-dialog.component';
+// import { FooterSubscribeDialogComponent } from './modules/dialogs/footer-subscribe-dialog/footer-subscribe-dialog.component';
 @NgModule({
   declarations: [
     PageTemplateComponent,
@@ -34,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     NavListComponent,
     CallbackDialogComponent,
+    FooterSubscribeDialogComponent
 
   ],
   imports: [

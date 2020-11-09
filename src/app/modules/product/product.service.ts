@@ -112,6 +112,7 @@ export class ProductService {
   }
 
   getProdReview(prodId: number) {
+    console.log('productId==>',prodId)
     let skip = this.reviewPage * this.reviews.take - this.reviews.take;
     let params = `?skip=${skip}&take=${this.reviews.take}`;
     return this.http.get<any>(
@@ -209,7 +210,7 @@ export class ProductService {
     );
   }
   postReview(reviewItem): Observable <any> {
-    return this.http.post(environment.reviews, reviewItem);
+    return this.http.post(environment.review, reviewItem);
   }
 
   addProductToWishlist(data): Observable <any> {
