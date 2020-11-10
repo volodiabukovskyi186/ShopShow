@@ -15,11 +15,11 @@ export class LocalDatePipe implements PipeTransform {
     // this.lang.updated.subscribe();
   }
 
-  transform(value: any, format: string = "medium") {
+  transform(value: any, format: string = "longDate") {
     if (!value) return "";
-
     // let locale = this.lang.getLanguage(this.lang.current)?.locale;
     let locale = this.lang.current;
+    // console.log('local==>',value)
     return locale ? formatDate(value, format, locale) : value;
   }
 }

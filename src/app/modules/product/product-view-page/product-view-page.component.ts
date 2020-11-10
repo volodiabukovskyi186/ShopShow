@@ -180,7 +180,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     };
     getProdReviewHandler = data => {
         this.product.reviews = data;
-        console.log('reviews===>', this.product.reviews)
+
     };
     add(item: any) {
         this.cart.isCartView = true;
@@ -218,20 +218,20 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             ...this.review.value
         };
         console.log('review===>',review)
-        this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe(() => {
+        // this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe(() => {
             const dialogRef = this.dialog.open(AddReviewDialogComponent, {
             });
-            if(this.user){
-                this.review.setValue(
-                    {
-                        text:'',
-                        author: this.user.data.user.first_name,
-                        email: this.user.data.user.email,
-                        rating:0
-                    }
-                );
-            }
-        });
+        //     if(this.user){
+        //         this.review.setValue(
+        //             {
+        //                 text:'',
+        //                 author: this.user.data.user.first_name,
+        //                 email: this.user.data.user.email,
+        //                 rating:0
+        //             }
+        //         );
+        //     }
+        // });
 
 
     }

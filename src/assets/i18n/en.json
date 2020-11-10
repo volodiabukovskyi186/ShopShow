@@ -296,6 +296,9 @@
     "days": "Days"
   },
   "dialog": {
-    "review": "Thanks  for review"
+    "review": "Your review has been sent for review, after which it will be published on the portal",
+    "main": "Home",
+    "subMit": "Submit",
+    "thanks": "Thanks!"
   }
 }

@@ -48,8 +48,8 @@
 <drag-scroll #slider style="width: 100% ; height:100%;">
   <div class="ratio slider" drag-scroll-item *ngFor="let slide of slides">
     <div class="date" *ngIf="slide.description">
-      {{ slide.description?.data_start | localDate: "mediumDate" }} -
-      {{ slide.description?.data_end | localDate: "mediumDate" }}
+      {{ slide.description?.data_start | localDate: "d MMMM" }} -
+      {{ slide.description?.data_end | localDate: "d MMMM" }}
     </div>
     <div class="cinema">
       <img

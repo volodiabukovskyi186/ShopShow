@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { ClientMenuService } from "../../client-menu/client-menu.service";
-import { AppLangService } from "../../core/app-lang.service";
-import { CurrencyService, ICurrency } from '../../currency/currency.service';
-import { ActivatedRoute, Router } from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ClientMenuService} from '../../client-menu/client-menu.service';
+import {AppLangService} from '../../core/app-lang.service';
+import {CurrencyService, ICurrency} from '../../currency/currency.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-    selector: "app-top-panel",
-    templateUrl: "./top-panel.component.html",
-    styleUrls: ["./top-panel.component.scss"],
+    selector: 'app-top-panel',
+    templateUrl: './top-panel.component.html',
+    styleUrls: ['./top-panel.component.scss'],
 })
 export class TopPanelComponent implements OnInit {
 
@@ -36,12 +36,17 @@ export class TopPanelComponent implements OnInit {
             Ukraine: '../../../../assets/icons/ua.svg',
             Polish: '../../../../assets/icons/pl.svg',
             Russian: '../../../../assets/icons/ru.svg',
-        }
+        };
 
         this.currencyImgs = {
             UAH: '../../../../assets/icons/dollar.svg',
-            USD : '../../../../assets/icons/hryvnia.svg'
-        }
+            USD: '../../../../assets/icons/hryvnia.svg'
+        };
+
+
+
+        // this.currency.current = localStorage.getItem('currency');
+
     }
 
     x(item) {
@@ -50,7 +55,7 @@ export class TopPanelComponent implements OnInit {
 
     currencyStatus(): void {
         if (this.currentlyStatus == false) {
-            this.currentlyStatus = true
+            this.currentlyStatus = true;
         } else {
             this.currentlyStatus = false;
         }
@@ -58,18 +63,24 @@ export class TopPanelComponent implements OnInit {
     }
 
     getCurrency() {
-        this.currency.get().subscribe(this.getCurrencyHandler)
+        this.currency.get().subscribe(this.getCurrencyHandler);
     }
 
     getCurrencyHandler = data => {
         this.currency.data = data.data;
         this.currency.setDefault();
-    }
+        if(localStorage.getItem('currency')){
+            const activeCurrency = localStorage.getItem('currency');
+            this.currency.current= JSON.parse(activeCurrency)
+        }
+    };
 
     onClickCurrency(e: Event, c: ICurrency) {
         e.preventDefault();
         this.currency.current = c;
-        console.log(c);
+        console.log('currency=>',  this.currency.current);
+
+        localStorage.setItem( "currency" ,JSON.stringify(this.currency.current))
     }
 
     changeLang(lang, item) {
