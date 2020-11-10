@@ -286,6 +286,9 @@
     "details": "Detale"
   },
   "dialog": {
-    "review": "Dzięki za recenzję"
+    "review": "Twoja recenzja została przesłana do recenzji, po czym zostanie opublikowana na portalu",
+    "main": "Dom",
+    "subMit": "Zatwierdź",
+    "thanks": "Dzięki!"
   }
 }

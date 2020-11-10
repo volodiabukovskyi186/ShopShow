@@ -34,15 +34,15 @@
   background-color: $white;
   @include material-shadow(1, 1, $gray400);
   @include transition();
-  border-radius: $radius;
+  //border-radius: $radius;
   &:hover {
     @include material-shadow(2, 1, $gray500);
     transform: scale(1.005);
   }
   .ratio {
       img {
-          border-top-left-radius: $radius;
-          border-top-right-radius: $radius;
+          //border-top-left-radius: $radius;
+          //border-top-right-radius: $radius;
       }
   }
   .info {
@@ -52,16 +52,18 @@
       .days-left {
           display: flex;
           align-items: center;
-          justify-content: center;
+          justify-content: space-between;
           padding: $space/4;
-          border: 1px solid $gray400;
+          //border: 1px solid $gray400;
           width: 100px;
           text-align: center;
+           background-color: pink;
           .number {
               font-size: 1.6rem;
           }
       }
       .detal {
+        padding-top: 10px;
           //padding: $space/4 $space/4 $space/4 $space;
            display: flex;
            justify-content: center;
@@ -112,7 +114,7 @@
   }
 }
 .promotionName{
-  text-align: center;
+  //text-align: center;
 }
 
 //@include screen-w(800px) {

@@ -33,16 +33,21 @@
             </div>
             <div>{{'promotion.days'|translate}}</div>
           </div>
+
           <div class="detal">
             <small *ngIf="item.description"
-              >{{ item.description.data_start }} -
-              {{ item.description.data_end }}</small
-            >
-            <h4 class="promotionName" ><a
+              >{{ item.description.data_start| localDate: "d MMMM" }} -
+              {{ item.description.data_end| localDate: "d MMMM" }}
+            </small >
+            <span>
+              <p class="promotionName" ><a
                     [routerLink]="['/promotions/view/' + item.id]"
-                    class="button small more"
-            >{{ item.description.description }} </a
-            ></h4>
+                    class=""
+            >
+              {{ item.description.title }}
+            </a></p>
+<!--            <p >  {{ item.description.subtitle }}</p>-->
+            </span>
 
           </div>
         </div>
@@ -51,6 +56,7 @@
     </div>
 
     <app-pagination
+            *ngIf="prom.promotions.count>=12"
       class="radius"
       [page]="prom.page"
       [total]="Math.ceil(prom.promotions.count / prom.promotions.take)"

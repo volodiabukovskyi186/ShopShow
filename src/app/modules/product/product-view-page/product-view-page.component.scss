@@ -69,10 +69,8 @@ hr {
 }
 
 .stock-status {
-  // padding: 4px;
-  //border-radius: $radius/2;
   background-color: #a7a2a2;
-  color: $gray600;
+  color: #ffffff;
   text-transform: capitalize;
   border-radius: 1px !important;
   padding: 4px 20px;
@@ -112,6 +110,12 @@ hr {
     flex: 1;
     border-bottom: 1px dotted;
     color: $gray300;
+  }
+}
+.promotionName{
+  padding-bottom: 0;
+  a{
+    padding-bottom: 0;
   }
 }
 
