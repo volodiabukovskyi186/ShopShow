@@ -8,6 +8,7 @@ import { ManufacturerPageComponent } from "./manufacturer-page/manufacturer-page
 import { ManufacturersRoutingModule } from './manufacturers-routing.module';
 import { ProductModule } from '../product/product.module';
 import { DragScrollModule } from 'ngx-drag-scroll';
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,15 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     ManufacturesPageComponent,
     ManufacturerPageComponent,
   ],
-  imports: [CommonModule, ManufacturersRoutingModule, RouterModule, UiModule, ProductModule,DragScrollModule],
+  imports: [
+    CommonModule, 
+    ManufacturersRoutingModule, 
+    RouterModule, 
+    UiModule, 
+    ProductModule,
+    DragScrollModule,
+    TranslateModule
+  ],
   exports: [ManufacturersSliderComponent]
 })
 export class ManufacturersModule {}

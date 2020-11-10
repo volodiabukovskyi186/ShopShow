@@ -1,6 +1,6 @@
 <rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
 <div style="width: 100%;" class="d4 text-center flex row center v_center">
-  <h1 style="margin-top: 0;" class="manufacturers-header">Our Manufacturers</h1>
+  <h1 style="margin-top: 0;" class="manufacturers-header">{{ 'main.ourManufacturers' | translate }}</h1>
 </div>
 
 <section class="manufacturers">
@@ -36,7 +36,7 @@
           class="button more"
           [routerLink]="['/manufacturers/' + item.id]"
           routerLinkActive="router-link-active"
-          >View product</a
+          >{{ 'main.viewProduct' | translate }}</a
         >
       </div>
     </div>
