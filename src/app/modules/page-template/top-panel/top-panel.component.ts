@@ -68,6 +68,7 @@ export class TopPanelComponent implements OnInit {
 
     getCurrencyHandler = data => {
         this.currency.data = data.data;
+        console.log('allLAng',this.currency.data)
         this.currency.setDefault();
         if(localStorage.getItem('currency')){
             const activeCurrency = localStorage.getItem('currency');
@@ -79,7 +80,6 @@ export class TopPanelComponent implements OnInit {
         e.preventDefault();
         this.currency.current = c;
         console.log('currency=>',  this.currency.current);
-
         localStorage.setItem( "currency" ,JSON.stringify(this.currency.current))
     }
 

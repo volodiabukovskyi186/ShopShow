@@ -23,7 +23,11 @@
               <li *ngFor="let c of currency.data">
                 <a [ngClass]="{ active: currency.current.id == c.id }" class="currency-content"
                   (click)="onClickCurrency($event, c)">
-                    <img class="currency-img" src="{{ currencyImgs[c.currency_title] }}" />
+                  <div  class="currency-logo">
+                    <p *ngIf="c.simbol_left!==''" class="currency-img">{{c.simbol_left}}</p>
+                    <p *ngIf="c.simbol_right!==''" class="currency-img">{{c.simbol_right}}</p>
+                  </div>
+<!--                    <img class="currency-img" src="{{ currencyImgs[c.currency_title] }}" />-->
                     - <span class="currency-text">{{ c.currency_title }}</span>
                 </a>
               </li>

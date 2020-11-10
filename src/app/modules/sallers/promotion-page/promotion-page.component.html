@@ -36,16 +36,18 @@
 
           <div class="detal">
             <small *ngIf="item.description"
-              >{{ item.description.data_start| localDate: "longDate" }} -
-              {{ item.description.data_end| localDate: "longDate" }}
+              >{{ item.description.data_start| localDate: "d MMMM" }} -
+              {{ item.description.data_end| localDate: "d MMMM" }}
             </small >
-            <span> <h4 class="promotionName" ><a
+            <span>
+              <p class="promotionName" ><a
                     [routerLink]="['/promotions/view/' + item.id]"
-                    class="button small more"
+                    class=""
             >
               {{ item.description.title }}
-            </a></h4>
-            <p style="text-align: center">  {{ item.description.subtitle }}</p></span>
+            </a></p>
+<!--            <p >  {{ item.description.subtitle }}</p>-->
+            </span>
 
           </div>
         </div>
