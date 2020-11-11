@@ -25,10 +25,12 @@
 
 .promotion-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  white-space: pre-wrap;
 }
 
 .promotion {
+  white-space: pre-wrap;
   width: calc(25% - #{$space * 2});
   margin: $space;
   background-color: $white;
@@ -46,6 +48,7 @@
       }
   }
   .info {
+    white-space: pre-wrap;
       display: flex;
       flex-direction: row;
       //padding: $space/2;
@@ -57,38 +60,67 @@
           //border: 1px solid $gray400;
           width: 100px;
           text-align: center;
-           background-color: pink;
+           background-color: #F4D1D4;
           .number {
-              font-size: 1.6rem;
+              font-size: 45px;
+              //font-size: 1.6rem;
           }
+
+        .days-left-top{
+          color: #333333;
+          font-size: 16px;
+          font-weight: 100;
+        }
       }
       .detal {
+        white-space: pre-wrap;
         padding-top: 10px;
           //padding: $space/4 $space/4 $space/4 $space;
            display: flex;
-           justify-content: center;
-           margin-left: auto;
-           margin-right: auto;
+           justify-content: flex-start;
+        padding-left: 10px;
+           //margin-left: auto;
+           //margin-right: auto;
 
           h4 {
               margin: $space/4 0 $space/2;
 
           }
+        .detail-wrap{
+          .date{
+            padding-bottom: 20px;
+
+          }
+        }
       }
   }
 }
 .days-left-block{
   width: 100px;
 }
+.promotionName{
+  color: #333333;
+  font-weight: 600;
+  //text-align: center;
+}
+@include screen-w(1440px) {
+.detal{
+  max-width: 150px;
+}
+}
 @include screen-w(1250px) {
+  .detal{
+    max-width: 200px;
+  }
   .promotion {
     width: 30%;
   }
+
 }
 
 @include screen-w(1170px) {
   .promotion {
-    width: 40%;
+    width: 44%;
   }
 }
 
@@ -96,11 +128,20 @@
   .d4 {
     margin: 5px;
   }
+  .detal{
+    max-width: 150px;
+  }
 }
 
 @include screen-w(548px) {
   .promotion {
     width: 70%;
+  }
+  .detal{
+    max-width: 190px;
+  }
+  .promotion-container {
+    justify-content: center;
   }
 }
 
@@ -113,9 +154,12 @@
     width: 80%;
   }
 }
-.promotionName{
-  //text-align: center;
+@include screen-w(350px) {
+  .detal {
+    max-width: 150px;
+  }
 }
+
 
 //@include screen-w(800px) {
 //  .promotion {

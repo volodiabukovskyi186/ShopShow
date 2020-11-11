@@ -13,7 +13,7 @@ export class ImageViewComponent implements OnInit, OnChanges {
     _images: Array<any> = [];
     hoststatic = environment.hoststatic;
     public getCurrentProduct;
-
+    current: any;
     @Input()
     public set images(v: Array<any>) {
         this._images = v;
@@ -21,11 +21,14 @@ export class ImageViewComponent implements OnInit, OnChanges {
     }
 
     public get images(): Array<any> {
+
         return this._images;
     }
 
     ngOnChanges(res) {
-        this.current = res?.main?.currentValue ? res?.main?.currentValue : null;
+
+        this.current = res?.main?.currentValue ? res?.main?.currentValue: res?.main?.currentValue;
+        console.log('this.current',this.current)
     }
 
     @Input()
@@ -34,7 +37,7 @@ export class ImageViewComponent implements OnInit, OnChanges {
     @Input()
     main: string;
 
-    current: any;
+
 
     constructor(
         public dialog: MatDialog

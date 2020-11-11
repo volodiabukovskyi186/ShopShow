@@ -1,67 +1,63 @@
 <rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
-<br />
+<br/>
 <div class="row">
-  <!-- <div class="col col-side filter-margin-left" style="margin-top: 5%;"> -->
+    <!-- <div class="col col-side filter-margin-left" style="margin-top: 5%;"> -->
     <!-- <i>Filters will be here</i> -->
     <!-- <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page> -->
-  <!-- </div> -->
-  <div class="col">
-    <div style="width: 100%;" class="d4 text-center flex row center v_center">
-      <div>
-        <h1 style="margin-top: 0;" class="promotion-header">{{'nav.promotion' | translate }}</h1>
-      </div>
-
-    </div>
-
-    <div class="flex wrap promotion-container">
-      <div class="promotion" *ngFor="let item of prom.promotions.data">
-        <a [routerLink]="['/promotions/view/' + item.id]" class="ratio">
-          <div class="square">
-            <img
-              *ngIf="item.description"
-              [src]="hoststatic + item.description.image?.src_mini"
-              [alt]="item.name"
-              class="cover"
-            />
-          </div>
-        </a>
-        <div class="info ">
-          <div class="days-left">
-            <div>{{'promotion.left'|translate}}</div>
-            <div class="number" *ngIf="item.description">
-              {{ countDays(item.description.data_end) }}
+    <!-- </div> -->
+    <div class="col">
+        <div style="width: 100%;" class="d4 text-center flex row center v_center">
+            <div>
+                <h1 style="margin-top: 0;" class="promotion-header">{{'nav.promotion'|translate}}</h1>
             </div>
-            <div>{{'promotion.days'|translate}}</div>
-          </div>
+        </div>
+        <div class="flex wrap promotion-container">
+            <div class="promotion" *ngFor="let item of prom.promotions.data">
+                <a [routerLink]="['/promotions/view/' + item.id]" class="ratio">
+                    <div class="square">
+                        <img
+                            *ngIf="item.description"
+                            [src]="hoststatic + item.description.image?.src_mini"
+                            [alt]="item.name"
+                            class="cover"
+                        />
+                    </div>
+                </a>
+                <div class="info">
+                    <div class="days-left">
+                        <div class="days-left-top">{{'promotion.left'|translate}}</div>
+                        <div class="number" *ngIf="item.description">
+                            {{ countDays(item.description.data_end) }}
+                        </div>
+                        <div class="days-left-top">{{'promotion.days'|translate}}</div>
+                    </div>
 
-          <div class="detal">
-            <small *ngIf="item.description"
-              >{{ item.description.data_start| localDate: "d MMMM" }} -
-              {{ item.description.data_end| localDate: "d MMMM" }}
-            </small >
-            <span>
-              <p class="promotionName" ><a
-                    [routerLink]="['/promotions/view/' + item.id]"
-                    class=""
-            >
-              {{ item.description.title }}
-            </a></p>
-<!--            <p >  {{ item.description.subtitle }}</p>-->
-            </span>
-
-          </div>
+                    <div class="detal">
+                        <div class="detail-wrap">
+                            <small class="date" *ngIf="item.description">
+                                {{ item.description.data_start | localDate: "d MMMM" }} -
+                                {{ item.description.data_end | localDate: "d MMMM" }}
+                            </small>
+                            <span>
+                                <p class="promotionName" >
+                                    <a  [routerLink]="['/promotions/view/' + item.id]" class="" >
+                                        {{ item.description.title }}
+                                    </a>
+                                </p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-      </div>
+        <app-pagination
+                *ngIf="prom.promotions.count>=12"
+                class="radius"
+                [page]="prom.page"
+                [total]="Math.ceil(prom.promotions.count / prom.promotions.take)"
+                [pagesToShow]="5"
+                (pageChanged)="pageChangedHandler($event)"
+        ></app-pagination>
     </div>
-
-    <app-pagination
-            *ngIf="prom.promotions.count>=12"
-      class="radius"
-      [page]="prom.page"
-      [total]="Math.ceil(prom.promotions.count / prom.promotions.take)"
-      [pagesToShow]="5"
-      (pageChanged)="pageChangedHandler($event)"
-    ></app-pagination>
-  </div>
 </div>

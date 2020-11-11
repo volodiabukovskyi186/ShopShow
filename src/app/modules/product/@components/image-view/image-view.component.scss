@@ -25,6 +25,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     padding: $space/2 0;
+
     // height: 80px;
     margin: $space/2 0 $space/2;
     .image-mini {
@@ -80,7 +81,12 @@
 
   .image-list {
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+  }
+}
+@include screen-w(500px) {
+  .image-view {
+    justify-content: flex-start;
   }
 }
 

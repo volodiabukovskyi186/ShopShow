@@ -218,9 +218,12 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             ...this.review.value
         };
         console.log('review===>',review)
-        // this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe(() => {
+        this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe(() => {
             const dialogRef = this.dialog.open(AddReviewDialogComponent, {
             });
+        dialogRef.afterClosed().subscribe(res => {
+            this.router.navigate(['/']);
+        });
         //     if(this.user){
         //         this.review.setValue(
         //             {
@@ -231,7 +234,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         //             }
         //         );
         //     }
-        // });
+        });
 
 
     }
