@@ -61,7 +61,7 @@
 
       <div class="details">
         <h4 *ngIf="slide.description">{{ slide.description.title }}</h4>
-        <p *ngIf="slide.description">{{ slide.description?.description }}</p>
+        <p *ngIf="slide.description">{{ slide.description?.subtitle }}</p>
         <footer class="flex center">
           <a
             [routerLink]="['/', 'promotions', 'view', slide.id]"
