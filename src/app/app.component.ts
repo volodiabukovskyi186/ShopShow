@@ -30,7 +30,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.getSiteData()
     .pipe(takeUntil(this.destroy$))
     .subscribe((res) => {
-      this.favIcon.href = environment.host + res?.data?.icon?.src;
+      if (this.favIcon) {
+        this.favIcon.href = environment.host + res?.data?.icon?.src;
+      }
     })
   }
 
