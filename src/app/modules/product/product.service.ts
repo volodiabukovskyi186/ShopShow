@@ -211,7 +211,7 @@ export class ProductService {
     );
   }
   postReview(reviewItem): Observable <any> {
-    return this.http.post(environment.review, reviewItem);
+    return this.http.post(`https://api.showu.com.ua/review`, reviewItem);
   }
 
   addProductToWishlist(data): Observable <any> {

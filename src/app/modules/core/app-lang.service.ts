@@ -61,6 +61,8 @@ export class AppLangService {
     }
   }
 
+
+
   init() {
     // init langs
     const pl: ILangItem = { flag: "🇵🇱", name: "Polish", locale: "pl" };

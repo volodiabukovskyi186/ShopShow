@@ -66,6 +66,7 @@ export class LoginFormComponent implements OnInit {
     this.auth.login(form.login, form.password).subscribe(this.authHandler);
   }
   authHandler = (data: AuthResponse) => {
+
     this.auth.saveToken(data.data.token);
     this.auth.onAuth();
     this.authForm.reset();
