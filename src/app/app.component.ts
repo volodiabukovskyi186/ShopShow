@@ -11,13 +11,14 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private favIcon: HTMLLinkElement = document.querySelector('#appIcon');
+  public favIcon: HTMLLinkElement = document.querySelector('#appIcon');
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(public http: HttpClient) {}
 
   public ngOnInit(): void {
     this.getAllSiteData();
+    console.log(this.favIcon);
   }
 
   public ngOnDestroy(): void {
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.getSiteData()
     .pipe(takeUntil(this.destroy$))
     .subscribe((res) => {
-      this.favIcon.href = environment.host + res.data.icon.src;
+      this.favIcon.href = environment.host + res?.data?.icon?.src;
     })
   }
 
