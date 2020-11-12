@@ -2,11 +2,23 @@
 <div class="info">
   <h6 [innerText]="title"></h6>
   <ng-container *ngFor="let item of links">
-    <a
-      *ngIf="item.link"
-      [href]="item.type ? item.type + ':' + item.link : item.link"
-      >{{ item.title }}</a
-    >
-    <span *ngIf="!item.link">{{ item.title }}</span>
+    <div *ngIf="checkIfItsString(item?.title)">
+      <a
+        (click)="test(item, !item?.title, item?.title)"
+        *ngIf="item?.link"
+        [href]="item?.type ? item?.type + ':' + item?.link : item?.link"
+      >
+        {{ item?.title }}
+      </a>
+
+      <span *ngIf="!item?.link">{{ item?.title }}</span>
+    </div>
+
+    <div *ngIf="item?.title?.length > 1 && !checkIfItsString(item?.title)">
+      <div *ngFor="let onePhone of item?.title">
+        <span>{{ onePhone?.phone }}</span>
+      </div>
+    </div>
   </ng-container>
+
 </div>

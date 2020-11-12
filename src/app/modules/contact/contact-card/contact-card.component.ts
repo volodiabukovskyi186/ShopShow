@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 export interface IContactLink {
-  title: string;
+  title: any;
   type: string;
-  link: string;
+  link: any;
 } 
 
 @Component({
@@ -12,15 +12,27 @@ export interface IContactLink {
   styleUrls: ['./contact-card.component.scss']
 })
 export class ContactCardComponent implements OnInit {
-  @Input() title: string = null;
-  @Input() src: string = null;
-  @Input() links: Array<IContactLink> = [];
+  @Input() title;
+  @Input() src;
+  @Input() links: Array<IContactLink>;
 
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.links);
     console.log(this.title);
+  }
+
+  checkIfItsString(itemTitle): boolean {
+    if (typeof(itemTitle) === 'string') {
+      return true;
+    }
+
+    return false;
+  }
+
+  test(item, arr, i) {
+    console.log(item, arr, i);
   }
 
 }
