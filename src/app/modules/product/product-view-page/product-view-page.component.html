@@ -29,18 +29,18 @@
       <hr />
       <div class="price flex v_center space">
         <div class="flex space space-card-beetwen">
-          <span *ngIf="product?.item.discont?.price" class="old-price">
+          <span *ngIf="product?.item?.discont?.price" class="old-price">
             <del
               >{{ currency?.current?.simbol_left }}
-              {{ product?.item.price * currency?.current?.value | number }}
+              {{ product?.item?.price * currency?.current?.value | number }}
               {{ currency?.current?.simbol_right }}</del
             >
           </span>
-          <span [ngClass]="{ 'new-price': product?.item.discont?.price }"
+          <span [ngClass]="{ 'new-price': product?.item?.discont?.price }"
             class="price-padding">
             {{ currency?.current?.simbol_left }}
-            <span *ngIf="product?.item.discont?.price === null">{{ product?.item.price * currency?.current?.value | number }}</span>
-            <span *ngIf="product?.item.discont?.price !== null">{{ product?.item.discont?.price * currency?.current?.value | number }}</span>
+            <span *ngIf="product?.item?.discont?.price === null">{{ product?.item?.price * currency?.current?.value | number }}</span>
+            <span *ngIf="product?.item?.discont?.price !== null">{{ product?.item?.discont?.price * currency?.current?.value | number }}</span>
             {{ currency?.current?.simbol_right }}</span
           >
         </div>
@@ -50,9 +50,9 @@
           }}{{ currency?.current?.simbol_right }}</b
         > -->
         <span
-          class="stock-status" [ngStyle]="{'background':product.item.stock_status?.color}"
+          class="stock-status" [ngStyle]="{'background':product?.item?.stock_status?.color}"
 
-          >{{product.item.stock_status?.description.name}}</span
+          > {{product?.item?.stock_status?.description.name}} </span
         >
 
       </div>
