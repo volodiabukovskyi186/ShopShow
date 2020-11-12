@@ -14,10 +14,11 @@ export class AppComponent implements OnInit, OnDestroy {
   public favIcon: HTMLLinkElement = document.querySelector('#appIcon');
   private destroy$: Subject<void> = new Subject<void>();
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) {
+    this.getAllSiteData();
+  }
 
   public ngOnInit(): void {
-    this.getAllSiteData();
     console.log(this.favIcon);
   }
 
@@ -27,11 +28,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public getAllSiteData(): void {
+    //const host = 'https://api.showu.com.ua';
+
     this.getSiteData()
     .pipe(takeUntil(this.destroy$))
     .subscribe((res) => {
       if (this.favIcon) {
-        this.favIcon.href = environment.host + res?.data?.icon?.src;
+        this.favIcon.href = 'https://api.showu.com.ua' + res?.data?.icon?.src;
       }
     })
   }
