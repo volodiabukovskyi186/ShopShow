@@ -19,7 +19,6 @@ export class LocalDatePipe implements PipeTransform {
     if (!value) return "";
     // let locale = this.lang.getLanguage(this.lang.current)?.locale;
     let locale = this.lang.current;
-    // console.log('local==>',value)
     return locale ? formatDate(value, format, locale) : value;
   }
 }

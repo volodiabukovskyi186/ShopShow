@@ -16,10 +16,11 @@ export const environment = {
   signup: host + `signup`,
   promotion: host + "client/promotion",
   productPromotion: host + "client/product_promotion",
-  review: host + 'review',
+  reviews: host + `reviews`,
+  reviewss: host + `review`,
   role: {
     roles: host + `roles`,
     role: host + `role`,
   },
-  reviews: host + `reviews`,
+
 };

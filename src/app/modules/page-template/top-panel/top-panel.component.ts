@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
     styleUrls: ['./top-panel.component.scss'],
 })
 export class TopPanelComponent implements OnInit {
-
+    allLangs:any;
     langStatus: boolean = false;
     currentlyStatus: boolean = false;
     public countryFlagsImgs;
@@ -42,11 +42,18 @@ export class TopPanelComponent implements OnInit {
             UAH: '../../../../assets/icons/dollar.svg',
             USD: '../../../../assets/icons/hryvnia.svg'
         };
+        this.getAllLang()
 
 
 
         // this.currency.current = localStorage.getItem('currency');
 
+    }
+    getAllLang():void{
+        this.appLang.getAllLang().subscribe(data=>{
+            this.allLangs=data;
+            console.log('allData===>',this.allLangs)
+        })
     }
 
     x(item) {

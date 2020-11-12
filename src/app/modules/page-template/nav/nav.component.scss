@@ -89,7 +89,7 @@ div {
   position: absolute;
   z-index: 10000;
   width:100vw;
-  min-height: 88vh;
+  min-height: 100vh;
 
   background-color:white;
   list-style: none;
@@ -278,4 +278,8 @@ div{
   &:hover {
     opacity: 1;
   }
+}
+.small-bar-bottom{
+  position: absolute;
+  bottom: 40px;
 }
