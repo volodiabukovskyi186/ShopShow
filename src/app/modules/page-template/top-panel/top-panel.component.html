@@ -38,20 +38,21 @@
       <div class="lang-conteiner">
         <ul class="top-panel-nav langActive ">
           <li (mouseout)="langStatus=false" (mouseover)="langStatus=true">
-            <div *ngFor="let item of appLang.langs">
-              <div class="active-language" *ngIf="appLang.current == item.locale">
-                  <img class="lang-item-flag" src="{{ countryFlagsImgs[item.name] }}">
-                  <span class="active-lang-locale">{{item.name}}</span>
+            <div *ngFor="let item of allLangs?.data">
+              <div class="active-language" *ngIf="appLang.current == item.code">
+                  <img class="lang-item-flag" src="{{ item.flag }}">
+                  <span class="active-lang-locale">{{item.title}}</span>
                   <img class="fill-svg" src="assets/icons/drop-down.svg" /> 
               </div>
             </div>
             <ul class="langBar" [ngClass]="{inline: langStatus==true}">
-              <li   class="lang-item" *ngFor="let item of appLang.langs">
-                <a [ngClass]="{ active: appLang.current == item.locale }"
-                   (click)="changeLang(item.locale, item.flag)">
+              <li   class="lang-item" *ngFor="let item of allLangs?.data">
+                <a [ngClass]="{ active: appLang.current == item.code }"
+                   (click)="changeLang(item.code, item.flag)">
                   <div class="flag-block">
-                    <img class="lang-item-flag all-langs-flags" src="{{ countryFlagsImgs[item.name] }}">
-                    <span class="lang-item-name"> {{ item.name }} </span>
+<!--                    <img class="lang-item-flag all-langs-flags" src="{{ countryFlagsImgs[item.name] }}">-->
+                    <img class="lang-item-flag all-langs-flags" src="{{ item.flag }}" >
+                    <span class="lang-item-name"> {{ item.title }} </span>
                   </div>
                 </a>
               </li>
