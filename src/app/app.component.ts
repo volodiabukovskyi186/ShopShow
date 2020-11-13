@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
     .pipe(takeUntil(this.destroy$))
     .subscribe((res) => {
       if (this.favIcon) {
-        this.favIcon.href = 'https://api.showu.com.ua' + res?.data?.icon?.src;
+        //this.favIcon.href = 'https://api.showu.com.ua' + res?.data?.icon?.src;
       }
 
       console.log(res);
