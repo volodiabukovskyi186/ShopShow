@@ -11,15 +11,17 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  public favIcon: HTMLLinkElement;
   private destroy$: Subject<void> = new Subject<void>();
+  public favIcon: HTMLLinkElement;
 
   constructor(public http: HttpClient) {
+    this.favIcon = document.querySelector('#appIcon');
+    
     this.getAllSiteData();
   }
 
   public ngOnInit(): void {
-    this.favIcon = document.querySelector('#appIcon');
+    // this.favIcon = document.querySelector('#appIcon');
     console.log(this.favIcon);
   }
 
