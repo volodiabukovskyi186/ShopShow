@@ -38,10 +38,10 @@ export class AppComponent implements OnInit, OnDestroy {
     .subscribe((res) => {
       if (this.favIcon) {
         this.favIcon.href = 'https://api.showu.com.ua' + res?.data?.icon?.src;
-
-        console.log(res);
-        console.log(res?.data?.icon?.src);
       }
+
+      console.log(res);
+      console.log(res?.data?.icon?.src);
     })
   }
 
