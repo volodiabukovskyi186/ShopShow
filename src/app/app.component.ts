@@ -15,7 +15,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public favIcon: HTMLLinkElement;
 
   constructor(public http: HttpClient) {
-    this.favIcon = document.querySelector('#appIcon');
+    this.favIcon = document.querySelector('#appIcon') || document.querySelector("link[href='favicon.ico']");
 
     this.getAllSiteData();
   }
