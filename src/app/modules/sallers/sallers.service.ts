@@ -39,6 +39,8 @@ export class SallersService {
   getBy(id: number): Observable<any> {
     let lang = this.appLang.current;
     let params = `/${id}?lang=${lang}`;
+
+    console.log(environment.productPromotion + params);
     return this.http.get<any>(environment.productPromotion + params);
   }
 }

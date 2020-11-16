@@ -10,21 +10,21 @@
   <div class="col">
     <div class="ratio radius">
       <div class="date">
-        {{ sallers.item?.description?.data_start | localDate: "mediumDate" }} -
-        {{ sallers.item?.description?.data_end | localDate: "mediumDate" }}
+        {{ sallers?.item?.description?.data_start | localDate: "mediumDate" }} -
+        {{ sallers?.item?.description?.data_end | localDate: "mediumDate" }}
       </div>
       <div class="cinema radius">
         <img
-          [src]="host + sallers.item?.description.image?.src"
-          [alt]="sallers.item?.description.title"
+          [src]="host + sallers?.item?.description?.image?.src"
+          [alt]="sallers?.item?.description?.title"
           class="cover radius"
         />
       </div>
     </div>
 
     <show-u-title
-      [subtitle]="sallers.item?.description.subtitle"
-      [title]="sallers.item?.description.title"
+      [subtitle]="sallers?.item?.description?.subtitle"
+      [title]="sallers?.item?.description?.title"
     ></show-u-title>
     <div class="mobile-filter">
       <app-filter-page  (filterChanged)="onFilterChanged($event)"></app-filter-page>
@@ -33,7 +33,7 @@
     <div class="grid">
       <app-product-item
         *ngFor="let item of sallers.item?.products"
-        [product]="item.product"
+        [product]="item?.product"
       ></app-product-item>
     </div>
   </div>

@@ -32,24 +32,30 @@ export class PromotionViewPageComponent implements OnInit {
     public product: ProductService,
   ) {}
 
-  id: number = 0;
+  public id: number;
+  public host = environment.hoststatic;
 
-  
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.route.params.subscribe((data) => {
       this.id = data["id"];
+      console.log('this.id =========================>>', this.id);
+
       console.log("PromotionViewPageComponent: ", this.id);
-      
-      this.sallers.getBy(this.id).subscribe(this.getByIdHandler);
+    });
+
+    this.sallers.getBy(this.id).subscribe((res) => {
+      this.getByIdHandler(res);
+
+      console.log(res);
     });
   }
 
-  host = environment.hoststatic;
-
   getByIdHandler = (data) => {
     // this.ngxService.stop();
-    this.sallers.item = data.data;
+    this.sallers.item = data?.data;
+    debugger;
+    
+    console.log('this.sallers.item', this.sallers.item);
 
     this.breadcrumbs.push({
       link: `promotions/${this.id}`,

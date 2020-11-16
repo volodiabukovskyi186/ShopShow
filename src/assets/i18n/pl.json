@@ -114,10 +114,12 @@
     "productColor": "Kolor:",
     "productSize": "Rozmiar:",
     "sale": "Akcja",
-    "new": "Nowy"
+    "new": "Nowy",
+    "additionalInfo": "Cechy",
+    "reviews": "Recenzje"
   },
   "wishlist": {
-    "addToWishlist": "Dodaj Do Listy życzeń"
+    "addToWishlist": "Zapisz w ulubionych"
   },
   "add-review": {
     "add-review": "Dodać recenzję",

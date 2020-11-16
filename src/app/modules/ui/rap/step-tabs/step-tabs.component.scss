@@ -35,7 +35,7 @@
 @media (max-width: 768px) {
   .nav {
     text-align: center;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     li{
       padding-top: 0px;
@@ -46,4 +46,10 @@
     }
   }
 
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding: 8px 0 12px 0;
+  }
 }
