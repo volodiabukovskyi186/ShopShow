@@ -40,7 +40,7 @@
           <li (mouseout)="langStatus=false" (mouseover)="langStatus=true">
             <div *ngFor="let item of allLangs?.data">
               <div class="active-language" *ngIf="appLang.current == item.code">
-                  <img class="lang-item-flag" src="{{ item.flag }}">
+                  <img class="lang-item-flag" src="https://api.showu.com.ua{{ item.flag }}">
                   <span class="active-lang-locale">{{item.title}}</span>
                   <img class="fill-svg" src="assets/icons/drop-down.svg" /> 
               </div>
