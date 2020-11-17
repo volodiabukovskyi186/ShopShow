@@ -11,9 +11,11 @@ app-product-item {
   margin:0;
   flex-shrink: 0;
 }
+
 #slider-product{
   width: 100%;
 }
+
 .button-slider-block{
   height: 40px;
   display: flex;
@@ -25,6 +27,10 @@ app-product-item {
   }
 }
 
+.drag-item-content {
+  margin-left: 8px; 
+  margin-right: 8px;
+}
 
 @include screen-w(800px) {
   app-product-item {
@@ -57,7 +63,10 @@ app-product-item {
     justify-content: center;
   }
 
-
+  .drag-item-content {
+    margin-left: 0px; 
+    margin-right: 0px;
+  }
 
   //#small-product-slider{
   //  width: 50%;
