@@ -28,7 +28,7 @@ export class WishlistProductItemComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.product);
-    console.log(window.onload);
+    //console.log(window.onload);
   }
 
   // save($event: Event, id: number) {

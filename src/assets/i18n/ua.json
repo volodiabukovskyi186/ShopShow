@@ -145,13 +145,14 @@
   "product": {
     "addToCart": "Додати в кошик",
     "description": "Опис",
-    "additionalInfo": "Додаткова інформація",
+    "additionalInfo": "Характеристики",
     "related": "Пов'язані товари",
     "productCode": "Kод товару",
     "productColor": "Колір:",
     "productSize": "Розмір:",
     "sale": "Акція",
-    "new": "Новий"
+    "new": "Новий",
+    "reviews": "Відгуки"
   },
   "sortBy": {
     "sort": "Сортувати:",
@@ -166,7 +167,7 @@
     "filterbtn":"Фільтр"
   },
   "wishlist": {
-    "addToWishlist": "Додати До Списку Бажань"
+    "addToWishlist": "Зберегти в обраному"
   },
   "add-review": {
     "add-review": "Додати відгук",

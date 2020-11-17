@@ -38,6 +38,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     count: number = 1;
     Math = Math;
     wishlistProducts = [];
+    private destroy$: Subject<void> = new Subject<void>();
 
     review: FormGroup = new FormGroup({
         author: new FormControl('', [Validators.required]),
@@ -45,13 +46,11 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         rating: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.required]),
     });
-    private destroy$: Subject<void> = new Subject<void>();
 
-    ngOnDestroy() {
+    public ngOnDestroy(): void {
         this.destroy$.next();
         this.destroy$.complete();
     }
-
 
     breadcrumbs: Array<NavLink>;
 
@@ -68,8 +67,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         private accauntService: AccauntService,
         private viewportScroller: ViewportScroller,
         public dialog: MatDialog,
-    ) {
-    }
+    ) {}
 
     stars = [
         {
@@ -101,8 +99,8 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
 
     getByIdHandler = (data) => {
-
         this.product.item = data?.data;
+
         //this.updateTitle(this.product.item.description.name + ` | ShowU ` + this.product.item.description.tag);
         this.updateTitle(this.product?.item?.description?.name + ` | ShowU `);
         this.updateDescription(this.product?.item?.description?.meta_discription);
@@ -129,9 +127,10 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         this.meta.updateTag({name: 'description', content: desc});
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.getUser();
         //this.getClientWishlistById();
+        
         this.review
             .get('rating')
             .valueChanges
@@ -144,6 +143,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
                     };
                 });
             });
+
         this.route.params.subscribe((data) => {
             // set lang
             this.breadcrumbs = [
@@ -207,8 +207,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         });
     }
 
-    addReview() {
-
+    public addReview(): void {
         const review = {
             product_id: this.id,
             user_id: this.user?.data?.user.id,
@@ -217,23 +216,15 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             updated_at: null,
             ...this.review.value
         };
-        console.log('review===>',review)
-        this.product.postReview(review).pipe(takeUntil(this.destroy$)).subscribe(() => {
-            const dialogRef = this.dialog.open(AddReviewDialogComponent, {
+
+        this.product.postReview(review)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+                const dialogRef = this.dialog.open(AddReviewDialogComponent, {});
+
+            dialogRef.afterClosed().subscribe(res => {
+                this.router.navigate(['/']);
             });
-        dialogRef.afterClosed().subscribe(res => {
-            this.router.navigate(['/']);
-        });
-        //     if(this.user){
-        //         this.review.setValue(
-        //             {
-        //                 text:'',
-        //                 author: this.user.data.user.first_name,
-        //                 email: this.user.data.user.email,
-        //                 rating:0
-        //             }
-        //         );
-        //     }
         });
 
 
@@ -245,13 +236,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     //     })
     // }
 
-    public addToWishlist(product) {
-        console.log(product);
-        console.log(this.wishlistProducts);
-
+    public addToWishlist(product): void {
         //const found = this.wishlistProducts?.some((el) => { el.product_id === product?.item?.description?.product_id});
 
-        //if (found) {
         this.product.addProductToWishlist({
             product_id: product?.item?.description?.product_id,
             user_id: this.user?.data?.user.id
@@ -259,8 +246,5 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
             console.log(res);
             alert(`Product #${res.data.product_id} was added to wishlist!`);
         });
-        //} else {
-        //alert(`Product already exist in wishlist!`);
-        //}
     }
 }

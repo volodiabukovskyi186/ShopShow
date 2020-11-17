@@ -3,7 +3,6 @@
 <div class="golden">
   <div class="short">
     <product-image-view
-
       class="sticky"
       [host]="'https://api.showu.com.ua/'"
       [images]="product?.item?.images"
@@ -67,34 +66,37 @@
         </div>
       </div>
       <hr />
-      <div class="flex count-add-tobag">
-        <rap-count-input
-          class="add-to-card-content-input"
-          [min]="1"
-          [max]="20"
-          [(value)]="count"
-        ></rap-count-input>
-        <button
-          class="button radius large delete add-to-catt-btn"
-          (click)="add(product?.item)"
-        >
-          <rap-svg-ico class="basket-icon" [src]="'assets/icons/shop_cart_icon_white.svg'"></rap-svg-ico>
-          <span class="add-to-card-text">{{ "product.addToCart" | translate }}</span>
-        </button>
-      </div>
-      <div class="add-to-wishlist">
-        <img
-          (click)="addToWishlist(product)"
-          class="heart-icon" src="assets/icons/heart_1.svg"
-        />
-        <span>
-          {{ 'wishlist.addToWishlist' | translate }}
-        </span>
+      <div class="add-to-wishlist__container">
+        <div class="flex count-add-tobag">
+          <rap-count-input
+            class="add-to-card-content-input"
+            [min]="1"
+            [max]="20"
+            [(value)]="count"
+          ></rap-count-input>
+          <button
+            class="button radius large delete add-to-catt-btn"
+            (click)="add(product?.item)"
+          >
+            <rap-svg-ico class="basket-icon" [src]="'assets/icons/shop_cart_icon_white.svg'"></rap-svg-ico>
+            <span class="add-to-card-text">{{ "product.addToCart" | translate }}</span>
+          </button>
+        </div>
+
+        <div class="add-to-wishlist">
+          <img
+            (click)="addToWishlist(product)"
+            class="heart-icon" src="assets/icons/heart_1.svg"
+          />
+          <span class="add-to-wishlist__text">
+            {{ 'wishlist.addToWishlist' | translate }}
+          </span>
+        </div>
       </div>
       <hr />
     </div>
 
-    <div class="manufacturer" style="margin: 1rem 0;">
+    <div class="manufacturer" style="margin-top: 4px; margin-bottom: 10px;">
       <div class="golden manufacturer-shadow">
         <div class="long padding">
           <a [routerLink]="['/manufacturer', product?.item?.manufactured?.id]"
@@ -154,7 +156,7 @@
 
     <rap-step-tab
             [checkreviev]="1"
-            [title]="'review.reviews' | translate " >
+            [title]="'product.reviews' | translate " >
       <app-review-list
               *ngIf="product.reviews.data.length > 0; else noReviews"
               [reviews]="product.reviews.data"
@@ -213,8 +215,8 @@
   </rap-step-tabs>
   </div>
 </section>
-<div style="width: 100%;" class="d4 text-center flex row center v_center raleted-container">
-  <h1 style="margin-bottom: 0;">{{ "product.related" | translate }}</h1>
+<div style="width: 100%;" class="text-center flex row center v_center raleted-container">
+  <h1 style="margin-bottom: 0; margin-top: 15px;">{{ "product.related" | translate }}</h1>
 </div>
 
 <app-product-slider class="product-view-slider" [products]="product?.popular"></app-product-slider>

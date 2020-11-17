@@ -9,11 +9,11 @@
 
 
   <div style="overflow: hidden; flex-direction: row;" id="small-product-slider">
-    <drag-scroll #slider   id="slider-product" >
+    <drag-scroll #slider id="slider-product" style="width: 100%; height: 100%; pointer-events: auto;">
       <app-product-item  drag-scroll-item
-                         *ngFor="let item of products"
-                         [product]="item"
-                         style="margin-left: 8px; margin-right: 8px;"
+        *ngFor="let item of products"
+        [product]="item"
+        style="margin-left: 8px; margin-right: 8px;"
       ></app-product-item>
     </drag-scroll>
   </div>

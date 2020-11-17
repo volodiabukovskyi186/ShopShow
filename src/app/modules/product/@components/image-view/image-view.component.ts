@@ -14,6 +14,7 @@ export class ImageViewComponent implements OnInit, OnChanges {
     hoststatic = environment.hoststatic;
     public getCurrentProduct;
     current: any;
+
     @Input()
     public set images(v: Array<any>) {
         this._images = v;
@@ -25,10 +26,10 @@ export class ImageViewComponent implements OnInit, OnChanges {
         return this._images;
     }
 
-    ngOnChanges(res) {
+    public ngOnChanges(res): void {
+        this.current = res?.main?.currentValue;
 
-        this.current = res?.main?.currentValue ? res?.main?.currentValue: res?.main?.currentValue;
-        console.log('this.current',this.current)
+        console.log('this.current',this.current);
     }
 
     @Input()
@@ -37,15 +38,16 @@ export class ImageViewComponent implements OnInit, OnChanges {
     @Input()
     main: string;
 
-
-
     constructor(
         public dialog: MatDialog
     ) {}
 
-    public ngOnInit(): void {}
+    public ngOnInit(): void {
+        console.log(this.main);
+        
+    }
 
-    setCurrent(img: string) {
+    setCurrent(img: string): void {
         this.current = img;
     }
 
@@ -53,6 +55,8 @@ export class ImageViewComponent implements OnInit, OnChanges {
         productData.forEach((product) => {
             if (product.image.src === current) {
                 this.getCurrentProduct = product;
+
+                console.log('this.getCurrentProduct', this.getCurrentProduct);
             }
         })
 

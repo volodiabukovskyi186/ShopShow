@@ -11,14 +11,17 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  public favIcon: HTMLLinkElement = document.querySelector('#appIcon');
   private destroy$: Subject<void> = new Subject<void>();
+  public favIcon: HTMLLinkElement;
 
   constructor(public http: HttpClient) {
+    this.favIcon = document.querySelector('#appIcon') || document.querySelector("link[href='favicon.ico']");
+
     this.getAllSiteData();
   }
 
   public ngOnInit(): void {
+    // this.favIcon = document.querySelector('#appIcon');
     console.log(this.favIcon);
   }
 
@@ -36,6 +39,9 @@ export class AppComponent implements OnInit, OnDestroy {
       if (this.favIcon) {
         this.favIcon.href = 'https://api.showu.com.ua' + res?.data?.icon?.src;
       }
+
+      console.log(res);
+      console.log(res?.data?.icon?.src);
     })
   }
 

@@ -144,13 +144,14 @@
   "product": {
     "addToCart": "Add to cart",
     "description": "Description",
-    "additionalInfo": "Additional information",
+    "additionalInfo": "Сharacteristics",
     "related": "Related products",
     "productCode": "Product code",
     "productColor": "Color:",
     "productSize": "Size:",
     "sale": "Promotion",
-    "new": "New"
+    "new": "New",
+    "reviews": "Reviews"
   },
   "sortBy": {
     "sort": "Sort By:",
