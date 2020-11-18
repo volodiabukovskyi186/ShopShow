@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 
 import { PageTemplateRoutingModule } from "./page-template-routing.module";
 import { PageTemplateComponent } from "./page-template/page-template.component";
-import { NotFoundComponent } from "./not-found/not-found.component";
+
 import { UiModule } from "../ui/ui.module";
 import { TopPanelComponent } from "./top-panel/top-panel.component";
 import { FooterComponent } from "./footer/footer.component";
@@ -20,12 +20,13 @@ import { NavListComponent } from './nav/nav-list/nav-list.component';
 import { ClickOutsideModule } from "ng-click-outside";
 import { CallbackDialogComponent } from '../dialogs/callback-dialog/callback-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import {FooterSubscribeDialogComponent} from '../dialogs/footer-subscribe-dialog/footer-subscribe-dialog.component';
+import {NotFoundModule} from '../not-found/not-found.module';
 // import { FooterSubscribeDialogComponent } from './modules/dialogs/footer-subscribe-dialog/footer-subscribe-dialog.component';
 @NgModule({
   declarations: [
     PageTemplateComponent,
-    NotFoundComponent,
     TopPanelComponent,
     FooterComponent,
     NavComponent,
@@ -49,6 +50,7 @@ import {FooterSubscribeDialogComponent} from '../dialogs/footer-subscribe-dialog
     ClickOutsideModule,
     FormsModule,
     ReactiveFormsModule,
+    NotFoundModule
   ],
 })
 export class PageTemplateModule {}

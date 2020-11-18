@@ -9,9 +9,14 @@ import {MyOrdersComponent} from './my-orders/my-orders.component';
 import {MyReviewComponent} from './my-review/my-review.component';
 import {WishlistComponent} from './wishlist/wishlist.component';
 
+
 const routes: Routes = [
   {
     path: 'login',
+    component: SigninPageComponent,
+  },
+  {
+    path: 'notfound',
     component: SigninPageComponent,
   },
 
@@ -44,6 +49,7 @@ const routes: Routes = [
         path: 'wishList',
         component: WishlistComponent,
       },
+
     ],
   },
 ];

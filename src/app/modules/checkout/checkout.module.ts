@@ -16,6 +16,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { AccauntModule } from '../accaunt/accaunt.module';
 import { MatSelectModule } from '@angular/material/select';
 import { OrderSuccessDialogComponent } from '../dialogs/order-success-dialog/order-success-dialog.component';
+import {NotFoundModule} from '../not-found/not-found.module';
 
 const COMP = [
   CheckoutProductListComponent,
@@ -40,7 +41,9 @@ const COMP = [
     CheckoutRoutingModule,
     TranslateModule,
     AccauntModule,
-    MatSelectModule
+    MatSelectModule,
+    NotFoundModule
+
   ],
 })
 export class CheckoutModule {}

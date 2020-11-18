@@ -1,9 +1,16 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { PageTemplateComponent } from "./page-template/page-template.component";
-import { NotFoundComponent } from "./not-found/not-found.component";
+import {NotFoundComponent} from '../not-found/not-found/not-found.component';
+
 
 export const pageRoutes: Routes = [
+
+  {
+    pathMatch:'full',
+    path: "notfound",
+    component: NotFoundComponent,
+  },
   {
     path: "collections",
     component: PageTemplateComponent,
@@ -75,7 +82,8 @@ export const pageRoutes: Routes = [
       import("src/app/modules/contact/contact.module").then(
         (m) => m.ContactModule
       ),
-  }, //
+  },
+
   {
     path: "",
     component: PageTemplateComponent,
@@ -83,10 +91,6 @@ export const pageRoutes: Routes = [
       import("src/app/modules/showu-home/showu-home.module").then(
         (m) => m.ShowuHomeModule
       ),
-  },
-  {
-    path: "**",
-    component: NotFoundComponent,
   },
 ];
 

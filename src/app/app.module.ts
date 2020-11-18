@@ -29,12 +29,14 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 import { PrebootModule } from "preboot";
 import { UiModule } from './modules/ui/ui.module';
 import { AddReviewDialogComponent } from './modules/dialogs/add-review-dialog/add-review-dialog.component';
+import {NotFoundModule} from './modules/not-found/not-found.module';
+import {NotFoundComponent} from './modules/not-found/not-found/not-found.component';
 // import { FooterSubscribeDialogComponent } from './modules/dialogs/footer-subscribe-dialog/footer-subscribe-dialog.component';
 //import { CallbackSuccessDialogComponent } from './modules/dialogs/callback-success-dialog/callback-success-dialog.component';
 // import { OnEnterSearchComponent } from './modules/on-enter-search/on-enter-search.component';
 // FooterSubscribeDialogComponent
 @NgModule({
-  declarations: [AppComponent, AddReviewDialogComponent ],
+  declarations: [AppComponent, AddReviewDialogComponent,  ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),
     // PrebootModule.withConfig({ appRoot: "app-root" }),
