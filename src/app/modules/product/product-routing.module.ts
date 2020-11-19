@@ -7,6 +7,7 @@ import { SalesComponent } from './sales/sales.component';
 import {NotFoundComponent} from '../not-found/not-found/not-found.component';
 
 const routes: Routes = [
+
   {
     path: "list",
     component: ProductListViewComponent
@@ -23,7 +24,10 @@ const routes: Routes = [
     path: "",
     component: SalesComponent
   },
-  { path: '**', redirectTo: '/notfound' },
+  { path: '**',  redirectTo: '/notfound' },
+
+
+
 ];
 
 @NgModule({

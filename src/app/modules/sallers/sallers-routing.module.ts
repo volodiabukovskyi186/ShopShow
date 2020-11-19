@@ -12,6 +12,7 @@ const routes: Routes = [
     path: "view/:id",
     component: PromotionViewPageComponent,
   },
+  { path: '**', redirectTo: '/notfound' },
 ];
 
 @NgModule({

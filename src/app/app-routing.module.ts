@@ -23,7 +23,11 @@ const routes: Routes = [
   },
   { path: '**', redirectTo: '/notfound' },
 
-
+  {
+    pathMatch:'full',
+    path: "notfound",
+    component: NotFoundComponent,
+  },
 
 
 ];

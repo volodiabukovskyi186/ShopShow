@@ -12,6 +12,7 @@ const routes: Routes = [
     path: 'view/:id',
     component: CollectionViewPageComponent,
   },
+  { path: '**', redirectTo: '/notfound' },
 ];
 
 @NgModule({

@@ -2,13 +2,15 @@
 <br />
 <div class="row wrap">
   <div class="col col-side filter-margin-left">
-    <app-filter-page class="" (filterChanged)="onFilterChanged($event)"></app-filter-page>
+    <app-filter-page class="filter-block" (filterChanged)="onFilterChanged($event)"></app-filter-page>
   </div>
   <div class="col">
     <div class="sort-content">
-      <mat-form-field appearance="standart" class="sort-products">
+      <app-filter-page class="filter-block-btn" (filterChanged)="onFilterChanged($event)"></app-filter-page>
+      <mat-form-field appearance="standart" class="sort-products  sotr-count-prodyct">
         <div class="sort-products-wrapper">
-          <mat-label class="sort-products-label">{{ 'sortBy.sort' | translate }}</mat-label>
+
+          <mat-label class="sort-products-label" [ngClass]="{'sortNone':selectStatus}">{{ 'sortBy.sort' | translate }}</mat-label>
           <mat-select (selectionChange)="onSortingChanged($event.value)">
             <mat-option [value]="'minPrice'">
               {{ 'sortBy.minPrice' | translate}}
@@ -25,7 +27,8 @@
           </mat-select>
         </div>
       </mat-form-field>
-      <mat-form-field appearance="standart" class="sort-products">
+
+      <mat-form-field appearance="standart" class="sort-products page-view">
         <div class="sort-products-wrapper">
           <mat-label class="sort-products-label"> {{ 'sortBy.view' | translate }}: </mat-label>
             <mat-select (selectionChange)="onCardNumberChanged($event.value)">

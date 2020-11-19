@@ -6,7 +6,8 @@ const routes: Routes = [
   {
     path: "",
     component: CheckoutPageComponent,
-  }
+  },
+  { path: '**', redirectTo: '/notfound' },
 ];
 
 @NgModule({

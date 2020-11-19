@@ -52,6 +52,7 @@ const routes: Routes = [
 
     ],
   },
+  { path: '**', redirectTo: '/notfound' },
 ];
 
 @NgModule({
