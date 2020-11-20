@@ -70,13 +70,12 @@
               <div class="small-menu-item  small-bar-bottom ">
                   <div class="small-accaunt-item"  >
                       <app-accaunt-button
+                              *ngIf="auth.authenticated"
                               [title]="
                   auth.authenticated
-                    ? ('accaunt.accaunt' | translate) + accaunt.current?.user.first_name
+                    ? ('accaunt.accaunt' | translate)+ space + accaunt.current?.user.first_name
                     : ('accaunt.accaunt' | translate)
-                "
-                      >
-
+                ">
                           <ul class="user-nav" *ngIf="auth.authenticated">
                               <li>
                                   <a [routerLink]="['/', 'accaunt', 'profile']">{{"accaunt.profile" | translate}}</a>
@@ -87,22 +86,42 @@
                                       }}</a>
                               </li>
                           </ul>
-                          <ul class="user-nav" *ngIf="!auth.authenticated">
+                      </app-accaunt-button>
+                      <app-accaunt-button
+                              [title]="
+                  auth.authenticated
+                    ? ('accaunt.accaunt' | translate)  + accaunt.current?.user.first_name
+                    : ('accaunt.sing_in'| translate)
+                "
+                              *ngIf="!auth.authenticated"
+                              [routerLink]="['/', 'accaunt', 'login']"
+                      >
+                          <ul class="user-nav" *ngIf="auth.authenticated">
                               <li>
-                                  <a [routerLink]="['/', 'accaunt', 'login']">{{
-                                      "accaunt.signin" | translate
-                                      }}</a>
+                                  <a [routerLink]="['/', 'accaunt', 'profile']">{{"accaunt.profile" | translate}}</a>
                               </li>
                               <li>
-                                  <a [routerLink]="['/', 'accaunt', 'register']">{{
-                                      "accaunt.register" | translate
+                                  <a (click)="auth.logout(); auth.onAuth()">{{
+                                      "accaunt.logout" | translate
                                       }}</a>
                               </li>
                           </ul>
+<!--                          <ul class="user-nav" *ngIf="!auth.authenticated">-->
+<!--                              <li>-->
+<!--                                  <a [routerLink]="['/', 'accaunt', 'login']">{{-->
+<!--                                      "accaunt.signin" | translate-->
+<!--                                      }}</a>-->
+<!--                              </li>-->
+<!--                              <li>-->
+<!--                                  <a [routerLink]="['/', 'accaunt', 'register']">{{-->
+<!--                                      "accaunt.register" | translate-->
+<!--                                      }}</a>-->
+<!--                              </li>-->
+<!--                          </ul>-->
                       </app-accaunt-button>
                   </div>
 
-                  <span (click)="cart.openFavoriteView() " (click)="burgerStatus=false" class="small-whish-list">
+                  <span  (click)="cart.openFavoriteView() " (click)="burgerStatus=false" class="small-whish-list">
               <app-cart-favorite-button  > </app-cart-favorite-button> <p>{{"nav.wishes"|translate}}</p>
               </span>
               </div>

@@ -88,7 +88,8 @@
       "orderManagerContact": "Наш менеджер свяжется с вами в течении 1-2 часов.",
       "orderThankYou": "Спасибо!",
       "yourOrder": "Ваш заказ",
-      "orderProcessing": "отправлен в обработку."
+      "orderProcessing": "отправлен в обработку.",
+      "sing_in": "Войти в личный кабинет"
     },
     "cart": {
       "checkout": "Оформить заказ",
