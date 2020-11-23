@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { CartService } from "../../cart/cart.service";
 import { fadeHeight } from "../../ui/animations";
 import { CheckoutService } from "../checkout.service";
@@ -7,6 +7,9 @@ import { AccauntService } from '../../../modules/accaunt/accaunt.service';
 import { MyOrdersService } from '../../accaunt/my-orders/services/my-orders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderSuccessDialogComponent } from '../../dialogs/order-success-dialog/order-success-dialog.component';
+import { LiqpayDialogComponent } from '../../dialogs/liqpay-dialog/liqpay-dialog.component';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { NgForm } from '@angular/forms';
 
 @Component({
   animations: [fadeHeight],
@@ -15,6 +18,8 @@ import { OrderSuccessDialogComponent } from '../../dialogs/order-success-dialog/
   styleUrls: ["./checkout-product-list.component.scss"],
 })
 export class CheckoutProductListComponent implements OnInit {
+  // @ViewChild('liqpayForm') form: NgForm;
+
   public userId: number;
   public orderData: any;
   public paymentDescription: string = 'Payment';
@@ -22,6 +27,10 @@ export class CheckoutProductListComponent implements OnInit {
   public hashedPrivateData: any;
   public hashedData: any;
   public isOrderBtnCliked: boolean = false;
+  public iframeName = 'nameFrame';
+  public isPaymentBtnClicked: boolean = false;
+  public formAction: SafeUrl = 'https://www.liqpay.ua/api/3/checkout';
+
   private liqPayData: any;
 
   constructor(
@@ -30,7 +39,8 @@ export class CheckoutProductListComponent implements OnInit {
     public check: CheckoutService,
     public accauntService: AccauntService,
     public myOrdersService: MyOrdersService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +51,14 @@ export class CheckoutProductListComponent implements OnInit {
       this.userId = res.data.user.id;
       console.log('userGet===>', this.userId);
     })
+  }
+
+  public confirmPayment(): void {
+    this.isPaymentBtnClicked = true;
+  }
+
+  public getUrl(postUrl) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(postUrl);
   }
 
   order() {
@@ -99,8 +117,6 @@ export class CheckoutProductListComponent implements OnInit {
       });
     });
 
-    console.log(this.orderResult?.products);
-
     this.check.post(this.orderResult).subscribe((res) => {
 
       if (res) {
@@ -126,9 +142,15 @@ export class CheckoutProductListComponent implements OnInit {
               order_id: this.orderData?.data.id
             }).subscribe((resp) => {
               if (resp) {
+
+                console.log(resp);
                 this.hashedData = resp;
                 this.hashedDataToSend = this.hashedData.result.data;
                 this.hashedPrivateData = this.hashedData.result.sign;
+
+                if (this.isOrderBtnCliked) {
+                  this.openLiqpayModal();
+                }
 
                 //this.cart.list = [];
               }
@@ -139,7 +161,31 @@ export class CheckoutProductListComponent implements OnInit {
     });
   }
 
-  openOrderModal(orderId) {
+  public openLiqpayModal(event?: Event): void {
+    const dialogRef = this.dialog.open(LiqpayDialogComponent, {
+      data: {
+          title: 'Select product to review',
+          actions: [
+            {
+              param: 'closeIcon',
+              label: 'Cancel',
+            },
+            {
+              param: 'add',
+              label: 'Add',
+            },
+          ],
+          iframeName: this.iframeName,
+          hashedData: this.hashedData,
+          hashedDataToSend: this.hashedDataToSend,
+          hashedPrivateData: this.hashedPrivateData,
+          isOrderBtnCliked: this.isOrderBtnCliked
+        },
+      });
+    dialogRef.afterClosed().subscribe(res => {});
+  }
+
+  public openOrderModal(orderId): void {
     const dialogRef = this.dialog.open(OrderSuccessDialogComponent, {
       data: {
           title: 'Select product to review',
@@ -156,7 +202,7 @@ export class CheckoutProductListComponent implements OnInit {
           orderId: orderId
         },
       });
-  dialogRef.afterClosed().subscribe(res => {});
+    dialogRef.afterClosed().subscribe(res => {});
   }
 
   orderHadler(data) {

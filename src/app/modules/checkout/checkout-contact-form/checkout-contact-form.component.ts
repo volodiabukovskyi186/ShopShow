@@ -72,6 +72,7 @@ export class CheckoutContactFormComponent implements OnInit, OnChanges {
 
             this.countries = [];
             this.selectCountry = data.data;
+
             data.data.forEach(elem => {
                 elem.descriptions.forEach(item => {
                     if (item.lang_id == this.currentLang) {
@@ -80,11 +81,12 @@ export class CheckoutContactFormComponent implements OnInit, OnChanges {
                     }
                 });
             });
-            if(this._model.country.toLowerCase()=="poland"||this._model.country.toLowerCase()=="польша"||this._model.country.toLowerCase()=="польща"){
-                this._model.country=this.countries[1];
+
+            if (this._model?.country?.toLowerCase() == "poland" || this._model?.country?.toLowerCase() == "польща" || this._model?.country?.toLowerCase() == "польща") {
+                this._model.country = this.countries[1];
             }
-            else{
-                this._model.country=this.countries[0];
+            else {
+                this._model.country = this.countries[0];
             }
 
 

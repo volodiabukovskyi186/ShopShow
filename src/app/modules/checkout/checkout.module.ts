@@ -16,6 +16,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { AccauntModule } from '../accaunt/accaunt.module';
 import { MatSelectModule } from '@angular/material/select';
 import { OrderSuccessDialogComponent } from '../dialogs/order-success-dialog/order-success-dialog.component';
+import { LiqpayDialogComponent } from '../dialogs/liqpay-dialog/liqpay-dialog.component';
 
 const COMP = [
   CheckoutProductListComponent,
@@ -28,6 +29,7 @@ const COMP = [
   CheckoutRecipientContactFormComponent,
   CheckoutPageComponent,
   OrderSuccessDialogComponent,
+  LiqpayDialogComponent,
 ];
 
 @NgModule({
