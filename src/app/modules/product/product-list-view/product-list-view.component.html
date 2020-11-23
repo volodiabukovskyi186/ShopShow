@@ -2,7 +2,7 @@
 <br />
 <div class="row wrap">
   <div class="col col-side filter-margin-left">
-    <app-filter-page (filterChanged)="onFilterChanged($event)"></app-filter-page>
+    <app-filter-page class="filter-block" (filterChanged)="onFilterChanged($event)"></app-filter-page>
     <!-- <i>Filters will be here</i>
     min: {{filter.price?.min * currency.current.value}} <br>
     max: {{filter.price?.max * currency.current.value}} <br> -->
@@ -41,9 +41,10 @@
   </div>
   <div class="col">
     <div class="sort-content">
-      <mat-form-field appearance="standart" class="sort-products">
+      <app-filter-page class="filter-block-btn" (filterChanged)="onFilterChanged($event)"></app-filter-page>
+      <mat-form-field appearance="standart" class="sort-products sort-count-product">
         <div class="sort-products-wrapper">
-          <mat-label class="sort-products-label">{{ 'sortBy.sort' | translate }}</mat-label>
+          <mat-label class="sort-products-label" [ngClass]="{'sortNone':selectStatusBy}">{{ 'sortBy.sort' | translate }}</mat-label>
           <mat-select (selectionChange)="onSortingChanged($event.value)">
             <!-- <mat-option *ngFor="let productData of sortProductsData" [value]="productData">
               {{ productData }}
@@ -63,9 +64,9 @@
           </mat-select>
         </div>
       </mat-form-field>
-      <mat-form-field appearance="standart" class="sort-products">
+      <mat-form-field appearance="standart" class="sort-products sotr-count-prodyct">
         <div class="sort-products-wrapper">
-          <mat-label class="sort-products-label"> {{ 'sortBy.view' | translate }}: </mat-label>
+          <mat-label class="sort-products-label" [ngClass]="{'sortNone':selectStatus}"> {{ 'sortBy.view' | translate }}: </mat-label>
             <mat-select (selectionChange)="onCardNumberChanged($event.value)">
               <mat-option *ngFor="let card of cardNumbers" [value]="card">
                 {{ card }}
@@ -97,7 +98,7 @@
     <br />
 
     <!-- <pre>{{this.product.products | json}}</pre> -->
-    <div class="result-search-text">Result search "{{ search }}"</div>
+    <div class="result-search-text">{{'product.result' | translate}} "{{ search }}"</div>
     <app-product-list
       [products]="product.products.data.products"
     ></app-product-list>

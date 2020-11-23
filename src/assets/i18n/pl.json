@@ -116,7 +116,8 @@
     "sale": "Akcja",
     "new": "Nowy",
     "additionalInfo": "Cechy",
-    "reviews": "Recenzje"
+    "reviews": "Recenzje",
+    "result": "Wynik wyszukiwania "
   },
   "wishlist": {
     "addToWishlist": "Zapisz w ulubionych"
