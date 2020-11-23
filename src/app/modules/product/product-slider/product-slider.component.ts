@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { DragScrollComponent } from "ngx-drag-scroll";
 //import { SliderItemDirective } from './slider-item.directive';
+import { DragScrollItemDirective } from 'ngx-drag-scroll';
 
 @Component({
   selector: 'app-product-slider',
@@ -11,45 +12,38 @@ import { DragScrollComponent } from "ngx-drag-scroll";
 export class ProductSliderComponent implements OnInit, AfterViewInit {
   @Input() products: Array<any> = [];
 
-  // @ContentChildren(SliderItemDirective, { read: ElementRef }) items
-  //   : QueryList<ElementRef<HTMLDivElement>>;
-
   @ViewChild('slider', {read: DragScrollComponent}) ds: DragScrollComponent;
-  @ViewChild('slider') slidesContainer;
-  @ViewChild('drag-scroll-item') dragItem;
+  @ViewChild('drag-scroll-item') dragScrollItem: DragScrollItemDirective;
 
   private slidesIndex = 0;
 
-  constructor() { }
+  constructor() {}
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
-  public ngAfterViewInit(): void {
-    console.log('slides', this.slidesContainer._contentRef);
-  }
+  public ngAfterViewInit(): void {}
 
   get currentItem(): ElementRef<HTMLDivElement> {
-    return this.products.find((item, index) => index === this.slidesIndex);
+    return this.dragScrollItem?._elementRef;
   }
 
   // public onClickLeft(): void {
-  //   if (this.slidesContainer._contentRef.nativeElement.scrollLeft) {
-  //     this.slidesContainer._contentRef.nativeElement.scrollLeft -= this.dragItem?.nativeElement?.offsetWidth;
+  //   console.log('this.ds.currIndex ================ >>>>>>>>>>>>>>>>>>>>>>>>>>', this.ds.currIndex);
 
-  //     console.log('this.dragItem ======>>>', this.dragItem);
+  //   if (this.ds._contentRef.nativeElement.scrollLeft) {
+  //     this.ds._contentRef.nativeElement.scrollLeft -= this.currentItem?.nativeElement?.offsetWidth;
   //   }
-
-  //   console.log('this.dragItem======>>>', this.dragItem);
 
   //   this.ds.moveLeft();
   // }
 
   // public onClickRight(): void {
-  //   if (this.slidesContainer._contentRef &&
-  //     this.slidesContainer._contentRef.nativeElement &&
-  //     this.slidesContainer._contentRef.nativeElement.scrollLeft) {
-  //     this.slidesContainer._contentRef.nativeElement.scrollLeft += this.dragItem?.nativeElement?.offsetWidth;
+  //   console.log('this.ds.currIndex ================ >>>>>>>>>>>>>>>>>>>>>>>>>>', this.ds.currIndex);
+
+  //   if (this.ds._contentRef &&
+  //     this.ds._contentRef.nativeElement &&
+  //     this.ds._contentRef.nativeElement.scrollLeft) {
+  //     this.ds._contentRef.nativeElement.scrollLeft += this.currentItem?.nativeElement?.offsetWidth;
   //   }
 
   //   if (this.ds.currIndex < this.products.length - 1) {
@@ -64,14 +58,11 @@ export class ProductSliderComponent implements OnInit, AfterViewInit {
       this.moveTo(0);
     } else {
       this.ds.moveRight();
-
     }
   }
 
   public moveLeft(): void {
     this.ds.moveLeft();
-
-    console.log(this.ds);
   }
 
   public moveTo(index): void {

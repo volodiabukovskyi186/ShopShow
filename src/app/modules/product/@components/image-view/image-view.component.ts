@@ -44,11 +44,11 @@ export class ImageViewComponent implements OnInit, OnChanges {
 
     public ngOnInit(): void {
         console.log(this.main);
-        
+
     }
 
-    setCurrent(img: string): void {
-        this.current = img;
+    public setCurrent(img: string): void {
+        this.main = img;
     }
 
     public openProductModal(productData, current): void {
