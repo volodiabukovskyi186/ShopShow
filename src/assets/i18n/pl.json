@@ -116,7 +116,8 @@
     "sale": "Akcja",
     "new": "Nowy",
     "additionalInfo": "Cechy",
-    "reviews": "Recenzje"
+    "reviews": "Recenzje",
+    "result": "Wynik wyszukiwania "
   },
   "wishlist": {
     "addToWishlist": "Zapisz w ulubionych"
@@ -179,7 +180,8 @@
     "orderManagerContact": "Nasz menedżer skontaktuje się z Tobą w ciągu 1-2 godzin.",
     "orderThankYou": "Dziękuję Ci!",
     "yourOrder": "Twoje zamówienie",
-    "orderProcessing": "wysłane do przetworzenia."
+    "orderProcessing": "wysłane do przetworzenia.",
+    "sing_in": "Zaloguj się do swojego konta osobistego"
   },
   "statusCodes": {
     "done": "Gotowe",

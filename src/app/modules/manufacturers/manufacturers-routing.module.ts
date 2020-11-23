@@ -12,6 +12,7 @@ const routes: Routes = [
     path: ":id",
     component: ManufacturerPageComponent,
   },
+  { path: '**', redirectTo: '/notfound' },
 ];
 
 @NgModule({

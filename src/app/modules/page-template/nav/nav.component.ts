@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
   // @Input() value: INavItem;
   burgerStatus = false;
   links2: Array<any>;
-  
+  space = '\xa0';
   // links2: Array<any> = [
   //   { link: '/promotions', name: 'Promotions' },
   //   { link: '/manufacturers', name: 'Manufacturers' },

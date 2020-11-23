@@ -24,7 +24,7 @@ export class SalesComponent implements OnInit {
   selectedSorting: string;
   promotions: any[] = [];
   //id: number = 0;
-
+  selectStatus = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -93,6 +93,7 @@ export class SalesComponent implements OnInit {
   } 
 
   public onSortingChanged(sorting: string) {
+    this.selectStatus=true;
     this.selectedSorting = sorting;
     this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
 
@@ -106,6 +107,7 @@ export class SalesComponent implements OnInit {
   }
 
   public onCardNumberChanged(cardNumber: number) {
+
     this.selectedCardNumber = cardNumber;
     this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
       this.product.products.data.products = res?.data?.products?.filter((val) => {

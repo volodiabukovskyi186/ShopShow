@@ -53,7 +53,7 @@ export class PromotionViewPageComponent implements OnInit {
   getByIdHandler = (data) => {
     // this.ngxService.stop();
     this.sallers.item = data?.data;
-    debugger;
+
     
     console.log('this.sallers.item', this.sallers.item);
 

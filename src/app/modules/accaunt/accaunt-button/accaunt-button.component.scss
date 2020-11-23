@@ -63,11 +63,13 @@ section {
    font-weight: 100;
   }
   .accaunt-title {
-    margin-left: 10%;
+    text-align: left;
+    margin-left: 3%;
     margin-right: 10px;
     margin-top: 3px;
-    min-width: 75px;
+    min-width: 205px;
     width: 100%;
+
   }
 
   .wrapper {
@@ -76,6 +78,10 @@ section {
     rap-svg-ico {
       width: 17px !important;
     }
+    .arrow{
+      display: none;
+    }
   }
+
 }
 

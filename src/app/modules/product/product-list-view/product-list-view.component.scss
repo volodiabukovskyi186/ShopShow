@@ -61,6 +61,14 @@ $size: 16px;
   background: $primary;
   cursor: pointer;
 }
+.filter-block{
+  display: block;
+
+}
+.filter-block-btn{
+  display: none;
+
+}
 
 // .sort-products {
 //   // width: 35%;
@@ -166,11 +174,42 @@ $size: 16px;
   }
 }
 
+
 ::ng-deep {
   .mat-option {
     height: 2.3em !important;
     .mat-option-text {
       font-size: 13px;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filter-block-btn {
+    display: block;
+
+  }
+
+  .sotr-count-prodyct {
+    display: block;
+    min-width: 144px;
+  }
+  .sort-products {
+    display: block;
+  }
+  .filter-block {
+    display: none;
+  }
+  .filter-margin-left {
+    margin-left: 10px;
+  }
+  .product-list__padding {
+    padding: 0 5px;
+  }
+  .sortNone {
+    visibility: hidden;
+  }
+  .sort-count-product {
+    display: none;
   }
 }

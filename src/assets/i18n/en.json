@@ -87,7 +87,8 @@
     "orderManagerContact": "Our manager will contact you within 1-2 hours.!",
     "orderThankYou": "Thank you!",
     "yourOrder": "Your order",
-    "orderProcessing": "has been sent for processing."
+    "orderProcessing": "has been sent for processing.",
+    "sing_in": "Log in to your personal account"
   },
   "cart": {
     "checkout": "Checkout",
@@ -151,7 +152,8 @@
     "productSize": "Size:",
     "sale": "Promotion",
     "new": "New",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "result": "Result search "
   },
   "sortBy": {
     "sort": "Sort By:",

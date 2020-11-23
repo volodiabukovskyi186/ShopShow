@@ -144,11 +144,31 @@
         font-size: 1rem;
       }
       h6 {
+        width: 50%;
         font-size: 0.6rem;
       }
       .more {
         margin-top: $space/2;
       }
     }
+
+  }
+}
+@include screen-w(480px) {
+  :host {
+    .title {
+      h2 {
+        font-size: 0.9rem;
+      }
+      h6 {
+        width:60%;
+        font-size: 0.4rem;
+      }
+      .more {
+        margin-top: $space/2;
+        width: 115px;
+      }
+    }
+
   }
 }

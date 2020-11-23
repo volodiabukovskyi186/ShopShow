@@ -12,6 +12,7 @@ import { WelcomeStatisticComponent } from './welcome-statistic/welcome-statistic
 import { ReviewModule } from '../review/review.module';
 import { ManufacturersModule } from '../manufacturers/manufacturers.module';
 import { ProductModule } from '../product/product.module';
+import {NotFoundModule} from '../not-found/not-found.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ProductModule } from '../product/product.module';
     ReviewModule,
     ManufacturersModule,
     ProductModule,
-    SallersModule
+    SallersModule,
+    NotFoundModule
   ]
 })
 export class ShowuHomeModule { }
