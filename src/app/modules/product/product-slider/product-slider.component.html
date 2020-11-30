@@ -9,6 +9,7 @@
 <div style="overflow: hidden; flex-direction: row;" id="small-product-slider">
     <rap-svg-ico class="move-btn" (click)="moveLeft()" [src]="'assets/icons/left.svg'"></rap-svg-ico>
     <drag-scroll #slider id="slider-product" style=" height: 100%; pointer-events: auto;">
+
         <div class="product-item-block" drag-scroll-item *ngFor="let product of products">
             <div class="product-item-wrap">
                 <div class="ratio">
