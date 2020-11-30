@@ -140,6 +140,7 @@
     "totalPayment": "Całkowita płatność"
   },
   "accaunt": {
+    "greetings": "Witaj",
     "accaunt": "Konto",
     "signin": "Zaloguj się",
     "login": "Zaloguj sie",

@@ -66,6 +66,40 @@ $fn: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-left: 23px;
 }
 
+.col-40 {
+  flex-basis: unset !important;
+  max-width: unset !important;
+}
+
+.col-65 {
+  flex-basis: unset !important;
+  max-width: unset !important;
+}
+
+@media screen and(max-width:1020px){
+  .col-50 {
+    flex-basis: unset !important;
+    max-width: unset !important;
+  }
+
+  .col-40 {
+    flex-basis: 40% !important;
+    max-width: 40% !important;
+  }
+
+  .col-60 {
+    flex-basis: 60% !important;
+    max-width: 60% !important;
+  }
+}
+
+@media screen and(min-width:1021px) {
+  .col-50 {
+    flex-basis: 50% !important;
+    max-width: 50% !important;
+  }
+}
+
 @media screen and(max-width:768px){
   rap-container{
     display: none;

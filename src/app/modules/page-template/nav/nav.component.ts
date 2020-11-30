@@ -17,14 +17,17 @@ export class NavComponent implements OnInit {
   @Input() categories: Array<any> = [];
   @ViewChild('nav') public nav: ElementRef<any>;
   // @Input() value: INavItem;
-  burgerStatus = false;
-  links2: Array<any>;
-  space = '\xa0';
+  public burgerStatus = false;
+  public links2: Array<any>;
+  public space = '\xa0';
+  public isLoginMenuVisible: boolean = true;
+
   // links2: Array<any> = [
   //   { link: '/promotions', name: 'Promotions' },
   //   { link: '/manufacturers', name: 'Manufacturers' },
   //   { link: '/sales', name: 'Sales' }
   // ];
+
   public categorySet: Set<number> = new Set<number>();
 
   public get isMobile(): boolean {
@@ -67,6 +70,14 @@ export class NavComponent implements OnInit {
 
   public burgerMenu(status: boolean = false): void {
     this.burgerStatus = status;
+  }
+
+  public closeMenu(event): void {
+    this.isLoginMenuVisible = false;
+
+    debugger;
+
+    console.log(event);
   }
 
 }

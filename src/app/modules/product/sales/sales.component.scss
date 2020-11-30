@@ -141,7 +141,17 @@ $size: 16px;
     }
   }
 }
+
+.filter-hidden {
+  display: none;
+}
+
+
 @media screen and (max-width: 768px){
+  .filter-hidden {
+    display: block;
+  }
+  
   .filter-margin-left{
     margin-left: 10px;
   }

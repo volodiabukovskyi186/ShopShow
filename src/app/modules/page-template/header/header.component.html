@@ -1,6 +1,6 @@
 <rap-container>
   <div class="row">
-    <div class="col col-50">
+    <div class="col col-50 col-40">
       <div class="golden">
         <div class="short">
           <a [routerLink]="['/']" routerLinkActive="router-link-active">
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="col col-50">
+    <div class="col col-50 col-40 col-60">
       <div class="golden">
         <div class="short">
           <div style="padding: 8px 16px;">
@@ -45,13 +45,13 @@
         <div class="long" style="height: 64%;">
           <div class="row" style="flex: 1;">
             <div
-              class="col col-50"
+              class="col col-50 col-40 col-60"
               style="align-items: flex-end; justify-content: center;"
             >
               <app-accaunt-button
                 [title]="
                   auth.authenticated
-                    ? 'Hi, ' + accaunt.current?.user?.first_name
+                    ? ('accaunt.greetings' | translate) + ',' + ' ' + accaunt.current?.user?.first_name
                     : ('accaunt.accaunt' | translate)
                 "
               >
@@ -80,7 +80,7 @@
                 </ul>
               </app-accaunt-button>
             </div>
-            <div class="line-left col col-50" style="justify-content: center;">
+            <div class="line-left col col-50 col-40" style="justify-content: center;">
               <div class="flex">
                 <app-cart-favorite-button (click)="cart.openFavoriteView() "
                 ></app-cart-favorite-button>
