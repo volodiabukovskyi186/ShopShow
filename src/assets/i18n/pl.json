@@ -295,5 +295,6 @@
     "main": "Dom",
     "subMit": "Zatwierdź",
     "thanks": "Dzięki!"
-  }
+  },
+  "notFound": "Brak produktów w tej kategorii"
 }

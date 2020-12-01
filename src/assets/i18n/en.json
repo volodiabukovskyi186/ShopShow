@@ -303,5 +303,6 @@
     "main": "Home",
     "subMit": "Submit",
     "thanks": "Thanks!"
-  }
+  },
+  "notFound": "There are no products in this category"
 }
