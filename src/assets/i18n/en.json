@@ -47,6 +47,7 @@
     "managerContact" : "Our manager will contact you in a few hours!"
   },
   "accaunt": {
+    "greetings": "Hi",
     "accaunt": "Accaunt",
     "signin": "Sign in",
     "login": "Login",
@@ -302,5 +303,6 @@
     "main": "Home",
     "subMit": "Submit",
     "thanks": "Thanks!"
-  }
+  },
+  "notFound": "There are no products in this category"
 }

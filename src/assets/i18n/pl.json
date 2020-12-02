@@ -140,6 +140,7 @@
     "totalPayment": "Całkowita płatność"
   },
   "accaunt": {
+    "greetings": "Witaj",
     "accaunt": "Konto",
     "signin": "Zaloguj się",
     "login": "Zaloguj sie",
@@ -294,5 +295,6 @@
     "main": "Dom",
     "subMit": "Zatwierdź",
     "thanks": "Dzięki!"
-  }
+  },
+  "notFound": "Brak produktów w tej kategorii"
 }
