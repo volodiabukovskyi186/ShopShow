@@ -6,7 +6,7 @@
     min: {{filter.price?.min * currency.current.value}} <br>
     max: {{filter.price?.max * currency.current.value}} <br> -->
 
-    <app-filter-page class="filter-block" (filterChanged)="onFilterChanged($event)"></app-filter-page>
+    <app-filter-page class="filter-block" (categoryBread)="getCategoryBread($event)" (filterChanged)="onFilterChanged($event)"></app-filter-page>
 
     <!-- <div class="padding">
       <small>Ціна: </small>

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import {Observable, Subject} from 'rxjs';
 import { environment } from "src/environments/environment";
 import { AppLangService } from 'src/app/modules/core/app-lang.service';
 
@@ -26,6 +26,7 @@ export class FilterService {
   // price: IPriceFilter = { min: 1, max: 100 };
   // priceModel: IPriceFilter = { min: 1, max: 100 };
 
+  SCategory=new Subject<boolean>()
   constructor(
     private http: HttpClient, 
     private appLang: AppLangService
@@ -43,6 +44,18 @@ export class FilterService {
     let lang = this.appLang.current;
     let take = 100;
     return this.http.get<any>(environment.host + `client/category?take=${take}&lang=${lang}`);
+    // return this.http.get<any>(environment.host + `client/category/16`);
+  }
+  getParentCategory(categoryId: number ): Observable <any> {
+    let lang = this.appLang.current;
+    return this.http.get<any>(environment.host + `category/getAllParent?category_id=${categoryId}&lang=${lang}`);
+  }
+
+  getSelectedCategory(categoryId: number): Observable<ICategoryFilterResponse>{
+    let lang = this.appLang.current;
+    let take = 100;
+    return this.http.get<any>(environment.host + `client/category/${categoryId}?take=${take}&lang=${lang}`);
+    // return this.http.get<any>(environment.host + `client/category?take=${take}&lang=${lang}`);
   }
 
   public getMinMaxPrice(): Observable<any> {

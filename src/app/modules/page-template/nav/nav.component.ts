@@ -5,6 +5,7 @@ import {CartService} from '../../cart/cart.service';
 import {AuthService} from '../../core/auth/auth.service';
 import {AccauntService} from '../../accaunt/accaunt.service';
 import {slideLeft} from '../../ui/animations';
+import {FilterService} from '../../filter/filter.service';
 
 @Component({
   animations: [slideLeft],
@@ -31,7 +32,7 @@ export class NavComponent implements OnInit {
   public categorySet: Set<number> = new Set<number>();
 
   public get isMobile(): boolean {
-    console.log('dsjkfhksd');
+
     return this.nav?.nativeElement?.offsetWidth < 500;
   }
 
@@ -40,13 +41,16 @@ export class NavComponent implements OnInit {
               private route: ActivatedRoute,
               public cart: CartService,
               public auth: AuthService,
-              public accaunt: AccauntService) {}
+              public accaunt: AccauntService,
+              private filterService: FilterService) {}
 
   ngOnInit(): void {
     this.initTranslate();
     this.route.params.subscribe((data) => {
       this.initTranslate();
     });
+
+
   }
   public toggle(id: number) {
     if (this.categorySet.has(id)) {
@@ -70,6 +74,10 @@ export class NavComponent implements OnInit {
 
   public burgerMenu(status: boolean = false): void {
     this.burgerStatus = status;
+  }
+  selectedCategory(item) {
+    this.filterService.SCategory.next()
+    console.log('checkeVal', item);
   }
 
   public closeMenu(event): void {

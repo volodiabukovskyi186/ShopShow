@@ -6,7 +6,8 @@
 <div class="filter-container desktop">
   <div class="categories">
     <div class="category" *ngFor="let category of categories">
-      <app-filter-item [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-filter-item>
+      <app-filter-item   [filter]="category" (filterCategory)="getBreadCrumbs($event)" (filteradd)="getNewCategory($event)" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-filter-item>
+<!--      {{category|json}}-->
     </div>
   </div>
   <div class="manufactures" *ngIf="!isManufacturerPage">
@@ -41,8 +42,8 @@
   <div class="close-btn" (click)="openedFilter = !openedFilter">X</div>
   <div class="categories">
     <div class="category" *ngFor="let category of categories">
-
-      <app-mobile-filter [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-mobile-filter>
+      <app-filter-item [filter]="category"  (filteradd)="getNewCategory($event)" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)" ></app-filter-item>
+<!--      <app-mobile-filter [filter]="category" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-mobile-filter>-->
     </div>
   </div>
   <div class="manufactures" *ngIf="!isManufacturerPage">

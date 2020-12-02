@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {ActivatedRoute, Router, NavigationEnd, Event } from '@angular/router';
 // import { NgxUiLoaderService } from "ngx-ui-loader";
 import { NavLink } from "src/app/modules/ui/rap/nav-item/nav-link";
 import { ProductService } from "src/app/modules/product/product.service";
@@ -15,7 +15,7 @@ import { IFilters } from '../../filter/filter.component';
   templateUrl: "./products-page.component.html",
   styleUrls: ["./products-page.component.scss"],
 })
-export class ProductsPageComponent implements OnInit {
+export class ProductsPageComponent implements OnInit,OnChanges {
   breadcrumbs: Array<NavLink> = [];
   Math = Math;
   public sortProductsData: any;
@@ -25,64 +25,102 @@ export class ProductsPageComponent implements OnInit {
   promotions: any[] = [];
   selectStatus = false;
   selectStatusBy = false;
-
+  currentCategory:number;
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    // private ngxService: NgxUiLoaderService,
-    public product: ProductService,
-    public filter: FilterService,
-    public currency: CurrencyService,
-    public review: ReviewService
+      private route: ActivatedRoute,
+      private router: Router,
+      public product: ProductService,
+      public filter: FilterService,
+      public currency: CurrencyService,
+      public review: ReviewService,
+
   ) {
-    // this.getPriceFilter();
+
   }
-
-  // getPriceFilter() {
-  //   this.filter.getPriceFilter().subscribe(this.getPriceFilterHandler)
-  // }
-  // getPriceFilterHandler = data => {
-  //   this.filter.price = data.data;
-  //   this.filter.priceModel.max = data.data.max;
-  //   this.filter.priceModel.min = data.data.min;
-  // }
-
+  allCategory: any;
   id: number = 0;
 
   getByIdHandler = (data) => {
-    // this.ngxService.stopAll();
     this.product.products = data;
-
-    this.breadcrumbs[1] = {
-      link: "/products" + "/" + this.id,
-      title: this.product.products.data.category.id,
-    };
-  };
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.getCategoryBread(id)
+  }
 
   ngOnInit(): void {
-    this.route.params.subscribe((data) => {  
-    
+    this.checkChangesCategory()
+    this.route.params.subscribe((data) => {
       this.id = data["id"];
-
       this.breadcrumbs = [
         {
           link: "/",
           title: "Homepage",
         },
-      ];     
+      ];
       this.get();
       this.getLastReviews();
     });
-
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.getCategoryBread(id)
     this.sortProducts();
 
     this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
+
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('wqeqweqweqweq')
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.getCategoryBread(id)
+  }
+  checkChangesCategory(): void {
+    this.router.events.subscribe((event: Event) => {
+      // if (event instanceof NavigationEnd) {
+      //   const id = +this.route.snapshot.paramMap.get('id');
+      //     console.log('rounte====>>',this.route.snapshot)
+      //   this.getCategoryBread(id)
+      // }
+    })
+    this.filter.SCategory.subscribe(data => {
+      const id = +this.route.snapshot.paramMap.get('id');
+      this.getCategoryBread(id)
+    })
   }
 
+
+  getCategoryBread(arrCateg): void {
+
+    // debugger;
+    this.router.navigate([`/products/${arrCateg}`])
+    this.filter.getParentCategory(arrCateg).subscribe(data=>{
+      console.log('breadcums===>', data);
+      data.data.forEach((elem,index)=>{
+        this.breadcrumbs[index+1] = {
+          link: "/products" + "/" + elem.id,
+          title: elem.name,
+
+        };
+      })
+
+    })
+
+    // debugger;
+    // console.log('tttttttttttt=> ', arrCateg);
+    // console.log('ppppppppp++.', this.product.products)
+    // arrCateg.forEach((elem, index) => {
+    //   this.breadcrumbs[index + 1] = {
+    //     link: `/products/${this.id}`,
+    //     title: elem.name,
+    //   };
+    // })
+
+  }
+
+
   public onFilterChanged(filters: IFilters): void {
+
+    this.allCategory = filters;
     this.product.getByFilters(filters).subscribe((data) => {
       this.product.products = data;
-      console.log(this.product.products.count);
+
     });
 
   }
@@ -99,13 +137,15 @@ export class ProductsPageComponent implements OnInit {
   getLastReviews() {
     this.review.get().subscribe(this.getLastReviewsHandler)
   }
+
   getLastReviewsHandler = data => {
     this.review.review = data.data;
-  } 
+  }
+
   pageChangedHandler(page: number): void {
     this.product.page = page;
     this.get();
-  } 
+  }
 
   // public changeMaterialCategory(event, cardNumber?: number) {
   //   console.log(event);
@@ -116,7 +156,7 @@ export class ProductsPageComponent implements OnInit {
   // }
 
   public onSortingChanged(sorting: string) {
-    this.selectStatusBy=true;
+    this.selectStatusBy = true;
 
     this.selectedSorting = sorting;
     this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
@@ -126,7 +166,7 @@ export class ProductsPageComponent implements OnInit {
 
       if (this.selectedSorting === 'promotions') {
         console.log(this.product.products.data.products);
-        
+
         res.data.products.forEach((val) => {
           if (val.promotion) {
             this.promotions.unshift(val);
@@ -142,7 +182,7 @@ export class ProductsPageComponent implements OnInit {
   }
 
   public onCardNumberChanged(cardNumber: number) {
-    this.selectStatus=true;
+    this.selectStatus = true;
     this.selectedCardNumber = cardNumber;
     this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
       this.product.products = res;
