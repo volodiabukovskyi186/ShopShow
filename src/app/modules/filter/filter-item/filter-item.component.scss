@@ -10,6 +10,7 @@
 }
 
 .filter-name {
+    width: 180px;
     font-size: 16px;
     margin-right: 5px;
 }
@@ -25,9 +26,15 @@
 .checkbox {
     margin-top: -3px;
 }
+
 @media screen and(max-width: 768px){
     .category{
         margin-left: 0;
         width: 90%;
+    }
+    .filter-name {
+        //width: 90%;
+        font-size: 16px;
+        margin-right: 5px;
     }
 }

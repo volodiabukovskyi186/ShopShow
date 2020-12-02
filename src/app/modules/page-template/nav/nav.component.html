@@ -5,8 +5,12 @@
       class="root"
       *ngFor="let link of categories"
       [value]="link"
+      (click)="selectedCategory(link)"
       #categoryItem
-    ></showu-menu-item>
+    >
+
+    </showu-menu-item>
+
     <app-nav-item
       *ngFor="let link of links2"
       [value]="link"

@@ -17,7 +17,8 @@ export class FilterItemComponent implements OnInit {
   @Input() filter: IFilterItem;
   @Output() filterSelected = new EventEmitter<number>();
   @Output() filterDeselected = new EventEmitter<number>();
-
+  @Output() filteradd = new EventEmitter<number>();
+  @Output() filterCategory = new EventEmitter<IFilterItem>();
   public isExpanded = false;
 
   constructor() { }
@@ -28,6 +29,7 @@ export class FilterItemComponent implements OnInit {
   public hasSubFilters(filter: IFilterItem) {
     return filter.sub && filter.sub.length > 0;
   }
+
 
   public onCheckboxChange(event: MatCheckboxChange) {
      if (event.checked) {
@@ -43,6 +45,12 @@ export class FilterItemComponent implements OnInit {
 
   public onChildFilterDeselected(filterId: number) {
     this.filterDeselected.emit(filterId);
+  }
+
+  add():void{
+    this.isExpanded = true;
+    this.filteradd.emit(this.filter.id);
+    this.filterCategory.emit(this.filter);
   }
 
 }

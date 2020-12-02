@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter, ChangeDetectorRef, Input} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, ChangeDetectorRef, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {NavLink} from 'src/app/modules/ui/rap/nav-item/nav-link';
 import {environment} from 'src/environments/environment';
 import {ActivatedRoute} from '@angular/router';
@@ -7,12 +7,18 @@ import {Options} from 'ng5-slider';
 import {ClientMenuService} from '../client-menu/client-menu.service';
 import {AppLangService} from 'src/app/modules/core/app-lang.service';
 import {slideLeft} from '../ui/animations';
+import {Router, NavigationEnd, Event} from '@angular/router';
 
 export interface IFilters {
     categories: number[];
     manufacturers: number[];
     minPrice: number;
     maxPrice: number;
+}
+interface IFilterItem {
+    id: number;
+    name: string;
+    sub?: IFilterItem[];
 }
 
 @Component({
@@ -21,8 +27,9 @@ export interface IFilters {
     templateUrl: './filter.component.html',
     styleUrls: ['./filter.component.scss'],
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements OnInit, OnChanges {
     @Output() filterChanged = new EventEmitter<IFilters>();
+    @Output() categoryBread = new EventEmitter <any> ();
     @Input() isManufacturerPage: boolean = false;
     @Input() manufacturerPageId: number;
 
@@ -32,7 +39,7 @@ export class FilterComponent implements OnInit {
     public isOpenFirstSubCategoryWoman: boolean = false;
     public manufacturers: any;
     public manufacturersTitle;
-    
+
     public value: number;
     public highValue: number;
     public minMaxValues: any;
@@ -43,7 +50,7 @@ export class FilterComponent implements OnInit {
     public categories: ICategoryFilter[];
     private selectedCategoryIds: number[] = [];
     private selectedManufacturerIds: number[] = [];
-
+    public selectedCategoryBread: Array <IFilterItem> = [];
     openedFilter = false;
 
     constructor(
@@ -51,18 +58,30 @@ export class FilterComponent implements OnInit {
         private filterService: FilterService,
         public clientMenu: ClientMenuService,
         public appLang: AppLangService,
-        private ref: ChangeDetectorRef
+        private ref: ChangeDetectorRef,
+        private router: Router,
     ) {
+        this.router.events.subscribe((event: Event) => {
+            if (event instanceof NavigationEnd) {
+                const id = +this.route.snapshot.paramMap.get('id');
+                this.filterService.getSelectedCategory(id).subscribe(data => {
+                    this.categories = data.data;
+                });
+
+            }
+        });
     }
 
     public ngOnInit(): void {
-        this.filterService.getCategory().subscribe((res: ICategoryFilterResponse) => {
-            this.categories = res.data;
-        });
+        // this.filterService.getCategory().subscribe((res: ICategoryFilterResponse) => {
+        //     this.categories = res.data;
+        // });
 
         this.getPriceFilter();
         this.getClientMenus();
         this.getAllManufactures();
+        this.getDefaultCategory();
+        this.moveToCategory();
         this.options = {
             floor: 0,
             ceil: 0,
@@ -81,6 +100,25 @@ export class FilterComponent implements OnInit {
 
                 this.ref.detectChanges();
             }
+        });
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+    }
+    getBreadCrumbs(bread): void {
+        this.selectedCategoryBread.push(bread);
+
+    }
+
+
+    getDefaultCategory(): void {
+        this.filterService.SCategory.subscribe(data => {
+            const id = +this.route.snapshot.paramMap.get('id');
+            this.filterService.getSelectedCategory(id).subscribe(data => {
+                this.categories = data.data;
+
+            });
         });
     }
 
@@ -112,9 +150,20 @@ export class FilterComponent implements OnInit {
         this.onFilterChanged();
     }
 
+    public getNewCategory(categoryId: number) {
+        this.filterService.getSelectedCategory(categoryId).subscribe(data => {
+            this.categories = data.data;
+        });
+        const mainId: number = categoryId;
+        this.onCategoryFilterSelected(mainId);
+        this.categoryBread.emit(mainId);
+
+
+
+    }
+
     public onCategoryFilterDeselected(categoryId: number) {
         this.selectedCategoryIds = this.selectedCategoryIds.filter(c => c !== categoryId);
-
         this.onFilterChanged();
     }
 
@@ -132,12 +181,22 @@ export class FilterComponent implements OnInit {
         this.onFilterChanged();
     }
 
+    moveToCategory(): void {
+        this.filterService.SCategory.subscribe(data => {
+            const id = +this.route.snapshot.paramMap.get('id');
+            this.selectedCategoryIds = [];
+            this.selectedCategoryIds.push(id);
+            this.onFilterChanged();
+        });
+    }
+
     private onFilterChanged() {
-        //this.manufacturersSelectedIds.push(Number(this.manufacturerPageId));
-
-        //console.log(this.manufacturersSelectedIds);
-        console.log(this.selectedManufacturerIds);
-
+        const id = +this.route.snapshot.paramMap.get('id');
+        this.selectedCategoryIds.forEach((elem, index) => {
+            if (elem == id) {
+                this.selectedCategoryIds.splice(index, 1);
+            }
+        });
         if (this.isManufacturerPage) {
             this.filterChanged.emit({
                 categories: this.selectedCategoryIds,
@@ -145,7 +204,6 @@ export class FilterComponent implements OnInit {
                 minPrice: this.value,
                 maxPrice: this.highValue
             });
-            //this.selectedManufacturerIds = this.manufacturerPageId;
         }
 
         if (!this.isManufacturerPage) {
