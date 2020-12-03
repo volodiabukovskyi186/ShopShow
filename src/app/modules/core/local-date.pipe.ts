@@ -14,7 +14,6 @@ export class LocalDatePipe implements PipeTransform {
   constructor(private lang: AppLangService) {
     // this.lang.updated.subscribe();
   }
-
   transform(value: any, format: string = "longDate") {
     if (!value) return "";
     // let locale = this.lang.getLanguage(this.lang.current)?.locale;

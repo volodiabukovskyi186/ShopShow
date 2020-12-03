@@ -52,6 +52,7 @@ export class FilterService {
   }
 
   getSelectedCategory(categoryId: number): Observable<ICategoryFilterResponse>{
+
     let lang = this.appLang.current;
     let take = 100;
     return this.http.get<any>(environment.host + `client/category/${categoryId}?take=${take}&lang=${lang}`);
