@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+.center-not-found {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 :host {
   position: relative;
   display: grid;
@@ -26,6 +32,10 @@ app-product-item {
   :host {
     grid-template-columns: 1fr 1fr;
     gap: $space/2;
+  }
+
+  .center-not-found {
+    position: sticky;
   }
 }
 

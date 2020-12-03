@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
     constructor(private title: Title, private route: ActivatedRoute) {
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         console.log(this.products);
 
         // this.route.params.subscribe((data) => {
@@ -26,8 +26,6 @@ export class ProductListComponent implements OnInit {
 
         this.updateMeta();
     }
-
-
 
     updateMeta() {
         const title = `Categories | ShowU`;
