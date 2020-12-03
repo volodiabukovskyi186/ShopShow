@@ -129,24 +129,7 @@ export class ProductService {
     return this.http.get<any>(environment.products + params);
   }
 
-  getByFilters(filters: IFilters){
-    console.log(filters);
 
-    let skip = this.page * this.products.take - this.products.take;
-    let lang = this.appLang.current;
-   
-    let params = `?lang=${lang}&skip=${skip}&take=${this.products.take}&sort_by=id&min=${filters.minPrice}&max=${filters.maxPrice}`;
-
-    if (filters.manufacturers.length > 0){
-      params += `&manufacturer_id=${JSON.stringify(filters.manufacturers)}`;
-    }
-
-    if (filters.categories.length > 0){
-      params += `&category_id=${JSON.stringify(filters.categories)}`;
-    }  
-
-    return this.http.get<any>(environment.host + "client/getProductsByFilterClient" + params);
-  }
 
   getProductBy(id: number) {
     let lang = this.appLang.current;
@@ -186,7 +169,6 @@ export class ProductService {
       this.takeNumber = cardNumber;
       params = `${params}&take=${this.takeNumber}`;
     }
-
     //const lang = this.appLang.current;
     //let params = `?lang=${lang}&skip=0&take=${this.takeNumber}`;
 
@@ -210,6 +192,41 @@ export class ProductService {
     return this.http.get<any>(
       environment.products + params
     );
+  }
+
+  getByFilters(filters: IFilters){
+    console.log(filters);
+
+    let skip = this.page * this.products.take - this.products.take;
+    let lang = this.appLang.current;
+
+    let params = `?lang=${lang}&skip=${skip}&take=${this.products.take}&sort_by=id`;
+
+      if(filters.minPrice!==0){
+        params +=`&min=${filters.minPrice}`
+      }
+    if(filters.maxPrice!==0){
+      params +=`&max=${filters.maxPrice}`
+    }
+    if (filters.sortPrice === 'rating') {
+      params = `${params}&sort_by=rating`;
+    }
+    if (filters.sortPrice === 'minPrice') {
+      params = `${params}&sort_by=price&desc=ASC`;
+    }
+
+    if (filters.sortPrice === 'maxPrice') {
+      params = `${params}&sort_by=price&desc=DESC`;
+    }
+    if (filters.manufacturers.length > 0){
+      params += `&manufacturer_id=${JSON.stringify(filters.manufacturers)}`;
+    }
+
+    if (filters.categories.length > 0){
+      params += `&category_id=${JSON.stringify(filters.categories)}`;
+    }
+
+    return this.http.get<any>(environment.host + "client/getProductsByFilterClient" + params);
   }
   postReview(reviewItem): Observable <any> {
     return this.http.post(`https://api.showu.com.ua/review`, reviewItem);

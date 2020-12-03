@@ -14,6 +14,7 @@ export interface IFilters {
     manufacturers: number[];
     minPrice: number;
     maxPrice: number;
+    sortPrice?: string;
 }
 interface IFilterItem {
     id: number;
@@ -202,7 +203,8 @@ export class FilterComponent implements OnInit, OnChanges {
                 categories: this.selectedCategoryIds,
                 manufacturers: [Number(this.manufacturerPageId)],
                 minPrice: this.value,
-                maxPrice: this.highValue
+                maxPrice: this.highValue,
+                sortPrice: '',
             });
         }
 
@@ -211,7 +213,8 @@ export class FilterComponent implements OnInit, OnChanges {
                 categories: this.selectedCategoryIds,
                 manufacturers: this.selectedManufacturerIds,
                 minPrice: this.value,
-                maxPrice: this.highValue
+                maxPrice: this.highValue,
+                sortPrice: '',
             });
         }
     }

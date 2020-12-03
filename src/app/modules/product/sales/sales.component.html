@@ -2,11 +2,13 @@
 <br />
 <div class="row wrap">
   <div class="col col-side filter-margin-left">
-    <app-filter-page class="filter-block" (filterChanged)="onFilterChanged($event)"></app-filter-page>
+<!--    (categoryBread)="getCategoryBread($event)"-->
+    <app-filter-page class="filter-block"  (filterChanged)="onFilterChanged($event)"></app-filter-page>
   </div>
   <div class="col">
     <div class="sort-content">
-      <app-filter-page class="filter-block-btn filter-hidden" (filterChanged)="onFilterChanged($event)"></app-filter-page>
+<!--      (categoryBread)="getCategoryBread($event)"-->
+      <app-filter-page class="filter-block-btn filter-hidden"   (filterChanged)="onFilterChanged($event)"></app-filter-page>
       <mat-form-field appearance="standart" class="sort-products  sotr-count-prodyct">
         <div class="sort-products-wrapper">
 

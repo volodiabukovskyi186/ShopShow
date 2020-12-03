@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import {ActivatedRoute, Event, Router} from '@angular/router';
 // import { NgxUiLoaderService } from "ngx-ui-loader";
 import { NavLink } from "src/app/modules/ui/rap/nav-item/nav-link";
 import { ProductService } from "src/app/modules/product/product.service";
@@ -38,12 +38,11 @@ export class SalesComponent implements OnInit {
   getByIdHandler = (data) => {
     this.product.products = data;
     console.log(this.product?.products?.data?.products);
-  
-    // this.ngxService.stopAll();
     this.product.products.data.products = this.product?.products?.data?.products.filter((product) => {
       return product?.discont !== null;
     })
-
+    // const id = +this.route.snapshot.paramMap.get('id');
+    // this.getCategoryBread(id)
     console.log('after', this.product?.products?.data?.products);
   };
 
@@ -59,14 +58,44 @@ export class SalesComponent implements OnInit {
           title: "Sales",
         },
       ];
-    
+      const id = +this.route.snapshot.paramMap.get('id');
+      // this.getCategoryBread(id)
       this.get();
       this.getLastReviews();
     });
 
     this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
   }
+  // checkChangesCategory(): void {
+  //   this.router.events.subscribe((event: Event) => {
+  //     // if (event instanceof NavigationEnd) {
+  //     //   const id = +this.route.snapshot.paramMap.get('id');
+  //     //     console.log('rounte====>>',this.route.snapshot)
+  //     //   this.getCategoryBread(id)
+  //     // }
+  //   })
+  //   this.filter.SCategory.subscribe(data => {
+  //     const id = +this.route.snapshot.paramMap.get('id');
+  //     this.getCategoryBread(id)
+  //   })
+  // }
 
+
+  // getCategoryBread(arrCateg): void {
+  //   // debugger;
+  //   this.router.navigate([`/products/${arrCateg}`])
+  //   this.filter.getParentCategory(arrCateg).subscribe(data => {
+  //     console.log('breadcums===>', data);
+  //     data.data.forEach((elem, index) => {
+  //       this.breadcrumbs[index + 1] = {
+  //         link: "/products" + "/" + elem.id,
+  //         title: elem.name,
+  //
+  //       };
+  //     })
+  //
+  //   })
+  // }
   public onFilterChanged(filters: IFilters): void {
     this.product.getByFilters(filters).subscribe((res) => {
       this.product.products.data.products = res?.data?.products?.filter((val) => {

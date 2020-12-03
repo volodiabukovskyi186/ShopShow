@@ -5,6 +5,8 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 interface IFilterItem {
   id: number;
   name: string;
+  count:number;
+  description;
   sub?: IFilterItem[];
 }
 
@@ -24,6 +26,7 @@ export class FilterItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // console.log('filter====>', this.filter);
   }
 
   public hasSubFilters(filter: IFilterItem) {
