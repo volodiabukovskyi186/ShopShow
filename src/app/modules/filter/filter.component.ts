@@ -239,7 +239,6 @@ export class FilterComponent implements OnInit, OnChanges {
             this.isOpenPrices = false;
         }
     }
-
     public getAllManufactures(): void {
         this.filterService.getManufactures().subscribe((res) => {
             this.manufacturers = res.data;

@@ -75,6 +75,7 @@ export class ProductsPageComponent implements OnInit,OnChanges {
     this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
 
   }
+
   ngOnChanges(changes: SimpleChanges) {
     const id = +this.route.snapshot.paramMap.get('id');
     this.routeId = id;
@@ -176,7 +177,6 @@ export class ProductsPageComponent implements OnInit,OnChanges {
     console.log(sorting)
     this.selectStatusBy = true;
     this.selectedSorting = sorting;
-
     // this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
     //   if (this.selectedSorting !== 'promotions') {
     //     this.product.products = res;
