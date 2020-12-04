@@ -65,6 +65,7 @@ export class FilterComponent implements OnInit, OnChanges {
         this.router.events.subscribe((event: Event) => {
             if (event instanceof NavigationEnd) {
                 const id = +this.route.snapshot.paramMap.get('id');
+                this.selectedCategoryIds = [id ] ;
                 this.filterService.getSelectedCategory(id).subscribe(data => {
                     this.categories = data.data;
                 });
@@ -238,7 +239,6 @@ export class FilterComponent implements OnInit, OnChanges {
             this.isOpenPrices = false;
         }
     }
-
     public getAllManufactures(): void {
         this.filterService.getManufactures().subscribe((res) => {
             this.manufacturers = res.data;

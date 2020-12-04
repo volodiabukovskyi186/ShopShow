@@ -20,7 +20,7 @@ export class ProductsPageComponent implements OnInit,OnChanges {
   Math = Math;
   public sortProductsData: any;
   public cardNumbers: number[] = [];
-  selectedCardNumber: number;
+  selectedCardNumber: number=0;
   selectedSorting: string;
   promotions: any[] = [];
   selectStatus = false;
@@ -28,7 +28,6 @@ export class ProductsPageComponent implements OnInit,OnChanges {
   currentCategory: number ;
   curencyMove: string = '';
   routeId:number;
-  sortMove:string='';
 
   constructor(
       private route: ActivatedRoute,
@@ -72,22 +71,22 @@ export class ProductsPageComponent implements OnInit,OnChanges {
     const id = +this.route.snapshot.paramMap.get('id');
     this.getCategoryBread(id)
     this.sortProducts();
-
+    this.onFilterChanged(this.allCategory)
     this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
 
   }
+
   ngOnChanges(changes: SimpleChanges) {
     const id = +this.route.snapshot.paramMap.get('id');
     this.routeId = id;
     this.getCategoryBread(id);
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-      //   const id = +this.route.snapshot.paramMap.get('id');
-      //     console.log('rounte====>>',this.route.snapshot)
+
         this.getCategoryBread(id)
       }
     })
-    this.sortMove=''
+
   }
   checkChangesCategory(): void {
     this.onSortingChanged('')
@@ -99,26 +98,18 @@ export class ProductsPageComponent implements OnInit,OnChanges {
 
 
   getCategoryBread(arrCateg): void {
-
     this.router.navigate([`/products/${arrCateg}`])
-    this.currentCategory=arrCateg
-    this.filter.getParentCategory(arrCateg).subscribe(data=>{
-      console.log('breadcums===>', data);
-      data.data.forEach((elem,index)=>{
+    this.currentCategory = arrCateg;
+    this.filter.getParentCategory(arrCateg).subscribe(data => {
+
+      data.data.forEach((elem, index) => {
         this.breadcrumbs[index+1] = {
           link: "/products" + "/" + elem.id,
           title: elem.name,
 
         };
       })
-
     })
-    // arrCateg.forEach((elem, index) => {
-    //   this.breadcrumbs[index + 1] = {
-    //     link: `/products/${this.id}`,
-    //     title: elem.name,
-    //   };
-    // })
   }
 
 
@@ -143,7 +134,8 @@ export class ProductsPageComponent implements OnInit,OnChanges {
 
   pageChangedHandler(page: number): void {
     this.product.page = page;
-    this.get();
+    // this.get();
+    this.onFilterChanged(this.allCategory)
   }
 
   // public changeMaterialCategory(event, cardNumber?: number) {
@@ -155,15 +147,10 @@ export class ProductsPageComponent implements OnInit,OnChanges {
   // }
   public onFilterChanged(filters: IFilters): void {
 
-
-    if(filters.categories.length==0){
+    if(filters.categories.length == 0){
       this.allCategory = filters;
-      // this.allCategory.categories.push(this.currentCategory)
-      this.allCategory.categories[0]=this.currentCategory
-
-      console.log( this.currentCategory)
-    }
-    else{
+      this.allCategory.categories[0] = this.currentCategory;
+    } else {
       this.allCategory = filters;
     }
     this.allCategory.sortPrice = this.curencyMove;
@@ -174,19 +161,17 @@ export class ProductsPageComponent implements OnInit,OnChanges {
   }
 
   public onSortingChanged(sorting: string) {
+    this.product.currencyMove = sorting;
+    this.curencyMove = sorting ;
 
-    this.curencyMove=sorting
-    this.sortMove=sorting
     if(this.allCategory.categories.length==0){
       const id = +this.route.snapshot.paramMap.get('id');
       this.allCategory.categories[0]=id
     }
     this.allCategory.sortPrice = sorting;
-    if(sorting!=''){
-      this.product.getByFilters(this.allCategory).subscribe((data) => {
+      this.product.getByFilters(this.allCategory, this.selectedCardNumber).subscribe((data) => {
         this.product.products = data;
       });
-    }
     console.log(sorting)
     this.selectStatusBy = true;
     this.selectedSorting = sorting;
@@ -208,13 +193,18 @@ export class ProductsPageComponent implements OnInit,OnChanges {
     //     this.product.products.data.products = this.promotions;
     //   }
     // });
+
   }
 
   public onCardNumberChanged(cardNumber: number) {
+    this.product.productCount = cardNumber;
     this.selectStatus = true;
     this.selectedCardNumber = cardNumber;
-    this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
-      this.product.products = res;
-    });
+    // this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
+    //   this.product.products = res;
+    // });
+    this.product.getByFilters(this.allCategory,this.selectedCardNumber).subscribe((data) => {
+      this.product.products = data;
+    })
   }
 }

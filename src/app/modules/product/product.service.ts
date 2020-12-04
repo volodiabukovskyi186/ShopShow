@@ -86,11 +86,11 @@ export class ProductService {
   };
 
   takeNumber;
-
+  productCount:number;
+  currencyMove:string;
   constructor(private http: HttpClient, private appLang: AppLangService) {}
 
   getProducts(): Observable<any> {
-
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;
     let params = `?lang=${lang}&skip=${skip}&take=${this.products.take}&sort_by=id`;
@@ -159,9 +159,8 @@ export class ProductService {
   }
 
   sortBy(value: string, cardNumber?: number) {
-    console.log(value);
-    console.log(cardNumber);
-
+    // console.log(value);
+    // console.log(cardNumber);
     const lang = this.appLang.current;
     let params = `?lang=${lang}&skip=0`;
 
@@ -193,29 +192,30 @@ export class ProductService {
       environment.products + params
     );
   }
-
-  getByFilters(filters: IFilters){
+  getByFilters(filters: IFilters, count? :number ){
     console.log(filters);
 
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;
-
-    let params = `?lang=${lang}&skip=${skip}&take=${this.products.take}&sort_by=id`;
-
+    let params = `?lang=${lang}&skip=${skip}&sort_by=id`;
+    if (count || this.productCount) {
+      this.takeNumber = this.productCount;
+      params +=`&take=${this.takeNumber}`;
+    }
       if(filters.minPrice!==0){
         params +=`&min=${filters.minPrice}`
       }
     if(filters.maxPrice!==0){
       params +=`&max=${filters.maxPrice}`
     }
-    if (filters.sortPrice === 'rating') {
+    if (this.currencyMove === 'rating') {
       params = `${params}&sort_by=rating`;
     }
-    if (filters.sortPrice === 'minPrice') {
+    if (this.currencyMove === 'minPrice') {
       params = `${params}&sort_by=price&desc=ASC`;
     }
 
-    if (filters.sortPrice === 'maxPrice') {
+    if (this.currencyMove === 'maxPrice') {
       params = `${params}&sort_by=price&desc=DESC`;
     }
     if (filters.manufacturers.length > 0){
@@ -225,9 +225,16 @@ export class ProductService {
     if (filters.categories.length > 0){
       params += `&category_id=${JSON.stringify(filters.categories)}`;
     }
-
-    return this.http.get<any>(environment.host + "client/getProductsByFilterClient" + params);
+    return this.http.get<any>(environment.host + `client/getProductsByFilterClient` + params);
   }
+  getByDiscount(): Observable <any>{
+    let skip = this.page * this.products.take - this.products.take;
+    let lang = this.appLang.current;
+    let params = `?lang=${lang}&skip=${skip}&take=${this.products.take}&sort_by=id`;
+    // return this.http.get(`${environment.products}${params}`)
+    return this.http.get<any>(environment.host + `client/productsByDiscont${params}`);
+  }
+
   postReview(reviewItem): Observable <any> {
     return this.http.post(`https://api.showu.com.ua/review`, reviewItem);
   }
