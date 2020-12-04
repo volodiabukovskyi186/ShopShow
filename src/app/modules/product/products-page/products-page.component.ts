@@ -71,7 +71,7 @@ export class ProductsPageComponent implements OnInit,OnChanges {
     const id = +this.route.snapshot.paramMap.get('id');
     this.getCategoryBread(id)
     this.sortProducts();
-
+    this.onFilterChanged(this.allCategory)
     this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
 
   }
@@ -82,9 +82,7 @@ export class ProductsPageComponent implements OnInit,OnChanges {
     this.getCategoryBread(id);
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        // this.allCategory.categories = [this.routeId] ;
-      //   const id = +this.route.snapshot.paramMap.get('id');
-      //     console.log('rounte====>>',this.route.snapshot)
+
         this.getCategoryBread(id)
       }
     })
@@ -100,11 +98,10 @@ export class ProductsPageComponent implements OnInit,OnChanges {
 
 
   getCategoryBread(arrCateg): void {
-
     this.router.navigate([`/products/${arrCateg}`])
     this.currentCategory = arrCateg;
     this.filter.getParentCategory(arrCateg).subscribe(data => {
-      console.log('breadcums===>', data);
+
       data.data.forEach((elem, index) => {
         this.breadcrumbs[index+1] = {
           link: "/products" + "/" + elem.id,
@@ -137,7 +134,8 @@ export class ProductsPageComponent implements OnInit,OnChanges {
 
   pageChangedHandler(page: number): void {
     this.product.page = page;
-    this.get();
+    // this.get();
+    this.onFilterChanged(this.allCategory)
   }
 
   // public changeMaterialCategory(event, cardNumber?: number) {
@@ -148,7 +146,7 @@ export class ProductsPageComponent implements OnInit,OnChanges {
   //   });
   // }
   public onFilterChanged(filters: IFilters): void {
-    debugger;
+
     if(filters.categories.length == 0){
       this.allCategory = filters;
       this.allCategory.categories[0] = this.currentCategory;

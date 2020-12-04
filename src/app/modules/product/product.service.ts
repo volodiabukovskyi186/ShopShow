@@ -91,7 +91,6 @@ export class ProductService {
   constructor(private http: HttpClient, private appLang: AppLangService) {}
 
   getProducts(): Observable<any> {
-
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;
     let params = `?lang=${lang}&skip=${skip}&take=${this.products.take}&sort_by=id`;
@@ -162,7 +161,6 @@ export class ProductService {
   sortBy(value: string, cardNumber?: number) {
     // console.log(value);
     // console.log(cardNumber);
-    debugger
     const lang = this.appLang.current;
     let params = `?lang=${lang}&skip=0`;
 
@@ -194,8 +192,9 @@ export class ProductService {
       environment.products + params
     );
   }
-  getByFilters(filters: IFilters,count?:number){
+  getByFilters(filters: IFilters, count? :number ){
     console.log(filters);
+
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;
     let params = `?lang=${lang}&skip=${skip}&sort_by=id`;
@@ -226,9 +225,16 @@ export class ProductService {
     if (filters.categories.length > 0){
       params += `&category_id=${JSON.stringify(filters.categories)}`;
     }
-
-    return this.http.get<any>(environment.host + "client/getProductsByFilterClient" + params);
+    return this.http.get<any>(environment.host + `client/getProductsByFilterClient` + params);
   }
+  getByDiscount(): Observable <any>{
+    let skip = this.page * this.products.take - this.products.take;
+    let lang = this.appLang.current;
+    let params = `?lang=${lang}&skip=${skip}&take=${this.products.take}&sort_by=id`;
+    // return this.http.get(`${environment.products}${params}`)
+    return this.http.get<any>(environment.host + `client/productsByDiscont${params}`);
+  }
+
   postReview(reviewItem): Observable <any> {
     return this.http.post(`https://api.showu.com.ua/review`, reviewItem);
   }

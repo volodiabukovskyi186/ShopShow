@@ -80,7 +80,6 @@ export class SalesComponent implements OnInit {
   //   })
   // }
 
-
   // getCategoryBread(arrCateg): void {
   //   // debugger;
   //   this.router.navigate([`/products/${arrCateg}`])
@@ -96,6 +95,7 @@ export class SalesComponent implements OnInit {
   //
   //   })
   // }
+
   public onFilterChanged(filters: IFilters): void {
     this.product.getByFilters(filters).subscribe((res) => {
       this.product.products.data.products = res?.data?.products?.filter((val) => {
@@ -107,7 +107,7 @@ export class SalesComponent implements OnInit {
 
   get() {
     // this.ngxService.start();
-    this.product.getProducts().subscribe(this.getByIdHandler);
+    this.product.getByDiscount().subscribe(this.getByIdHandler);
   }
 
   getLastReviews() {
@@ -119,7 +119,7 @@ export class SalesComponent implements OnInit {
   pageChangedHandler(page: number): void {
     this.product.page = page;
     this.get();
-  } 
+  }
 
   public onSortingChanged(sorting: string) {
     this.selectStatus=true;
