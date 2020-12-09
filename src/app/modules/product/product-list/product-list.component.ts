@@ -15,7 +15,6 @@ export class ProductListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.products);
 
         // this.route.params.subscribe((data) => {
         //     console.log(data);

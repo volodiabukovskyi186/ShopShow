@@ -33,7 +33,7 @@ export class WishlistComponent implements OnInit {
   }
 
   public onSortingChanged(sorting: string) {
-    console.log(sorting);
+
     this.selectedSorting = sorting;
     this.wishlistService.getUserWishlistByClientId(this.clientId, this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
       if (this.selectedSorting !== 'promotions') {
@@ -69,7 +69,7 @@ export class WishlistComponent implements OnInit {
   public getClientWishlistByClientId(): void {
     this.accaunt.getUser().subscribe((res) => {
       this.clientId = res.data.user.id;
-        console.log(this.clientId);
+
 
         this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
           setTimeout(() => {

@@ -3,11 +3,17 @@ import { Routes, RouterModule } from "@angular/router";
 import { ProductListViewComponent } from './product-list-view/product-list-view.component';
 import { ProductViewPageComponent } from './product-view-page/product-view-page.component';
 import { ProductsPageComponent } from './products-page/products-page.component';
-import { SalesComponent } from './sales/sales.component';
+import { SalesComponent } from '../sales/sales/sales.component';
 import {NotFoundComponent} from '../not-found/not-found/not-found.component';
 
 const routes: Routes = [
-
+  {
+    path: "",
+    component: ProductsPageComponent,
+    data:{
+      component:'products'
+    }
+  },
   {
     path: "list",
     component: ProductListViewComponent
@@ -15,15 +21,18 @@ const routes: Routes = [
   {
     path: ":id",
     component: ProductsPageComponent,
+    data:{
+      component:'products'
+    }
   },
   {
     path: "view/:id",
     component: ProductViewPageComponent,
   },
-  {
-    path: "",
-    component: SalesComponent
-  },
+  // {
+  //   path: "",
+  //   component: SalesComponent
+  // },
   { path: '**',  redirectTo: '/notfound' },
 
 

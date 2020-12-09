@@ -50,11 +50,11 @@ export class CheckoutContactFormService {
   }
 
   getCountryDeliver(id: number,lang:any): Observable<any> {
-    console.log(lang)
+
     return this.http.get(`https://api.showu.com.ua/getDeliveriesCountry/${id}?lang=${lang}`);
   }
   getCountryPayment(id: number,lang:any): Observable<any> {
-    console.log(lang)
+
     return this.http.get(`https://api.showu.com.ua/getPaymentsCountry/${id}?lang=${lang}`);
   }
   getDelivers(): Observable<any> {

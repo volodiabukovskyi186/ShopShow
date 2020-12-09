@@ -30,9 +30,62 @@
         </div>
       </div>
     </div>
-    <app-product-list style="margin: 16px;"
-      [products]="product.products.data.products"
-    ></app-product-list>
+    <div class="col">
+      <br>
+      <br>
+      <div class="sort-content">
+                <app-filter-page class="filter-block-btn filter-hidden"  (filterChanged)="onFilterChanged($event)"></app-filter-page>
+        <mat-form-field appearance="standart" class="sort-products   sotr-count-prodyct">
+          <div class="sort-products-wrapper">
+            <!--          [ngClass]="{'sortNone':selectStatusBy}"-->
+            <mat-label class="sort-products-label" [ngClass]="{'sortNone':selectStatusBy}">{{ 'sortBy.sort' | translate }}</mat-label>
+            <mat-select     (selectionChange)="onSortingChanged($event.value)">
+              <!-- <mat-option *ngFor="let productData of sortProductsData" [value]="productData">
+                {{ productData }}
+              </mat-option> -->
+              <mat-option  [value]="'minPrice'">
+                {{ 'sortBy.minPrice' | translate}}
+              </mat-option>
+              <mat-option [value]="'maxPrice'">
+                {{ 'sortBy.maxPrice' | translate}}
+              </mat-option>
+              <mat-option [value]="'rating'">
+                {{ 'sortBy.rating' | translate}}
+              </mat-option>
+              <mat-option [value]="'promotions'">
+                {{ 'sortBy.promotions' | translate}}
+              </mat-option>
+            </mat-select>
+          </div>
+        </mat-form-field>
+        <mat-form-field appearance="standart" class="sort-products sort-count-product">
+          <div class="sort-products-wrapper">
+            <mat-label class="sort-products-label" [ngClass]="{'sortNone':selectStatus}"> {{ 'sortBy.view' | translate }}: </mat-label>
+            <!-- <div *ngFor="let card of cardNumbers"> -->
+            <mat-select (selectionChange)="onCardNumberChanged($event.value)">
+              <mat-option *ngFor="let card of cardNumbers" [value]="card">
+                {{ card }}
+                <!-- {{ 'sortBy.take' | translate }} -->
+              </mat-option>
+            </mat-select>
+            <!-- </div> -->
+          </div>
+        </mat-form-field>
+      </div>
+      <h1 style="margin-top: 0;">{{ product?.item?.name }}</h1>
+      <!-- <pre>{{this.product.products | json}}</pre> -->
+      <div class="grid">
+        <app-product-list style="margin: 16px;"
+                          [products]="manufacturer.products.data.products"
+        ></app-product-list>
+      </div>
+      <app-pagination
+              class="radius"
+              [page]="manufacturer?.page"
+              [total]="manufacturer?.products?.data?.products?.length > 0 ? Math.ceil(manufacturer?.products?.count / manufacturer?.products?.take): 0"
+              [pagesToShow]="5"
+              (pageChanged)="pageChangedHandler($event)"
+      ></app-pagination>
 
     <!-- <app-pagination
       class="radius"

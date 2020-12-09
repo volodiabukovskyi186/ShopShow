@@ -71,8 +71,8 @@ export const pageRoutes: Routes = [
     path: "sales",
     component: PageTemplateComponent,
     loadChildren: () =>
-      import("src/app/modules/product/product.module").then(
-        (m) => m.ProductModule
+      import("src/app/modules/sales/sales.module").then(
+        (m) => m.SalesModule
       ),
   },
   {

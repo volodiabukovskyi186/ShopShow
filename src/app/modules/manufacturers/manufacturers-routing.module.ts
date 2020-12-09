@@ -5,12 +5,19 @@ import { ManufacturerPageComponent } from './manufacturer-page/manufacturer-page
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: ManufacturesPageComponent,
+    data: {
+      component: 'manufacturers',
+    }
   },
   {
-    path: ":id",
+    path: ':id' ,
+
     component: ManufacturerPageComponent,
+    data: {
+      component : 'manufacturers' ,
+    }
   },
   { path: '**', redirectTo: '/notfound' },
 ];

@@ -52,12 +52,12 @@ export class TopPanelComponent implements OnInit {
     getAllLang():void{
         this.appLang.getAllLang().subscribe(data=>{
             this.allLangs=data;
-            console.log('allData===>',this.allLangs)
+
         })
     }
 
     x(item) {
-        console.log(item);
+
     }
 
     currencyStatus(): void {
@@ -66,7 +66,7 @@ export class TopPanelComponent implements OnInit {
         } else {
             this.currentlyStatus = false;
         }
-        console.log(this.currentlyStatus);
+
     }
 
     getCurrency() {
@@ -75,7 +75,7 @@ export class TopPanelComponent implements OnInit {
 
     getCurrencyHandler = data => {
         this.currency.data = data.data;
-        console.log('allLAng',this.currency.data)
+
         this.currency.setDefault();
         if(localStorage.getItem('currency')){
             const activeCurrency = localStorage.getItem('currency');
@@ -86,13 +86,12 @@ export class TopPanelComponent implements OnInit {
     onClickCurrency(e: Event, c: ICurrency) {
         e.preventDefault();
         this.currency.current = c;
-        console.log('currency=>',  this.currency.current);
+
         localStorage.setItem( "currency" ,JSON.stringify(this.currency.current))
     }
 
     changeLang(lang, item) {
-        console.log(lang);
-        console.log('item', item);
+
 
         this.langs = item;
 

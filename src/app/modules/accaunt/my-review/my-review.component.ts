@@ -24,19 +24,18 @@ export class MyReviewComponent implements OnInit {
   public getOrdersByClientId() {
     this.accauntService.getUser().subscribe((res) => {
         this.clientId = res.data.user.id;
-          console.log(this.clientId);
+
   
           this.myReviewService.getUserReviewsByClientId(this.clientId).subscribe((res) => {
             setTimeout(() => {
               this.isSuccessReviews = true;
-              console.log(this.isSuccessReviews);
+
             }, 1000)
 
             this.myReviews = res.data;
             //this.allReviews = res;
 
-            console.log(res);
-            console.log(this.myReviews);
+
           })
     });
   }

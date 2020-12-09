@@ -51,6 +51,7 @@ export class FilterItemComponent implements OnInit {
   }
 
   add():void{
+
     this.isExpanded = true;
     this.filteradd.emit(this.filter.id);
     this.filterCategory.emit(this.filter);

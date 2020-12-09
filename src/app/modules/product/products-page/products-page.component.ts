@@ -58,7 +58,7 @@ export class ProductsPageComponent implements OnInit,OnChanges {
   ngOnInit(): void {
     this.checkChangesCategory()
     this.route.params.subscribe((data) => {
-      this.id = data["id"];
+      this.id = data["id"]
       this.breadcrumbs = [
         {
           link: "/",
@@ -175,24 +175,6 @@ export class ProductsPageComponent implements OnInit,OnChanges {
     console.log(sorting)
     this.selectStatusBy = true;
     this.selectedSorting = sorting;
-    // this.product.sortBy(this.selectedSorting, this.selectedCardNumber).subscribe((res) => {
-    //   if (this.selectedSorting !== 'promotions') {
-    //     this.product.products = res;
-    //   }
-    //   if (this.selectedSorting === 'promotions') {
-    //     // console.log(this.product.products.data.products);
-    //     res.data.products.forEach((val) => {
-    //       if (val.promotion) {
-    //         this.promotions.unshift(val);
-    //       }
-    //       if (val.promotion === null) {
-    //         this.promotions.push(val);
-    //       }
-    //     })
-    //
-    //     this.product.products.data.products = this.promotions;
-    //   }
-    // });
 
   }
 

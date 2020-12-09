@@ -5,46 +5,12 @@
     <!-- <i>Filters will be here</i>
     min: {{filter.price?.min * currency.current.value}} <br>
     max: {{filter.price?.max * currency.current.value}} <br> -->
-
     <app-filter-page class="filter-block" (categoryBread)="getCategoryBread($event)" (filterChanged)="onFilterChanged($event)"></app-filter-page>
-
-    <!-- <div class="padding">
-      <small>Ціна: </small>
-      <div class="slidecontainer">
-        <input
-          class="slider"
-          type="range"
-          [min]="filter.price.min"
-          [max]="filter.priceModel.max"
-          [(ngModel)]="filter.priceModel.min"
-        />
-      </div>
-      <div class="slidecontainer">
-        <input
-          class="slider"
-          type="range"
-          [min]="filter.priceModel.min"
-          [max]="filter.price.max"
-          [(ngModel)]="filter.priceModel.max"
-        />
-      </div>
-
-      <div class="text-center">
-        <span>
-          {{ currency.current.simbol_left }}
-          {{ filter.priceModel.min * currency.current.value |number }} -
-          {{ filter.priceModel.max * currency.current.value |number }}
-          {{ currency.current.simbol_right }}
-        </span>
-      </div>
-    </div> -->
 
   </div>
   <div class="col">
     <div class="sort-content">
         <app-filter-page class="filter-block-btn" (categoryBread)="getCategoryBread($event)" (filterChanged)="onFilterChanged($event)"></app-filter-page>
-
-
       <mat-form-field appearance="standart" class="sort-products   sotr-count-prodyct">
         <div class="sort-products-wrapper">
 <!--          [ngClass]="{'sortNone':selectStatusBy}"-->

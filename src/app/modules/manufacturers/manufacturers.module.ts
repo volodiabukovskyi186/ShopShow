@@ -9,6 +9,8 @@ import { ManufacturersRoutingModule } from './manufacturers-routing.module';
 import { ProductModule } from '../product/product.module';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { TranslateModule } from "@ngx-translate/core";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -16,15 +18,17 @@ import { TranslateModule } from "@ngx-translate/core";
     ManufacturesPageComponent,
     ManufacturerPageComponent,
   ],
-  imports: [
-    CommonModule, 
-    ManufacturersRoutingModule, 
-    RouterModule, 
-    UiModule, 
-    ProductModule,
-    DragScrollModule,
-    TranslateModule
-  ],
+    imports: [
+        CommonModule,
+        ManufacturersRoutingModule,
+        RouterModule,
+        UiModule,
+        ProductModule,
+        DragScrollModule,
+        TranslateModule,
+        MatFormFieldModule,
+        MatSelectModule
+    ],
   exports: [ManufacturersSliderComponent]
 })
 export class ManufacturersModule {}

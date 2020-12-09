@@ -27,7 +27,7 @@ export class WishlistProductItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.product);
+
     //console.log(window.onload);
   }
 
@@ -52,7 +52,7 @@ export class WishlistProductItemComponent implements OnInit {
 
   public getUserAccauntData(): void {
     this.accauntService.getUser().subscribe((data) => {
-        console.log(data);
+
         this.userId = data.data.user.id;
         this.accauntService.current = data.data;
         this.accauntService.onCurrent();
@@ -67,7 +67,7 @@ export class WishlistProductItemComponent implements OnInit {
         product_id: product?.description?.product_id,
         user_id: this.userId
       }).subscribe((res) => {
-        console.log(res);
+
         alert(`Product #${res.data.product_id} was added to wishlist!`);
       })
     } else {

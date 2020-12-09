@@ -31,6 +31,7 @@ export class PaginationComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
+
       this.page = +params['page'] || 1;
 
       this.pageChanged.emit(this.page);

@@ -17,6 +17,7 @@ export interface ICategoryFilter {
   id: number;
   name: string;
   sub: ICategoryFilter[];
+  count?: number;
 }
 
 @Injectable({
@@ -52,15 +53,12 @@ export class FilterService {
   }
 
   getSelectedCategory(categoryId: number): Observable<ICategoryFilterResponse>{
+
     let lang = this.appLang.current;
     let take = 100;
     if(categoryId==0){
       categoryId=7
     }
-
-    console.log('categoryId',categoryId)
-
-
     return this.http.get<any>(environment.host + `client/category/${categoryId}?take=${take}&lang=${lang}`);
     // return this.http.get<any>(environment.host + `client/category?take=${take}&lang=${lang}`);
   }

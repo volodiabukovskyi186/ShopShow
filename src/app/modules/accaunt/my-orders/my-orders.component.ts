@@ -37,7 +37,7 @@ export class MyOrdersComponent implements OnInit {
     ngOnInit(): void {
         // this.getMyOrders();
         // console.log(this.getMyOrders());
-        console.log(this.myOrders);
+
 
         this.getUserClientId();
         this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
@@ -47,13 +47,13 @@ export class MyOrdersComponent implements OnInit {
 
     public getUserClientId(): void {
         this.accauntService.getUser().subscribe((res) => {
-            console.log(res);
+
 
             this.clientId = res.data.user.id;
-            console.log(this.clientId);
+
 
             this.myOrdersService.getOrderById(this.clientId).subscribe((res) => {
-                console.log(res);
+
                 this.clientOrders = res;
             })
         })
@@ -101,7 +101,7 @@ export class MyOrdersComponent implements OnInit {
                 this.myOrders = res.data;
                 this.allOrders = res;
                 // console.log(res);
-                console.log('orders=====>',this.myOrders);
+
             })
 
             // this.accaunt.current = data.data;

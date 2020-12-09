@@ -11,6 +11,8 @@ import { PromotionPageComponent } from "./promotion-page/promotion-page.componen
 import { CoreModule } from '../core/core.module';
 import { TranslateModule } from '@ngx-translate/core';
 import {DragScrollModule} from "ngx-drag-scroll";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {DragScrollModule} from "ngx-drag-scroll";
     TranslateModule,
     SallersRoutingModule,
     ProductModule,
-    DragScrollModule
+    DragScrollModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   exports: [SallersSliderComponent],
 })
