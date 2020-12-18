@@ -14,9 +14,9 @@ import {WishlistService} from '../../accaunt/wishlist/services/wishlist.service'
 })
 export class CartViewComponent implements OnInit, OnChanges {
   clientId: any;
-
   wishlistProducts: any;
   allwishlistData: any;
+
   constructor(public currency: CurrencyService,
               public cart: CartService,
               public product: ProductService,
@@ -26,6 +26,7 @@ export class CartViewComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.getWishlist();
   }
+  
   ngOnChanges(changes: SimpleChanges) {
 
     if(changes){

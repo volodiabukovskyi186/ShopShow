@@ -16,6 +16,8 @@ export class CartService {
   list: Array<any> = [];
   favorite: Array<any> = [];
   arrBasket: Array<any> = [];
+  productsInBasket = [];
+  userId: number;
 
   // body: HTMLBodyElement;
 
@@ -25,6 +27,7 @@ export class CartService {
     // this.body = document.querySelector("body");
     this.copyFromSession();
     this.calcTotalPrice();
+    this.getUserId();
   }
 
   openCartView() {
@@ -38,8 +41,18 @@ export class CartService {
   closeCartView() {
     this.isCartView = false;
   }
+
+  public getUserId(): void {
+    this.accaunt.getUser().subscribe((res) => {
+      this.userId = res.data.user.id;
+    })
+  }
+
+
   public addToBaseBaslet( arrBasket: Array <number>): Observable <any> {
-    return this.http.put<any>( `${environment.addbasket}/76`, arrBasket);
+    console.log(arrBasket);
+
+    return this.http.put<any>( `${environment.addbasket}/${this.userId}`, arrBasket);
   }
 
 
@@ -57,7 +70,19 @@ export class CartService {
         id: prod.id
       });
       this.arrBasket.push(prod);
-      this.addToBaseBaslet(this.list);
+
+      //this.productsInBasket = this.list;
+
+      this.productsInBasket = this.list.map((val) => {
+        return val.id;
+      })
+
+      console.log(this.productsInBasket);
+
+      this.addToBaseBaslet(this.productsInBasket).subscribe((res) => {
+        console.log(res);
+      });
+
       console.log('mmmmmm==>', this.list);
     }
 
@@ -91,11 +116,23 @@ export class CartService {
     return -1;
   }
 
-  public deleteFromArray(object: Object, array: Array<Object>): boolean {
-    console.log('arrayarray==>',array)
+  public deleteFromArray(object: Object, array: Array<any>): boolean {
+    console.log('arrayarray==>', array);
+
     const index: number = array.indexOf(object);
     if (index !== -1) {
       array.splice(index, 1);
+
+      this.productsInBasket.push(array);
+
+      this.productsInBasket = array?.map((product) => {
+        return product.id;
+      })
+
+      this.addToBaseBaslet(this.productsInBasket).subscribe((res) => {
+        console.log(res);
+      })
+
       return true;
     }
     return false;
