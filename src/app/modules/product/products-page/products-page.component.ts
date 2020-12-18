@@ -29,6 +29,8 @@ export class ProductsPageComponent implements OnInit,OnChanges {
   curencyMove: string = '';
   routeId:number;
 
+
+
   constructor(
       private route: ActivatedRoute,
       private router: Router,

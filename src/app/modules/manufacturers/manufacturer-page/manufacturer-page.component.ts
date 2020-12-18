@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 
 import { IFilters } from '../../filter/filter.component';
 import {DOCUMENT} from '@angular/common';
+import {FilterService} from '../../filter/filter.service';
 
 
 @Component({
@@ -46,6 +47,7 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
     public manufacturer: ManufacturersService,
     public product: ProductService,
     private router: Router,
+    private filterService: FilterService,
   ) {
 
 
@@ -62,14 +64,21 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
       title: this.manufacturer.item.name,
     });
   };
+  getMinMaxPrice():void{
+    this.filterService.getMinMaxPrice().subscribe((res) => {
+      this.allCategory.maxPrice = res.data.max;
+      this.allCategory.minPrice = res.data.min;
+
+    });
+  }
 
   ngOnInit(): void {
     // this.ngxService.start();
+    this.getMinMaxPrice();
     if(window.location.href.indexOf('?page') !== -1){
     window.location.href=window.location.href.slice(0, window.location.href.indexOf('?page'))
     }
 
-    console.log(this.url)
 
     this.route.params.subscribe((data) => {
       // set lang
@@ -94,13 +103,6 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
     this.onFilterChanged(this.allCategory);
     console.log('products===>', this.manufacturer.products);
 
-    // this.product.products.data.products.forEach(item=> {
-    //   let src:any = JSON.parse(item.image.src);
-    //   console.log(src);
-      
-    //   item.image.src_mini = src.src_mini;
-    //   item.image.src = src.src;
-    // })
   }
 
   // public onFilterChanged(filters: IFilters): void {
@@ -112,10 +114,12 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
   // }
 
   public onFilterChanged(filters: IFilters): void {
-    this.manufacturer.getByFilters(filters, this.id ).subscribe((data) => {
+    this.allCategory = filters;
+    this.manufacturer.getByFilters(this.allCategory, this.id ).subscribe((data) => {
       this.manufacturer.products.data.products = data.data.products;
       // this.manufacturer.products = data.data.products;
-      console.log('wwwwwww', data.data.products,this.manufacturer.products.data.products);
+      this.manufacturer.products.count = data.count;
+      console.log('wwwwwww', data, this.manufacturer.products.data.products);
       // this.product.products.data.products = data.data.products;
       // console.log(this.product.products.data.products);
     });
@@ -134,14 +138,17 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
     this.manufacturer.productCount = cardNumber;
     this.selectStatus = true;
     this.selectedCardNumber = cardNumber;
-    this.manufacturer.products.count = cardNumber;
+    // this.manufacturer.products.count = cardNumber;
+
     this.manufacturer.getByFilters(this.allCategory, this.id, this.selectedCardNumber).subscribe((data) => {
       this.manufacturer.products.data.products = data.data.products;
+      this.manufacturer.products.count = data.count;
       this.manufacturer.products = data;
+      console.log('count====>', data);
     });
   }
   pageChangedHandler(page: number): void {
     this.manufacturer.page = page;
-    this.onFilterChanged(this.allCategory)
+    this.onFilterChanged(this.allCategory);
   }
 }

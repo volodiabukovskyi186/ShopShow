@@ -34,10 +34,12 @@ interface IFilterItem {
     styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit, OnChanges {
+
     @Output() filterChanged = new EventEmitter<IFilters>();
     @Output() categoryBread = new EventEmitter<any>();
     @Input() isManufacturerPage: boolean = false;
     @Input() manufacturerPageId: number;
+    @Input() categorySelected;
 
     public isOpenManufactures: boolean = true;
     public isOpenPrices: boolean = true;
@@ -54,7 +56,7 @@ export class FilterComponent implements OnInit, OnChanges {
     host = environment.hoststatic;
 
     public categories: ICategoryFilter[];
-    private selectedCategoryIds: number[] = [];
+    public selectedCategoryIds: number[] = [];
     private selectedManufacturerIds: number[] = [];
     public selectedCategoryBread: Array<IFilterItem> = [];
     openedFilter = false;
@@ -180,12 +182,16 @@ export class FilterComponent implements OnInit, OnChanges {
     public onCategoryFilterDeselected(categoryId: number) {
         this.selectedCategoryIds = this.selectedCategoryIds.filter(c => c !== categoryId);
         this.onFilterChanged();
+
+
     }
 
     public onManufacturerFilterSelected(manufacturerId: number) {
+
         if (!this.selectedManufacturerIds.some(c => c == manufacturerId)) {
             this.selectedManufacturerIds.push(manufacturerId);
         }
+
         this.onFilterChanged();
     }
 

@@ -18,6 +18,7 @@ export const environment = {
   productPromotion: host + "client/product_promotion",
   reviews: host + `reviews`,
   reviewss: host + `review`,
+  addbasket: host + `cart_client/updateArray`,
   role: {
     roles: host + `roles`,
     role: host + `role`,

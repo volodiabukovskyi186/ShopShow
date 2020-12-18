@@ -1,7 +1,9 @@
 import { Injectable, Inject, PLATFORM_ID } from "@angular/core";
 import { isPlatformBrowser } from "@angular/common";
-import {BehaviorSubject, Subject} from 'rxjs';
-
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import { environment } from "src/environments/environment";
+import {AccauntService} from '../accaunt/accaunt.service';
 @Injectable({
   providedIn: "root",
 })
@@ -13,10 +15,13 @@ export class CartService {
 
   list: Array<any> = [];
   favorite: Array<any> = [];
+  arrBasket: Array<any> = [];
 
   // body: HTMLBodyElement;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: string) {
+  constructor(@Inject(PLATFORM_ID) private platformId: string,
+              private http: HttpClient,
+              private accaunt: AccauntService) {
     // this.body = document.querySelector("body");
     this.copyFromSession();
     this.calcTotalPrice();
@@ -33,19 +38,27 @@ export class CartService {
   closeCartView() {
     this.isCartView = false;
   }
+  public addToBaseBaslet( arrBasket: Array <number>): Observable <any> {
+    return this.http.put<any>( `${environment.addbasket}/76`, arrBasket);
+  }
+
 
   addToCart(prod: any, count: number = 1) {
+      console.log('oooooo=>>>>', this.list);
     let prodIndex = this.searchProduct(prod, this.list);
     if (prodIndex >= 0) {
       let oldCount: number = this.list[prodIndex].count;
       let newCount: number = parseInt(oldCount + "") + parseInt(count + "");
-
       this.list[prodIndex].count = newCount;
     } else {
       this.list.push({
         product: prod,
         count: count,
+        id: prod.id
       });
+      this.arrBasket.push(prod);
+      this.addToBaseBaslet(this.list);
+      console.log('mmmmmm==>', this.list);
     }
 
     // copy to session
@@ -55,6 +68,7 @@ export class CartService {
     this.calcTotalPrice();
     this.calcTotalCount();
   }
+
 
   public get total(): number {
     this.copyToSession();
@@ -78,6 +92,7 @@ export class CartService {
   }
 
   public deleteFromArray(object: Object, array: Array<Object>): boolean {
+    console.log('arrayarray==>',array)
     const index: number = array.indexOf(object);
     if (index !== -1) {
       array.splice(index, 1);

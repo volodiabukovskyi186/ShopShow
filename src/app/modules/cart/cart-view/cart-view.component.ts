@@ -12,7 +12,7 @@ import {WishlistService} from '../../accaunt/wishlist/services/wishlist.service'
   templateUrl: "./cart-view.component.html",
   styleUrls: ["./cart-view.component.scss"],
 })
-export class CartViewComponent implements OnInit,OnChanges {
+export class CartViewComponent implements OnInit, OnChanges {
   clientId: any;
 
   wishlistProducts: any;
@@ -28,19 +28,21 @@ export class CartViewComponent implements OnInit,OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
 
+    if(changes){
+    }
   }
 
   ondelete($event) {
     this.cart.delete($event, this.cart.list);
   }
 
-  getWishlist(): void{
+  getWishlist(): void {
     this.accaunt.getUser().subscribe((res) => {
       this.clientId = res.data.user.id;
-
       this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
         this.wishlistProducts = res.data;
         this.allwishlistData = res.data;
+
         this.cart.favoritelenth.next(this.allwishlistData.length);
       })
 

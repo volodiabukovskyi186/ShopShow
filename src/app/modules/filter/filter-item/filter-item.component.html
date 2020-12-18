@@ -12,6 +12,8 @@
     </div>
     <div *ngIf="!hasSubFilters(filter)">
         <mat-checkbox (change)="onCheckboxChange($event)" class="checkbox"></mat-checkbox>
+<!--        [checked]="selectedItem"-->
+<!--&lt;!&ndash;        [checked]="true"&ndash;&gt;selectedItem-->
     </div>
 </div>
 </ng-container>

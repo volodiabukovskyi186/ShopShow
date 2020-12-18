@@ -88,6 +88,7 @@ export class ProductService {
   takeNumber;
   productCount:number;
   currencyMove:string;
+  arrCategory: Array <number> = [];
   constructor(private http: HttpClient, private appLang: AppLangService) {}
 
   getProducts(): Observable<any> {
@@ -181,18 +182,17 @@ export class ProductService {
     if (value === 'maxPrice') {
       params = `${params}&sort_by=price&desc=DESC`;
     }
-
     // if (value === 'promotions') {
     //   params = `${params}`;
     // }
-
 
     return this.http.get<any>(
       environment.products + params
     );
   }
   getByFilters(filters: IFilters, count? :number ){
-
+   
+    this.arrCategory=filters.categories
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;
     let params = `?lang=${lang}&skip=${skip}&sort_by=id`;

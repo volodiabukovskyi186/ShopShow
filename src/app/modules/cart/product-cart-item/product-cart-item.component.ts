@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
 import { CartService } from "../cart.service";
 import { changeValueHighlight } from "../../ui/animations";
 import { CurrencyService } from "../../currency/currency.service";
@@ -9,7 +9,7 @@ import { CurrencyService } from "../../currency/currency.service";
   templateUrl: "./product-cart-item.component.html",
   styleUrls: ["./product-cart-item.component.scss"],
 })
-export class ProductCartItemComponent implements OnInit {
+export class ProductCartItemComponent implements OnInit,OnChanges {
   host: string = "https://api.showu.com.ua/";
   @Output() delete = new EventEmitter<any>();
   private _value: any;
@@ -27,6 +27,9 @@ export class ProductCartItemComponent implements OnInit {
   constructor(public currency: CurrencyService, public cart: CartService) {}
 
   ngOnInit(): void {}
+  ngOnChanges(changes: SimpleChanges) {
+
+  }
 
   onDelete() {
     this.delete.emit(this.value);

@@ -6,7 +6,8 @@
 <div class="filter-container desktop">
   <div class="categories">
     <div class="category" *ngFor="let category of categories">
-      <app-filter-item   [filter]="category" (filterCategory)="getBreadCrumbs($event)" (filteradd)="getNewCategory($event)" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-filter-item>
+
+      <app-filter-item [selectetCategory]="selectedCategoryIds"   [filter]="category" (filterCategory)="getBreadCrumbs($event)" (filteradd)="getNewCategory($event)" (filterSelected)="onCategoryFilterSelected($event)" (filterDeselected)="onCategoryFilterDeselected($event)"></app-filter-item>
 <!--      {{category|json}}-->
     </div>
   </div>

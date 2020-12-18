@@ -79,6 +79,8 @@ export class ManufacturersService {
   constructor(private http: HttpClient, private appLang: AppLangService) {}
 
   getByFilters(filters: IFilters, promotion?: number , count?: number ) {
+    //  debugger;
+
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;
     let params = `?lang=${lang}&skip=${skip}&sort_by=id`;
