@@ -7,10 +7,16 @@ const routes: Routes = [
   {
     path: "",
     component: PromotionPageComponent,
+    data:{
+      component:'promotion'
+    }
   },
   {
     path: "view/:id",
     component: PromotionViewPageComponent,
+    data:{
+      component:'promotion'
+    }
   },
   { path: '**', redirectTo: '/notfound' },
 ];

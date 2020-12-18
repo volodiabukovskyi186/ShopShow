@@ -38,7 +38,7 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
         if (changes){
             this.arrPayment = [];
             this.arrDelivers = [];
-            console.log(this.arrDelivers);
+
         }
     }
     nextStep() {
@@ -46,7 +46,7 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
     }
     edit() {
         this.check.steps[1].done = false;
-        console.log(this.check.checkoutContact.country);
+
     }
     valid: boolean = true;
     onValid(valid: boolean) {
@@ -56,7 +56,7 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
         if (eventValue.cheked) {
             this.isLigpayChecked = true;
         }
-        console.log(eventValue);
+
         // let liqPayData = {
         //   public_key: "sandbox_i23346177686",
         //   version: "3",
@@ -107,7 +107,7 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
     getLiqpayStatus(): void {
         this.checkContact.getLiqpayStatus().subscribe(data => {
             this.liqPayStatus = data.status;
-            console.log('liqpayStatus===>', this.liqPayStatus);
+
         })
     }
 

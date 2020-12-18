@@ -49,7 +49,7 @@ export class CheckoutProductListComponent implements OnInit {
   public getUserClientId(): void {
     this.accauntService.getUser().subscribe((res) => {
       this.userId = res.data.user.id;
-      console.log('userGet===>', this.userId);
+
     })
   }
 
@@ -122,7 +122,7 @@ export class CheckoutProductListComponent implements OnInit {
       if (res) {
         this.orderHadler(res);
         this.orderData = res;
-        console.log(res);
+
 
         if (this.check.checkoutPayment !== 'liqpay') {
           this.openOrderModal(res.data[0].id);
@@ -143,7 +143,7 @@ export class CheckoutProductListComponent implements OnInit {
             }).subscribe((resp) => {
               if (resp) {
 
-                console.log(resp);
+
                 this.hashedData = resp;
                 this.hashedDataToSend = this.hashedData.result.data;
                 this.hashedPrivateData = this.hashedData.result.sign;

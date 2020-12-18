@@ -24,7 +24,18 @@ export class PromotionViewPageComponent implements OnInit {
       title: "Promotions",
     },
   ];
-
+    Math=Math
+  allCategory: IFilters = {
+    categories: [],
+    manufacturers:[],
+    minPrice: 0,
+    maxPrice:0,
+    sortPrice: ''
+  };
+    cardNumbers = [];
+    selectedCardNumber: number=0;
+    selectStatus = false;
+    selectStatusBy = false;
   constructor(
     private route: ActivatedRoute,
     // private ngxService: NgxUiLoaderService,
@@ -36,27 +47,27 @@ export class PromotionViewPageComponent implements OnInit {
   public host = environment.hoststatic;
 
   public ngOnInit(): void {
+      if (window.location.href.indexOf('?page') !== -1) {
+          window.location.href = window.location.href.slice(0, window.location.href.indexOf('?page'));
+      }
     this.route.params.subscribe((data) => {
       this.id = data["id"];
-      console.log('this.id =========================>>', this.id);
-
-      console.log("PromotionViewPageComponent: ", this.id);
     });
-
     this.sallers.getBy(this.id).subscribe((res) => {
       this.getByIdHandler(res);
-
-      console.log(res);
     });
+    this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
   }
-
+  getProducts():void{
+      //get product after GET BY==>
+      this.sallers.getByFilters(this.allCategory, this.id).subscribe((data) => {
+          this.sallers.item.products = data.data.products;
+          console.log( 'qweqwe', this.sallers.item)
+      });
+  }
   getByIdHandler = (data) => {
-    // this.ngxService.stop();
     this.sallers.item = data?.data;
-
-    
-    console.log('this.sallers.item', this.sallers.item);
-
+    this.getProducts();
     this.breadcrumbs.push({
       link: `promotions/${this.id}`,
       title: this.sallers.item.name,
@@ -64,9 +75,36 @@ export class PromotionViewPageComponent implements OnInit {
   };
 
   public onFilterChanged(filters: IFilters): void {
-    this.product.getByFilters(filters).subscribe((data) => {
-      this.product.products.data.products = data.data.products;
-      console.log(this.product.products.data.products);
+
+
+    this.sallers.getByFilters(filters, this.id ).subscribe((data) => {
+        this.sallers.item.products = data.data.products;
+        this.sallers.promotions.count = data.count;
+        console.log('ppppppp+.', this.sallers.item.products)
+      // this.product.products.data.products = data.data.products;
+      // console.log(this.product.products.data.products);
     });
   }
+    public onSortingChanged(sorting: string) {
+        this.allCategory.sortPrice = sorting;
+        this.sallers.currencyMove = sorting;
+        this.selectStatus = true;
+        this.sallers.getByFilters(this.allCategory, this.id, this.selectedCardNumber).subscribe((data) => {
+            this.sallers.item.products = data.data.products;
+        });
+    }
+
+    public onCardNumberChanged(cardNumber: number) {
+        this.sallers.productCount = cardNumber;
+        this.selectStatusBy = true;
+        this.selectedCardNumber = cardNumber;
+        this.sallers.promotions.take = cardNumber;
+        this.sallers.getByFilters(this.allCategory, this.id, this.selectedCardNumber).subscribe((data) => {
+            this.sallers.item.products = data.data.products;
+        });
+    }
+    pageChangedHandler(page: number): void {
+        this.sallers.page = page;
+        this.onFilterChanged(this.allCategory)
+    }
 }

@@ -28,8 +28,6 @@ export class AddReviewDialogComponent implements OnInit {
   }
   public btnMain():void{
     this.dialogRef.close(this.contactData);
-
-
   }
 
 }

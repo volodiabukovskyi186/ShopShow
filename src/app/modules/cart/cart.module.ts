@@ -10,6 +10,7 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 import { CardWishlistItemComponent } from './card-wishlist-item/card-wishlist-item.component';
+import {SalesModule} from '../sales/sales.module';
 
 const C = [CartViewComponent, CartButtonComponent, CartFavoriteButtonComponent];
 
@@ -20,6 +21,7 @@ const C = [CartViewComponent, CartButtonComponent, CartFavoriteButtonComponent];
     CommonModule,
     UiModule,
     ProductModule,
+    SalesModule,
     FormsModule,
     RouterModule,
     TranslateModule,

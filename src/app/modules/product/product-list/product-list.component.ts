@@ -17,15 +17,20 @@ export class ProductListComponent implements OnInit {
     public ngOnInit(): void {
         console.log(this.products);
 
-        // this.route.params.subscribe((data) => {
-        //     console.log(data);
-        //     if (data.id === "sales") {
-        //         this.isSalesPage = true;
-        //     }
-        // });
-
         this.updateMeta();
     }
+    
+    // ngOnInit(): void {
+
+    //     // this.route.params.subscribe((data) => {
+    //     //     console.log(data);
+    //     //     if (data.id === "sales") {
+    //     //         this.isSalesPage = true;
+    //     //     }
+    //     // });
+
+    //     this.updateMeta();
+    // }
 
     updateMeta() {
         const title = `Categories | ShowU`;

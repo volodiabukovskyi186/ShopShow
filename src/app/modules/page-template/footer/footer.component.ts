@@ -54,9 +54,7 @@ export class FooterComponent implements OnInit {
 
   getSoliaNet():void{
     this.footerService.getSolical().subscribe(data=>{
-      console.log('solialNet====>',data)
       this.solialArr=data.data
-
     })
   }
 }

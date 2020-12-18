@@ -50,9 +50,8 @@
                 </div>
             </div>
         </div>
-
         <app-pagination
-                *ngIf="prom.promotions.count>=12"
+                *ngIf="prom.promotions.count>=2"
                 class="radius"
                 [page]="prom.page"
                 [total]="Math.ceil(prom.promotions.count / prom.promotions.take)"

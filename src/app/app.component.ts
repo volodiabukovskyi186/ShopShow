@@ -4,7 +4,9 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import { Subscription } from 'rxjs';
+import {NavigationStart, Router} from '@angular/router';
+export let browserRefresh = false;
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -13,26 +15,32 @@ import { takeUntil } from 'rxjs/operators';
 export class AppComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   public favIcon: HTMLLinkElement;
-
-  constructor(public http: HttpClient) {
+  subscription: Subscription;
+  constructor(public http: HttpClient,
+              private router: Router) {
     this.favIcon = document.querySelector('#appIcon') || document.querySelector("link[href='favicon.ico']");
 
     this.getAllSiteData();
+
+    this.subscription = router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        browserRefresh = !router.navigated;
+      }
+    });
   }
 
   public ngOnInit(): void {
     // this.favIcon = document.querySelector('#appIcon');
-    console.log(this.favIcon);
+
   }
 
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    this.subscription.unsubscribe();
   }
 
   public getAllSiteData(): void {
-    //const host = 'https://api.showu.com.ua';
-
     this.getSiteData()
     .pipe(takeUntil(this.destroy$))
     .subscribe((res) => {
@@ -40,8 +48,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.favIcon.href = 'https://api.showu.com.ua' + res?.data?.icon?.src;
       }
 
-      console.log(res);
-      console.log(res?.data?.icon?.src);
     })
   }
 

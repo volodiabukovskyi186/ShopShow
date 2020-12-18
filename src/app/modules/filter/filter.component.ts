@@ -8,6 +8,9 @@ import {ClientMenuService} from '../client-menu/client-menu.service';
 import {AppLangService} from 'src/app/modules/core/app-lang.service';
 import {slideLeft} from '../ui/animations';
 import {Router, NavigationEnd, Event} from '@angular/router';
+import {ProductService} from '../product/product.service';
+import {SallersService} from '../sallers/sallers.service';
+import {ManufacturersService} from '../manufacturers/manufacturers.service';
 
 export interface IFilters {
     categories: number[];
@@ -16,11 +19,13 @@ export interface IFilters {
     maxPrice: number;
     sortPrice?: string;
 }
+
 interface IFilterItem {
     id: number;
     name: string;
     sub?: IFilterItem[];
 }
+
 
 @Component({
     animations: [slideLeft],
@@ -29,10 +34,12 @@ interface IFilterItem {
     styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit, OnChanges {
+
     @Output() filterChanged = new EventEmitter<IFilters>();
-    @Output() categoryBread = new EventEmitter <any> ();
+    @Output() categoryBread = new EventEmitter<any>();
     @Input() isManufacturerPage: boolean = false;
     @Input() manufacturerPageId: number;
+    @Input() categorySelected;
 
     public isOpenManufactures: boolean = true;
     public isOpenPrices: boolean = true;
@@ -49,9 +56,9 @@ export class FilterComponent implements OnInit, OnChanges {
     host = environment.hoststatic;
 
     public categories: ICategoryFilter[];
-    private selectedCategoryIds: number[] = [];
+    public selectedCategoryIds: number[] = [];
     private selectedManufacturerIds: number[] = [];
-    public selectedCategoryBread: Array <IFilterItem> = [];
+    public selectedCategoryBread: Array<IFilterItem> = [];
     openedFilter = false;
 
     constructor(
@@ -61,53 +68,64 @@ export class FilterComponent implements OnInit, OnChanges {
         public appLang: AppLangService,
         private ref: ChangeDetectorRef,
         private router: Router,
+        private productService: ProductService,
+        private  sallersService: SallersService,
+        private  manufacturersService: ManufacturersService,
     ) {
         this.router.events.subscribe((event: Event) => {
             if (event instanceof NavigationEnd) {
                 const id = +this.route.snapshot.paramMap.get('id');
-                this.selectedCategoryIds = [id ] ;
-                this.filterService.getSelectedCategory(id).subscribe(data => {
-                    this.categories = data.data;
-                });
-
+                this.selectedCategoryIds = [id];
+                // this.getDefaultCategory();
+                if (this.route.snapshot.data.component == 'manufacturers') {
+                    this.manufacturersService.getManufactures(id).subscribe(data => {
+                        this.categories = data.data.categories;
+                    });
+                } else if (this.route.snapshot.data.component == 'promotion') {
+                    this.sallersService.getPromotion(id).subscribe(data => {
+                        this.categories = data.data.categories;
+                    });
+                } else if (this.route.snapshot.data.component == 'sale') {
+                    this.productService.getByDiscount().subscribe(data => {
+                        this.categories = data.data.categories;
+                    });
+                } else {
+                    this.filterService.getSelectedCategory(id).subscribe(data => {
+                        this.categories = data.data;
+                    });
+                }
             }
         });
     }
 
     public ngOnInit(): void {
-        // this.filterService.getCategory().subscribe((res: ICategoryFilterResponse) => {
-        //     this.categories = res.data;
-        // });
-
+        // this.getDefaultCategory();
         this.getPriceFilter();
         this.getClientMenus();
         this.getAllManufactures();
-        this.getDefaultCategory();
         this.moveToCategory();
         this.options = {
             floor: 0,
             ceil: 0,
         };
+
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
         this.filterService.getMinMaxPrice().subscribe((res) => {
             this.minMaxValues = res.data;
-
             if (this.minMaxValues) {
                 this.options = {
                     floor: this.minMaxValues.min,
                     ceil: this.minMaxValues.max
                 };
-
                 this.value = this.options.floor;
                 this.highValue = this.options.ceil;
-
                 this.ref.detectChanges();
             }
         });
     }
 
-    ngOnChanges(changes: SimpleChanges) {
-
-    }
     getBreadCrumbs(bread): void {
         this.selectedCategoryBread.push(bread);
 
@@ -117,10 +135,10 @@ export class FilterComponent implements OnInit, OnChanges {
     getDefaultCategory(): void {
         this.filterService.SCategory.subscribe(data => {
             const id = +this.route.snapshot.paramMap.get('id');
-            this.filterService.getSelectedCategory(id).subscribe(data => {
-                this.categories = data.data;
-
-            });
+            // this.filterService.getSelectedCategory(id).subscribe(data => {
+            //     this.categories = data.data;
+            //
+            // });
         });
     }
 
@@ -135,6 +153,7 @@ export class FilterComponent implements OnInit, OnChanges {
     }
 
     getPriceFilterHandler = data => {
+
         this.options = {
             floor: +data.data.min,
             ceil: +data.data.max
@@ -148,7 +167,6 @@ export class FilterComponent implements OnInit, OnChanges {
         if (!this.selectedCategoryIds.some(c => c == categoryId)) {
             this.selectedCategoryIds.push(categoryId);
         }
-
         this.onFilterChanged();
     }
 
@@ -159,17 +177,17 @@ export class FilterComponent implements OnInit, OnChanges {
         const mainId: number = categoryId;
         this.onCategoryFilterSelected(mainId);
         this.categoryBread.emit(mainId);
-
-
-
     }
 
     public onCategoryFilterDeselected(categoryId: number) {
         this.selectedCategoryIds = this.selectedCategoryIds.filter(c => c !== categoryId);
         this.onFilterChanged();
+
+
     }
 
     public onManufacturerFilterSelected(manufacturerId: number) {
+
         if (!this.selectedManufacturerIds.some(c => c == manufacturerId)) {
             this.selectedManufacturerIds.push(manufacturerId);
         }
@@ -179,7 +197,6 @@ export class FilterComponent implements OnInit, OnChanges {
 
     public onManufacturerFilterDeselected(manufacturerId: number) {
         this.selectedManufacturerIds = this.selectedManufacturerIds.filter(c => c !== manufacturerId);
-
         this.onFilterChanged();
     }
 
@@ -239,6 +256,7 @@ export class FilterComponent implements OnInit, OnChanges {
             this.isOpenPrices = false;
         }
     }
+
     public getAllManufactures(): void {
         this.filterService.getManufactures().subscribe((res) => {
             this.manufacturers = res.data;

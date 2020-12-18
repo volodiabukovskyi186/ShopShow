@@ -220,6 +220,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         this.product.postReview(review)
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
+
                 const dialogRef = this.dialog.open(AddReviewDialogComponent, {});
 
             dialogRef.afterClosed().subscribe(res => {

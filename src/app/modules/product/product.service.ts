@@ -88,6 +88,7 @@ export class ProductService {
   takeNumber;
   productCount:number;
   currencyMove:string;
+  arrCategory: Array <number> = [];
   constructor(private http: HttpClient, private appLang: AppLangService) {}
 
   getProducts(): Observable<any> {
@@ -116,7 +117,7 @@ export class ProductService {
 
     let skip = this.page * this.reviews.take - this.reviews.take;
     let params = `?skip=${skip}&take=${this.reviews.take}`;
-    console.log('reviewsPagination==>', params)
+
     return this.http.get<any>(
       environment.host + `client/getRewievsByProduct/${prodId}` + params
     );
@@ -159,8 +160,7 @@ export class ProductService {
   }
 
   sortBy(value: string, cardNumber?: number) {
-    // console.log(value);
-    // console.log(cardNumber);
+
     const lang = this.appLang.current;
     let params = `?lang=${lang}&skip=0`;
 
@@ -182,19 +182,17 @@ export class ProductService {
     if (value === 'maxPrice') {
       params = `${params}&sort_by=price&desc=DESC`;
     }
-
     // if (value === 'promotions') {
     //   params = `${params}`;
     // }
-    console.log(environment.products + params);
 
     return this.http.get<any>(
       environment.products + params
     );
   }
   getByFilters(filters: IFilters, count? :number ){
-    console.log(filters);
-
+   
+    this.arrCategory=filters.categories
     let skip = this.page * this.products.take - this.products.take;
     let lang = this.appLang.current;
     let params = `?lang=${lang}&skip=${skip}&sort_by=id`;
@@ -203,10 +201,10 @@ export class ProductService {
       params +=`&take=${this.takeNumber}`;
     }
       if(filters.minPrice!==0){
-        params +=`&min=${filters.minPrice}`
+        params +=`&min=${filters.minPrice}`;
       }
     if(filters.maxPrice!==0){
-      params +=`&max=${filters.maxPrice}`
+      params +=`&max=${filters.maxPrice}`;
     }
     if (this.currencyMove === 'rating') {
       params = `${params}&sort_by=rating`;
@@ -221,7 +219,6 @@ export class ProductService {
     if (filters.manufacturers.length > 0){
       params += `&manufacturer_id=${JSON.stringify(filters.manufacturers)}`;
     }
-
     if (filters.categories.length > 0){
       params += `&category_id=${JSON.stringify(filters.categories)}`;
     }
@@ -235,10 +232,10 @@ export class ProductService {
     return this.http.get<any>(environment.host + `client/productsByDiscont${params}`);
   }
 
+
   postReview(reviewItem): Observable <any> {
     return this.http.post(`https://api.showu.com.ua/review`, reviewItem);
   }
-
   addProductToWishlist(data): Observable <any> {
     return this.http.post(`${environment.host}wishlist`, data);
   }
