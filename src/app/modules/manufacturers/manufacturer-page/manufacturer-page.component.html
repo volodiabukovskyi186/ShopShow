@@ -2,8 +2,7 @@
 
 <div class="row">
   <div class="col col-side filter-margin-left">
-    <!-- <i>Filters will be here</i> -->
-    <app-filter-page 
+    <app-filter-page  *ngIf="manufacturer.products.data.products.length"
       [isManufacturerPage]="isManufacturerPage"
       [manufacturerPageId]="id"
       (filterChanged)="onFilterChanged($event)">
@@ -33,16 +32,12 @@
     <div class="col">
       <br>
       <br>
-      <div class="sort-content">
+      <div class="sort-content" *ngIf="manufacturer.products.data.products.length" >
                 <app-filter-page class="filter-block-btn filter-hidden"  (filterChanged)="onFilterChanged($event)"></app-filter-page>
         <mat-form-field appearance="standart" class="sort-products   sotr-count-prodyct">
           <div class="sort-products-wrapper">
-            <!--          [ngClass]="{'sortNone':selectStatusBy}"-->
             <mat-label class="sort-products-label" [ngClass]="{'sortNone':selectStatusBy}">{{ 'sortBy.sort' | translate }}</mat-label>
             <mat-select     (selectionChange)="onSortingChanged($event.value)">
-              <!-- <mat-option *ngFor="let productData of sortProductsData" [value]="productData">
-                {{ productData }}
-              </mat-option> -->
               <mat-option  [value]="'minPrice'">
                 {{ 'sortBy.minPrice' | translate}}
               </mat-option>
@@ -61,22 +56,17 @@
         <mat-form-field appearance="standart" class="sort-products sort-count-product">
           <div class="sort-products-wrapper">
             <mat-label class="sort-products-label" [ngClass]="{'sortNone':selectStatus}"> {{ 'sortBy.view' | translate }}: </mat-label>
-            <!-- <div *ngFor="let card of cardNumbers"> -->
             <mat-select (selectionChange)="onCardNumberChanged($event.value)">
               <mat-option *ngFor="let card of cardNumbers" [value]="card">
                 {{ card }}
-                <!-- {{ 'sortBy.take' | translate }} -->
               </mat-option>
             </mat-select>
-            <!-- </div> -->
           </div>
         </mat-form-field>
       </div>
       <h1 style="margin-top: 0;">{{ product?.item?.name }}</h1>
-      <!-- <pre>{{this.product.products | json}}</pre> -->
       <div class="grid">
-        <app-product-list style="margin: 16px;"
-                          [products]="manufacturer.products.data.products"
+        <app-product-list style="margin: 16px;" [products]="manufacturer.products.data.products"
         ></app-product-list>
       </div>
       <app-pagination
@@ -87,18 +77,6 @@
               (pageChanged)="pageChangedHandler($event)"
       ></app-pagination>
 
-    <!-- <app-pagination
-      class="radius"
-      [page]="2"
-      [total]="10"
-      [pagesToShow]="5"
-    ></app-pagination> -->
   </div>
-  <!-- <div class="col col-side"> -->
-    <!-- <app-review-card
-      class="radius"
-      [title]="'Response ' + manufacturer.item?.name"
-      [reviews]="reviews"
-    ></app-review-card> -->
-  <!-- </div> -->
+</div>
 </div>

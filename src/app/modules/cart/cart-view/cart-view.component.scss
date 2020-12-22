@@ -8,6 +8,12 @@
   left: 0;
   z-index: 10000;
 }
+input[disabled]
+p.close-wrap {}
+p{}
+.close-wrap {}
+#myId .close-wrap {}
+.close-wrap {}
 
 .close-wrap {
   position: fixed;

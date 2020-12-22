@@ -26,7 +26,7 @@ export class RestorePageComponent implements OnInit {
   }
 
   public resetBtnClicked(event): void {
-    console.log(event);
+
     this.isResetBtnClicked = event;
   }
 

@@ -39,7 +39,7 @@ export class StepTabsComponent implements AfterContentInit, AfterViewInit {
     });
 
     if (actives.length > 1) {
-      console.error(`Multiple active tabs set 'active'`);
+
     } else if (!actives.length && tabs.length) {
       tabs[0].active = true;
     }

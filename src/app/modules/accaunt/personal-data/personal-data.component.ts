@@ -39,7 +39,7 @@ export class PersonalDataComponent implements OnInit {
 
             this.accaunt.current = data.data;
 
-            console.log(this.accaunt.current);
+
 
             this.personalDataForm.setValue({
                 firstName: this.accaunt.current.user.first_name,
@@ -102,7 +102,7 @@ export class PersonalDataComponent implements OnInit {
         console.log('this.userPersonalDataToUpdate', this.userPersonalDataToUpdate);
 
         this.personalDataService.updateUserPersonalDataByUserId(this.userId, this.userPersonalDataToUpdate).subscribe((res) => {
-            console.log(res);
+
             this.getUserAccauntData();
         })
     }
