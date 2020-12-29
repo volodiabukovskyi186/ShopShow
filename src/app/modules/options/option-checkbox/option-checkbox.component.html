@@ -1,0 +1,5 @@
+<div class="option-colors" >
+    <ng-container *ngFor="let opt of option.values">
+        <app-option-checkbox-item (optionItem)="checkItems($event)" [currentItem]="option" [option]="opt"></app-option-checkbox-item>
+    </ng-container>
+</div>

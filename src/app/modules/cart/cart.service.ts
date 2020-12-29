@@ -44,7 +44,7 @@ export class CartService {
 
 
   addToCart(prod: any, count: number = 1) {
-      console.log('oooooo=>>>>', this.list);
+      console.log('oooooo=>>>>', prod);
     let prodIndex = this.searchProduct(prod, this.list);
     if (prodIndex >= 0) {
       let oldCount: number = this.list[prodIndex].count;

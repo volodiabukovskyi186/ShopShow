@@ -48,13 +48,10 @@
           }}{{ product?.item?.price * currency?.current?.value
           }}{{ currency?.current?.simbol_right }}</b
         > -->
-        <span
-          class="stock-status" [ngStyle]="{'background':product?.item?.stock_status?.color}"
-
-          > {{product?.item?.stock_status?.description.name}} </span
-        >
-
+        <span class="stock-status" [ngStyle]="{'background':product?.item?.stock_status?.color}" >
+          {{product?.item?.stock_status?.description.name}} </span >
       </div>
+
       <hr />
       <div>
         <div class="product-description-title">
@@ -64,6 +61,23 @@
         <div>
           {{ product?.item?.description?.meta_discription }}
         </div>
+      </div>
+      <hr />
+      <div class="options" *ngFor="let option of arrOptionsCheck" >
+        <app-option-checkbox  [option]="option"></app-option-checkbox>
+      </div>
+      <div class="options" *ngFor="let option of arrOptionsSelect" >
+        <mat-form-field  appearance="standart" >
+<!--          [(value)]="option.values[0]"-->
+            <mat-select  [placeholder]="option.values[0].value.description.name" (selectionChange)="onSelectOptionChange($event.value,option)">
+              <mat-option *ngFor="let val of option.values" [value]="val">
+                {{ val.value.description.name}}
+              </mat-option>
+            </mat-select>
+
+
+
+        </mat-form-field>
       </div>
       <hr />
       <div class="add-to-wishlist__container">
