@@ -34,14 +34,14 @@ export class LoginFormComponent implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const categoryName = this.activateRoute.snapshot
-        console.log('activeRoute=>', categoryName);
+
       }
     })
   }
   l
 
   ngOnInit() {
-    console.log(this.isCheckoutComponent);
+
   }
 
   authForm = new FormGroup({

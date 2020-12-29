@@ -7,8 +7,7 @@ import { FilterService } from '../../filter/filter.service';
 import { CurrencyService } from '../../currency/currency.service';
 import { IFilters } from '../../filter/filter.component';
 // import { NgxUiLoaderService } from "ngx-ui-loader";
-import { PaginationPage } from "src/app/modules/ui/rap/pagination/pagination-page";
-import { IManufacturerReviews } from 'src/app/modules/review/review';
+
 import {SalesService} from '../sales.service';
 
 @Component({
@@ -20,16 +19,11 @@ export class SalesComponent implements OnInit, OnChanges {
 
   breadcrumbs: Array<NavLink> = [];
   Math = Math;
-  public sortProductsData: any;
   public cardNumbers: number[] = [];
-  selectedCardNumber: number=0;
-  selectedSorting: string;
+  selectedCardNumber: number = 0;
   promotions: any[] = [];
   selectStatus = false;
   selectStatusBy = false;
-  currentCategory: number ;
-  curencyMove: string = '';
-  routeId:number;
 
   constructor(
       private route: ActivatedRoute,
@@ -54,8 +48,8 @@ export class SalesComponent implements OnInit, OnChanges {
     this.product.products = data;
     this.product.products.data.products = this.product?.products?.data?.products.filter((product) => {
       return product?.discont !== null;
-    })
-    console.log('after====>', this.product.products);
+    });
+
   };
 
   ngOnInit(): void {

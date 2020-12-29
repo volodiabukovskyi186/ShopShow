@@ -17,6 +17,7 @@ import {WishlistService} from '../../../modules/accaunt/wishlist/services/wishli
 import {FooterSubscribeDialogComponent} from '../../dialogs/footer-subscribe-dialog/footer-subscribe-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AddReviewDialogComponent} from '../../dialogs/add-review-dialog/add-review-dialog.component';
+import {emit} from 'cluster';
 
 @Component({
     selector: 'app-product-view-page',
@@ -24,35 +25,6 @@ import {AddReviewDialogComponent} from '../../dialogs/add-review-dialog/add-revi
     styleUrls: ['./product-view-page.component.scss'],
 })
 export class ProductViewPageComponent implements OnInit, OnDestroy {
-    id: number = 0;
-    attrMapArr;
-    attrColor = [];
-    attrSize = [];
-    arrProdStatus = [];
-    productViewForm: FormGroup;
-    isAttrColor: boolean = false;
-    isAttrSize: boolean = false;
-    user: any;
-    // fragment: string;
-    userId: number;
-    count: number = 1;
-    Math = Math;
-    wishlistProducts = [];
-    private destroy$: Subject<void> = new Subject<void>();
-
-    review: FormGroup = new FormGroup({
-        author: new FormControl('', [Validators.required]),
-        text: new FormControl('', [Validators.required]),
-        rating: new FormControl('', [Validators.required]),
-        email: new FormControl('', [Validators.required]),
-    });
-
-    public ngOnDestroy(): void {
-        this.destroy$.next();
-        this.destroy$.complete();
-    }
-
-    breadcrumbs: Array<NavLink>;
 
     constructor(
         private route: ActivatedRoute,
@@ -67,7 +39,36 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         private accauntService: AccauntService,
         private viewportScroller: ViewportScroller,
         public dialog: MatDialog,
-    ) {}
+    ) {
+    }
+
+    id = 0;
+    attrMapArr;
+    attrColor = [];
+    attrSize = [];
+    arrProdStatus = [];
+    productViewForm: FormGroup;
+    isAttrColor = false;
+    isAttrSize = false;
+    user: any;
+    // fragment: string;
+    userId: number;
+    count = 1;
+    Math = Math;
+    wishlistProducts = [];
+    arrOptionsCheck = [];
+    arrOptionsSelect = [];
+    allOptions
+    private destroy$: Subject<void> = new Subject<void>();
+
+    review: FormGroup = new FormGroup({
+        author: new FormControl('', [Validators.required]),
+        text: new FormControl('', [Validators.required]),
+        rating: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required]),
+    });
+
+    breadcrumbs: Array<NavLink>;
 
     stars = [
         {
@@ -97,14 +98,40 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         }
     ];
 
+    public ngOnDestroy(): void {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
 
     getByIdHandler = (data) => {
         this.product.item = data?.data;
+        this.arrOptionsSelect = [];
+        this.arrOptionsCheck = [];
+        // this.arrOptionsCheck = data.data.options;
+        data.data.options.forEach(elem => {
+            if (elem.option.type == 'select') {
+                this.arrOptionsSelect.push(elem);
+            } else {
+                this.arrOptionsCheck.push(elem);
+            }
+        });
+        this.arrOptionsCheck.forEach(elem => {
+            elem.values.forEach(item => {
+                item.selected = false;
+            });
+            elem.current_item = elem.values[0].id;
+        });
+        this.arrOptionsSelect.forEach(elem => {
+            elem.values.forEach(item => {
+                item.selected = false;
+            });
+            elem.current_item = elem.values[0].id;
+        });
+        console.log('product==>', this.arrOptionsCheck, this.arrOptionsSelect);
 
-        //this.updateTitle(this.product.item.description.name + ` | ShowU ` + this.product.item.description.tag);
         this.updateTitle(this.product?.item?.description?.name + ` | ShowU `);
         this.updateDescription(this.product?.item?.description?.meta_discription);
-        // link: "manufacturer" + "/" + this.id,
+
 
         if (this.product?.item?.category?.category?.descriptions.name) {
             this.breadcrumbs.push({
@@ -119,9 +146,48 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         });
     };
 
+    onSelectOptionChange(optionVal, option): void {
+        option.current_item = optionVal.id;
+        console.log('option', option);
+    }
+
+    add(item: any) {
+        const selectedOptionsCheck = [];
+        const selectedOptionsSelect = [];
+        this.allOptions = [];
+
+        this.arrOptionsCheck.forEach(elem => {
+            elem.values.forEach(res => {
+                if (elem.current_item == res.id) {
+                    selectedOptionsCheck.push(res);
+                }
+            });
+        });
+
+        this.arrOptionsSelect.forEach(elem => {
+            elem.values.forEach(res => {
+                if (elem.current_item == res.id) {
+                    selectedOptionsSelect.push(res);
+                }
+            });
+        });
+
+
+        // console.log('pppp=>',this.arrOptionsCheck, this.arrOptionsSelect);
+
+        this.allOptions.push(...this.arrOptionsCheck, ...this.arrOptionsSelect);
+        // this.allOptions = selectedOptionsCheck.concat(selectedOptionsSelect);
+        item.selected_options = this.allOptions;
+         // = selectedOptions;
+        console.log('999999', this.allOptions);
+        // this.cart.isCartView = true;
+        // this.cart.addToCart(item, this.count);
+    }
+
     updateTitle(title: string) {
         this.title.setTitle(title);
     }
+
 
     updateDescription(desc: string) {
         this.meta.updateTag({name: 'description', content: desc});
@@ -155,7 +221,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
                 },
             ];
 
-            this.id = data['id'];
+            this.id = data.id;
 
             this.product.getProductBy(this.id).subscribe(this.getByIdHandler);
             this.getProdAttr(this.id);
@@ -173,10 +239,12 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     getProdAttr(id) {
         this.product.getProdAttr(id).subscribe(this.getProdAttrHandler);
     }
+
     getProdReview(id) {
         this.product.getProdReview(id).subscribe(this.getProdReviewHandler);
 
     }
+
     getProdAttrHandler = data => {
         this.product.attributes = data?.data;
     };
@@ -184,20 +252,18 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         this.product.reviews = data;
 
     };
-    add(item: any) {
-        this.cart.isCartView = true;
-        this.cart.addToCart(item, this.count);
-    }
+
     pageChangedHandler(page: number): void {
         this.product.page = page;
         this.getProdReview(this.id);
     }
+
     getUser(): void {
         this.accauntService.getUser().pipe(takeUntil(this.destroy$)).subscribe(data => {
             console.log('data ===== >>>>>', data);
 
             this.user = data;
-            if(this.user) {
+            if (this.user) {
                 this.review.setValue(
                     {
                         text: '',
@@ -227,10 +293,10 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
                 const dialogRef = this.dialog.open(AddReviewDialogComponent, {});
 
-            dialogRef.afterClosed().subscribe(res => {
-                this.router.navigate(['/']);
+                dialogRef.afterClosed().subscribe(res => {
+                    this.router.navigate(['/']);
+                });
             });
-        });
 
 
     }
@@ -242,7 +308,6 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     // }
 
     public addToWishlist(product): void {
-        //const found = this.wishlistProducts?.some((el) => { el.product_id === product?.item?.description?.product_id});
 
         this.product.addProductToWishlist({
             product_id: product?.item?.description?.product_id,

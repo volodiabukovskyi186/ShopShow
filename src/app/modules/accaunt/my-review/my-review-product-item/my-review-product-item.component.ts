@@ -14,7 +14,6 @@ export class MyReviewProductItemComponent implements OnInit {
   constructor(private location: Location) { }
 
   ngOnInit(): void {
-    console.log(this.review);
-    console.log(this.location.path());
+
   }
 }

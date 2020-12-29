@@ -41,7 +41,7 @@ export class PersonalDataComponent implements OnInit {
 
             this.accaunt.current = data.data;
 
-            console.log(this.accaunt.current);
+
 
             this.personalDataForm.setValue({
                 firstName: this.accaunt.current.user.first_name,

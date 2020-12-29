@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { Ng5SliderModule } from 'ng5-slider';
+import {OptionModule} from '../options/option.module';
 // import { SalesComponent } from '../sales/sales/sales.component';
 
 const c = [
@@ -35,24 +36,25 @@ const c = [
 
 @NgModule({
   declarations: [...c, ProductsPageComponent, ProductViewPageComponent, GaleryProductFotoDialogComponent, ProductListViewComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-    UiModule,
-    ProductRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ReviewModule,
-    TranslateModule,
-    DragScrollModule,
-    MatIconModule,
-    ClickOutsideModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatSliderModule,
-    Ng5SliderModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        UiModule,
+        ProductRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ReviewModule,
+        TranslateModule,
+        DragScrollModule,
+        MatIconModule,
+        ClickOutsideModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatSliderModule,
+        Ng5SliderModule,
+        OptionModule,
+    ],
   exports: [...c],
 })
 export class ProductModule {}

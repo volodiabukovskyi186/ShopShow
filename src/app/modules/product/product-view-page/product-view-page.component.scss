@@ -15,10 +15,58 @@
     @include col-width(#{$gr_shorter + "%"});
   }
 }
+.options{
 
-//
-//
-//
+}
+input ::placeholder {
+
+  font-size: 1.5em;
+}
+
+.options ::ng-deep {
+  .mat-form-field {
+    width: 178px;
+    height: 36px;
+    border: solid 1px silver;
+    .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        .mat-form-field-infix {
+          width: 94%;
+          .mat-select {
+            margin-right: 5px;
+            margin-left:0px;
+            margin-top: 0px;
+            .mat-select-trigger {
+              .mat-select-value{
+                .mat-select-placeholder{
+                  color: black;
+                  font-size: 13px;
+
+                }
+              }
+              .mat-select-value-text {
+                font-size: 13px;
+              }
+              .mat-select-arrow-wrapper {
+                .mat-select-arrow {
+                  box-sizing: border-box;
+                  height: 10px;
+                  width: 10px;
+                  border-style: solid;
+                  border-color: #000;
+                  border-width: 0px 1px 1px 0px;
+                  transform: rotate(45deg);
+                  transition: border-width 150ms ease-in-out;
+                  margin-top: -6px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 .manufacturer {
   background-color: $white;
@@ -362,6 +410,14 @@ max-width: 100%;
 }
 }
 }
+.options{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding-top: 10px;
+}
+
 
 
 @media (max-width: 480px) {

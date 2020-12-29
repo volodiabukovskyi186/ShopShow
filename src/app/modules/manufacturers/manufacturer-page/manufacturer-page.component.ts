@@ -5,9 +5,7 @@ import {ActivatedRoute, Event, NavigationEnd, NavigationStart, Router} from '@an
 import { ManufacturersService } from "src/app/modules/manufacturers/manufacturers.service";
 import { ProductService } from '../../product/product.service';
 import { environment } from 'src/environments/environment';
-
 import { IFilters } from '../../filter/filter.component';
-import {DOCUMENT} from '@angular/common';
 import {FilterService} from '../../filter/filter.service';
 
 
@@ -16,7 +14,7 @@ import {FilterService} from '../../filter/filter.service';
   templateUrl: "./manufacturer-page.component.html",
   styleUrls: ["./manufacturer-page.component.scss"],
 })
-export class ManufacturerPageComponent implements OnInit,OnChanges {
+export class ManufacturerPageComponent implements OnInit, OnChanges {
   Math = Math;
   breadcrumbs: Array<NavLink> = [
     {
@@ -30,20 +28,19 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
   ];
   allCategory: IFilters = {
     categories: [],
-    manufacturers:[],
+    manufacturers: [],
     minPrice: 0,
-    maxPrice:0,
+    maxPrice: 0,
     sortPrice: ''
   };
   cardNumbers = [];
   selectedCardNumber: number = 0;
   selectStatus = false;
   selectStatusBy = false;
-  url
+  url;
   host = environment.hoststatic;
   constructor(
     private route: ActivatedRoute,
-    // private ngxService: NgxUiLoaderService,
     public manufacturer: ManufacturersService,
     public product: ProductService,
     private router: Router,
@@ -75,13 +72,12 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
   ngOnInit(): void {
     // this.ngxService.start();
     this.getMinMaxPrice();
-    if(window.location.href.indexOf('?page') !== -1){
-    window.location.href=window.location.href.slice(0, window.location.href.indexOf('?page'))
+    if(window.location.href.indexOf('?page') !== -1) {
+    window.location.href = window.location.href.slice(0, window.location.href.indexOf('?page'));
     }
 
 
     this.route.params.subscribe((data) => {
-      // set lang
       this.id = data["id"];
       this.manufacturer.getBy(this.id).subscribe(this.getByIdHandler);
       this.product.getByManufacturer(this.id).subscribe(this.getByManufacturerHandler);
@@ -90,10 +86,7 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
 
   }
   ngOnChanges(changes: SimpleChanges) {
-    if(changes){
-      // console.log('eeessssssse=>', this.route.snapshot)
 
-    }
   }
 
 
@@ -101,27 +94,13 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
     // this.ngxService.stopAll();
     this.manufacturer.products = data;
     this.onFilterChanged(this.allCategory);
-    console.log('products===>', this.manufacturer.products);
-
   }
-
-  // public onFilterChanged(filters: IFilters): void {
-  //   console.log(filters);
-  //   this.product.getByFilters(filters).subscribe((data) => {
-  //     this.product.products.data.products = data.data.products;
-  //     console.log(this.product.products.data.products);
-  //   });
-  // }
 
   public onFilterChanged(filters: IFilters): void {
     this.allCategory = filters;
     this.manufacturer.getByFilters(this.allCategory, this.id ).subscribe((data) => {
       this.manufacturer.products.data.products = data.data.products;
-      // this.manufacturer.products = data.data.products;
       this.manufacturer.products.count = data.count;
-      console.log('wwwwwww', data, this.manufacturer.products.data.products);
-      // this.product.products.data.products = data.data.products;
-      // console.log(this.product.products.data.products);
     });
   }
   public onSortingChanged(sorting: string) {
@@ -138,13 +117,11 @@ export class ManufacturerPageComponent implements OnInit,OnChanges {
     this.manufacturer.productCount = cardNumber;
     this.selectStatus = true;
     this.selectedCardNumber = cardNumber;
-    // this.manufacturer.products.count = cardNumber;
 
     this.manufacturer.getByFilters(this.allCategory, this.id, this.selectedCardNumber).subscribe((data) => {
       this.manufacturer.products.data.products = data.data.products;
       this.manufacturer.products.count = data.count;
       this.manufacturer.products = data;
-      console.log('count====>', data);
     });
   }
   pageChangedHandler(page: number): void {
