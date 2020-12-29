@@ -22,8 +22,9 @@ export class CartFavoriteButtonComponent implements OnInit {
               public wishlistService: WishlistService)
   {}
   ngOnInit(): void {
-
-    this.getWishlist()
+    if (localStorage.hasOwnProperty('token')) {
+      this.getWishlist();
+    }
   }
 
   onResize(event) {

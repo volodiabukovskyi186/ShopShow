@@ -27,7 +27,10 @@ export class CartService {
     // this.body = document.querySelector("body");
     this.copyFromSession();
     this.calcTotalPrice();
-    this.getUserId();
+
+    if (localStorage.hasOwnProperty('token')) {
+      this.getUserId();
+    }
   }
 
   openCartView() {

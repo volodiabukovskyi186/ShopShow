@@ -24,7 +24,9 @@ export class CartViewComponent implements OnInit, OnChanges {
               public wishlistService: WishlistService) {}
 
   ngOnInit(): void {
-    this.getWishlist();
+    if (localStorage.hasOwnProperty('token')) {
+      this.getWishlist();
+    }
   }
   
   ngOnChanges(changes: SimpleChanges) {

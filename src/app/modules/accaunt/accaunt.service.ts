@@ -1,6 +1,8 @@
 import { Injectable, EventEmitter } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export interface IPermission {
   name: string;
@@ -48,7 +50,13 @@ export class AccauntService {
 
   current: IAccaunt;
 
-  getUser() {
+  getUser(): Observable<any> {
     return this.http.get<any>(environment.host + "getUserByToken");
+    //.pipe(catchError(this.errorHandler))
   }
+
+  // errorHandler(error: HttpErrorResponse) {
+  //   console.log('Error ========= >>>', error);
+  //   return Observable.throw(error.message || "server error.");
+  // }
 }

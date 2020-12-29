@@ -26,9 +26,11 @@ export class ProfilePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.accaunt.getUser().subscribe((data) => {
-      this.accaunt.current = data.data;
-      this.accaunt.onCurrent();
-    });
+    if (localStorage.hasOwnProperty('token')) {
+      this.accaunt.getUser().subscribe((data) => {
+        this.accaunt.current = data.data;
+        this.accaunt.onCurrent();
+      });
+    }
   }
 }

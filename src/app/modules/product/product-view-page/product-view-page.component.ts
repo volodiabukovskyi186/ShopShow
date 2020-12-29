@@ -128,7 +128,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit(): void {
-        this.getUser();
+        if (localStorage.hasOwnProperty('token')) {
+            this.getUser();
+        }
         //this.getClientWishlistById();
         
         this.review
@@ -192,6 +194,8 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     }
     getUser(): void {
         this.accauntService.getUser().pipe(takeUntil(this.destroy$)).subscribe(data => {
+            console.log('data ===== >>>>>', data);
+
             this.user = data;
             if(this.user) {
                 this.review.setValue(
