@@ -32,7 +32,7 @@ export class CheckoutProductListComponent implements OnInit {
   public formAction: SafeUrl = 'https://www.liqpay.ua/api/3/checkout';
 
   private liqPayData: any;
-
+  options = [];
   constructor(
     public cart: CartService,
     public currency: CurrencyService,
@@ -62,6 +62,7 @@ export class CheckoutProductListComponent implements OnInit {
   }
 
   order() {
+    this.options = [];
     if( this.check.checkoutRecipient == "different" ) {
       this.orderResult = {
         products: [],
@@ -110,13 +111,19 @@ export class CheckoutProductListComponent implements OnInit {
     }
 
     this.cart.list.forEach((p) => {
+      if (p.product.selected_options) {
+        p.product.selected_options.forEach(option => {
+          this.options.push(option.id);
+        });
+      }
       this.orderResult?.products.push({
         product_id: p.product.id,
         quantity: p.count,
-        manufactured_id: p.product?.manufactured_id
+        manufactured_id: p.product?.manufactured_id,
+        options: this.options
       });
-    });
 
+    });
     this.check.post(this.orderResult).subscribe((res) => {
 
       if (res) {

@@ -21,35 +21,26 @@
       <div class="flex">
         <rap-rating [rating]="product?.item?.rating"></rap-rating>
       </div>
-      <!-- <hr />
-      <p>
-        {{ product.item.description?.meta_discription }}
-      </p> -->
       <hr />
       <div class="price flex v_center space">
         <div class="flex space space-card-beetwen">
           <span *ngIf="product?.item?.discont?.price" class="old-price">
-            <del
-              >{{ currency?.current?.simbol_left }}
+            <del>
+              {{ currency?.current?.simbol_left }}
               {{ product?.item?.price * currency?.current?.value | number }}
-              {{ currency?.current?.simbol_right }}</del
-            >
+              {{ currency?.current?.simbol_right }}
+            </del>
           </span>
-          <span [ngClass]="{ 'new-price': product?.item?.discont?.price }"
-            class="price-padding">
+          <span [ngClass]="{ 'new-price': product?.item?.discont?.price }" class="price-padding">
             {{ currency?.current?.simbol_left }}
             <span *ngIf="product?.item?.discont?.price === null">{{ product?.item?.price * currency?.current?.value | number }}</span>
             <span *ngIf="product?.item?.discont?.price !== null">{{ product?.item?.discont?.price * currency?.current?.value | number }}</span>
-            {{ currency?.current?.simbol_right }}</span
-          >
+            {{ currency?.current?.simbol_right }}
+          </span>
         </div>
-        <!-- <b
-          >{{ currency?.current?.simbol_left
-          }}{{ product?.item?.price * currency?.current?.value
-          }}{{ currency?.current?.simbol_right }}</b
-        > -->
         <span class="stock-status" [ngStyle]="{'background':product?.item?.stock_status?.color}" >
-          {{product?.item?.stock_status?.description.name}} </span >
+          {{product?.item?.stock_status?.description.name}}
+        </span >
       </div>
 
       <hr />
@@ -64,9 +55,15 @@
       </div>
       <hr />
       <div class="options" *ngFor="let option of arrOptionsCheck" >
-        <app-option-checkbox  [option]="option"></app-option-checkbox>
+          <div class="option-description">
+            <p>{{ "product.choose" | translate }} {{option.option.description.name | lowercase}}:</p>
+          </div>
+          <app-option-checkbox (currentItem)="checkOptionValues($event)" [option]="option"></app-option-checkbox>
       </div>
       <div class="options" *ngFor="let option of arrOptionsSelect" >
+        <div class="option-description">
+          <p>{{ "product.choose" | translate }} {{option.option.description.name | lowercase}}:</p>
+        </div>
         <mat-form-field  appearance="standart" >
 <!--          [(value)]="option.values[0]"-->
             <mat-select  [placeholder]="option.values[0].value.description.name" (selectionChange)="onSelectOptionChange($event.value,option)">
@@ -74,9 +71,6 @@
                 {{ val.value.description.name}}
               </mat-option>
             </mat-select>
-
-
-
         </mat-form-field>
       </div>
       <hr />

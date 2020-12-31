@@ -22,8 +22,8 @@ export class OptionCheckboxItemComponent implements OnInit {
     }
 
     selectOption(): void {
-        this.optionItem.emit(this.option);
         this.currentItem.current_item = this.option.id;
+        this.optionItem.emit(this.option);
         // console.log('true===>', this.currentItem.current_item);
     }
 

@@ -33,7 +33,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
     switch (err.status) {
       case 400:
         msg = err.error.error.message ?? err.error ?? err.message;
-        console.log("ServerErrorInterceptor say", msg, t);
+        // console.log("ServerErrorInterceptor say", msg, t);
 
         // this.toastr.error(msg, t);
         break;
@@ -41,7 +41,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
       default:
         msg = err.message;
         t = err.name;
-        console.log("ServerErrorInterceptor say", msg, t);
+        // console.log("ServerErrorInterceptor say", msg, t);
         // this.toastr.error(msg,t);
         break;
     }

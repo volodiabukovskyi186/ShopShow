@@ -154,7 +154,8 @@
     "sale": "Promotion",
     "new": "New",
     "reviews": "Reviews",
-    "result": "Result search "
+    "result": "Result search ",
+    "choose": "Choose"
   },
   "sortBy": {
     "sort": "Sort By:",
