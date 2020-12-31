@@ -18,7 +18,9 @@ export class MyReviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getOrdersByClientId();
+    if (localStorage.hasOwnProperty('token')) {
+      this.getOrdersByClientId();
+    }
   }
 
   public getOrdersByClientId() {

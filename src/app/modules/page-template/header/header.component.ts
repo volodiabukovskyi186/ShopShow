@@ -28,10 +28,12 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getUser();
-    this.auth.auth.subscribe((_) => {
+    if (localStorage.hasOwnProperty('token')) {
       this.getUser();
-    });
+      this.auth.auth.subscribe((_) => {
+        this.getUser();
+      });
+    }
 
     this.getSiteData();
   }

@@ -29,7 +29,9 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
-    this.getClientWishlistByClientId();
+    if (localStorage.hasOwnProperty('token')) {
+      this.getClientWishlistByClientId();
+    }
   }
 
   public onSortingChanged(sorting: string) {
@@ -89,6 +91,8 @@ export class WishlistComponent implements OnInit {
   
   pageChangedHandler(page: number): void {
     this.page = page;
-    this.getClientWishlistByClientId();
+    if (localStorage.hasOwnProperty('token')) {
+      this.getClientWishlistByClientId();
+    }
   }
 }

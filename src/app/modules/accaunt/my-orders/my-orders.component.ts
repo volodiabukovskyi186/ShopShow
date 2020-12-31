@@ -38,8 +38,10 @@ export class MyOrdersComponent implements OnInit {
         // this.getMyOrders();
         // console.log(this.getMyOrders());
 
+        if (localStorage.hasOwnProperty('token')) {
+            this.getUserClientId();
+        }
 
-        this.getUserClientId();
         this.cardNumbers = [3, 6, 9, 12, 15, 17, 20, 100];
         this.getOrdersByClientId();
     }
@@ -47,13 +49,8 @@ export class MyOrdersComponent implements OnInit {
 
     public getUserClientId(): void {
         this.accauntService.getUser().subscribe((res) => {
-
-
             this.clientId = res.data.user.id;
-
-
             this.myOrdersService.getOrderById(this.clientId).subscribe((res) => {
-
                 this.clientOrders = res;
             })
         })

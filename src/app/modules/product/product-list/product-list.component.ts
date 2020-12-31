@@ -14,19 +14,23 @@ export class ProductListComponent implements OnInit {
     constructor(private title: Title, private route: ActivatedRoute) {
     }
 
-    ngOnInit(): void {
-
-        // this.route.params.subscribe((data) => {
-        //     console.log(data);
-        //     if (data.id === "sales") {
-        //         this.isSalesPage = true;
-        //     }
-        // });
+    public ngOnInit(): void {
+        console.log(this.products);
 
         this.updateMeta();
     }
+    
+    // ngOnInit(): void {
 
+    //     // this.route.params.subscribe((data) => {
+    //     //     console.log(data);
+    //     //     if (data.id === "sales") {
+    //     //         this.isSalesPage = true;
+    //     //     }
+    //     // });
 
+    //     this.updateMeta();
+    // }
 
     updateMeta() {
         const title = `Categories | ShowU`;

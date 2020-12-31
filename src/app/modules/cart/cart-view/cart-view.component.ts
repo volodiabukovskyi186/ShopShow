@@ -14,9 +14,9 @@ import {WishlistService} from '../../accaunt/wishlist/services/wishlist.service'
 })
 export class CartViewComponent implements OnInit, OnChanges {
   clientId: any;
-
   wishlistProducts: any;
   allwishlistData: any;
+
   constructor(public currency: CurrencyService,
               public cart: CartService,
               public product: ProductService,
@@ -24,8 +24,11 @@ export class CartViewComponent implements OnInit, OnChanges {
               public wishlistService: WishlistService) {}
 
   ngOnInit(): void {
-    this.getWishlist();
+    if (localStorage.hasOwnProperty('token')) {
+      this.getWishlist();
+    }
   }
+  
   ngOnChanges(changes: SimpleChanges) {
 
     if(changes){

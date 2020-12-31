@@ -29,7 +29,9 @@ export class ProductSliderComponent implements OnInit, AfterViewInit {
                 public productService: ProductService) {}
 
   public ngOnInit(): void {
-    this.getUserAccauntData();
+    if (localStorage.hasOwnProperty('token')) {
+      this.getUserAccauntData();
+    }
   }
 
   public ngAfterViewInit(): void {}

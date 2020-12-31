@@ -12,7 +12,7 @@
         placeholder="{{'cart.enterFname' | translate}}"
         required
         name="firstName"
-        [(ngModel)]="model.firstName"
+        (ngModel)="model.firstName"
       />
       <div
         *ngIf="!(firstName.valid || firstName.pristine)"
@@ -37,7 +37,7 @@
         placeholder="{{'cart.enterLname' | translate}}"
         required
         name="lastName"
-        [(ngModel)]="model.lastName"
+        (ngModel)="model.lastName"
       />
       <div
         *ngIf="!(lastName.valid || lastName.pristine)"
@@ -63,7 +63,7 @@
         required
         name="tel"
         pattern="\+?[0-9\s\-\(\)]+"
-        [(ngModel)]="model.phone"
+        (ngModel)="model.phone"
       />
       <div
         *ngIf="!(phone.valid || phone.pristine)"

@@ -26,7 +26,9 @@ export class ProductItemComponent implements OnInit {
 
     ngOnInit(): void {
         //console.log(this.product);
-        this.getUserAccauntData();
+        if (localStorage.hasOwnProperty('token')) {
+            this.getUserAccauntData();
+        }
     }
 
     // save($event: Event, id: number) {

@@ -28,7 +28,9 @@ export class PersonalDataComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.getUserAccauntData();
+        if (localStorage.hasOwnProperty('token')) {
+            this.getUserAccauntData();
+        }
         this.generatepersonalDataForm();
         this.generateChangePasswordForm();
     }
@@ -76,7 +78,9 @@ export class PersonalDataComponent implements OnInit {
         this.isUpdateBtnClicked = false;
         this.personStatus == false ? this.personStatus = true : this.personStatus = false;
 
-        this.getUserAccauntData();
+        if (localStorage.hasOwnProperty('token')) {
+            this.getUserAccauntData();
+        }
     }
 
     public updateUserPersonalData(): void {
@@ -102,8 +106,10 @@ export class PersonalDataComponent implements OnInit {
         console.log('this.userPersonalDataToUpdate', this.userPersonalDataToUpdate);
 
         this.personalDataService.updateUserPersonalDataByUserId(this.userId, this.userPersonalDataToUpdate).subscribe((res) => {
-
-            this.getUserAccauntData();
+            console.log(res);
+            if (localStorage.hasOwnProperty('token')) {
+                this.getUserAccauntData();
+            }
         })
     }
 

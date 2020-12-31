@@ -44,7 +44,9 @@ export class CheckoutProductListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getUserClientId();
+    if (localStorage.hasOwnProperty('token')) {
+      this.getUserClientId();
+    }
   }
   public getUserClientId(): void {
     this.accauntService.getUser().subscribe((res) => {
