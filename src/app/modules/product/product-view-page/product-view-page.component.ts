@@ -40,6 +40,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     arrOptionsSelect = [];
     allOptions;
     basicPrice: number;
+    sizesModal:boolean = false;
     breadcrumbs: Array<NavLink>;
     private destroy$: Subject<void> = new Subject<void>();
 
@@ -143,6 +144,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     onSelectOptionChange(optionVal, option): void {
         option.current_item = optionVal.id;
         this.checkSelectedOption();
+    }
+    closeSize(value): void {
+        this.sizesModal = value;
     }
     checkSelectedOption(): void {
         const selectedOptionsCheck = [];
