@@ -6,8 +6,6 @@
   flex: 1;
   flex-direction: row;
   padding: 6px 23px;
-  // box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
-  //   align-items: center;
   .long {
     @include col-width(#{$gr_longer + "%"});
   }
@@ -16,10 +14,20 @@
   }
 }
 .options{
-
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding-top: 29px;
+  .option-description{
+    color: #9F1941;
+    font-size: 17px;
+    min-width: 200px;
+    p{
+      padding: 7px 0;
+    }
+  }
 }
 input ::placeholder {
-
   font-size: 1.5em;
 }
 
@@ -32,16 +40,16 @@ input ::placeholder {
       .mat-form-field-flex {
         .mat-form-field-infix {
           width: 94%;
+          border-top: 0;
           .mat-select {
-            margin-right: 5px;
-            margin-left:0px;
+            margin-right: 0px;
+            margin-left:7px;
             margin-top: 0px;
             .mat-select-trigger {
               .mat-select-value{
                 .mat-select-placeholder{
                   color: black;
                   font-size: 13px;
-
                 }
               }
               .mat-select-value-text {
@@ -67,7 +75,9 @@ input ::placeholder {
     }
   }
 }
+.option-description{
 
+}
 .manufacturer {
   background-color: $white;
   @include material-shadow(1, 1, $gray400);
@@ -95,30 +105,17 @@ margin-bottom: 6px;
 .card {
 padding: $space;
 background-color: #fafafa;
-// background-color: $white;
-// @include material-shadow(1, 1, $gray400);
-// border-radius: $radius;
 }
-//
+
 rap-breadcrumbs {
 margin: $space 0;
 }
 product-image-view {
 margin-right: $space;
 }
-
-//
-//
-//
 .title {
 margin: 0 0 $space;
 }
-// .price {
-//   border-top: 1px solid $gray300;
-//   border-bottom: 1px solid $gray300;
-//   margin: $space/2 0 $space;
-//   padding: $space/2 0;
-// }
 hr {
 border-color: $gray200;
 }
@@ -158,7 +155,6 @@ display: flex;
 flex-direction: row;
 align-items: flex-end;
 &:after {
-//content: '';
 display: block;
 margin-left: 8px;
 width: 100%;
@@ -441,6 +437,20 @@ justify-content: space-between;
 .stock-status {
 padding: 2px 6px;
 }
+  .options{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-top: 29px;
+    .option-description{
+      color: #9F1941;
+      font-size: 13px;
+      min-width: 150px;
+      p{
+        padding: 7px 0;
+      }
+    }
+  }
 }
 
 

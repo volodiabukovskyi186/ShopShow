@@ -19,6 +19,8 @@ export class CartService {
   productsInBasket = [];
   userId: number;
 
+
+  test=[];
   // body: HTMLBodyElement;
 
   constructor(@Inject(PLATFORM_ID) private platformId: string,
@@ -60,39 +62,35 @@ export class CartService {
 
 
   addToCart(prod: any, count: number = 1) {
-      console.log('oooooo=>>>>', prod);
-    let prodIndex = this.searchProduct(prod, this.list);
-    if (prodIndex >= 0) {
-      let oldCount: number = this.list[prodIndex].count;
-      let newCount: number = parseInt(oldCount + "") + parseInt(count + "");
-      this.list[prodIndex].count = newCount;
-    } else {
-      this.list.push({
-        product: prod,
-        count: count,
-        id: prod.id
-      });
-      this.arrBasket.push(prod);
 
-      //this.productsInBasket = this.list;
+    // let prodIndex = this.searchProduct(prod, this.list);
+    // if (prodIndex >= 0) {
+    //   let oldCount: number = this.list[prodIndex].count;
+    //   let newCount: number = parseInt(oldCount + "") + parseInt(count + "");
+    //   this.list[prodIndex].count = newCount;
+    //
+    // } else {
+    //   this.list.push({
+    //     product: prod,
+    //     count: count,
+    //     id: prod.id
+    //   });
+    //   this.arrBasket.push(prod);
+    //   this.addToBaseBaslet(this.list);
+    //   console.log('mmmmmm==>', this.list);
+    // }
+    this.list.push({
+      product: prod,
+      count: count,
+      id: prod.id
+    });
 
-      this.productsInBasket = this.list.map((val) => {
-        return val.id;
-      })
+    this.arrBasket.push(prod);
 
-      console.log(this.productsInBasket);
+    console.log('oooooo=>>>>', this.list);
+    this.addToBaseBaslet(this.list);
 
-      this.addToBaseBaslet(this.productsInBasket).subscribe((res) => {
-        console.log(res);
-      });
-
-      console.log('mmmmmm==>', this.list);
-    }
-
-    // copy to session
     this.copyToSession();
-
-    // calc total price
     this.calcTotalPrice();
     this.calcTotalCount();
   }
@@ -141,9 +139,6 @@ export class CartService {
     return false;
   }
 
-  //
-  //
-  //
   totalPrice: number = 0;
   totalCount: number = 0;
 
@@ -179,11 +174,6 @@ export class CartService {
       this.totalCount += element.count;
     }
   }
-
-  //
-  //
-  //
-
   copyToSession() {
     let prodListJson = JSON.stringify(this.list);
     let prodListFavJson = JSON.stringify(this.favorite);

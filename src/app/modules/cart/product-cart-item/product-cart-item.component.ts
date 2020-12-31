@@ -26,7 +26,9 @@ export class ProductCartItemComponent implements OnInit,OnChanges {
 
   constructor(public currency: CurrencyService, public cart: CartService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
   ngOnChanges(changes: SimpleChanges) {
 
   }

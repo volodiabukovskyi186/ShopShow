@@ -21,9 +21,15 @@
       flex-direction: row;
       justify-content: space-between;
     }
+    .name{
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+    }
   }
 
   h4 {
+    font-size: 17px;
     margin: $space/8 0;
   }
 }

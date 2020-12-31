@@ -28,3 +28,10 @@ rap-count-input {
   padding: 0 2px;
   border-bottom: 1px dashed $gray500;
 }
+.info{
+  .name{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+  }
+}

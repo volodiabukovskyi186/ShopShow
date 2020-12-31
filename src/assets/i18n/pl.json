@@ -117,7 +117,8 @@
     "new": "Nowy",
     "additionalInfo": "Cechy",
     "reviews": "Recenzje",
-    "result": "Wynik wyszukiwania "
+    "result": "Wynik wyszukiwania ",
+    "choose": "Wybierać"
   },
   "wishlist": {
     "addToWishlist": "Zapisz w ulubionych"
