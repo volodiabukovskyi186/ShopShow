@@ -35,3 +35,26 @@ rap-count-input {
     flex-direction: row;
   }
 }
+@media screen and(max-width:380px) {
+  rap-count-input {
+    width: 75px;
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+    padding: 0 2px;
+    border-bottom: 1px dashed $gray500;
+  }
+  .info{
+    .name{
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+      h4 {
+        font-size: 15px;
+      }
+    }
+  }
+  .count{
+    font-size: 14px;
+  }
+}

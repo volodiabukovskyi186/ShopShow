@@ -440,7 +440,7 @@ padding: 2px 6px;
   .options{
     display: flex;
     justify-content: flex-start;
-    flex-direction: row;
+    flex-direction: column;
     padding-top: 29px;
     .option-description{
       color: #9F1941;
@@ -625,8 +625,21 @@ width: unset;
 height: min-content;
 }
 }
-@media (max-width: 420px) {
-// .add-to-catt-btn {
-//   //width: 126px;
-// }
+@media (max-width: 380px) {
+  .options{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 29px;
+    .option-description{
+      color: #9F1941;
+      font-size: 13px;
+      min-width: 150px;
+      p{
+        padding: 7px 0;
+      }
+    }
+  }
+
+
 }
