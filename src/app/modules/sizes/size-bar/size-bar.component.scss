@@ -1,0 +1,136 @@
+@import "~src/styles/raisins/variables";
+@import "~src/styles/raisins/mixins";
+
+input[disabled]
+p.close-wrap {}
+p{}
+.close-wrap {}
+#myId .close-wrap {}
+.close-wrap {}
+
+.close-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($black, 0.4);
+  z-index: 1000000;
+  //   backdrop-filter: blur(2px);
+}
+
+
+
+section {
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 480px;
+  overflow-y: auto;
+  z-index: 1000000;
+  background-color: rgba($white, 1);
+//   backdrop-filter: blur(4px);
+
+
+  .size-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 20px 10px 0  10px;
+    .close{
+      cursor: pointer;
+    }
+  }
+  .category-logo{
+    width: 100%;
+    height: 110px;
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    img{
+      max-width: 177px;
+      height:auto;
+    }
+
+  }
+  .sizes-block{
+    width: 100%;
+    padding:20px 15px 25px ;
+    hr{
+      margin: 7px 0;
+    }
+    .size-table{
+      .size-top{
+        font-size: 13px;
+        padding-bottom: 12px;
+        font-weight: 400;
+        td{
+          text-align: center;
+        }
+       .size-top-first{
+         text-align: start;
+          font-weight: 500
+        }
+      }
+      .sizes-items{
+          font-size: 13px;
+        .item{
+          font-weight: 400;
+          text-align: center;
+        }
+        .item-first{
+          font-weight: 400;
+          text-align: start;
+        }
+      }
+    }
+  }
+}
+.sizes-block-shoes{
+  width: 100%;
+  padding:20px 15px 25px ;
+  hr{
+    margin: 7px 0;
+  }
+  .size-table{
+    .size-top{
+      font-size: 13px;
+      padding-bottom: 12px;
+      font-weight: 400;
+      td{
+        width: 15%;
+        text-align: center;
+      }
+      .size-top-first{
+        width: 32.5%;
+        text-align: start;
+        font-weight: 500
+      }
+      .size-top-last{
+        width: 32.5%;
+        text-align: center;
+        font-weight: 400
+      }
+    }
+    .sizes-items{
+      font-size: 13px;
+      .item{
+        width: 15%;
+        text-align: center;
+        font-weight: 400
+      }
+      .item-first{
+        width: 26%;
+        text-align: start;
+        font-weight: 400
+      }
+    }
+  }
+}
+
+
