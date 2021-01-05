@@ -47,7 +47,6 @@
                 </button>
             </div>
         </div>
-<!--            [ngClass]="{'review-container__items__item__drop-block':itemStatus}"-->
             <div class="review-container__items__item__drop-block" *ngIf="itemStatus">
                 <div class="drop__container" *ngFor="let order of order.products">
                     <div class="drop-photo drop__item">
@@ -57,10 +56,9 @@
                     </div>
                     <div class="drop-price  drop__item">
                         <div class="blue order-product-name-container">
-                            <span>{{ order?.product?.description?.name }} ({{ order?.product?.model }})</span> 
-                           <!-- Vbrana(140001) -->
+                            <span>{{ order?.product?.description?.name }}, <span *ngFor="let option of order.options">{{option.option.value.description.name}}, </span>({{ order?.product?.model }})</span>
                         </div>
-                        <p>{{ modifyPrice(order?.product?.price) }} {{ 'delivery.uah' | translate }}</p>
+                        <p>{{ modifyPrice(order?.unit_price) }} {{ 'delivery.uah' | translate }}</p>
                     </div>
                     <div class="drop-count  drop__item"><p>{{ modifyPrice(order?.quantity) }} {{ 'delivery.pcs' | translate }}</p></div>
                     <div class="drop-second-price  drop__item"><p>{{ modifyPrice(order?.product?.price) }} {{ 'delivery.uah' | translate }}</p></div>
