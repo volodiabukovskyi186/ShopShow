@@ -22,23 +22,25 @@ export class FilterItemComponent implements OnInit , OnChanges {
   @Output() filterDeselected = new EventEmitter<number>();
   @Output() filteradd = new EventEmitter<number>();
   @Output() filterCategory = new EventEmitter<IFilterItem>();
-  @Input() selectetCategory
-  selectedItem:boolean=false;
+  @Input() selectetCategory;
+  selectedItem = false;
   public isExpanded = false;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    // console.log('filter====>', this.filter);
   }
   ngOnChanges(changes: SimpleChanges) {
-    if (changes) {
-        this.productService.arrCategory.forEach(elem=>{
-            if (elem == this.filter.id) {
-              this.selectedItem = true;
-            }
-        })
-    }
+      this.productService.checkedFilterItem.subscribe(data => {
+        console.log('chceck==', data);
+      });
+    // if (changes) {
+    //     this.productService.arrCategory.forEach(elem => {
+    //         if (elem == this.filter.id) {
+    //           this.selectedItem = true;
+    //         }
+    //     });
+    // }
   }
 
   public hasSubFilters(filter: IFilterItem) {

@@ -3,7 +3,6 @@
         <div class="review-container__items__item" *ngIf="order?.products?.length > 0">
             <div class="cell cell1">
                 <p>
-                    <!-- №PT0001 -->
                     №{{ orderId }}
                 </p>
             <div class="review-container__items__item__drop"   [ngClass]="{'changeIcon':itemStatus}" (click)="itemDrop()">
@@ -25,13 +24,8 @@
             <div class="cell status green cell5">
                 <div class="status-block">
                 <p class="status-order" *ngIf="itemStatus">{{ 'cabinet.orderStatus' | translate }}</p>
-                <!-- <p>Виконано</p> -->
-<!--                    [ngStyle]-->
                 <p [style]="{'color': order.status[0].color}">
-                    <!-- {{orderStatus}} -->
                    {{ order?.status[0]?.description?.dectiption }}
-<!--                    {{ statusCodes[order?.status_id]?.name | translate }}-->
-<!--                    {{  statusCodes[order?.status_id]?.color|json}}-->
                 </p>
                 <button 
                     *ngIf="itemStatus && order?.products?.length > 1"
@@ -56,7 +50,7 @@
                     </div>
                     <div class="drop-price  drop__item">
                         <div class="blue order-product-name-container">
-                            <span>{{ order?.product?.description?.name }}, <span *ngFor="let option of order.options">{{option.option.value.description.name}}, </span>({{ order?.product?.model }})</span>
+                            <span>{{ order?.product?.description?.name }}, <span *ngFor="let option of order.options">{{option.option.value.description.name}},</span>({{ order?.product?.model }})</span>
                         </div>
                         <p>{{ modifyPrice(order?.unit_price) }} {{ 'delivery.uah' | translate }}</p>
                     </div>
