@@ -88,6 +88,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
     getByIdHandler = (data) => {
         this.product.item = data?.data;
+        console.log('produ888==>', this.product.item);
         this.basicPrice = this.product.item.price;
         this.arrOptionsSelect = [];
         this.arrOptionsCheck = [];

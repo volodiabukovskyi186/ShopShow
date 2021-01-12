@@ -35,11 +35,13 @@ export class FilterItemComponent implements OnInit , OnChanges {
         console.log('chceck==', data);
       });
     // if (changes) {
-    //     this.productService.arrCategory.forEach(elem => {
-    //         if (elem == this.filter.id) {
-    //           this.selectedItem = true;
-    //         }
-    //     });
+
+        this.productService.arrCategory.forEach(elem => {
+            // if (elem == this.filter.id) {
+            //
+            //   this.selectedItem = true;
+            // }
+        });
     // }
   }
 

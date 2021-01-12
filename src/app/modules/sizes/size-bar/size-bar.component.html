@@ -10,43 +10,43 @@
         <div class="close" (click)="close()">X</div>
     </div>
     <div class="category-logo">
-        <img src="https://api.showu.com.ua//uploads/image/28392eb9eba3e5c3094af00db028c06f_1.jpg">
+        
+        <img src="https://api.showu.com.ua/{{selectedProd.manufactured.image.src}}">
     </div>
     <div class="sizes-block" >
-        <div class="sizes-name">Closes</div>
-        <hr>
-        <table class="size-table">
-           <tr class="size-top" >
-               <td class="size-top-first">Розмір/Параметер</td>
-               <td>Обєм грудей</td>
-               <td>Обєм талії</td>
-               <td>Обхват стегон</td>
-           </tr>
-            <tr class="sizes-items" *ngFor="let size of arrSizes">
-                <td class="item-first">XS </td>
-                <td class="item">84 </td>
-                <td class="item">62</td>
-                <td class="item">100</td>
-            </tr>
-        </table>
-    </div>
-    <div class="sizes-block-shoes" >
-        <div class="sizes-name">Shoes</div>
+        <div class="sizes-name">{{allTable?.description?.name}}</div>
         <hr>
         <table class="size-table">
             <tr class="size-top" >
-                <td class="size-top-first">Розмір/Параметер</td>
-                <td></td>
-                <td></td>
-                <td class="size-top-last">Розмір встілки, см</td>
+                <td class="size-top-first">{{ "size.sizes" | translate }}/{{ "size.params" | translate }}</td>
+                <td *ngFor="let size of arrTableParams">{{size.description.name}}</td>
             </tr>
-            <tr class="sizes-items" *ngFor="let size of arrSizes">
-                <td class="item-first">40 </td>
-                <td class="item"> </td>
-                <td class="item"></td>
-                <td class="item">25,5</td>
-            </tr>
+            <ng-container *ngIf="arrSizesValue">
+                <tr class="sizes-items" *ngFor="let size of arrSizesValue of let i = index">
+                    <td class="item-first"> {{arrTableSizes[i]?.description?.name}} </td>
+                    <td class="item" *ngFor="let item of size">{{item!==null? item.min_value*1:''}}-{{item!==null? item.max_value*1:''}}</td>
+                </tr>
+            </ng-container>
         </table>
     </div>
+<!--    <div class="sizes-block" >-->
+<!--        <div class="sizes-name">Closes</div>-->
+<!--        <hr>-->
+<!--        <table class="size-table">-->
+<!--           <tr class="size-top" >-->
+<!--               <td class="size-top-first">Розмір/Параметер</td>-->
+<!--               <td>Обєм грудей</td>-->
+<!--               <td>Обєм талії</td>-->
+<!--               <td>Обхват стегон</td>-->
+<!--           </tr>-->
+<!--            <tr class="sizes-items" *ngFor="let size of arrSizes">-->
+<!--                <td class="item-first">XS </td>-->
+<!--                <td class="item">84 </td>-->
+<!--                <td class="item">62</td>-->
+<!--                <td class="item">100</td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </div>-->
+
 
 </section>

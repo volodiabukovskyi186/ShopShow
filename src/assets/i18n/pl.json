@@ -297,5 +297,9 @@
     "subMit": "Zatwierdź",
     "thanks": "Dzięki!"
   },
-  "notFound": "Brak produktów w tej kategorii"
+  "notFound": "Brak produktów w tej kategorii",
+  "size":{
+    "sizes":"Rozmiary",
+    "params": "Parametr"
+  }
 }

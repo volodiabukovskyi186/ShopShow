@@ -305,5 +305,9 @@
     "subMit": "Submit",
     "thanks": "Thanks!"
   },
-  "notFound": "There are no products in this category"
+  "notFound": "There are no products in this category",
+  "size":{
+    "sizes":"Sizes",
+    "params": "Parameter"
+  }
 }
