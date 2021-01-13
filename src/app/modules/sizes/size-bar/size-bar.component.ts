@@ -12,7 +12,6 @@ export class SizeBarComponent implements OnInit {
     @Input() sizesModal;
     @Input() selectedProd;
     @Output() sizeClose = new EventEmitter();
-  arrSizes = [1, 2, 3, 4, 5];
   arrTableParams = [];
   arrTableSizes = [];
   arrSize = [];
@@ -22,25 +21,22 @@ export class SizeBarComponent implements OnInit {
   constructor(private  sizeService: SizeService) { }
 
   ngOnInit(): void {
-    this.getSizeTable(2);
+    this.getSizeTable();
   }
 
   close(): void {
     this.sizesModal = false;
     this.sizeClose.emit(this.sizesModal);
-
   }
 
-  getSizeTable(groupId: number): void {
+  getSizeTable(): void {
     this.arrTableParams = [];
     this.arrTableSizes = [];
     this.arrSize = [];
     this.arrSizeParams = [];
     this.arrSizesValue = [];
     this.allTable = '';
-    // groupId
-    // this.selected.id
-    this.sizeService.getSizeTable(8,6).subscribe(data => {
+    this.sizeService.getSizeTable(this.selectedProd.size_group_id, this.selectedProd.manufactured.id).subscribe(data => {
       this.allTable = data.data;
       this.arrTableParams = data.data.params;
       this.arrTableSizes = data.data.sizes;
@@ -51,8 +47,6 @@ export class SizeBarComponent implements OnInit {
       for (let i = 0; i < Math.ceil(arrValues.length / this.arrTableParams.length); i++) {
         this.arrSizesValue[i] = arrValues.slice((i * this.arrTableParams.length), ( i * this.arrTableParams.length) + this.arrTableParams.length);
       }
-      console.log('size',   this.arrTableParams );
-      console.log('size',   this.arrSizesValue );
     });
 
   }

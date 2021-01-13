@@ -1,5 +1,5 @@
 <rap-breadcrumbs [breadcrumbs]="breadcrumbs" class="breadcrumbs-container"></rap-breadcrumbs>
-<app-size-bar (sizeClose)="closeSize($event)" [selectedProd]="product.item" [sizesModal]="sizesModal"></app-size-bar>
+<app-size-bar *ngIf="selectedProduct" (sizeClose)="closeSize($event)" [selectedProd]="selectedProduct" [sizesModal]="sizesModal"></app-size-bar>
 <div class="golden">
 
   <div class="short">

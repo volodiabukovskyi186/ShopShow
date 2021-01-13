@@ -32,15 +32,13 @@ export class FilterItemComponent implements OnInit , OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
       this.productService.checkedFilterItem.subscribe(data => {
-        console.log('chceck==', data);
+        console.log('chceck==', this.filter);
       });
     // if (changes) {
-
         this.productService.arrCategory.forEach(elem => {
-            // if (elem == this.filter.id) {
-            //
-            //   this.selectedItem = true;
-            // }
+            if (elem == this.filter.id && this.filter.sub ) {
+              this.selectedItem = true;
+            }
         });
     // }
   }

@@ -11,7 +11,7 @@
                          (filterSelected)="onChildFilterSelected($event)" (filterDeselected)="onChildFilterDeselected($event)"></app-filter-item>
     </div>
     <div *ngIf="!hasSubFilters(filter)">
-        <mat-checkbox (change)="onCheckboxChange($event)"  class="checkbox"></mat-checkbox>
+        <mat-checkbox (change)="onCheckboxChange($event)"  [checked]="selectedItem" class="checkbox"></mat-checkbox>
 <!--        [checked]="selectedItem"-->
 <!--&lt;!&ndash;        [checked]="true"&ndash;&gt;selectedItem-->
     </div>

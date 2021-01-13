@@ -43,6 +43,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     sizesModal:boolean = false;
     breadcrumbs: Array<NavLink>;
     private destroy$: Subject<void> = new Subject<void>();
+    selectedProduct :any;
 
     review: FormGroup = new FormGroup({
         author: new FormControl('', [Validators.required]),
@@ -88,7 +89,8 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
     getByIdHandler = (data) => {
         this.product.item = data?.data;
-        console.log('produ888==>', this.product.item);
+        this.selectedProduct = data?.data;
+        console.log('produ888==>', this.selectedProduct);
         this.basicPrice = this.product.item.price;
         this.arrOptionsSelect = [];
         this.arrOptionsCheck = [];
