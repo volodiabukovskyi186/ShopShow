@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import {LiqpayService} from '../service/liqpay.service';
 
 @Component({
   selector: 'app-liqpay-dialog',
@@ -8,20 +9,20 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./liqpay-dialog.component.scss']
 })
 export class LiqpayDialogComponent implements OnInit, AfterViewInit {
-  
+  liqPayM
   constructor(
     public dialogRef: MatDialogRef<LiqpayDialogComponent>,
     public sanitizer: DomSanitizer,
+    private liqpayService: LiqpayService,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
   ngAfterViewInit(): void {
     let form = document.getElementById("payForm") as HTMLFormElement;
     form.submit();
   }
-
+  //5168 7551 0456 8544
   public ngOnInit(): void {
     console.log(this.data);
-   
   }
 
   public onNoClick(): void {
@@ -36,5 +37,9 @@ export class LiqpayDialogComponent implements OnInit, AfterViewInit {
     //setTimeout(() => postUrl, 2);
 
     return this.sanitizer.bypassSecurityTrustResourceUrl(postUrl);
+  }
+  checkliqpay(): void {
+    let i = 0;
+
   }
 }

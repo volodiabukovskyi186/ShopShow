@@ -32,7 +32,6 @@ export class FilterItemComponent implements OnInit , OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
       this.productService.checkedFilterItem.subscribe(data => {
-        console.log('chceck==', this.filter);
       });
     // if (changes) {
         this.productService.arrCategory.forEach(elem => {

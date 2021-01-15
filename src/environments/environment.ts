@@ -19,6 +19,8 @@ export const environment = {
   reviews: host + `reviews`,
   reviewss: host + `review`,
   addbasket: host + `cart_client/updateArray`,
+  wishlistipdate: host + `wishlist/updateArray`,
+  wishlist: host + `wishlist`,
   role: {
     roles: host + `roles`,
     role: host + `role`,

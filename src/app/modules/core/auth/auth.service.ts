@@ -20,7 +20,7 @@ export class AuthService {
 
   public auth: EventEmitter<any> = new EventEmitter<any>();
   public onError: Subject<string> = new Subject();
-
+  public logOutSub: Subject<any> = new Subject<any>();
   public onAuth() {
     this.auth.emit();
   }
@@ -84,7 +84,9 @@ export class AuthService {
 
   public logout(): void {
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.removeItem("token");
+      this.logOutSub.next();
+      localStorage.removeItem('token');
+      localStorage.removeItem('cart_showu');
     }
   }
 }

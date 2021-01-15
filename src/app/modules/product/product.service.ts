@@ -78,6 +78,7 @@ export class ProductService {
 
     page: number = 1;
     reviewPage: number = 1;
+    whishlistSub: Subject <any> = new Subject<any>();
 
     products: IProductResponse = {
         count: 0,
@@ -239,6 +240,7 @@ export class ProductService {
     }
 
     addProductToWishlist(data): Observable<any> {
+        this.whishlistSub.next(true);
         return this.http.post(`${environment.host}wishlist`, data);
     }
 

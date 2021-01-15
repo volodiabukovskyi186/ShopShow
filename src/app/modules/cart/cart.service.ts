@@ -20,8 +20,6 @@ export class CartService {
   userId: number;
 
 
-  test=[];
-  // body: HTMLBodyElement;
 
   constructor(@Inject(PLATFORM_ID) private platformId: string,
               private http: HttpClient,
@@ -102,6 +100,7 @@ export class CartService {
     return this.totalPrice;
   }
   public get count(): number {
+
     this.copyToSession();
     this.calcTotalCount();
     return this.totalCount;
@@ -118,8 +117,6 @@ export class CartService {
   }
 
   public deleteFromArray(object: Object, array: Array<any>): boolean {
-    console.log('arrayarray==>', array);
-
     const index: number = array.indexOf(object);
     if (index !== -1) {
       array.splice(index, 1);

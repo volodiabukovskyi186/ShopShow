@@ -37,7 +37,7 @@
             @fadeHeight
             *ngFor="let item of allwishlistData"
             [value]="item"
-            (delete)="ondelete($event)"
+            (delete)="deleteWhishList($event)"
     ></app-card-wishlist-item>
   </div>
 

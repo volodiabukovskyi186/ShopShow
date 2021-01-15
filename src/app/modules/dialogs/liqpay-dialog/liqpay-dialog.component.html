@@ -2,17 +2,19 @@
     <div class="dialog-header">
         <span class="material-icons close-icon" (click)="onNoClick()">close</span>
     </div>
+
     <div class="dialog-content">
-        <form ngNoForm id="payForm" *ngIf="data.isOrderBtnCliked" method="POST"
-        
+        <form ngNoForm id="payForm"  *ngIf="data.isOrderBtnCliked" method="POST"
             accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout" target="nameFrame">
-            <input type="hidden" name="data" id="datasign" [value]="data.hashedDataToSend"/>
+            <input type="hidden" name="data" id="datasign"   [value]="data.hashedDataToSend"/>
             <input type="hidden" name="signature" [value]="data.hashedPrivateData" id="signature"/>
             <input type="hidden" name="x" value="256" />
             <input type="hidden" name="y" value="60" />
             <input type="image" src="//static.liqpay.ua/buttons/p1ru.radius.png" style="display: none;"/>             
         </form>
-        <iframe id="nameFrame"
+        <iframe
+
+                id="nameFrame"
             name="nameFrame"
             role="dialog"
             scrolling="no"

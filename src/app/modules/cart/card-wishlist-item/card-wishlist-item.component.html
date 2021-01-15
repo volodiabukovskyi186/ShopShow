@@ -6,10 +6,11 @@
 
 <div class="info">
     <h4>{{ value.product.description?.name  }}</h4>
+<!--    <span class="name"><h4>{{ value.product.description?.name  }}, <span *ngFor="let option of value.product.selected_options">{{option.option_group}} {{option.value.description.name}}, </span></h4> </span>-->
     <p>{{ value.product.price  }}  {{currency.current.simbol_right}}</p>
     <span
     >
   </span
   >
 </div>
-<!--<button class="button transparent" (click)="onDelete()">X</button>-->
+<button class="button transparent" (click)="onDelete()">X</button>

@@ -15,10 +15,12 @@ export class WishlistService {
     public appLangService: AppLangService
   ) {}
 
+  deleteWishList(itemId: number): Observable<any> {
+    return this.http.delete(`${environment.wishlist}/${itemId}`, );
+  }
   getUserWishlistByClientId(clientId, value?: string, cardNumber?: number): Observable<any> {
-
-    let params = `clientWishlist/${clientId}`;
-
+    const lang = localStorage.getItem('current_lang');
+    let params = `clientWishlist/${clientId}?lang=${lang}`;
 
     if (cardNumber) {
       this.takeNumber = cardNumber;
@@ -36,6 +38,7 @@ export class WishlistService {
     if (value === 'maxPrice') {
       params = `${params}?sort_by=price&desc=DESC`;
     }
+
 
     return this.http.get<any>(environment.host + params);
   }

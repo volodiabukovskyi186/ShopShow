@@ -28,7 +28,7 @@ export class CardWishlistItemComponent implements OnInit {
   ngOnInit(): void {}
 
   onDelete() {
-    this.delete.emit(this.value);
+    this.delete.emit(this.value.id);
   }
 
 }

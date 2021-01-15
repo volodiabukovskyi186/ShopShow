@@ -51,8 +51,8 @@ export class WishlistProductItemComponent implements OnInit {
   }
 
   public getUserAccauntData(): void {
-    this.accauntService.getUser().subscribe((data) => {
 
+    this.accauntService.getUser().subscribe((data) => {
         this.userId = data.data.user.id;
         this.accauntService.current = data.data;
         this.accauntService.onCurrent();

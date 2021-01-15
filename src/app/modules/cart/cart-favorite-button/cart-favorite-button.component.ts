@@ -5,6 +5,7 @@ import {CurrencyService} from '../../currency/currency.service';
 import {ProductService} from '../../product/product.service';
 import {AccauntService} from '../../accaunt/accaunt.service';
 import {WishlistService} from '../../accaunt/wishlist/services/wishlist.service';
+import {AuthService} from '../../core/auth/auth.service';
 @Component({
   animations: [changeValueScale],
   selector: 'app-cart-favorite-button',
@@ -19,7 +20,8 @@ export class CartFavoriteButtonComponent implements OnInit {
               public cart: CartService,
               public product: ProductService,
               public accaunt: AccauntService,
-              public wishlistService: WishlistService)
+              public wishlistService: WishlistService,
+              private authService: AuthService)
   {}
   ngOnInit(): void {
     if (localStorage.hasOwnProperty('token')) {
@@ -34,15 +36,14 @@ export class CartFavoriteButtonComponent implements OnInit {
       this.sreenwidth = true;
     }
   }
-  getWishlist(): void{
+  getWishlist(): void {
+    this.product.whishlistSub.subscribe(() => { this.getWishlist(); });
+    this.authService.logOutSub.subscribe(() => { this.allwishlistData = []; });
     this.accaunt.getUser().subscribe((res) => {
       this.clientId = res.data.user.id;
-
-      this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
+      this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe(res => {
         this.allwishlistData = res.data;
-
-        // this.cart.favoritelenth.next(this.allwishlistData.length);
-      })
+      });
 
     });
   }

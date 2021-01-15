@@ -10,6 +10,7 @@ import {OrderSuccessDialogComponent} from '../../dialogs/order-success-dialog/or
 import {LiqpayDialogComponent} from '../../dialogs/liqpay-dialog/liqpay-dialog.component';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {NgForm} from '@angular/forms';
+import {LiqpayService} from '../../dialogs/service/liqpay.service';
 
 @Component({
     animations: [fadeHeight],
@@ -42,6 +43,7 @@ export class CheckoutProductListComponent implements OnInit {
         public myOrdersService: MyOrdersService,
         public dialog: MatDialog,
         public sanitizer: DomSanitizer,
+        private liqpayService: LiqpayService
     ) {
     }
 
@@ -156,8 +158,6 @@ export class CheckoutProductListComponent implements OnInit {
                         order_id: this.orderData?.data.id
                     }).subscribe((resp) => {
                         if (resp) {
-
-
                             this.hashedData = resp;
                             this.hashedDataToSend = this.hashedData.result.data;
                             this.hashedPrivateData = this.hashedData.result.sign;
@@ -218,6 +218,12 @@ export class CheckoutProductListComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(res => {
         });
+    }
+    checkliqpay(): void {
+        this.liqpayService.liqpayPost().subscribe(data => {
+            console.log('liqpaycheck===>', data);
+        });
+
     }
 
     orderHadler(data) {

@@ -5,6 +5,7 @@ import { CurrencyService } from '../../currency/currency.service';
 import {ProductService} from '../../product/product.service';
 import {AccauntService} from '../../accaunt/accaunt.service';
 import {WishlistService} from '../../accaunt/wishlist/services/wishlist.service';
+import {AuthService} from '../../core/auth/auth.service';
 
 @Component({
   animations: [fade, slideRight, fadeHeight, changeValueHighlight, changeValueScale],
@@ -16,21 +17,21 @@ export class CartViewComponent implements OnInit, OnChanges {
   clientId: any;
   wishlistProducts: any;
   allwishlistData: any;
-
+  try
   constructor(public currency: CurrencyService,
               public cart: CartService,
               public product: ProductService,
               public accaunt: AccauntService,
-              public wishlistService: WishlistService) {}
+              public wishlistService: WishlistService,
+              private  productService: ProductService,
+              private authService: AuthService) {}
 
   ngOnInit(): void {
     if (localStorage.hasOwnProperty('token')) {
       this.getWishlist();
     }
   }
-  
   ngOnChanges(changes: SimpleChanges) {
-
     if(changes){
     }
   }
@@ -40,15 +41,25 @@ export class CartViewComponent implements OnInit, OnChanges {
   }
 
   getWishlist(): void {
-    this.accaunt.getUser().subscribe((res) => {
-      this.clientId = res.data.user.id;
-      this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
-        this.wishlistProducts = res.data;
-        this.allwishlistData = res.data;
+    this.productService.whishlistSub.subscribe(() => {this.getWishlist(); });
+    this.authService.logOutSub.subscribe(() => { this.allwishlistData = []; });
+      this.accaunt.getUser().subscribe((res) => {
+        this.clientId = res.data.user.id;
+        if ( this.clientId ) {
+          this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
+            this.wishlistProducts = res.data;
+            this.allwishlistData = res.data;
+            console.log('whish', this.allwishlistData);
+            this.cart.favoritelenth.next(this.allwishlistData.length);
+          });
+        }
+      });
 
-        this.cart.favoritelenth.next(this.allwishlistData.length);
-      })
-
+  }
+  deleteWhishList(whishId): void {
+    this.wishlistService.deleteWishList(whishId).subscribe(() => {
+    this.getWishlist();
+    this.productService.whishlistSub.next();
     });
   }
 
