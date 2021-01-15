@@ -79,6 +79,7 @@ export class WishlistComponent implements OnInit {
           }, 1000);
 
           this.wishlistProducts = res.data;
+          console.log('this.wishlistProducts ===== >>>>', this.wishlistProducts);
           this.allwishlistData = res;
         })
 
@@ -86,6 +87,10 @@ export class WishlistComponent implements OnInit {
       // this.accaunt.onCurrent();
       // console.log(data.data);
     });
+  }
+
+  public updatedWishlistProducts(event): void {
+    this.wishlistProducts = event;
   }
 
   

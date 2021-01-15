@@ -1,8 +1,8 @@
-<div class="product-item-block" >
-
-    <div  class="product-item-wrap">
+<div class="product-item-block">
+  <img src="assets/icons/remove.svg" class="remove-icon" (click)="deleteItemFromWishlist(product.id)"/>
+  <div class="product-item-wrap">
    <div class="ratio" >
-    <div class="square" >
+    <div class="square">
       <a [routerLink]="['/products/view/' + product?.product?.id]" class="product-img-padding">
         <div class="sale-label-container">
           <div *ngIf="product?.promotion" class="sale-label sale">{{'product.sale' | translate}}</div>

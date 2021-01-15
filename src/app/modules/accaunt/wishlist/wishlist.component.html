@@ -42,6 +42,7 @@
             *ngFor="let wishProduct of wishlistProducts"
             [product]="wishProduct"
             [wishlistProducts]="wishlistProducts"
+            (updatedWishlistProducts)="updatedWishlistProducts($event)"
             style="margin: 10px; width: 29%"
         ></app-wishlist-product-item>
     </div>

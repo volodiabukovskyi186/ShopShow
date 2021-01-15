@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CurrencyService } from '../../../currency/currency.service';
 import { CartService } from '../../../cart/cart.service';
 import { environment } from 'src/environments/environment';
 import { AccauntService } from '../../../accaunt/accaunt.service';
 import { ProductService } from 'src/app/modules/product/product.service';
+import { WishlistService } from '../services/wishlist.service';
 
 @Component({
   selector: 'app-wishlist-product-item',
@@ -15,6 +16,8 @@ export class WishlistProductItemComponent implements OnInit {
   @Input() hoststatic = environment.hoststatic;
   @Input() wishlistProducts;
 
+  @Output() updatedWishlistProducts: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   public Math = Math;
   public userId: number;
   public newWishlistProduct: any;
@@ -23,7 +26,8 @@ export class WishlistProductItemComponent implements OnInit {
     public currency: CurrencyService, 
     public cart: CartService,
     public accauntService: AccauntService,
-    public productService: ProductService
+    public productService: ProductService,
+    public wishlistService: WishlistService
   ) { }
 
   ngOnInit(): void {
@@ -51,7 +55,6 @@ export class WishlistProductItemComponent implements OnInit {
   }
 
   public getUserAccauntData(): void {
-
     this.accauntService.getUser().subscribe((data) => {
         this.userId = data.data.user.id;
         this.accauntService.current = data.data;
@@ -73,6 +76,21 @@ export class WishlistProductItemComponent implements OnInit {
     } else {
       alert(`Product already exsist in wishlist!`);
     }
+  }
+
+  // @Output() valid: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  public deleteItemFromWishlist(wishlistProductId: number): void {
+    console.log(wishlistProductId);
+    this.wishlistService.deleteWishList(wishlistProductId).subscribe((res) => {
+      console.log(res);
+    })
+
+    this.wishlistProducts = this.wishlistProducts.filter((wishlistProduct) => {
+      return wishlistProduct.id !== wishlistProductId;
+    })
+
+    this.updatedWishlistProducts.emit(this.wishlistProducts)
   }
 
 }
