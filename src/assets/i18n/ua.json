@@ -156,7 +156,8 @@
     "new": "Новий",
     "reviews": "Відгуки",
     "result": "Результат пошуку",
-    "choose": "Виберіть"
+    "choose": "Виберіть",
+    "buyInOneClick": "Купити в 1 клік"
   },
   "sortBy": {
     "sort": "Сортувати:",
@@ -306,5 +307,14 @@
   "size":{
     "sizes":"Розміри",
     "params": "Параметр"
+  },
+  "quickOrder": {
+    "quickOrderTitle": "Швидке замовлення",
+    "quickOrderUserName": "Ваше ім'я",
+    "quickOrderUserPhone": "Ваш телефон",
+    "quickOrderSent": "Замовити",
+    "quickOrderSuccessfully": "Успішно!",
+    "quickOrderThanksForOrder": "Дякуємо за замовлення!",
+    "quickOrderManager": "Незабаром ми зателефонуємо вам для підтвердження"
   }
 }

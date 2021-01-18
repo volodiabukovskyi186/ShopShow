@@ -1,0 +1,107 @@
+.callback-dialog-container {
+    width: 35vw;
+    border-radius: 0 !important;
+  
+    .dialog-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 35px;
+  
+      .callback-dialog-header {
+        color: #000;
+        font-size: 15px;
+        font-weight: 500;
+      }
+  
+      .close-icon {
+        font-size: 37px;
+        margin-top: -16px;
+        cursor: pointer;
+      }
+    }
+  
+    .form-row {
+      .callback-input {
+        margin-bottom: 10px;
+  
+        &:focus {
+          color: #000 !important;
+        }
+  
+        &::placeholder {
+          color: #000;
+          font-size: 13px;
+        }
+      }
+  
+      .callback-submit-button {
+        background-color: #000;
+        color: #fff;
+        width: 100%;
+        font-size: 15px;
+      }
+    }
+  }
+  
+  .mat-dialog-container {
+    padding: 11px !important;
+  }
+  
+  .callback-successfull-container {
+    width: 30vw;
+  
+    .dialog-header {
+      display: flex;
+      align-items: flex-end;
+      
+      .close-icon {
+        font-size: 37px;
+        margin-top: -16px;
+        cursor: pointer;
+      }
+    }
+  
+    .callback-successfull-message {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 80px;
+    
+      .callback-successfull-header {
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+    }
+}
+
+.callback-successfull-header-top {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 35px;
+}
+
+.dialog-header-successfull {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 35px;
+
+    .close-icon {
+        font-size: 37px;
+        margin-top: -16px;
+        cursor: pointer;
+    }
+}
+
+.buy-in-dialog-header-successfull {
+    font-weight: 500;
+    color: #000;
+    font-size: 15px;
+}
+
+.manager-header {
+    margin-bottom: 35px;
+}

@@ -118,7 +118,8 @@
     "additionalInfo": "Cechy",
     "reviews": "Recenzje",
     "result": "Wynik wyszukiwania ",
-    "choose": "Wybierać"
+    "choose": "Wybierać", 
+    "buyInOneClick": "Kup jednym kliknięciem"
   },
   "wishlist": {
     "addToWishlist": "Zapisz w ulubionych"
@@ -301,5 +302,14 @@
   "size":{
     "sizes":"Rozmiary",
     "params": "Parametr"
+  },
+  "quickOrder": {
+    "quickOrderTitle": "Szybkie zamówienie",
+    "quickOrderUserName": "Twoje imię",
+    "quickOrderUserPhone": "Twój telefon",
+    "quickOrderSent": "Zamówienie",
+    "quickOrderSuccessfully": "Z powodzeniem!",
+    "quickOrderThanksForOrder": "Dziękuję za Twoje zamówienie!",
+    "quickOrderManager": "Wkrótce zadzwonimy w celu potwierdzenia"
   }
 }

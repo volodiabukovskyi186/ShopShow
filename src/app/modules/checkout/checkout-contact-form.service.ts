@@ -10,13 +10,14 @@ import {DOCUMENT} from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CheckoutContactFormService {
   currentLang;
   countries:any;
 
   questions$: Observable<QuestionBase<any>[]>;
-  lang:any;
-  BSubject=new BehaviorSubject({lang: this.lang});
+  lang: any;
+  BSubject = new BehaviorSubject({lang: this.lang});
 
   constructor(private http: HttpClient){
     this.getCountry();
@@ -50,11 +51,10 @@ export class CheckoutContactFormService {
   }
 
   getCountryDeliver(id: number,lang:any): Observable<any> {
-
     return this.http.get(`https://api.showu.com.ua/getDeliveriesCountry/${id}?lang=${lang}`);
   }
+  
   getCountryPayment(id: number,lang:any): Observable<any> {
-
     return this.http.get(`https://api.showu.com.ua/getPaymentsCountry/${id}?lang=${lang}`);
   }
   getDelivers(): Observable<any> {

@@ -156,7 +156,8 @@
       "new": "Новый",
       "reviews": "Отзывы",
       "result": "Результат поиска ",
-      "choose": "Выберите"
+      "choose": "Выберите",
+      "buyInOneClick": "Купить в 1 клик"
     },
     "sortBy": {
       "sort": "Сортировать:",
@@ -306,5 +307,14 @@
   "size":{
     "sizes":"Размера",
     "params": "Параметр"
+  },
+  "quickOrder": {
+    "quickOrderTitle": "Быстрый заказ",
+    "quickOrderUserName": "Ваше имя",
+    "quickOrderUserPhone": "Ваш телефон",
+    "quickOrderSent": "Заказать",
+    "quickOrderSuccessfully": "Успешно!",
+    "quickOrderThanksForOrder": "Спасибо за заказ!",
+    "quickOrderManager": "Вскоре мы позвоним вам для подтверждения"
   }
 }

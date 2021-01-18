@@ -1,0 +1,55 @@
+<form [formGroup]="buyInOneClickForm" (submit)="onSubmit()" class="callback-dialog-container" *ngIf="isbuyInOneClickForm">
+    <div class="dialog-header">
+      <span class="callback-dialog-header">{{ "quickOrder.quickOrderTitle" | translate }}</span>
+      <span class="material-icons close-icon" (click)="onNoClick()">close</span>
+    </div>
+    <div class="form-row">
+      <div class="original">
+        <input
+          class="callback-input"
+          type="text"
+          id="name"
+          placeholder="{{ 'quickOrder.quickOrderUserName' | translate }}"
+          required
+          formControlName="name"
+        />
+      </div>
+    </div>
+  
+    <div class="form-row">
+      <div class="original">
+        <input
+          class="callback-input"
+          type="text"
+          id="phone"
+          placeholder="{{ 'quickOrder.quickOrderUserPhone' | translate }}"
+          formControlName="phone"
+        />
+      </div>
+    </div>
+  
+    <div class="form-row">
+      <div class="original">
+        <div class="flex">
+          <button
+            [disabled]="!buyInOneClickForm.valid"
+            type="submit"
+            class="button callback-submit-button"
+          >
+            {{ "quickOrder.quickOrderSent" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+</form>
+<div *ngIf="!buyInOneClickForm" class="callback-successfull-container">
+    <div class="dialog-header-successfull">
+        <span class="buy-in-dialog-header-successfull">{{ "quickOrder.quickOrderTitle" | translate }}</span>
+        <span class="material-icons close-icon" (click)="onNoClick()">close</span>
+    </div>
+    <div class="callback-successfull-message">
+        <span class="callback-successfull-header-top">{{ "quickOrder.quickOrderSuccessfully" | translate }}</span>
+        <span class="callback-successfull-header">{{ "quickOrder.quickOrderThanksForOrder" | translate }}</span>
+        <span class="callback-successfull-header manager-header">{{ "quickOrder.quickOrderManager" | translate }}</span>
+    </div>
+</div>

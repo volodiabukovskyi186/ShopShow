@@ -155,7 +155,8 @@
     "new": "New",
     "reviews": "Reviews",
     "result": "Result search ",
-    "choose": "Choose"
+    "choose": "Choose",
+    "buyInOneClick": "Buy in 1 click"
   },
   "sortBy": {
     "sort": "Sort By:",
@@ -309,5 +310,14 @@
   "size":{
     "sizes":"Sizes",
     "params": "Parameter"
+  },
+  "quickOrder": {
+    "quickOrderTitle": "Quick order",
+    "quickOrderUserName": "Your name",
+    "quickOrderUserPhone": "Your phone",
+    "quickOrderSent": "Order",
+    "quickOrderSuccessfully": "Successfully!",
+    "quickOrderThanksForOrder": "Thank you for your order!",
+    "quickOrderManager": "We will call you shortly to confirm"
   }
 }

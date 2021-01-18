@@ -648,6 +648,42 @@ height: min-content;
       }
     }
   }
+}
 
+.product-list-view-btns {
+  display: flex;
+  flex-direction: row;
+}
 
+.buy-in-one-click-btn {
+  display: flex;
+  flex-direction: row;
+}
+
+.buy-in-one-click-btn {
+  background-color: #353537;
+  margin-left: 10px;
+}
+
+.buy-in-one-click-btn {
+  &:hover {
+    background-color: #59595F !important;
+  }
+  &:active {
+    background-color: #353537 !important;
+  }
+  &:focus {
+    background-color: #353537 !important;
+  }
+}
+
+.buy-in-one-click-icon {
+  height: 19px;
+  margin-right: 11px;
+}
+
+.buy-in-one-click-text {
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: lighter;
 }

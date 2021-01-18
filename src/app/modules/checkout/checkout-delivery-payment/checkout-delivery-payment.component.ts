@@ -21,37 +21,41 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
     liqPayStatus:any;
     currentLang: any;
     itemDelivery = [];
+    valid: boolean = true;
+
     constructor(public cart: CartService, public check: CheckoutService,
                 private translate: TranslateService,
                 public checkContact: CheckoutContactFormService,
                 public  langService: AppLangService,) {
     }
-    ngOnInit(): void {
 
+    ngOnInit(): void {
         this.arrDelivers = [];
         this.arrPayment = [];
         this.getSelectCountry();
         this.getSelectCountryPay();
-        this. getLiqpayStatus()
+        this.getLiqpayStatus();
     }
+
     ngOnChanges(changes: SimpleChanges) {
         if (changes){
             this.arrPayment = [];
             this.arrDelivers = [];
-
         }
     }
+
     nextStep() {
         this.check.steps[1].done = true;
     }
+
     edit() {
         this.check.steps[1].done = false;
-
     }
-    valid: boolean = true;
+
     onValid(valid: boolean) {
         this.valid = valid;
     }
+    
     onItemChange(eventValue) {
         if (eventValue.cheked) {
             this.isLigpayChecked = true;
@@ -77,19 +81,18 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
 
 
     getSelectCountry(): void {
-
         this.localLang = localStorage.getItem('current_lang');
-        this.checkContact.BSubject.subscribe(data => {
+        this.checkContact?.BSubject?.subscribe(data => {
             this.selectedCountry = data;
-            this.checkContact.getCountryDeliver(this.selectedCountry.id, this.localLang).subscribe(data => {
+            this.checkContact?.getCountryDeliver(this.selectedCountry.id, this.localLang).subscribe(data => {
                 this.arrDelivers = [] ;
                 data.data.deliveries.forEach(elem => {
                     this.arrDelivers.push(elem.delivery);
                 });
             });
         });
-
     }
+
     getSelectCountryPay(): void {
         this.localLang = localStorage.getItem('current_lang');
         this.checkContact.BSubject.subscribe(data => {
@@ -104,13 +107,10 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
             });
         });
     }
+
     getLiqpayStatus(): void {
         this.checkContact.getLiqpayStatus().subscribe(data => {
             this.liqPayStatus = data.status;
-
         })
     }
-
-
 }
-

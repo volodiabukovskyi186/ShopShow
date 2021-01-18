@@ -12,6 +12,7 @@ import {AccauntService} from '../../accaunt/accaunt.service';
 import {MatDialog} from '@angular/material/dialog';
 import {AddReviewDialogComponent} from '../../dialogs/add-review-dialog/add-review-dialog.component';
 import {cardItem} from '../../cart/classes/basket-item.model';
+import { BuyInOneClickDialogComponent } from '../../dialogs/buy-in-one-click-dialog/buy-in-one-click-dialog.component';
 
 @Component({
     selector: 'app-product-view-page',
@@ -51,8 +52,6 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         rating: new FormControl('', [Validators.required]),
         email: new FormControl('', [Validators.required]),
     });
-
-
 
     stars = [
         {
@@ -129,9 +128,11 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         });
 
     };
+
     checkOptionValues(options): void {
         this.checkSelectedOption();
     }
+
     optionPrice(): void {
         let totalPrice = 0;
         this.product.item.price = this.basicPrice;
@@ -187,6 +188,26 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         this.cart.isCartView = true;
         const newProd = Object.assign({}, item);
         this.cart.addToCart(newProd, this.count);
+    }
+
+    openBuyInOneClickModal(productToBuy): void {
+        const dialogRef = this.dialog.open(BuyInOneClickDialogComponent, {
+            data: {
+                title: 'Select product to review',
+                actions: [
+                  {
+                    param: 'closeIcon',
+                    label: 'Cancel',
+                  },
+                  {
+                    param: 'add',
+                    label: 'Add',
+                  },
+                ],
+                productToBuy: productToBuy
+              },
+            });
+        dialogRef.afterClosed().subscribe(res => {});
     }
 
     updateTitle(title: string) {

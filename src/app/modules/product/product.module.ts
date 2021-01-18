@@ -25,6 +25,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { Ng5SliderModule } from 'ng5-slider';
 import {OptionModule} from '../options/option.module';
 import {SizesModule} from '../sizes/sizes.module';
+import { BuyInOneClickDialogComponent } from '../dialogs/buy-in-one-click-dialog/buy-in-one-click-dialog.component';
 // import { SalesComponent } from '../sales/sales/sales.component';
 
 const c = [
@@ -36,7 +37,7 @@ const c = [
 ];
 
 @NgModule({
-  declarations: [...c, ProductsPageComponent, ProductViewPageComponent, GaleryProductFotoDialogComponent, ProductListViewComponent],
+  declarations: [...c, ProductsPageComponent, ProductViewPageComponent, GaleryProductFotoDialogComponent, ProductListViewComponent, BuyInOneClickDialogComponent],
     imports: [
         CommonModule,
         RouterModule,
