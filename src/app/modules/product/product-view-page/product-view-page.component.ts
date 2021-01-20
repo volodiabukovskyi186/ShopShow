@@ -204,7 +204,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
                     label: 'Add',
                   },
                 ],
-                productToBuy: productToBuy
+                productToBuy: productToBuy,
+                quantity: this.count,
+                productOptions: this.allOptions
               },
             });
         dialogRef.afterClosed().subscribe(res => {});

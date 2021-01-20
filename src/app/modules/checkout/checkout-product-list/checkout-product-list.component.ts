@@ -90,6 +90,7 @@ export class CheckoutProductListComponent implements OnInit {
                 checkoutDelivery: this.check.checkoutDelivery,
                 checkoutDeliveryAddress: this.check.checkoutDeliveryAddress,
                 checkoutPayment: this.check.checkoutPayment,
+                is_oneclick: 0
             };
         } else {
             this.orderResult = {
@@ -112,6 +113,7 @@ export class CheckoutProductListComponent implements OnInit {
                 checkoutDelivery: this.check.checkoutDelivery,
                 checkoutDeliveryAddress: this.check.checkoutDeliveryAddress,
                 checkoutPayment: this.check.checkoutPayment,
+                is_oneclick: 0
             };
         }
 

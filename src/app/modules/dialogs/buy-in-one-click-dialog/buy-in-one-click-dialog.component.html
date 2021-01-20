@@ -1,4 +1,4 @@
-<form [formGroup]="buyInOneClickForm" (submit)="onSubmit()" class="callback-dialog-container" *ngIf="isbuyInOneClickForm">
+<form [formGroup]="buyInOneClickForm" class="callback-dialog-container" *ngIf="isbuyInOneClickForm">
     <div class="dialog-header">
       <span class="callback-dialog-header">{{ "quickOrder.quickOrderTitle" | translate }}</span>
       <span class="material-icons close-icon" (click)="onNoClick()">close</span>
@@ -35,6 +35,7 @@
             [disabled]="!buyInOneClickForm.valid"
             type="submit"
             class="button callback-submit-button"
+            (click)="onSubmit()"
           >
             {{ "quickOrder.quickOrderSent" | translate }}
           </button>
@@ -42,7 +43,7 @@
       </div>
     </div>
 </form>
-<div *ngIf="!buyInOneClickForm" class="callback-successfull-container">
+<div *ngIf="isBuyInOneClickForm" class="callback-successfull-container">
     <div class="dialog-header-successfull">
         <span class="buy-in-dialog-header-successfull">{{ "quickOrder.quickOrderTitle" | translate }}</span>
         <span class="material-icons close-icon" (click)="onNoClick()">close</span>
