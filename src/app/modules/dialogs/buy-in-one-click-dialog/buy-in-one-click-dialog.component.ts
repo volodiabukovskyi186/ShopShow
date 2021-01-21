@@ -74,7 +74,7 @@ export class BuyInOneClickDialogComponent implements OnInit {
     console.log(data);
 
     this.options = [];
-    
+
     if (this.userId) {
         this.orderResult = {
             products: [],
@@ -98,6 +98,13 @@ export class BuyInOneClickDialogComponent implements OnInit {
             checkoutPayment: this.check.checkoutPayment,
             is_oneclick: 1
         };
+
+        if (this.buyInOneClickForm.get('name').value.length > 0) {
+          this.orderResult.first_name = this.buyInOneClickForm.get('name').value;
+        }
+        if (this.buyInOneClickForm.get('phone').value.length > 0) {
+          this.orderResult.telephone = this.buyInOneClickForm.get('phone').value;
+        }
     } else {
         this.orderResult = {
             products: [],
