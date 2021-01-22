@@ -75,8 +75,8 @@
 
       <div class="grid">
         <app-product-item
-                *ngFor="let item of sallers.item?.products"
-                [product]="item"
+          *ngFor="let item of sallers?.item?.products"
+          [product]="item"
         >
         </app-product-item>
       </div>
@@ -84,7 +84,7 @@
     <app-pagination
             class="radius"
             [page]="sallers?.page"
-            [total]="sallers.item.products.length> 0 ? Math.ceil(sallers.promotions.count / sallers.promotions.take): 0"
+            [total]="sallers?.item?.products?.length > 0 ? Math.ceil(sallers?.promotions?.count / sallers?.promotions?.take): 0"
             [pagesToShow]="5"
             (pageChanged)="pageChangedHandler($event)"
     ></app-pagination>

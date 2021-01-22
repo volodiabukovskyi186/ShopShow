@@ -75,9 +75,9 @@ input ::placeholder {
     }
   }
 }
-.option-description{
+//.option-description{
 
-}
+//}
 .manufacturer {
   background-color: $white;
   @include material-shadow(1, 1, $gray400);
@@ -199,13 +199,13 @@ margin-right: 11px;
 }
 
 .add-to-card-text {
-text-transform: uppercase;
+text-transform: uppercase !important;
 font-size: 15px;
 font-weight: lighter;
 color: #f5bdce !important;
 }
 
-.white-group{
+//.white-group{
 //margin: 0 -6rem;
 //background: white;
 //@media (max-width: 1080px) {
@@ -214,7 +214,7 @@ color: #f5bdce !important;
 //@media (max-width: 768px) {
 //  margin: 0;
 //}
-}
+//}
 .card-description{
 margin: 0 auto;
 display: flex;
@@ -338,9 +338,9 @@ padding-right: 40px;
 color: #42996F;
 }
 
-.price-padding {
+//.price-padding {
 //padding-bottom: 20px;
-}
+//}
 
 .padding {
 padding: 4px 16px 3px !important;
@@ -348,6 +348,35 @@ padding: 4px 16px 3px !important;
 
 .price-title {
 height: 45px;
+}
+
+@media screen  and (max-width: 1012px) {
+  .product-list-view-btns {
+    flex-direction: column !important;
+  }
+
+  .buy-in-one-click-btn {
+    margin-left: 0 !important;
+  }
+
+  .add-to-wishlist__container {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 5px;
+  }
+  
+  .add-to-catt-btn {
+    margin-bottom: 15px;
+  }
+
+  .add-to-card-content-input {
+    max-height: 42px;
+    align-items: center;
+  }
+
+  .count-add-tobag {
+    align-items: center;
+  }
 }
 
 @media screen  and (max-width: 768px){
@@ -367,75 +396,76 @@ justify-content: space-between !important;
 }
 
 @include screen-w(752px) {
-.add-review-container{
-  .add-review-container__form{
-  .add-review-container__user-inf{
-   flex-direction: column;
-     .add-review-container__user-inf__input-block{
-       width: 70vw;
-       padding-top: 0px;
-       input{
-         height: 55px;
-       }
-     }
+  .add-to-wishlist__container {
+    align-items: center;
   }
-    .add-review-container__submit{
-      padding-top: 30px;
+
+  .add-review-container {
+    .add-review-container__form{
+      .add-review-container__user-inf{
+      flex-direction: column;
+        .add-review-container__user-inf__input-block{
+          width: 70vw;
+          padding-top: 0px;
+          input{
+            height: 55px;
+          }
+        }
+      }
+        .add-review-container__submit{
+          padding-top: 30px;
+        }
+      }
+    }
+
+    .sticky {
+    margin-left: 16px;
+    }
+
+    .golden {
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 100%;
+    max-width: 100%;
+
+    .short {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+
+    .long {
+      flex-basis: 90%;
+      max-width: 100%;
+    }
+  }
+}
+  .options {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-top: 10px;
+  }
+
+@media (max-width: 480px) {
+.add-review-container {
+  .add-review-container__user-inf {
+    flex-direction: column;
+    .add-review-container__user-inf__input-block {
+      width: 100%;
     }
   }
 }
 
-.sticky {
-margin-left: 16px;
-}
-
-.golden {
-flex-direction: column;
-align-items: center;
-flex-basis: 100%;
-max-width: 100%;
-
-.short {
-  flex-basis: 100%;
-  max-width: 100%;
-}
-
-.long {
-  flex-basis: 90%;
-  max-width: 100%;
-}
-}
-}
-.options{
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  padding-top: 10px;
-}
-
-
-
-@media (max-width: 480px) {
-.add-review-container{
-.add-review-container__user-inf{
-  flex-direction: column;
-  .add-review-container__user-inf__input-block{
-    width: 100%;
-
-  }
-
-}
-}
 .count-add-tobag{
-margin:0;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .stock-status {
-padding: 2px 6px;
+  padding: 2px 6px;
 }
   .options{
     display: flex;
@@ -446,7 +476,7 @@ padding: 2px 6px;
       color: #9F1941;
       font-size: 13px;
       min-width: 150px;
-      p{
+      p {
         padding: 7px 0;
       }
     }
@@ -593,6 +623,10 @@ margin-right: 6px;
 
 .basket-icon {
 display: none;
+}
+
+.buy-in-one-click-icon {
+  display: none;
 }
 
 .add-to-catt-btn {

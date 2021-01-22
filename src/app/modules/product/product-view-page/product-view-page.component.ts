@@ -332,14 +332,56 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     //     })
     // }
 
+    // async getUserId(prod) {
+    //     let getUser;
+    //     this.accauntService.getUser()
+    //         .pipe(takeUntil(this.destroy$))
+    //         .subscribe(async res => {
+    //             if (res?.data?.user.id) {
+    //                 this.product.addProductToWishlist({
+    //                     product_id: prod?.item?.description?.product_id,
+    //                     user_id: this.user?.data?.user.id
+    //                 }).subscribe((res) => {
+    //                     alert(`Product #${res.data.product_id} was added to wishlist!`);
+    //                 });
+    //             } 
+
+    //         const userData = await res;
+    //         getUser = userData;
+    //     })
+
+    //     const data = await getUser;
+
+    //     if (!data && !this.user) {
+    //         this.router.navigate(['/accaunt/register']);
+    //     } else {
+    //         data?.then((result) => {
+    //             if (result?.data?.user.id) {
+    //                 this.product.addProductToWishlist({
+    //                     product_id: prod?.item?.description?.product_id,
+    //                     user_id: this.user?.data?.user.id
+    //                 }).subscribe((res) => {
+    //                     alert(`Product #${res.data.product_id} was added to wishlist!`);
+    //                 });
+    //             } 
+    //         })
+    //     }
+    //     console.log(getUser);
+    //     return data;
+    // }
+
     public addToWishlist(product): void {
-
-        this.product.addProductToWishlist({
-            product_id: product?.item?.description?.product_id,
-            user_id: this.user?.data?.user.id
-        }).subscribe((res) => {
-
-            alert(`Product #${res.data.product_id} was added to wishlist!`);
-        });
+        this.accauntService.getUser()
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((res) => {
+                if (res?.data?.user.id) {
+                    this.product.addProductToWishlist({
+                        product_id: product?.item?.description?.product_id,
+                        user_id: this.user?.data?.user.id
+                    }).subscribe((res) => {
+                        alert(`Product #${res.data.product_id} was added to wishlist!`);
+                    });
+                } 
+        })
     }
 }

@@ -24,14 +24,12 @@ export class PromotionPageComponent implements OnInit {
     // private ngxService: NgxUiLoaderService,
     public prom: SallersService,
     public product: ProductService,
+    public sallers: SallersService
   ) {}
 
   getHandler = (data: any) => {
-    // this.ngxService.stopAll();
     this.prom.promotions = data;
-    console.log( "promotion",this.prom.promotions)
   };
-
 
 
   ngOnInit(): void {
@@ -52,7 +50,24 @@ export class PromotionPageComponent implements OnInit {
   get() {
     // this.ngxService.start();
     this.prom.getProm().subscribe(this.getHandler);
+    //this.filterEmptyPromotions();
   }
+
+  // filterEmptyPromotions() {
+  //   this.prom.promotions?.data?.forEach((response, index) => {
+  //     this.sallers.getBy(response.id).subscribe((dataRes) => {
+  //       console.log(dataRes);
+
+  //       if (dataRes?.data?.products?.length === 0) {
+  //         this.prom.promotions?.data.splice(index, 1);
+  //         console.log('dataRes?.data?.products ===== >>>>', dataRes?.data?.products);
+  //       }
+  //     });
+  //   })
+  //   console.log( "promotion",this.prom.promotions);
+
+  //   return this.prom.promotions;
+  // }
 
   // pagination
 
