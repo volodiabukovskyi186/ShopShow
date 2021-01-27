@@ -82,10 +82,6 @@ export class NavComponent implements OnInit {
 
   public closeMenu(event): void {
     this.isLoginMenuVisible = false;
-
-    debugger;
-
-    console.log(event);
   }
 
 }

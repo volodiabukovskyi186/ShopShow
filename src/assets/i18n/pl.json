@@ -184,7 +184,8 @@
     "orderThankYou": "Dziękuję Ci!",
     "yourOrder": "Twoje zamówienie",
     "orderProcessing": "wysłane do przetworzenia.",
-    "sing_in": "Zaloguj się do swojego konta osobistego"
+    "sing_in": "Zaloguj się do swojego konta osobistego",
+    "wrongPassword": "Złe hasło"
   },
   "statusCodes": {
     "done": "Gotowe",

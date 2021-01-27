@@ -21,6 +21,7 @@ export class PersonalDataComponent implements OnInit {
     public isChangePassBtnClicked: boolean = false;
     public changePasswordForm: FormGroup;
     public isPassSuccessMessage: boolean = false;
+    public isErrorMessage: boolean = false;
 
     constructor(
         public accaunt: AccauntService,
@@ -134,18 +135,35 @@ export class PersonalDataComponent implements OnInit {
         })
     }
 
-    public updatePassword() {
-        console.log(this.changePasswordForm.value);
+    async passwordResponse(res) {
+        let response = await res;
+        console.log('response ===== >>>>', response);
 
-        if (this.changePasswordForm.value.newPassword === this.changePasswordForm.value.confirmPassword) {
-            this.personalDataService.changeUserPassword({ 
-                oldPassword: this.changePasswordForm.value.oldPassword,
-                newPassword: this.changePasswordForm.value.newPassword
-            }).subscribe((resp) => {
-                if (resp) {
-                    this.isPassSuccessMessage = true;
-                }
-            })
+        return response;
+    }
+
+    public updatePassword() {
+        this.isPassSuccessMessage = false;
+
+        console.log(this.changePasswordForm.value);
+        
+        //if (this.changePasswordForm.value.oldPassword === this.changePasswordForm.value.newPassword) {
+            if (this.changePasswordForm.value.newPassword === this.changePasswordForm.value.confirmPassword) {
+                this.personalDataService.changeUserPassword({ 
+                    oldPassword: this.changePasswordForm.value.oldPassword,
+                    newPassword: this.changePasswordForm.value.newPassword
+                }).subscribe((resp) => {
+                    if (resp) {
+                        this.isPassSuccessMessage = true;
+                        this.isErrorMessage = false;
+                    }
+                })
+            }
+        //}
+
+        if (!this.isPassSuccessMessage) {
+            this.isPassSuccessMessage = false;
+            this.isErrorMessage = true;
         }
     }
 

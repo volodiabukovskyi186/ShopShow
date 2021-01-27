@@ -89,7 +89,8 @@
     "orderThankYou": "Thank you!",
     "yourOrder": "Your order",
     "orderProcessing": "has been sent for processing.",
-    "sing_in": "Log in to your personal account"
+    "sing_in": "Log in to your personal account",
+    "wrongPassword": "Wrong password"
   },
   "cart": {
     "checkout": "Checkout",

@@ -143,7 +143,6 @@ export class RegisterFormComponent implements OnInit {
     // })
     // .subscribe(
     //   ()=> {
-    //     debugger
     //     console.log('asgfgsa')
     //   })
       // (response) => {

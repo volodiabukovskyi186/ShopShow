@@ -90,7 +90,8 @@
       "orderThankYou": "Спасибо!",
       "yourOrder": "Ваш заказ",
       "orderProcessing": "отправлен в обработку.",
-      "sing_in": "Войти в личный кабинет"
+      "sing_in": "Войти в личный кабинет",
+      "wrongPassword": "Неправильный пароль"
     },
     "cart": {
       "checkout": "Оформить заказ",

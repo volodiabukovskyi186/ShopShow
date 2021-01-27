@@ -69,6 +69,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="reset-error-content" *ngIf="isErrorMessage">
+                    <div class="error-message">
+                        <img class="error-message-icon" src="assets/icons/mistake-red.svg"/>
+                        <div class="error-message-text">{{ 'accaunt.wrongPassword' | translate }}</div>
+                      </div>
+                </div>
                 <div class="change-data__input-container change-data__input-container-password">
                     <label for="oldPassword" class="input__group">{{ 'personalData.oldPassword' | translate }}</label>
                     <div class="input__group input__group-password">

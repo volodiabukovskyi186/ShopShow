@@ -20,7 +20,6 @@ export class RewiewBlockComponent implements OnInit {
    
   }
   moveLeft(){
-    // debugger;
     console.log(this.reviews)
     this.ds.moveLeft();
   }
