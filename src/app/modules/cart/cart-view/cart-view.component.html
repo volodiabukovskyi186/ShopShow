@@ -17,7 +17,7 @@
 
     <div *ngSwitchCase="'favorite'" class="title">
       <h6>{{ "footer.favorite" | translate }}</h6>
-      <div class="count">{{ allwishlistData.length }}</div>
+      <div class="count">{{ cart?.favorite?.length }}</div>
     </div>
 
     <div class="cloce button transparent" (click)="cart.closeCartView()">X</div>
@@ -35,9 +35,9 @@
   <div class="cart-list" *ngSwitchCase="'favorite'">
     <app-card-wishlist-item class="wish-item"
             @fadeHeight
-            *ngFor="let item of allwishlistData"
-            [value]="item"
-            (delete)="deleteWhishList($event)"
+            *ngFor="let itemFavorite of cart.favorite"
+            [value]="itemFavorite"
+            (delete)="deleteFromWhishList($event)"
     ></app-card-wishlist-item>
   </div>
 

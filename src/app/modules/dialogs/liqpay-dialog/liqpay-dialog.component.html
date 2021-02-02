@@ -6,7 +6,7 @@
     <div class="dialog-content">
         <form ngNoForm id="payForm"  *ngIf="data.isOrderBtnCliked" method="POST"
             accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout" target="nameFrame">
-            <input type="hidden" name="data" id="datasign"   [value]="data.hashedDataToSend"/>
+            <input type="hidden" name="data" id="datasign" [value]="data.hashedDataToSend"/>
             <input type="hidden" name="signature" [value]="data.hashedPrivateData" id="signature"/>
             <input type="hidden" name="x" value="256" />
             <input type="hidden" name="y" value="60" />

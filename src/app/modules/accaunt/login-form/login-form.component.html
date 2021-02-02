@@ -15,6 +15,14 @@
       </div>
     </div>
   </div>
+  <div *ngIf="isInvalidLoginOrPass && (formAuthControls.password.dirty && formAuthControls.login.dirty)">
+    <div class="reset-success-content">
+      <div class="success-message">
+        <img class="success-message-icon" src="assets/icons/mistake-red.svg"/>
+        <div class="success-message-text">{{ 'accaunt.invalidLoginOrPassword' | translate }}</div>
+      </div>
+    </div>
+  </div>
   <div class="auth-title-content">
     <div class="auth-title">{{ 'accaunt.login' | translate }}</div>
   </div>

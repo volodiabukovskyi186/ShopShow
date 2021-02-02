@@ -106,7 +106,7 @@
 
         <div class="add-to-wishlist">
           <img
-            (click)="addToWishlist(product)"
+            (click)="addToWishlist($event, product?.item)"
             class="heart-icon" src="assets/icons/heart_1.svg"
           />
           <span class="add-to-wishlist__text">

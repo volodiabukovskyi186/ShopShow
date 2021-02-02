@@ -5,6 +5,7 @@ import {CheckoutService} from '../checkout.service';
 import {TranslateService} from '@ngx-translate/core';
 import {CheckoutContactFormService} from '../checkout-contact-form.service';
 import {AppLangService} from '../../core/app-lang.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
     animations: [fadeHeight],
@@ -23,17 +24,24 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
     itemDelivery = [];
     valid: boolean = true;
 
-    constructor(public cart: CartService, public check: CheckoutService,
-                private translate: TranslateService,
-                public checkContact: CheckoutContactFormService,
-                public  langService: AppLangService,) {
-    }
+    constructor(
+        public cart: CartService, 
+        public check: CheckoutService,
+        private translate: TranslateService,
+        public checkContact: CheckoutContactFormService,
+        public  langService: AppLangService,
+        public authService: AuthService
+    ) {}
 
     ngOnInit(): void {
         this.arrDelivers = [];
         this.arrPayment = [];
-        this.getSelectCountry();
-        this.getSelectCountryPay();
+
+        //if (this.authService.getToken()) {
+            this.getSelectCountry();
+            this.getSelectCountryPay();
+        //}
+
         this.getLiqpayStatus();
     }
 
@@ -84,12 +92,15 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
         this.localLang = localStorage.getItem('current_lang');
         this.checkContact?.BSubject?.subscribe(data => {
             this.selectedCountry = data;
-            this.checkContact?.getCountryDeliver(this.selectedCountry.id, this.localLang).subscribe(data => {
-                this.arrDelivers = [] ;
-                data.data.deliveries.forEach(elem => {
-                    this.arrDelivers.push(elem.delivery);
+
+            if (this.selectedCountry && this.selectedCountry?.id) {
+                this.checkContact?.getCountryDeliver(this.selectedCountry?.id, this.localLang).subscribe(data => {
+                    this.arrDelivers = [] ;
+                    data.data.deliveries.forEach(elem => {
+                        this.arrDelivers.push(elem.delivery);
+                    });
                 });
-            });
+            }
         });
     }
 
@@ -98,13 +109,14 @@ export class CheckoutDeliveryPaymentComponent implements OnInit, OnChanges{
         this.checkContact.BSubject.subscribe(data => {
 
             this.selectedCountry = data;
-
-            this.checkContact.getCountryPayment(this.selectedCountry.id, this.localLang).subscribe(data => {
-                this.arrPayment = [];
-                data.data.payments.forEach(elem => {
-                    this.arrPayment.push(elem.payment);
+            if (this.selectedCountry && this.selectedCountry?.id) {
+                this.checkContact.getCountryPayment(this.selectedCountry?.id, this.localLang).subscribe(data => {
+                    this.arrPayment = [];
+                    data.data.payments.forEach(elem => {
+                        this.arrPayment.push(elem.payment);
+                    });
                 });
-            });
+            }
         });
     }
 

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { AccauntService } from '../../../accaunt/accaunt.service';
 import { ProductService } from 'src/app/modules/product/product.service';
 import { WishlistService } from '../services/wishlist.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-wishlist-product-item',
@@ -21,6 +22,7 @@ export class WishlistProductItemComponent implements OnInit {
   public Math = Math;
   public userId: number;
   public newWishlistProduct: any;
+  public whishlistSub: Subject<any> = new Subject<any>();
 
   constructor(
     public currency: CurrencyService, 
@@ -62,20 +64,24 @@ export class WishlistProductItemComponent implements OnInit {
     });
   }
 
-  public addToWishlist(product) {
+  public addToWishlist(event, product) {
+    event.preventDefault();
+    this.cart.openFavoriteView();
+    this.cart.addToFavourite(product);
+    
     //$event.preventDefault();
-    const found = this.wishlistProducts.some((el) => { el.product_id === product.product_id});
-    if (found) {
-      this.productService.addProductToWishlist({
-        product_id: product?.description?.product_id,
-        user_id: this.userId
-      }).subscribe((res) => {
-
-        alert(`Product #${res.data.product_id} was added to wishlist!`);
-      })
-    } else {
-      alert(`Product already exsist in wishlist!`);
-    }
+    // const found = this.wishlistProducts.some((el) => { el.product_id === product.product_id});
+    // if (found) {
+    //   this.cart.addProductToWishlist({
+    //     product_id: product?.description?.product_id,
+    //     user_id: this.userId
+    //   }).subscribe((res) => {
+    //     this.whishlistSub.next(true);
+    //     alert(`Product #${res.data.product_id} was added to wishlist!`);
+    //   })
+    // } else {
+    //   alert(`Product already exsist in wishlist!`);
+    // }
   }
 
   // @Output() valid: EventEmitter<boolean> = new EventEmitter<boolean>();

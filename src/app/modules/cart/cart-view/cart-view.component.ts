@@ -23,16 +23,19 @@ export class CartViewComponent implements OnInit, OnChanges {
               public product: ProductService,
               public accaunt: AccauntService,
               public wishlistService: WishlistService,
-              private  productService: ProductService,
+              private productService: ProductService,
               private authService: AuthService) {}
 
   ngOnInit(): void {
     if (localStorage.hasOwnProperty('token')) {
-      this.getWishlist();
+      //this.getWishlist();
+      //this.authService.logOutSub.subscribe(() => { this.getUserId(); });
+      this.cart.getUserId();
     }
   }
   ngOnChanges(changes: SimpleChanges) {
     if(changes){
+      this.cart.getUserId();
     }
   }
 
@@ -41,26 +44,38 @@ export class CartViewComponent implements OnInit, OnChanges {
   }
 
   getWishlist(): void {
-    this.productService.whishlistSub.subscribe(() => {this.getWishlist(); });
-    this.authService.logOutSub.subscribe(() => { this.allwishlistData = []; });
-      this.accaunt.getUser().subscribe((res) => {
-        this.clientId = res.data.user.id;
-        if ( this.clientId ) {
-          this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
-            this.wishlistProducts = res.data;
-            this.allwishlistData = res.data;
-            console.log('whish', this.allwishlistData);
-            this.cart.favoritelenth.next(this.allwishlistData.length);
-          });
-        }
-      });
+    // this.productService.whishlistSub.subscribe(() => {this.getWishlist(); });
+    //this.authService.logOutSub.subscribe(() => {  });
+
+    this.cart.getWishlist$().subscribe((res) => {
+      console.log(res);
+      this.cart.favorite = res;
+      //console.log('whish', this.allwishlistData);
+    })
+      // this.accaunt.getUser().subscribe((res) => {
+      //   this.clientId = res.data.user.id;
+      //   if ( this.clientId ) {
+      //     this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
+      //       this.wishlistProducts = res.data;
+      //       this.allwishlistData = res.data;
+      //       console.log('whish', this.allwishlistData);
+      //       this.cart.favoritelenth.next(this.allwishlistData.length);
+      //     });
+      //   }
+      // });
 
   }
-  deleteWhishList(whishId): void {
-    this.wishlistService.deleteWishList(whishId).subscribe(() => {
-    this.getWishlist();
-    this.productService.whishlistSub.next();
-    });
+
+  public deleteFromWhishList($event): void {
+    this.cart.deleteFromFavorites($event, this.cart.favorite);
   }
+
+  // public deleteWhishList(wishlistItem): void {
+  //   this.wishlistService.deleteWishList(wishlistItem.id).subscribe((res) => {
+  //     console.log(res);
+  //   });
+
+  //   this.allwishlistData = this.allwishlistData.filter((resp) => { return resp.id !== wishlistItem.id });
+  // }
 
 }

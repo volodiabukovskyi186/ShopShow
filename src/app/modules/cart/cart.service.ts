@@ -1,36 +1,52 @@
-import { Injectable, Inject, PLATFORM_ID } from "@angular/core";
+import { Injectable, Inject, PLATFORM_ID, OnChanges } from "@angular/core";
 import { isPlatformBrowser } from "@angular/common";
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { environment } from "src/environments/environment";
 import {AccauntService} from '../accaunt/accaunt.service';
+import { AuthService } from '../core/auth/auth.service';
+import { WishlistService } from '../../modules/accaunt/wishlist/services/wishlist.service';
+import { ProductService } from '../../modules/product/product.service';
 @Injectable({
   providedIn: "root",
 })
-export class CartService {
+export class CartService implements OnChanges {
   isCartView: boolean = false;
-  fLanth:any;
-  favoritelenth= new Subject();
+  fLanth: any;
+  favoritelenth = new Subject();
   mode: "cart" | "favorite" = "cart";
 
   list: Array<any> = [];
   favorite: Array<any> = [];
   arrBasket: Array<any> = [];
   productsInBasket = [];
+  productFavorites = [];
   userId: number;
 
+  private wishlistStream$: Subject<any> = new Subject();
 
-
-  constructor(@Inject(PLATFORM_ID) private platformId: string,
-              private http: HttpClient,
-              private accaunt: AccauntService) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: string,
+    private http: HttpClient,
+    private accaunt: AccauntService,
+    public authService: AuthService,
+    public wishlistService: WishlistService,
+    public productService: ProductService
+  ) {
     // this.body = document.querySelector("body");
+
     this.copyFromSession();
     this.calcTotalPrice();
 
     if (localStorage.hasOwnProperty('token')) {
       this.getUserId();
+      //this.getUserWishlist();
     }
+  }
+
+  ngOnChanges() {
+    //debugger;
+    this.authService.logOutSub.subscribe(() => { this.getUserId(); });
   }
 
   openCartView() {
@@ -48,16 +64,37 @@ export class CartService {
   public getUserId(): void {
     this.accaunt.getUser().subscribe((res) => {
       this.userId = res.data.user.id;
+      this.getUserWishlist(this.userId);
     })
   }
 
+  public getUserWishlist(userIdToSend) {
+    this.authService.logOutSub.subscribe(() => { this.getUserId(); });
+    this.wishlistService.getUserWishlistByClientId(userIdToSend)
+      .subscribe((resp) => {
+        this.favorite = resp.data;
+      })
+  }
 
-  public addToBaseBaslet( arrBasket: Array <number>): Observable <any> {
+  addProductToWishlist(data): Observable<any> {
+    // this.whishlistSub.next(true);
+    return this.http.post(`${environment.host}wishlist`, data);
+  }
+
+  public updatedWishlist$(message: any) {
+    this.wishlistStream$.next(message);
+  }
+
+  public getWishlist$() {
+    return this.wishlistStream$ as Observable<any>;
+    }
+
+  public addToBaseBaslet(arrBasket: Array <number>): Observable <any> {
     console.log(arrBasket);
+    this.getUserId();
 
     return this.http.put<any>( `${environment.addbasket}/${this.userId}`, arrBasket);
   }
-
 
   addToCart(prod: any, count: number = 1) {
 
@@ -91,6 +128,34 @@ export class CartService {
     this.copyToSession();
     this.calcTotalPrice();
     this.calcTotalCount();
+  }
+
+  
+  addToFavourite(prod: any) {
+    const filteredWishlist = this.favorite.map((resp) => { return resp.product.id });
+
+    if (!this.authService.getToken()) {
+      if (!filteredWishlist.includes(prod.id)) {
+        this.favorite.push({
+          product: prod,
+          id: prod.id
+        })
+    
+        this.productFavorites.push(prod);
+    
+        this.copyToSession();
+      }
+    } else {
+      if (!filteredWishlist.includes(prod.id)) {
+        this.getUserId();
+        this.addProductToWishlist({
+            product_id: prod?.description?.product_id,
+            user_id: this.userId
+        }).subscribe((res) => {
+            console.log(res);
+        })
+    } 
+    }
   }
 
 
@@ -127,9 +192,11 @@ export class CartService {
         return product.id;
       })
 
-      this.addToBaseBaslet(this.productsInBasket).subscribe((res) => {
-        console.log(res);
-      })
+      if (this.authService.getToken()) {
+        this.addToBaseBaslet(this.productsInBasket).subscribe((res) => {
+          console.log(res);
+        })
+      }
 
       return true;
     }
@@ -149,6 +216,39 @@ export class CartService {
     this.calcTotalPrice();
   }
 
+  deleteFromFavorites(favoriveItem: any, list: Array<any>) {
+    this.deleteFromFavoritesArr(favoriveItem, list);
+    // copy to session
+    this.copyToSession();
+  }
+
+  public deleteFromFavoritesArr(object: any, array: Array<any>): boolean {
+    const index: number = array.indexOf(object);
+    if (index !== -1) {
+      array.splice(index, 1);
+
+      this.productFavorites.push(array);
+
+      this.productFavorites = array?.map((product) => {
+        return product.id;
+      })
+
+      if (this.authService.getToken()) {
+        this.wishlistService.deleteWishList(object.id).subscribe((res) => {
+          console.log(res);
+        });
+        
+        //this.allwishlistData = this.allwishlistData.filter((resp) => { return resp.id !== wishlistItem.id });
+        // this.addToBaseBaslet(this.productFavorites).subscribe((res) => {
+        //   console.log(res);
+        // })
+      }
+
+      return true;
+    }
+    return false;
+  }
+
   calcTotalPrice() {
     this.totalPrice = 0;
     for (let i = 0; i < this.list.length; i++) {
@@ -164,6 +264,7 @@ export class CartService {
       }
     }
   }
+
   calcTotalCount() {
     this.totalCount = 0;
     for (let i = 0; i < this.list.length; i++) {
@@ -171,9 +272,11 @@ export class CartService {
       this.totalCount += element.count;
     }
   }
+  
   copyToSession() {
     let prodListJson = JSON.stringify(this.list);
     let prodListFavJson = JSON.stringify(this.favorite);
+    //this.favorite = [];
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem("cart_showu", prodListJson);
       localStorage.setItem("favorite_showu", prodListFavJson);

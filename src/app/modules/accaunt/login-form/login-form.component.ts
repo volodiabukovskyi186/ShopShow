@@ -1,16 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router , ActivatedRoute , Event, NavigationEnd} from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { AuthResponse } from '../../core/auth/models';
-
+import { HelperService } from '../../core/helper.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, OnDestroy {
   @Input() labelLogin: string;
   @Input() labelReg: string;
   @Input() labelPassword: string;
@@ -20,7 +22,11 @@ export class LoginFormComponent implements OnInit {
   @Input() placeholderPassword: string;
   @Input() isCheckoutComponent;
   @Input() checkout;
-  public  logPage
+
+  public  logPage;
+  public isInvalidLoginOrPass: boolean = false;
+  private loginStatusStraem$: any;
+  private onDestroyed$: Subject<void> = new Subject<void>();
   /**
    *
    */
@@ -30,18 +36,37 @@ export class LoginFormComponent implements OnInit {
     // private toastr: ToastrService,
     private router: Router,
     private activateRoute: ActivatedRoute,
+    public helperService: HelperService
   ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const categoryName = this.activateRoute.snapshot
-
       }
     })
   }
   l
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    this.helperService.getLoginStatus$()
+      .pipe(takeUntil(this.onDestroyed$))
+      .subscribe((res) => {
+        console.log(res);
+        if (res && res.status === 400) {
+          this.isInvalidLoginOrPass = true;
+        } else {
+          this.isInvalidLoginOrPass = false;
+        }
+      })
 
+    // this.loginStatusStraem$ = this.helperService.getLoginStatus$().subscribe((res) => {
+    //   console.log(res);
+
+    //   if (res) {
+    //     this.isInvalidLoginOrPass = true;
+    //   } else {
+    //     this.isInvalidLoginOrPass = false;
+    //   }
+    // })
   }
 
   authForm = new FormGroup({
@@ -56,32 +81,41 @@ export class LoginFormComponent implements OnInit {
 
   goToCheckoutComponent(name): void {
     this.logPage = name;
-
   }
 
-  onSubmit() {
+  public onSubmit(): void {
     // this.ngxService.start();
     // this.toastr.clear();
     const form = this.authForm.value;
     this.auth.login(form.login, form.password).subscribe(this.authHandler);
   }
+
   authHandler = (data: AuthResponse) => {
+    if (data) {
+      this.isInvalidLoginOrPass = false;
+    }
+    console.log(data);
 
     this.auth.saveToken(data.data.token);
     this.auth.onAuth();
     this.authForm.reset();
 
-    if( this.logPage=="mainLog"){
+    if (this.logPage == "mainLog") {
       this.router.navigate(['/']);
-    }
-    else {
+    } else {
       this.router.navigate(['/checkout']);
     }
-
   }
 
   get formAuthControls(): any {
     return this.authForm['controls'];
   }
 
+  public ngOnDestroy(): void {
+    // if (this.loginStatusStraem$) {
+    //   this.loginStatusStraem$.unsubscribe();
+    // }
+    this.onDestroyed$.next();
+    this.onDestroyed$.complete();
+  }
 }

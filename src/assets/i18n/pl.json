@@ -185,7 +185,8 @@
     "yourOrder": "Twoje zamówienie",
     "orderProcessing": "wysłane do przetworzenia.",
     "sing_in": "Zaloguj się do swojego konta osobistego",
-    "wrongPassword": "Złe hasło"
+    "wrongPassword": "Złe hasło",
+    "invalidLoginOrPassword": "Niepoprawny login lub hasło"
   },
   "statusCodes": {
     "done": "Gotowe",

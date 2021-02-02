@@ -49,10 +49,10 @@ export class RestoreFormComponent implements OnInit {
 
     let form = this.authForm.value;
     this.data = form;
-    this.auth.restore(form).subscribe(this.restoreHandler);
+    this.auth.mailRestore(form).subscribe(this.restoreHandler);
   }
 
-  data = this.authForm.value
+  data = this.authForm.value;
 
   restoreHandler = (data: any) => {
     // this.ngxService.stopAll();
@@ -62,6 +62,8 @@ export class RestoreFormComponent implements OnInit {
     this.isResetBtnClicked = true;
 
     this.resetBtnClicked.emit(this.isResetBtnClicked);
+
+    this.onSubmit();
   }
 
 }

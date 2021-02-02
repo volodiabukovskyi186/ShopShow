@@ -9,17 +9,23 @@ import {LiqpayService} from '../service/liqpay.service';
   styleUrls: ['./liqpay-dialog.component.scss']
 })
 export class LiqpayDialogComponent implements OnInit, AfterViewInit {
-  liqPayM
+  liqPayM;
+  
   constructor(
     public dialogRef: MatDialogRef<LiqpayDialogComponent>,
     public sanitizer: DomSanitizer,
     private liqpayService: LiqpayService,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
+
   ngAfterViewInit(): void {
     let form = document.getElementById("payForm") as HTMLFormElement;
     form.submit();
+
+    const paymentFormSubmit = form.submit();
+    console.log(paymentFormSubmit);
   }
+  
   //5168 7551 0456 8544
   public ngOnInit(): void {
     console.log(this.data);
@@ -41,5 +47,9 @@ export class LiqpayDialogComponent implements OnInit, AfterViewInit {
   checkliqpay(): void {
     let i = 0;
 
+  }
+
+  public onSubmit(event): void {
+    console.log('LIQPAY EVENT ====== >>>> !!!!! ', event);
   }
 }

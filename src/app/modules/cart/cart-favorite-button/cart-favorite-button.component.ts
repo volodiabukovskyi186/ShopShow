@@ -24,9 +24,9 @@ export class CartFavoriteButtonComponent implements OnInit {
               private authService: AuthService)
   {}
   ngOnInit(): void {
-    if (localStorage.hasOwnProperty('token')) {
-      this.getWishlist();
-    }
+    // if (localStorage.hasOwnProperty('token')) {
+    //   this.getWishlist();
+    // }
   }
 
   onResize(event) {

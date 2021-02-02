@@ -5,6 +5,9 @@ import {CurrencyService} from '../../currency/currency.service';
 import {CartService} from '../../cart/cart.service';
 import { AccauntService } from '../../accaunt/accaunt.service';
 import { ProductService } from 'src/app/modules/product/product.service';
+import { WishlistService } from '../../accaunt/wishlist/services/wishlist.service';
+import { Subject } from 'rxjs';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
     selector: 'app-product-item',
@@ -14,14 +17,22 @@ import { ProductService } from 'src/app/modules/product/product.service';
 export class ProductItemComponent implements OnInit {
     @Input() product: any = {};
     @Input() hoststatic = environment.hoststatic;
+    //@Input() allWishlistProducts;
+
     Math = Math;
     userId: number;
+
+    public clientId: number;
+    public wishlistProducts;
+    public whishlistSub: Subject<any> = new Subject<any>();
 
     constructor(
         public currency: CurrencyService, 
         public cart: CartService,
         public accauntService: AccauntService,
-        public productService: ProductService
+        public productService: ProductService,
+        public wishlistService: WishlistService,
+        public authService: AuthService
     ) {}
 
     ngOnInit(): void {
@@ -29,6 +40,19 @@ export class ProductItemComponent implements OnInit {
         if (localStorage.hasOwnProperty('token')) {
             this.getUserAccauntData();
         }
+
+        //this.wishlistProducts = this.allWishlistProducts;
+
+        //console.log(this.wishlistProducts);
+
+        //this.getWishlist();
+    }
+
+    ngOnChanges(): void {
+        // this.wishlistProducts = this.allWishlistProducts;
+        // this.productService.updatedWishlist$(this.wishlistProducts);
+        //this.getWishlist();
+        //console.log(this.wishlistProducts);
     }
 
     // save($event: Event, id: number) {
@@ -60,17 +84,24 @@ export class ProductItemComponent implements OnInit {
             this.accauntService.onCurrent();
         });
     }
+
+    public getWishlist(): void {
+        this.accauntService.getUser().subscribe((res) => {
+            this.clientId = res.data.user.id;
+            if (this.clientId) {
+              this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
+                this.wishlistProducts = res.data;
+                //this.allwishlistData = res.data;
+                console.log('whish', this.wishlistProducts);
+                this.cart.updatedWishlist$(this.wishlistProducts);
+              });
+            }
+        });
+    }
     
     public addToWishlist(event: Event, product) {
         event.preventDefault();
-
-    
-        this.productService.addProductToWishlist({
-            product_id: product?.description?.product_id,
-            user_id: this.userId
-        }).subscribe((res) => {
-
-            alert(`Product #${res.data.product_id} was added to wishlist!`);
-        })
+        this.cart.openFavoriteView();
+        this.cart.addToFavourite(product);
     }
 }

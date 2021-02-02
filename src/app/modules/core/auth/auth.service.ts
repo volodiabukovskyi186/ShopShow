@@ -37,6 +37,7 @@ export class AuthService {
   }
 
   login(login: string, password: string): Observable<any> {
+    //debugger
     let data = JSON.stringify({
       login,
       password,
@@ -44,28 +45,18 @@ export class AuthService {
     return this._http.post(environment.signin, data)
   }
   signup(data: any): Promise<any> {
-    //data = JSON.stringify(data);
-   return this._http.post(environment.signup, data).toPromise();
-    // .subscribe(
-    //   (response) => { return response },
-    //   (error) => {
-    //      // .... HANDLE ERROR HERE 
-    //      console.log(error.message);
-    // });
-      // .pipe(
-      //   map((response) => 
-      //   console.log(response)),
-      //   catchError(error => {
-      //     this.onError.next(error.message);
-      //     console.log(error);
-      //     return throwError(error);
-      //   })
-      // );
+   //return this._http.post(environment.signup, data).toPromise();
+   //debugger;
+   return this._http.post(`${environment.host}user`, data).toPromise();
   }
 
   restore(data: any) {
     data = JSON.stringify(data);
     return this._http.post(environment.signup, data);
+  }
+
+  mailRestore(data: any) {
+    return this._http.put(`${environment.host}mailRestore`, data)
   }
 
   public saveToken(token: string): void {

@@ -23,10 +23,13 @@ export class ProductSliderComponent implements OnInit, AfterViewInit {
   private slidesIndex = 0;
   Math = Math;
   userId: number;
-  constructor(  public currency: CurrencyService,
-                public cart: CartService,
-                public accauntService: AccauntService,
-                public productService: ProductService) {}
+
+  constructor(
+    public currency: CurrencyService,
+    public cart: CartService,
+    public accauntService: AccauntService,
+    public productService: ProductService
+  ) {}
 
   public ngOnInit(): void {
     if (localStorage.hasOwnProperty('token')) {
@@ -67,15 +70,16 @@ export class ProductSliderComponent implements OnInit, AfterViewInit {
 
   public addToWishlist(event: Event, product) {
     event.preventDefault();
+    this.cart.openFavoriteView();
+    this.cart.addToFavourite(product);
 
+    // this.cart.addProductToWishlist({
+    //   product_id: product?.description?.product_id,
+    //   user_id: this.userId
+    // }).subscribe((res) => {
 
-    this.productService.addProductToWishlist({
-      product_id: product?.description?.product_id,
-      user_id: this.userId
-    }).subscribe((res) => {
-
-      alert(`Product #${res.data.product_id} was added to wishlist!`);
-    })
+    //   alert(`Product #${res.data.product_id} was added to wishlist!`);
+    // })
   }
 
   // public onClickLeft(): void {

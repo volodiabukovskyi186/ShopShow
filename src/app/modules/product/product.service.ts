@@ -78,7 +78,9 @@ export class ProductService {
 
     page: number = 1;
     reviewPage: number = 1;
-    whishlistSub: Subject <any> = new Subject<any>();
+    whishlistSub: Subject<any> = new Subject<any>();
+
+    // private wishlistStream$: Subject<any> = new Subject();
 
     products: IProductResponse = {
         count: 0,
@@ -239,10 +241,18 @@ export class ProductService {
         return this.http.post(`https://api.showu.com.ua/review`, reviewItem);
     }
 
-    addProductToWishlist(data): Observable<any> {
-        this.whishlistSub.next(true);
-        return this.http.post(`${environment.host}wishlist`, data);
-    }
+    // addProductToWishlist(data): Observable<any> {
+    //     // this.whishlistSub.next(true);
+    //     return this.http.post(`${environment.host}wishlist`, data);
+    // }
+
+    // public updatedWishlist$(message: any) {
+    //     this.wishlistStream$.next(message);
+    // }
+
+    // public getWishlist$() {
+    //     return this.wishlistStream$ as Observable<any>;
+    // }
 
     getProdStorage(id: number): Observable<any> {
         return this.http.get(`https://api.showu.com.ua/stock_status/${id}`);

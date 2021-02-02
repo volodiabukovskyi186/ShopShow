@@ -370,18 +370,22 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     //     return data;
     // }
 
-    public addToWishlist(product): void {
-        this.accauntService.getUser()
-            .pipe(takeUntil(this.destroy$))
-            .subscribe((res) => {
-                if (res?.data?.user.id) {
-                    this.product.addProductToWishlist({
-                        product_id: product?.item?.description?.product_id,
-                        user_id: this.user?.data?.user.id
-                    }).subscribe((res) => {
-                        alert(`Product #${res.data.product_id} was added to wishlist!`);
-                    });
-                } 
-        })
+    public addToWishlist(event, product): void {
+        event.preventDefault();
+        this.cart.openFavoriteView();
+        this.cart.addToFavourite(product);
+
+        // this.accauntService.getUser()
+        //     .pipe(takeUntil(this.destroy$))
+        //     .subscribe((res) => {
+        //         if (res?.data?.user.id) {
+        //             this.cart.addProductToWishlist({
+        //                 product_id: product?.item?.description?.product_id,
+        //                 user_id: this.user?.data?.user.id
+        //             }).subscribe((res) => {
+        //                 alert(`Product #${res.data.product_id} was added to wishlist!`);
+        //             });
+        //         } 
+        // })
     }
 }

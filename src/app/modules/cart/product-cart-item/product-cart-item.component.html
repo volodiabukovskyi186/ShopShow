@@ -10,7 +10,7 @@
   <span class="count" *ngIf="!value.product.discont"
     >
     {{currency.current.simbol_left}}
-    {{ value.product.price * currency.current.value }}
+    {{ value.product.price * currency.current.value * value.count | number }}
     {{currency.current.simbol_right}}
     x
     <rap-count-input [min]="1" [(value)]="value.count"></rap-count-input>

@@ -42,8 +42,6 @@ export class PersonalDataComponent implements OnInit {
 
             this.accaunt.current = data.data;
 
-
-
             this.personalDataForm.setValue({
                 firstName: this.accaunt.current.user.first_name,
                 lastName: this.accaunt.current.user.last_name,
@@ -101,6 +99,7 @@ export class PersonalDataComponent implements OnInit {
             //secret: "secret",
             country: data.country,
             delivery_adress: data.delivery_adress,
+            album_id: this.accaunt.current.user.album_id,
             is_subscription: true
         }
 
@@ -146,7 +145,7 @@ export class PersonalDataComponent implements OnInit {
         this.isPassSuccessMessage = false;
 
         console.log(this.changePasswordForm.value);
-        
+
         //if (this.changePasswordForm.value.oldPassword === this.changePasswordForm.value.newPassword) {
             if (this.changePasswordForm.value.newPassword === this.changePasswordForm.value.confirmPassword) {
                 this.personalDataService.changeUserPassword({ 

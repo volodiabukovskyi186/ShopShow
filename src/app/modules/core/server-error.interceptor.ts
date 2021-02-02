@@ -8,10 +8,13 @@ import {
 } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { HelperService } from '../core/helper.service';
 
 @Injectable()
 export class ServerErrorInterceptor implements HttpInterceptor {
-  constructor() // private toastr: ToastrService // private ngxService: NgxUiLoaderService,
+  constructor(
+    public helperService: HelperService
+  ) // private toastr: ToastrService // private ngxService: NgxUiLoaderService,
   {}
 
   intercept(
@@ -19,9 +22,15 @@ export class ServerErrorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
-      catchError((error, caught) => {
-        this.handleError(error);
-        return of(error);
+      catchError((err, caught) => {
+        //debugger
+        let msg = err?.error?.error?.message ?? err?.error ?? err?.message;
+        this.helperService?.updatedLoginStatus$({
+          message: msg,
+          status: err?.status 
+        });
+        //this.handleError(error);
+        return of(err);
       }) as any
     );
   }
@@ -36,14 +45,16 @@ export class ServerErrorInterceptor implements HttpInterceptor {
         // console.log("ServerErrorInterceptor say", msg, t);
 
         // this.toastr.error(msg, t);
-        break;
-
+        //break;
       default:
         msg = err.message;
         t = err.name;
         // console.log("ServerErrorInterceptor say", msg, t);
         // this.toastr.error(msg,t);
-        break;
+        //break;
     }
+    this.helperService.updatedLoginStatus$(msg);
+
+    //return msg;
   }
 }

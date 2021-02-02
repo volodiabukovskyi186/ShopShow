@@ -118,6 +118,8 @@ export class RegisterFormComponent implements OnInit {
     
     this.data = form;
 
+    this.data.album_id = 1;
+
     this.auth.signup(form)
     .then((res) => {
       console.log(res);

@@ -30,6 +30,7 @@ export interface IUser {
   city?: string;
   country?: string;
   delivery_adress?: string;
+  album_id?: number;
 }
 
 export interface IAccaunt {

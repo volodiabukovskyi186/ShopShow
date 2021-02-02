@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CurrencyService} from '../../currency/currency.service';
-import {CartService} from '../cart.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CurrencyService } from '../../currency/currency.service';
+import { CartService } from '../cart.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   selector: 'app-card-wishlist-item',
@@ -8,7 +9,6 @@ import {CartService} from '../cart.service';
   styleUrls: ['./card-wishlist-item.component.scss']
 })
 export class CardWishlistItemComponent implements OnInit {
-
   host: string = "https://api.showu.com.ua/";
   @Output() delete = new EventEmitter<any>();
   private _value: any;
@@ -23,12 +23,16 @@ export class CardWishlistItemComponent implements OnInit {
     return this._value;
   }
 
-  constructor(public currency: CurrencyService, public cart: CartService) {}
+  constructor(
+    public currency: CurrencyService, 
+    public cart: CartService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {}
 
   onDelete() {
-    this.delete.emit(this.value.id);
+    this.delete.emit(this.value);
   }
 
 }

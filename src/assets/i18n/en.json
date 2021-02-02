@@ -90,7 +90,8 @@
     "yourOrder": "Your order",
     "orderProcessing": "has been sent for processing.",
     "sing_in": "Log in to your personal account",
-    "wrongPassword": "Wrong password"
+    "wrongPassword": "Wrong password",
+    "invalidLoginOrPassword": "Invalid login or password"
   },
   "cart": {
     "checkout": "Checkout",
