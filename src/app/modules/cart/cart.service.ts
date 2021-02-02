@@ -53,10 +53,12 @@ export class CartService implements OnChanges {
     this.mode = "cart";
     this.isCartView = true;
   }
+  
   openFavoriteView() {
     this.mode = "favorite";
     this.isCartView = true;
   }
+
   closeCartView() {
     this.isCartView = false;
   }
@@ -87,7 +89,7 @@ export class CartService implements OnChanges {
 
   public getWishlist$() {
     return this.wishlistStream$ as Observable<any>;
-    }
+  }
 
   public addToBaseBaslet(arrBasket: Array <number>): Observable <any> {
     console.log(arrBasket);

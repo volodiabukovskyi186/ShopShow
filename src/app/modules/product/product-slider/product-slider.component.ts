@@ -46,7 +46,7 @@ export class ProductSliderComponent implements OnInit, AfterViewInit {
 
   toCart($event: Event, item: any) {
     $event.preventDefault();
-    this.cart.isCartView = true;
+    this.cart.openCartView();
     this.cart.addToCart(item);
   }
 

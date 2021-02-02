@@ -44,7 +44,7 @@ export class WishlistProductItemComponent implements OnInit {
 
   toCart($event: Event, item: any) {
       $event.preventDefault();
-      this.cart.isCartView = true;
+      this.cart.openCartView();
       this.cart.addToCart(item);
   }
 
@@ -68,7 +68,7 @@ export class WishlistProductItemComponent implements OnInit {
     event.preventDefault();
     this.cart.openFavoriteView();
     this.cart.addToFavourite(product);
-    
+
     //$event.preventDefault();
     // const found = this.wishlistProducts.some((el) => { el.product_id === product.product_id});
     // if (found) {

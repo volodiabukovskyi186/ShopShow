@@ -17,24 +17,27 @@ export class CartViewComponent implements OnInit, OnChanges {
   clientId: any;
   wishlistProducts: any;
   allwishlistData: any;
-  try
-  constructor(public currency: CurrencyService,
-              public cart: CartService,
-              public product: ProductService,
-              public accaunt: AccauntService,
-              public wishlistService: WishlistService,
-              private productService: ProductService,
-              private authService: AuthService) {}
+  try;
 
-  ngOnInit(): void {
+  constructor(public currency: CurrencyService,
+    public cart: CartService,
+    public product: ProductService,
+    public accaunt: AccauntService,
+    public wishlistService: WishlistService,
+    private productService: ProductService,
+    private authService: AuthService
+  ) {}
+
+  public ngOnInit(): void {
     if (localStorage.hasOwnProperty('token')) {
       //this.getWishlist();
       //this.authService.logOutSub.subscribe(() => { this.getUserId(); });
       this.cart.getUserId();
     }
   }
-  ngOnChanges(changes: SimpleChanges) {
-    if(changes){
+
+  public ngOnChanges(changes: SimpleChanges) {
+    if (changes) {
       this.cart.getUserId();
     }
   }

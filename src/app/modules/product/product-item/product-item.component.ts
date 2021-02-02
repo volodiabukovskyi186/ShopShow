@@ -62,7 +62,7 @@ export class ProductItemComponent implements OnInit {
 
     toCart($event: Event, item: any) {
         $event.preventDefault();
-        this.cart.isCartView = true;
+        this.cart.openCartView();
         this.cart.addToCart(item);
     }
 
@@ -76,10 +76,7 @@ export class ProductItemComponent implements OnInit {
 
     public getUserAccauntData(): void {
         this.accauntService.getUser().subscribe((data) => {
-
-    
             this.userId = data.data.user.id;
-    
             this.accauntService.current = data.data;
             this.accauntService.onCurrent();
         });
@@ -101,6 +98,7 @@ export class ProductItemComponent implements OnInit {
     
     public addToWishlist(event: Event, product) {
         event.preventDefault();
+        this.cart.closeCartView();
         this.cart.openFavoriteView();
         this.cart.addToFavourite(product);
     }
