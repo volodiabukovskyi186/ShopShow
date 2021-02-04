@@ -22,6 +22,7 @@ export class PersonalDataComponent implements OnInit {
     public changePasswordForm: FormGroup;
     public isPassSuccessMessage: boolean = false;
     public isErrorMessage: boolean = false;
+    public roleId: number;
 
     constructor(
         public accaunt: AccauntService,
@@ -39,6 +40,7 @@ export class PersonalDataComponent implements OnInit {
     public getUserAccauntData(): void {
         this.accaunt.getUser().subscribe((data) => {
             this.userId = data.data.user.id;
+            this.roleId = data.data.role.id;
 
             this.accaunt.current = data.data;
 
@@ -87,8 +89,11 @@ export class PersonalDataComponent implements OnInit {
         
         const data = this.personalDataForm.value;
 
+        console.log('this.roleId ====== >>>>', this.roleId);
+
         this.userPersonalDataToUpdate = {
-            role_id: 3,
+            role_id: this.roleId,
+            //role_id: 3,
             //id: this.userId,
             email: data.email,
             permissions: [],

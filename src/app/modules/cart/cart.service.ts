@@ -91,11 +91,12 @@ export class CartService implements OnChanges {
     return this.wishlistStream$ as Observable<any>;
   }
 
-  public addToBaseBaslet(arrBasket: Array <number>): Observable <any> {
+  public addToBaseBaslet(arrBasket: Array<any>): Observable<any> {
     console.log(arrBasket);
-    this.getUserId();
+    //this.getUserId();
+    //debugger;
 
-    return this.http.put<any>( `${environment.addbasket}/${this.userId}`, arrBasket);
+    return this.http.put<any>(`${environment.addbasket}/${this.userId}`, arrBasket);
   }
 
   addToCart(prod: any, count: number = 1) {
@@ -125,7 +126,13 @@ export class CartService implements OnChanges {
     this.arrBasket.push(prod);
 
     console.log('oooooo=>>>>', this.list);
-    this.addToBaseBaslet(this.list);
+
+    const getProductIds = this.list.map((val) => { return val.product.id });
+
+    this.addToBaseBaslet(getProductIds)
+      .subscribe((res) => {
+        console.log(res);
+      })
 
     this.copyToSession();
     this.calcTotalPrice();

@@ -13,7 +13,7 @@ app-product-item {
 }
 
 #slider-product{
-  width:100%;
+  width: 100%;
 }
 .move-btn{
   display: none;
@@ -52,10 +52,11 @@ app-product-item {
   .product-item-block{
     background-color: rgb(250,250,250);
     width:33.3%;
-    padding: 0 2vw;
+    padding: 5px 1vw;
 
   }
-
+  
+  
 
   app-product-item {
     width: calc(50% );
@@ -70,7 +71,7 @@ app-product-item {
   .product-item-block{
     background-color: rgb(250,250,250);
     width:100%;
-    padding: 0 4vw;
+    padding: 5px 4vw;
 
   }
   app-product-item {
@@ -248,7 +249,15 @@ img.soldout {
   }
 }
 
-:host {
+// :host {
+//   &:hover {
+//     .product-buttons {
+//       opacity: 1;
+//     }
+//   }
+// }
+
+.product-item-block {
   &:hover {
     .product-buttons {
       opacity: 1;

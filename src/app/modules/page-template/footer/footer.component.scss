@@ -196,12 +196,12 @@ ul.nav {
 @include screen-w(389px) {
   .small-footer-input {
     h5 {
-      margin-left: 1%;
+      margin-left: -5px;
     }
   }
   .footer-small-shop{
 
-    padding-left: 10vw;
+    padding-left: 5vw;
   }
 }
 
@@ -212,19 +212,24 @@ ul.nav {
     }
   }
   .footer-small-shop{
-
     padding-left: 5vw;
+      h5 {
+        margin-bottom: 15px;
+        padding-left: 7px;
+      }
   }
 }
 
 .gray {
   color: $gray300;
+  padding: 8px 0px 8px 0px;
 }
 
 h5 {
   font-weight: bold;
   text-transform: uppercase;
-  padding-left: $space/4;
+  //padding-left: $space/4;
+  padding-left: 7px;
   padding-right: $space/4
 }
 
