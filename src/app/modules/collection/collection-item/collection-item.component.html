@@ -6,12 +6,12 @@
       *ngIf="item?.id"
       [routerLink]="routerLinksWithId"
       class="more"
-    >{{buttonText}}</a>
+    >{{ 'collection.shopNow' | translate }}</a>
     <a
       *ngIf="!item?.id"
       [routerLink]="routerLinks"
       class="more"
-    >{{buttonText}}</a>
+    >{{ 'collection.shopNow' | translate }}</a>
   </div>
 </div>
 

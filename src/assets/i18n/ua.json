@@ -92,7 +92,8 @@
     "orderProcessing": "відправлено на обробку.",
     "sing_in": "Увійти в особистий кабінет",
     "wrongPassword": "Невірний пароль",
-    "invalidLoginOrPassword": "Невірний логін або пароль"
+    "invalidLoginOrPassword": "Невірний логін або пароль",
+    "emailAddressAlreadyExists": "Адреса електронної пошти вже існує"
   },
   "cart": {
     "checkout": "Оформити замовлення",
@@ -136,7 +137,8 @@
     "backToStore": "Повернутися до покупок"
   },
   "collection": {
-    "details": "Деталі"
+    "details": "Деталі",
+    "shopNow": "Здійснити покупку"
   },
   "review": {
     "sliderDesc": "Не слухайте тільки нас, послухайте також і наших клієнтів.",

@@ -93,6 +93,9 @@ export class RegisterFormComponent implements OnInit {
 
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {
+        case 400: {
+          return `${error.message}`
+        }
         case 404: {
             return `Not Found: ${error.message}`;
         }

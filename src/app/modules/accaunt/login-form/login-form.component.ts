@@ -51,7 +51,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroyed$))
       .subscribe((res) => {
         console.log(res);
-        if (res && res.status === 400) {
+        if (res && res.status === 400 && res.message === "Invalid login or password!") {
           this.isInvalidLoginOrPass = true;
         } else {
           this.isInvalidLoginOrPass = false;

@@ -92,7 +92,8 @@
       "orderProcessing": "отправлен в обработку.",
       "sing_in": "Войти в личный кабинет",
       "wrongPassword": "Неправильный пароль",
-      "invalidLoginOrPassword": "Неправильный логин или пароль"
+      "invalidLoginOrPassword": "Неправильный логин или пароль",
+      "emailAddressAlreadyExists": "Адрес электронной почты уже существует"
     },
     "cart": {
       "checkout": "Оформить заказ",
@@ -136,7 +137,8 @@
       "backToStore": "Вернуться к покупкам"
     },
     "collection": {
-      "details": "Детали"
+      "details": "Детали",
+      "shopNow": "Купить сейчас"
     },
     "review": {
       "sliderDesc": "Не слушайте только нас, послушайте также и наших клиентов.",

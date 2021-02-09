@@ -91,7 +91,8 @@
     "orderProcessing": "has been sent for processing.",
     "sing_in": "Log in to your personal account",
     "wrongPassword": "Wrong password",
-    "invalidLoginOrPassword": "Invalid login or password"
+    "invalidLoginOrPassword": "Invalid login or password",
+    "emailAddressAlreadyExists": "Email address already exists"
   },
   "cart": {
     "checkout": "Checkout",
@@ -135,7 +136,8 @@
     "backToStore": "Back to store"
   },
   "collection": {
-    "details": "Details"
+    "details": "Details",
+    "shopNow": "Shop now"
   },
   "review": {
     "sliderDesc": "Don’t hear from us only. Listen to our customers too.",

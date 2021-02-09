@@ -24,12 +24,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err, caught) => {
         //debugger
-        let msg = err?.error?.error?.message ?? err?.error ?? err?.message;
-        this.helperService?.updatedLoginStatus$({
-          message: msg,
-          status: err?.status 
-        });
-        //this.handleError(error);
+        this.handleError(err);
         return of(err);
       }) as any
     );
@@ -37,12 +32,17 @@ export class ServerErrorInterceptor implements HttpInterceptor {
 
   private handleError(err: HttpErrorResponse) {
     // this.ngxService.stopAll();
-    let msg = "",
-      t = "ServerErrorInterceptor";
+    let msg = err?.error?.error?.message ?? err?.error ?? err?.message;
+    let t = "ServerErrorInterceptor";
     switch (err.status) {
       case 400:
-        msg = err.error.error.message ?? err.error ?? err.message;
+        //msg = err.error.error.message ?? err.error ?? err.message;
         // console.log("ServerErrorInterceptor say", msg, t);
+      
+        this.helperService?.updatedLoginStatus$({
+          message: msg,
+          status: err?.status 
+        });
 
         // this.toastr.error(msg, t);
         //break;
@@ -53,7 +53,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
         // this.toastr.error(msg,t);
         //break;
     }
-    this.helperService.updatedLoginStatus$(msg);
+    //this.helperService.updatedLoginStatus$(msg);
 
     //return msg;
   }

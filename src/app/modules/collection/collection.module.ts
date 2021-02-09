@@ -7,6 +7,7 @@ import { CollectionPageComponent } from "./collection-page/collection-page.compo
 import { CollectionViewPageComponent } from "./collection-view-page/collection-view-page.component";
 import { UiModule } from '../ui/ui.module';
 import { ProductModule } from '../product/product.module';
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,6 @@ import { ProductModule } from '../product/product.module';
     CollectionViewPageComponent,
   ],
   exports: [CollectionItemComponent],
-  imports: [CommonModule, RouterModule, UiModule, СollectionRoutingModule, ProductModule],
+  imports: [CommonModule, RouterModule, UiModule, СollectionRoutingModule, ProductModule, TranslateModule],
 })
 export class CollectionModule {}

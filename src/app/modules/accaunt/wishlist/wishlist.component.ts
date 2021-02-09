@@ -76,7 +76,7 @@ export class WishlistComponent implements OnInit {
         this.wishlistService.getUserWishlistByClientId(this.clientId).subscribe((res) => {
           setTimeout(() => {
             this.isWishlistProducts = true;
-          }, 1000);
+          }, 5000);
 
           this.wishlistProducts = res.data;
           console.log('this.wishlistProducts ===== >>>>', this.wishlistProducts);

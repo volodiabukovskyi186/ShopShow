@@ -87,7 +87,8 @@
     "backToStore": "Powrót do sklepu"
   },
   "collection": {
-    "details": "Detale"
+    "details": "Detale",
+    "shopNow": "Kupuj teraz"
   },
   "review": {
     "sliderDesc": "Nie tylko od nas. Posłuchaj także naszych klientów.",
@@ -186,7 +187,8 @@
     "orderProcessing": "wysłane do przetworzenia.",
     "sing_in": "Zaloguj się do swojego konta osobistego",
     "wrongPassword": "Złe hasło",
-    "invalidLoginOrPassword": "Niepoprawny login lub hasło"
+    "invalidLoginOrPassword": "Niepoprawny login lub hasło",
+    "emailAddressAlreadyExists": "Adres email już istnieje"
   },
   "statusCodes": {
     "done": "Gotowe",
