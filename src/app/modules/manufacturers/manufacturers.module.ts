@@ -11,12 +11,14 @@ import { DragScrollModule } from 'ngx-drag-scroll';
 import { TranslateModule } from "@ngx-translate/core";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { SafeHtmlPipe } from '../core/pipes/sanitize-html.pipe';
 
 @NgModule({
   declarations: [
     ManufacturersSliderComponent,
     ManufacturesPageComponent,
     ManufacturerPageComponent,
+    SafeHtmlPipe
   ],
     imports: [
         CommonModule,
@@ -29,6 +31,7 @@ import {MatSelectModule} from '@angular/material/select';
         MatFormFieldModule,
         MatSelectModule
     ],
-  exports: [ManufacturersSliderComponent]
+  exports: [ManufacturersSliderComponent, SafeHtmlPipe],
+  providers: [SafeHtmlPipe]
 })
 export class ManufacturersModule {}

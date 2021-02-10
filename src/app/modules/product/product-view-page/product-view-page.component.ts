@@ -89,7 +89,8 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     getByIdHandler = (data) => {
         this.product.item = data?.data;
         this.selectedProduct = data?.data;
-        console.log('produ888==>', this.selectedProduct);
+        //console.log('produ888==>', this.selectedProduct);
+        
         this.basicPrice = this.product.item.price;
         this.arrOptionsSelect = [];
         this.arrOptionsCheck = [];
@@ -324,66 +325,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
 
     }
 
-    // public getClientWishlistById() {
-    //     this.wishlistService.getUserWishlistByClientId(this.user?.data?.user.id).subscribe((res) => {
-    //         this.wishlistProducts.push(res);
-    //     })
-    // }
-
-    // async getUserId(prod) {
-    //     let getUser;
-    //     this.accauntService.getUser()
-    //         .pipe(takeUntil(this.destroy$))
-    //         .subscribe(async res => {
-    //             if (res?.data?.user.id) {
-    //                 this.product.addProductToWishlist({
-    //                     product_id: prod?.item?.description?.product_id,
-    //                     user_id: this.user?.data?.user.id
-    //                 }).subscribe((res) => {
-    //                     alert(`Product #${res.data.product_id} was added to wishlist!`);
-    //                 });
-    //             } 
-
-    //         const userData = await res;
-    //         getUser = userData;
-    //     })
-
-    //     const data = await getUser;
-
-    //     if (!data && !this.user) {
-    //         this.router.navigate(['/accaunt/register']);
-    //     } else {
-    //         data?.then((result) => {
-    //             if (result?.data?.user.id) {
-    //                 this.product.addProductToWishlist({
-    //                     product_id: prod?.item?.description?.product_id,
-    //                     user_id: this.user?.data?.user.id
-    //                 }).subscribe((res) => {
-    //                     alert(`Product #${res.data.product_id} was added to wishlist!`);
-    //                 });
-    //             } 
-    //         })
-    //     }
-    //     console.log(getUser);
-    //     return data;
-    // }
-
     public addToWishlist(event, product): void {
         event.preventDefault();
         this.cart.openFavoriteView();
         this.cart.addToFavourite(product);
-
-        // this.accauntService.getUser()
-        //     .pipe(takeUntil(this.destroy$))
-        //     .subscribe((res) => {
-        //         if (res?.data?.user.id) {
-        //             this.cart.addProductToWishlist({
-        //                 product_id: product?.item?.description?.product_id,
-        //                 user_id: this.user?.data?.user.id
-        //             }).subscribe((res) => {
-        //                 alert(`Product #${res.data.product_id} was added to wishlist!`);
-        //             });
-        //         } 
-        // })
     }
 }

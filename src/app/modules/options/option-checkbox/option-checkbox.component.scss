@@ -2,5 +2,13 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
+}
 
+.option-hue {
+  filter: brightness(0.5);
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1);
+  }
 }

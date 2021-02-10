@@ -45,10 +45,7 @@ export class ManufacturerPageComponent implements OnInit, OnChanges {
     public product: ProductService,
     private router: Router,
     private filterService: FilterService,
-  ) {
-
-
-  }
+  ) {}
 
   id: number = 0;
   isManufacturerPage: boolean = true;
@@ -61,11 +58,11 @@ export class ManufacturerPageComponent implements OnInit, OnChanges {
       title: this.manufacturer.item.name,
     });
   };
+
   getMinMaxPrice():void{
     this.filterService.getMinMaxPrice().subscribe((res) => {
       this.allCategory.maxPrice = res.data.max;
       this.allCategory.minPrice = res.data.min;
-
     });
   }
 
@@ -88,7 +85,6 @@ export class ManufacturerPageComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
 
   }
-
 
   getByManufacturerHandler = data => {
     // this.ngxService.stopAll();
