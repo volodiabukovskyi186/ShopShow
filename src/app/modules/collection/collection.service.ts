@@ -85,8 +85,9 @@ export class CollectionService {
   }
 
   getBy(id: number): Observable<any> {
+    let lang = this.appLang.current;
     return this.http.get<any>(
-      environment.host + `/client/product_collection/${id}`
+      environment.host + `/client/product_collection/${id}?lang=${lang}`
     );
   }
 }

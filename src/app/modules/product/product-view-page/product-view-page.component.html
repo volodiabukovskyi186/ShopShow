@@ -50,8 +50,13 @@
         <div class="product-description-title">
           {{ 'product.description' | translate }}
         </div>
-        <div class="read-text" [innerHTML]="product?.item?.description?.discription"></div>
-        <div>
+          <!-- {{ 'خطایی در ذخیره سازی تصویر به وجود  آمده است:' }} 
+        <div [innerHTML]="product?.item?.description?.discription | sanitizeHtml">
+          {{ product?.item?.description?.discription }}
+        </div> -->
+        <div class="read-text ppp" [innerHTML]="product?.item?.description?.discription | sanitizeHtml">
+        </div>
+        <div class="meta">
           {{ product?.item?.description?.meta_discription }}
         </div>
       </div>

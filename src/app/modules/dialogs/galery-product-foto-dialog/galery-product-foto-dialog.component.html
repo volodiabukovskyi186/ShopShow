@@ -7,7 +7,7 @@
       <span class="material-icons">arrow_back_ios</span>
     </button>
     <div>
-      <img src="{{ host + productImagesSrc[index].image.src }}" class="product-img">
+      <img src="{{ host + productImagesSrc[index]?.image?.src }}" class="product-img">
     </div>
     <button (click)="slideNext()" class="next-arr">
       <span class="material-icons">arrow_forward_ios</span>

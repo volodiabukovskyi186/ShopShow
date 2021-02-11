@@ -41,6 +41,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     arrOptionsSelect = [];
     allOptions;
     basicPrice: number;
+    basicDiscontPrice: number;
     sizesModal:boolean = false;
     breadcrumbs: Array<NavLink>;
     private destroy$: Subject<void> = new Subject<void>();
@@ -90,8 +91,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         this.product.item = data?.data;
         this.selectedProduct = data?.data;
         //console.log('produ888==>', this.selectedProduct);
-        
+
         this.basicPrice = this.product.item.price;
+        this.basicDiscontPrice = this.product?.item?.discont?.price;
         this.arrOptionsSelect = [];
         this.arrOptionsCheck = [];
         data.data.options.forEach(elem => {
@@ -137,6 +139,7 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     optionPrice(): void {
         let totalPrice = 0;
         this.product.item.price = this.basicPrice;
+        this.product.item.discont.price = this.basicDiscontPrice;
 
         this.allOptions.forEach(elem => {
             elem.price =  elem.price * 1;
@@ -144,6 +147,9 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         });
         this.product.item.price = Number(this.product.item.price);
         this.product.item.price = this.product.item.price + totalPrice;
+
+        this.product.item.discont.price = Number(this.product.item.discont.price);
+        this.product.item.discont.price = this.product.item.discont.price + totalPrice;
     }
 
     onSelectOptionChange(optionVal, option): void {

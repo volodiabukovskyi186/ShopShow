@@ -27,13 +27,15 @@ import {OptionModule} from '../options/option.module';
 import {SizesModule} from '../sizes/sizes.module';
 import { BuyInOneClickDialogComponent } from '../dialogs/buy-in-one-click-dialog/buy-in-one-click-dialog.component';
 // import { SalesComponent } from '../sales/sales/sales.component';
+import { SafeHtmlPipe } from '../core/pipes/sanitize-html.pipe';
 
 const c = [
   ProductListComponent,
   ProductItemComponent,
   ProductSliderComponent,
   ProductListItemComponent,
-  ImageViewComponent
+  ImageViewComponent,
+  SafeHtmlPipe
 ];
 
 @NgModule({
@@ -59,5 +61,6 @@ const c = [
         SizesModule,
     ],
   exports: [...c],
+  providers: [SafeHtmlPipe]
 })
 export class ProductModule {}
