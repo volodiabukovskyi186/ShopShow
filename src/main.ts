@@ -12,3 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 });
+
+
+// platformBrowserDynamic().bootstrapModule(AppModule)
+//   .then(() => {
+//     console.log('LOADED');
+//     // hide loading here dom.remove()
+//   })
+//   .catch(err => console.log(err));

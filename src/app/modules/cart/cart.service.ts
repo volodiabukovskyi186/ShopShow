@@ -7,6 +7,7 @@ import {AccauntService} from '../accaunt/accaunt.service';
 import { AuthService } from '../core/auth/auth.service';
 import { WishlistService } from '../../modules/accaunt/wishlist/services/wishlist.service';
 import { ProductService } from '../../modules/product/product.service';
+
 @Injectable({
   providedIn: "root",
 })
@@ -38,9 +39,11 @@ export class CartService implements OnChanges {
     this.copyFromSession();
     this.calcTotalPrice();
 
-    if (localStorage.hasOwnProperty('token')) {
-      this.getUserId();
-      //this.getUserWishlist();
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.hasOwnProperty('token')) {
+        this.getUserId();
+        //this.getUserWishlist();
+      }
     }
   }
 
@@ -96,7 +99,8 @@ export class CartService implements OnChanges {
     //this.getUserId();
     //debugger;
 
-    return this.http.put<any>(`${environment.addbasket}/${this.userId}`, arrBasket);
+    //return this.http.put<any>(`${environment.addbasket}/${this.userId}`, arrBasket);
+    return this.http.put<any>(`${environment.host}cart_client/updateArray/${this.userId}`, arrBasket);
   }
 
   addToCart(prod: any, count: number = 1) {

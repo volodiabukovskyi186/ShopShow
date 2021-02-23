@@ -66,7 +66,7 @@ export class ContactsBlockComponent implements OnInit {
     })
   }
 
-  zoom: number = 15;
+  //zoom: number = 15;
 
   public darkStyle = [
     {

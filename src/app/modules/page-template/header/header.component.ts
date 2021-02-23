@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject, PLATFORM_ID } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
 import { AppLangService } from '../../core/app-lang.service';
 import { AuthService } from '../../core/auth/auth.service';
@@ -7,6 +7,7 @@ import { CartService } from '../../cart/cart.service';
 import { CallbackDialogComponent } from '../../dialogs/callback-dialog/callback-dialog.component';
 import { UIService } from '../../ui/services/ui.service';
 import { environment } from 'src/environments/environment';
+import { isPlatformBrowser } from "@angular/common";
 
 @Component({
   selector: "app-header",
@@ -24,15 +25,18 @@ export class HeaderComponent implements OnInit {
     public appLang: AppLangService,
     public accaunt: AccauntService,
     public dialog: MatDialog,
-    public uiservice: UIService
+    public uiservice: UIService,
+    @Inject(PLATFORM_ID) private platformId: string
   ) {}
 
   ngOnInit(): void {
-    if (localStorage.hasOwnProperty('token')) {
-      this.getUser();
-      this.auth.auth.subscribe((_) => {
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.hasOwnProperty('token')) {
         this.getUser();
-      });
+        this.auth.auth.subscribe((_) => {
+          this.getUser();
+        });
+      }
     }
 
     this.getSiteData();

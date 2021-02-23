@@ -8,12 +8,29 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+import 'localstorage-polyfill';
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/showu-client/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
+  const domino = require('domino');
+  const fs = require('fs');
+  const template = fs.readFileSync(join(distFolder , 'index.html')).toString();
+  const win = domino.createWindow(template);
+  global['window'] = win;
+  //global['Node'] = win.Node;
+  global['navigator'] = win.navigator;
+  global['Event'] = win.Event;
+  global['KeyboardEvent'] = win.Event;
+  global['MouseEvent'] = win.Event;
+  global['WheelEvent'] = win.Event;
+  global['Event']['prototype'] = win.Event.prototype;
+  global['document'] = win.document;
+  global['localStorage'] = localStorage;
+  
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
     bootstrap: AppServerModule,

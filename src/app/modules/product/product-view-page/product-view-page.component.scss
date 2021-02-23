@@ -75,9 +75,7 @@ input ::placeholder {
     }
   }
 }
-//.option-description{
 
-//}
 .manufacturer {
   background-color: $white;
   @include material-shadow(1, 1, $gray400);
@@ -193,7 +191,6 @@ border-radius: 5px;
 }
 
 .basket-icon {
-//width: 25px;
 height: 19px;
 margin-right: 11px;
 }
@@ -205,16 +202,6 @@ font-weight: lighter;
 color: #f5bdce !important;
 }
 
-//.white-group{
-//margin: 0 -6rem;
-//background: white;
-//@media (max-width: 1080px) {
-//    margin: 0 -2rem;
-//}
-//@media (max-width: 768px) {
-//  margin: 0;
-//}
-//}
 .card-description{
 margin: 0 auto;
 display: flex;
@@ -224,7 +211,6 @@ flex-direction: row;
 max-width: 975px;
 width: 90vw;
 margin: 0 auto;
-//min-height: 50vh;
 
 }
 }
@@ -233,7 +219,6 @@ border-top: 1px solid $gray200 ;
 margin: 0 auto;
 padding-top: 20px;
 margin-top: 17px;
-//margin-top: -27px;
 p{
 margin-bottom: 2px;
 }
@@ -326,7 +311,6 @@ button{
 &:hover {
 fill: green !important;
 stroke: #fce57e !important;
-//background-color: sepia(100%);
 }
 }
 
@@ -338,10 +322,6 @@ padding-right: 40px;
 .new-price {
 color: #42996F;
 }
-
-//.price-padding {
-//padding-bottom: 20px;
-//}
 
 .padding {
 padding: 4px 16px 3px !important;

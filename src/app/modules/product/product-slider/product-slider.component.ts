@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, Inject } from '@angular/core';
 import { DragScrollComponent } from "ngx-drag-scroll";
 //import { SliderItemDirective } from './slider-item.directive';
 import { DragScrollItemDirective } from 'ngx-drag-scroll';
@@ -7,6 +7,8 @@ import {CurrencyService} from '../../currency/currency.service';
 import {CartService} from '../../cart/cart.service';
 import {AccauntService} from '../../accaunt/accaunt.service';
 import {ProductService} from '../product.service';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-product-slider',
@@ -28,12 +30,15 @@ export class ProductSliderComponent implements OnInit, AfterViewInit {
     public currency: CurrencyService,
     public cart: CartService,
     public accauntService: AccauntService,
-    public productService: ProductService
+    public productService: ProductService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   public ngOnInit(): void {
-    if (localStorage.hasOwnProperty('token')) {
-      this.getUserAccauntData();
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.hasOwnProperty('token')) {
+        this.getUserAccauntData();
+      }
     }
   }
 
@@ -109,18 +114,24 @@ export class ProductSliderComponent implements OnInit, AfterViewInit {
   // }
 
   public moveRight(): void {
-    if (this.ds.currIndex == this.ds._children.length) {
-      this.moveTo(0);
-    } else {
-      this.ds.moveRight();
-    }
+    //if (isPlatformBrowser(this.platformId)) {
+      if (this.ds.currIndex == this.ds._children.length) {
+        this.moveTo(0);
+      } else {
+        this.ds.moveRight();
+      }
+    //}
   }
 
   public moveLeft(): void {
-    this.ds.moveLeft();
+    //if (isPlatformBrowser(this.platformId)) {
+      this.ds.moveLeft();
+    //}
   }
 
   public moveTo(index): void {
-    this.ds.moveTo(index);
+    //if (isPlatformBrowser(this.platformId)) {
+      this.ds.moveTo(index);
+    //}
   }
 }

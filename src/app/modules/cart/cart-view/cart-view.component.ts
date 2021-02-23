@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit, OnChanges, SimpleChanges, Inject, PLATFORM_ID} from '@angular/core';
 import { CartService } from "../cart.service";
 import { fade, slideRight, fadeHeight, changeValueHighlight, changeValueScale } from "../../ui/animations";
 import { CurrencyService } from '../../currency/currency.service';
@@ -6,6 +6,7 @@ import {ProductService} from '../../product/product.service';
 import {AccauntService} from '../../accaunt/accaunt.service';
 import {WishlistService} from '../../accaunt/wishlist/services/wishlist.service';
 import {AuthService} from '../../core/auth/auth.service';
+import { isPlatformBrowser } from "@angular/common";
 
 @Component({
   animations: [fade, slideRight, fadeHeight, changeValueHighlight, changeValueScale],
@@ -19,7 +20,9 @@ export class CartViewComponent implements OnInit, OnChanges {
   allwishlistData: any;
   try;
 
-  constructor(public currency: CurrencyService,
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: string,
+    public currency: CurrencyService,
     public cart: CartService,
     public product: ProductService,
     public accaunt: AccauntService,
@@ -29,10 +32,12 @@ export class CartViewComponent implements OnInit, OnChanges {
   ) {}
 
   public ngOnInit(): void {
-    if (localStorage.hasOwnProperty('token')) {
-      //this.getWishlist();
-      //this.authService.logOutSub.subscribe(() => { this.getUserId(); });
-      this.cart.getUserId();
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.hasOwnProperty('token')) {
+        //this.getWishlist();
+        //this.authService.logOutSub.subscribe(() => { this.getUserId(); });
+        this.cart.getUserId();
+      }
     }
   }
 

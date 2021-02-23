@@ -139,7 +139,10 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
     optionPrice(): void {
         let totalPrice = 0;
         this.product.item.price = this.basicPrice;
-        this.product.item.discont.price = this.basicDiscontPrice;
+        
+        if (this.product?.item?.discont?.price) {
+            this.product.item.discont.price = this.basicDiscontPrice;
+        }
 
         this.allOptions.forEach(elem => {
             elem.price =  elem.price * 1;
@@ -148,8 +151,10 @@ export class ProductViewPageComponent implements OnInit, OnDestroy {
         this.product.item.price = Number(this.product.item.price);
         this.product.item.price = this.product.item.price + totalPrice;
 
-        this.product.item.discont.price = Number(this.product.item.discont.price);
-        this.product.item.discont.price = this.product.item.discont.price + totalPrice;
+        if (this.product?.item?.discont?.price) {
+            this.product.item.discont.price = Number(this.product.item.discont.price);
+            this.product.item.discont.price = this.product.item.discont.price + totalPrice;
+        }
     }
 
     onSelectOptionChange(optionVal, option): void {

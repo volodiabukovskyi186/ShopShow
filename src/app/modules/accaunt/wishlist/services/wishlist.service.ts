@@ -16,7 +16,8 @@ export class WishlistService {
   ) {}
 
   deleteWishList(itemId: number): Observable<any> {
-    return this.http.delete(`${environment.wishlist}/${itemId}`, );
+    //return this.http.delete(`${environment.wishlist}/${itemId}`, );
+    return this.http.delete(`${environment.host}wishlist/${itemId}`, );
   }
   getUserWishlistByClientId(clientId, value?: string, cardNumber?: number): Observable<any> {
     const lang = localStorage.getItem('current_lang');
