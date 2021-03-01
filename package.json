@@ -1,6 +1,7 @@
 {
   "name": "showu-client",
   "version": "0.0.0",
+  "main": "dist/server.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -30,8 +31,14 @@
     "@angular/router": "~9.0.0",
     "@material-ui/icons": "^4.9.1",
     "@nguniversal/express-engine": "^9.0.2",
+    "@nguniversal/module-map-ngfactory-loader": "^9.0.0-next.9",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "blob-to-buffer": "^1.2.9",
+    "buffer": "^6.0.3",
+    "cookiejar": "^2.1.2",
+    "cors": "^2.8.5",
+    "domino": "^2.1.6",
     "express": "^4.15.2",
     "jwt-decode": "^3.0.0-beta.2",
     "localstorage-polyfill": "^1.0.1",
@@ -39,13 +46,18 @@
     "ng5-slider": "^1.2.4",
     "ngx-drag-scroll": "^9.0.0-beta.2",
     "ngx-slider": "0.0.5",
+    "node": "^15.8.0",
     "preboot": "^7.0.0",
+    "request-ip": "^2.1.3",
     "rxjs": "~6.5.4",
+    "safe-buffer": "^5.1.2",
     "tslib": "^1.10.0",
+    "typedarray-to-buffer": "^4.0.0",
+    "xhr2": "^0.2.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.900.1",
+    "@angular-devkit/build-angular": "^0.900.1",
     "@angular/cli": "~9.0.1",
     "@angular/compiler-cli": "~9.0.0",
     "@angular/language-service": "~9.0.0",
@@ -66,6 +78,9 @@
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
-    "typescript": "~3.7.5"
+    "typescript": "~3.7.5",
+    "webpack": "^5.24.1",
+    "ws": "^6.2.1",
+    "xmlhttprequest": "^1.8.0"
   }
 }
