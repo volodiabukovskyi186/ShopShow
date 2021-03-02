@@ -5,37 +5,13 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { join } from 'path';
 
-import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
-import { resolve } from 'path';
-import { enableProdMode } from '@angular/core';
-import * as cors from 'cors';
-import * as bodyParser from 'body-parser';
-import { renderModuleFactory } from '@angular/platform-server';
-// import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+
 import 'localstorage-polyfill';
 
 const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./src/main.server`);
-// const { AppServerModuleNgFactory } = (module as any).exports;
-
-// renderModuleFactory(AppServerModuleNgFactory, {
-//   document: '<app-root></app-root>',
-//   url: '/',
-//   extraProviders: [
-//     provideModuleMap(LAZY_MODULE_MAP)
-//   ]
-// })
-
-// import * as xhr2 from 'xhr2';
-// import * as parse5 from 'parse5'
-// xhr2.prototype._restrictedHeaders = {};
-
-// var XMLHttpRequest = require('xhr2');
-// var XMLHttpRequestUpload = XMLHttpRequest.XMLHttpRequestUpload;
-// import * as Cookie from 'cookiejar';
-// XMLHttpRequest.cookieJar = Cookie.CookieJar();
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
@@ -45,15 +21,6 @@ export function app() {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/showu-client/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
-  const requestIp = require('request-ip');
-  // const fs = require('fs');
-  // const template = fs.readFileSync(join(distFolder , 'index.html')).toString();
-  // const win = domino.createWindow(template);
-  //const Buffer = require('safe-buffer').Buffer;
-  // const Buffer = require('buffer/').Buffer;
-  // const toBuffer = require('typedarray-to-buffer');
-  // const blobToBuffer = require('blob-to-buffer');
-  // let blob = new Blob([ Buffer ], { type: 'text/html' });
 
   global['window'] = win;
   global['Node'] = win.Node;
@@ -71,20 +38,8 @@ export function app() {
   global['navigator'] = win.navigator;
   global['XMLHttpRequest'] = require('xmlhttprequest').XMLHttpRequest;
   
-  // var buffer = Buffer.from(toBuffer);
-  // var arrayBuffer = buffer.buffer.slice(
-  //   buffer.byteOffset, buffer.byteOffset + buffer.byteLength
-  // )
-
-  // global['Buffer'] = buffer;
-  
   (global as any).FocusEvent = win.FocusEvent;
   (global as any).PointerEvent = win.PointerEvent;
-  // (global as any).WebSocket = require('ws');
-  // (global as any).XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-
-  // enableProdMode();
-  // (global as any).DOMTokenList = win.DOMTokenList;
 
   Object.defineProperty(win.document.body.style, 'transform', {
     value: () => {
@@ -100,22 +55,9 @@ export function app() {
     bootstrap: AppServerModuleNgFactory,
     providers: [provideModuleMap(LAZY_MODULE_MAP)]
   }));
-  // server.engine('html', ngExpressEngine({
-  //   bootstrap: AppServerModule,
-  //   providers: [provideModuleMap(LAZY_MODULE_MAP)]
-  // }));
-
-  // server.use(cors());
-  // server.use(requestIp.mw());
-  // server.use(bodyParser.urlencoded({ extended: true }));
-  // server.use(bodyParser.json());
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
-
-  // server.get('*', (req, res) => {
-  //   res.render('index', { req });
-  // });
 
   // Example Express Rest API endpoints
   // app.get('/api/**', (req, res) => { });
